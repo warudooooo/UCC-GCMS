@@ -57,7 +57,7 @@
                 <b class="logo-icon">
                     <img src="../src/images/uccLogo.png" alt="homepage" style="margin-top:-50px;margin-bottom:-50px; width: 50px;" />
                 </b>
-                <h2>Welcome, UCCnian!</h2>
+                <h2>UCC Guidance and Counseling (ADMINISTRATOR)</h2>
             </a>
             <!-- ============================================================== -->
             <!-- End Logo -->

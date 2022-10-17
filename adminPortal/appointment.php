@@ -53,7 +53,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="dashboard.php" style="color: #f4845f;">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Appointment</li>
                                 </ol>
                             </nav>

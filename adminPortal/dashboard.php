@@ -17,7 +17,8 @@ if (mysqli_num_rows($query) > 0) {
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
+<link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
+<link rel="stylesheet" href="src/styles/all.css">
 <?php include 'includes/header.php'?>
 
 <body>
@@ -53,7 +54,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="dashboard.php" style="color: #f4845f;">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>
@@ -79,20 +80,20 @@ if (mysqli_num_rows($query) > 0) {
                                 <div class="feed-widget">
                                     <ul class="list-style-none feed-body m-0 p-b-20">
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-info"><i class="mdi mdi-calendar-multiple-check"></i></div>Number of Appointments<span class="ms-auto font-12 text-muted">20</span>
+                                            <div class="feed-icon bg-info"><i class="mdi mdi-calendar-multiple-check"></i></div>Number of Appointments<span class="ms-auto font-22 text-muted" style="color:#f4845f !important;">20</span>
                                         </li>
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-success"><i class="mdi mdi-alarm-check"></i></div> Number of Completed<span class="ms-auto font-12 text-muted">6</span>
+                                            <div class="feed-icon bg-success"><i class="mdi mdi-alarm-check"></i></div> Number of Completed Appointments<span class="ms-auto font-22 text-muted" style="color:#f4845f !important;">6</span>
                                         </li>
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-warning"><i class="mdi mdi-book-open-page-variant"></i></div> Number of Courses<span class="ms-auto font-12 text-muted">10</span>
+                                            <div class="feed-icon bg-warning"><i class="mdi mdi-book-open-page-variant"></i></div> Number of Courses<span class="ms-auto font-22 text-muted" style="color:#f4845f !important;">10</span>
                                         </li>
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-danger"><i class="mdi mdi-account-multiple"></i></div> Number of Students<span class="ms-auto font-12 text-muted">50</span>
+                                            <div class="feed-icon bg-danger"><i class="mdi mdi-account-multiple"></i></div> Number of Students Registered<span class="ms-auto font-22 text-muted" style="color:#f4845f !important;">6</span>
                                         </li>
-                                        <li class="feed-item">
-                                            <div class="feed-icon bg-primary"><i class="mdi mdi-account-multiple-plus"></i></div> Number of Reasons for Referral<span class="ms-auto font-12 text-muted">23</span>
-                                        </li>
+                                        <!--<li class="feed-item">
+                                            <div class="feed-icon bg-primary"><i class="mdi mdi-account-multiple-plus"></i></div> Number of Reasons for Referral<span class="ms-auto font-22 text-muted" style="color:#f4845f !important;">23</span>
+                                        </li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -106,31 +107,10 @@ if (mysqli_num_rows($query) > 0) {
                 <!-- Table -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- column -->
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body">
-                                <!-- title -->
-                                <div class="d-md-flex">
-                                    <div>
-                                        <h4 class="card-title">Reservation List</h4>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <div class="dl">
-                                            <select class="form-select shadow-none">
-                                                <option value="0" selected>Monthly</option>
-                                                <option value="1">Daily</option>
-                                                <option value="2">Weekly</option>
-                                                <option value="3">Yearly</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- title -->
-                            </div>
                             <div class="table-responsive">
-                                
-                            <table id="example" class="table table-hover">
+                                <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th scope="col">Student Name</th>
@@ -144,48 +124,65 @@ if (mysqli_num_rows($query) > 0) {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Steve Jobs</td>
+                                            <td>Conde, Tristan Deo M.</td>
                                             <td>Bullying</td>
                                             <td>Bullying</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
+                                            <td>Oct 17, 2022</td>
+                                            <td>11:00 AM</td>
+                                            <td>https://meet.google.com/wlybyla
+                                                
+                                            </td>
                                             <td><label class="label label-success">approved</label></td>
                                         </tr>
                                         <tr>
-                                            <td>Jane Doe</td>
+                                            <td>Baui, Joel R.</td>
                                             <td>Depression</td>
                                             <td>Depression</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
+                                            <td>Oct 19, 2022</td>
+                                            <td>1:00 PM</td>
+                                            <td>https://meet.google.com/wlybyla
+                                                
+                                            </td>
                                             <td><label class="label label-success">approved</label></td>
                                         </tr>
                                         <tr>
-                                            <td>William Smith</td>
+                                            <td>Reyes, Romualdo M.</td>
                                             <td>Stressed</td>
                                             <td>Stressed</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
+                                            <td>Oct 20, 2022</td>
+                                            <td>2:00 PM</td>
+                                            <td>https://meet.google.com/wlybyla
+                                                
+                                            </td>
                                             <td><label class="label label-warning">completed</label></td>
                                         </tr>
                                         <tr>
-                                            <td>Steve Lee</td>
+                                            <td>Yambao, Ryan Jacob C.</td>
                                             <td>Bullying</td>
                                             <td>Bullying</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
+                                            <td>Oct 21, 2022</td>
+                                            <td>8:00 AM</td>
+                                            <td>https://meet.google.com/wlybyla
+                                                
+                                            </td>
                                             <td><label class="label label-danger">canceled</label></td>
                                         </tr>
                                         <tr>
-                                            <td>Simon Philips</td>
+                                            <td>Bayola, Walter James B.</td>
                                             <td>Lying</td>
                                             <td>Lying</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
+                                            <td>Oct 22, 2022</td>
+                                            <td>11:00 AM</td>
+                                            <td>https://meet.google.com/wlybyla</td>
+                                            <td><label class="label label-info">pending</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rivera, Yoshika E.</td>
+                                            <td>Lying</td>
+                                            <td>Lying</td>
+                                            <td>Oct 22, 2022</td>
+                                            <td>11:00 AM</td>
+                                            <td>https://meet.google.com/wlybyla</td>
                                             <td><label class="label label-info">pending</label></td>
                                         </tr>
                                     </tbody>
