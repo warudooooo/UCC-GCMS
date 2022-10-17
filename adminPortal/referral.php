@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: ../index.php");
+    die();
+}
+
+include '../config.php';
+
+$query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
+
+if (mysqli_num_rows($query) > 0) {
+    $row = mysqli_fetch_assoc($query);
+
+    $sName = $row['studentName'];
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -32,12 +49,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple-plus"></i> Reasons For Referral</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Students</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Referral</li>
                                 </ol>
                             </nav>
                         </div>
@@ -58,74 +75,47 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive">
-                  <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
+                            <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
                         data-target="#add" style="margin-top: 20px;margin-left: 10px;background-color: rgba(131,219,214);"><i
-                        class="fa fa-user-plus"></i> Add New</a>
-                        <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
-                        data-target="#add" style="margin-top: 20px;margin-left: 10px;background-color: rgba(131,219,214);"><i
-                        class="fa fa-file-csv"></i> Import CSV</a>
+                        class="fa fa-plus"></i> Add New</a>
                         <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Complete Name</th>
-                                            <th scope="col">Course</th>
-                                            <th scope="col">Age</th>
-                                            <th scope="col">Gender</th>
+                                            <th scope="col">Reason</th>
+                                            <th scope="col">Description</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>William Smith</td>
-                                            <td>Information Technology</td>
-                                            <td>19</td>
-                                            <td>Male</td>
+                                            <td>Bullying</td>
+                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Charde Marshall</td>
-                                            <td>Engineering</td>
-                                            <td>19</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <td>Depression</td>
+                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Quinn Flynn</td>
-                                            <td>Pure Mathematics and Statistics</td>
-                                            <td>19</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <td>Stressed</td>
+                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Cara Stevens</td>
-                                            <td>Medical and Biological Sciences</td>
-                                            <td>18</td>
-                                            <td>Feale</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Clement</td>
-                                            <td>Information Technology</td>
-                                            <td>20</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Alexam Angles</td>
-                                            <td>Entrepreneurship</td>
-                                            <td>22</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <td>Lying</td>
+                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>

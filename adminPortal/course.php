@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: ../index.php");
+    die();
+}
+
+include '../config.php';
+
+$query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
+
+if (mysqli_num_rows($query) > 0) {
+    $row = mysqli_fetch_assoc($query);
+
+    $sName = $row['studentName'];
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -32,12 +49,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> Appointment Schedule</h4>
+                        <h4 class="page-title"><i class="mdi mdi-book-open-page-variant"></i> Course</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Schedule</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Course</li>
                                 </ol>
                             </nav>
                         </div>
@@ -64,50 +81,43 @@
                         <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Number of Slots Available</th>
+                                            <th scope="col">Course Code</th>
+                                            <th scope="col">Course Complete Name</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>November 30, 2021</td>
-                                            <td>12</td>
+                                            <td>CRS-234-21</td>
+                                            <td>Information Technology</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>December 1, 2021</td>
-                                            <td>25</td>
+                                            <td>CRS-654-21</td>
+                                            <td>Medical and Biological Sciences</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>December 2, 2021</td>
-                                            <td>19</td>
+                                            <td>CRS-524-21</td>
+                                            <td>Entrepreneurship</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>December 3, 2021</td>
-                                            <td>21</td>
+                                            <td>CRS-678-21</td>
+                                            <td>Pure Mathematics and Statistics</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>December 4, 2021</td>
-                                            <td>26</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>December 5, 2021</td>
-                                            <td>34</td>
+                                            <td>CRS-345-21</td>
+                                            <td>Engineering</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>

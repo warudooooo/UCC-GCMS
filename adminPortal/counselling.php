@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: ../index.php");
+    die();
+}
+
+include '../config.php';
+
+$query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
+
+if (mysqli_num_rows($query) > 0) {
+    $row = mysqli_fetch_assoc($query);
+
+    $sName = $row['studentName'];
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -32,12 +49,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-plus"></i> Reasons For Referral</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-switch"></i> Counselling</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Referral</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Counselling</li>
                                 </ol>
                             </nav>
                         </div>
@@ -64,41 +81,79 @@
                         <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Reason</th>
-                                            <th scope="col">Description</th>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">Guidance Message</th>
+                                            <th scope="col">Strategies use</th>
+                                            <th scope="col">Video Record link</th>
+                                            <th scope="col">Remarks</th>
+                                            <th scope="col">Date and Time</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Bullying</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                                            <td>William Smith</td>
+                                            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                                            <td>strategy name</td>
+                                            <td>https://videolink101.com</td>
+                                            <td>Remarks</td>
+                                            <td>Dec 2, 2021</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Depression</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <td>Charde Marshall</td>
+                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                                            <td>strategy name</td>
+                                            <td>https://videolink101.com</td>
+                                            <td>Remarks</td>
+                                            <td>Dec 2, 2021</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Stressed</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <td>Quinn Flynn</td>
+                                            <td>Maecenas mattis tempor libero pretium.</td>
+                                            <td>strategy name</td>
+                                            <td>https://videolink101.com</td>
+                                            <td>Remarks</td>
+                                            <td>Dec 2, 2021</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Lying</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-                                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                                             <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <td>Cara Stevens</td>
+                                            <td>Vestibulum porttitor laoreet faucibus.</td>
+                                            <td>strategy name</td>
+                                            <td>Feale</td>
+                                            <td>Remarks</td>
+                                            <td>Dec 2, 2021</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>John Clement</td>
+                                            <td>Maecenas mattis tempor libero pretium.</td>
+                                            <td>strategy name</td>
+                                            <td>https://videolink101.com</td>
+                                            <td>Remarks</td>
+                                            <td>Dec 2, 2021</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alexam Angles</td>
+                                            <td>Maecenas mattis tempor libero pretium.</td>
+                                            <td>strategy name</td>
+                                            <td>https://videolink101.com</td>
+                                            <td>Remarks</td>
+                                            <td>Dec 2, 2021</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>

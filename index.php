@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 		if (empty($row['vkey'])) {
 			$_SESSION['SESSION_EMAIL'] = $sNumber;
-			header("Location: studentPortal/dashboard.php");
+			header("Location: adminPortal/dashboard.php");
 		} else {
 			$msg = "<div class='eml' style='margin-bottom: 2px; margin-top: -10px;'>Please verify your account first.</div>";
 		}

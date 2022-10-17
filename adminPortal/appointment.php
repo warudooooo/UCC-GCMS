@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (!isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: ../index.php");
+    die();
+}
+
+include '../config.php';
+
+$query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
+
+if (mysqli_num_rows($query) > 0) {
+    $row = mysqli_fetch_assoc($query);
+
+    $sName = $row['studentName'];
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -32,12 +49,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-view-dashboard"></i> Dashboard</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Appointment Reservation List</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Appointment</li>
                                 </ol>
                             </nav>
                         </div>
@@ -52,68 +69,13 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Sales chart -->
+                <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Feeds</h4>
-                                <div class="feed-widget">
-                                    <ul class="list-style-none feed-body m-0 p-b-20">
-                                        <li class="feed-item">
-                                            <div class="feed-icon bg-info"><i class="mdi mdi-calendar-multiple-check"></i></div>Number of Appointments<span class="ms-auto font-12 text-muted">20</span>
-                                        </li>
-                                        <li class="feed-item">
-                                            <div class="feed-icon bg-success"><i class="mdi mdi-alarm-check"></i></div> Number of Completed<span class="ms-auto font-12 text-muted">6</span>
-                                        </li>
-                                        <li class="feed-item">
-                                            <div class="feed-icon bg-warning"><i class="mdi mdi-book-open-page-variant"></i></div> Number of Courses<span class="ms-auto font-12 text-muted">10</span>
-                                        </li>
-                                        <li class="feed-item">
-                                            <div class="feed-icon bg-danger"><i class="mdi mdi-account-multiple"></i></div> Number of Students<span class="ms-auto font-12 text-muted">50</span>
-                                        </li>
-                                        <li class="feed-item">
-                                            <div class="feed-icon bg-primary"><i class="mdi mdi-account-multiple-plus"></i></div> Number of Reasons for Referral<span class="ms-auto font-12 text-muted">23</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Table -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <!-- column -->
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body">
-                                <!-- title -->
-                                <div class="d-md-flex">
-                                    <div>
-                                        <h4 class="card-title">Reservation List</h4>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <div class="dl">
-                                            <select class="form-select shadow-none">
-                                                <option value="0" selected>Monthly</option>
-                                                <option value="1">Daily</option>
-                                                <option value="2">Weekly</option>
-                                                <option value="3">Yearly</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- title -->
-                            </div>
                             <div class="table-responsive">
-                                
-                            <table id="example" class="table table-hover">
+                        <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th scope="col">Student Name</th>
@@ -178,12 +140,12 @@
                     </div>
                 </div>
                 <!-- ============================================================== -->
-                <!-- Table -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
-            <!-- ============================================================== -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
@@ -196,6 +158,7 @@
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php'?>
+
 </body>
 
 </html>

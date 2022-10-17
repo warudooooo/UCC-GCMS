@@ -44,7 +44,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="user-content hide-menu m-l-10" >
                             <a href="#" class="" id="Userdd" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <h5 class="m-b-0 user-name font-medium" ><?php echo $sName ?> <i class="fa fa-angle-down"></i></h5>
-                                <small><?php echo $sEmail ?></small>
+                                <small>Administrator</small>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd"">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
