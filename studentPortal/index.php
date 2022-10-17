@@ -57,7 +57,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="dashboard.php" style="color: #f4845f;">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Appointment</li>
                                 </ol>
                             </nav>
@@ -72,7 +72,7 @@ if (mysqli_num_rows($query) > 0) {
                         <span>My Violations</span>
                     </div>
                     <div>
-                        <span class="gg-info"></span>
+                        <span class="mdi mdi-alert-circle" style="font-size: 3rem;"></span>
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@ if (mysqli_num_rows($query) > 0) {
                         <span>My Pending Appointments</span>
                     </div>
                     <div>
-                        <span class="gg-browser"></span>
+                        <span class="mdi mdi-account-alert" style="font-size: 3rem;"></span>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@ if (mysqli_num_rows($query) > 0) {
                         <span>My Completed Appointments</span>
                     </div>
                     <div>
-                        <span class="gg-box"></span>
+                        <span class="mdi mdi-account-check" style="font-size: 3rem;"></span>
                     </div>
                 </div>
             </div>

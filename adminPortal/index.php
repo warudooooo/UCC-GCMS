@@ -19,7 +19,7 @@ if (mysqli_num_rows($query) > 0) {
 <html dir="ltr" lang="en">
 <link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
 <link rel="stylesheet" href="src/styles/all.css">
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php' ?>
 
 <body>
     <!-- ============================================================== -->
@@ -34,11 +34,10 @@ if (mysqli_num_rows($query) > 0) {
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-        <?php include 'includes/topbar.php'?>
-        <?php include 'includes/sidebar.php'?>
+        <?php include 'includes/topbar.php' ?>
+        <?php include 'includes/sidebar.php' ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -54,7 +53,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="dashboard.php" style="color: #f4845f;">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>
@@ -72,7 +71,49 @@ if (mysqli_num_rows($query) > 0) {
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <div class="row">
+                <h4 class="card-title">Statistics</h4>
+                <div class="cards ">
+                    <div class="cards-single">
+                        <div>
+                            <h1>0</h1>
+                            <span>Appointments</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+
+                    <div class="cards-single">
+                        <div>
+                            <h1>0</h1>
+                            <span>Completed Appointments</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-alarm-check" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+
+                    <div class="cards-single">
+                        <div>
+                            <h1>3</h1>
+                            <span>Courses</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <h1>6</h1>
+                            <span>Students Registered</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!--<div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -93,7 +134,7 @@ if (mysqli_num_rows($query) > 0) {
                                         </li>
                                         <!--<li class="feed-item">
                                             <div class="feed-icon bg-primary"><i class="mdi mdi-account-multiple-plus"></i></div> Number of Reasons for Referral<span class="ms-auto font-22 text-muted" style="color:#f4845f !important;">23</span>
-                                        </li>-->
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -118,7 +159,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <th scope="col">Concern</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Time</th>
-                                            <th scope="col">Meeting Link</th>
+                                            <th scope="col">Meeting Link / Type</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
@@ -129,9 +170,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Bullying</td>
                                             <td>Oct 17, 2022</td>
                                             <td>11:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla
-                                                
-                                            </td>
+                                            <td>https://meet.google.com/wlybyla</td>
                                             <td><label class="label label-success">approved</label></td>
                                         </tr>
                                         <tr>
@@ -140,9 +179,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Depression</td>
                                             <td>Oct 19, 2022</td>
                                             <td>1:00 PM</td>
-                                            <td>https://meet.google.com/wlybyla
-                                                
-                                            </td>
+                                            <td>Walk In</td>
                                             <td><label class="label label-success">approved</label></td>
                                         </tr>
                                         <tr>
@@ -151,9 +188,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Stressed</td>
                                             <td>Oct 20, 2022</td>
                                             <td>2:00 PM</td>
-                                            <td>https://meet.google.com/wlybyla
-                                                
-                                            </td>
+                                            <td>https://meet.google.com/wlybyla</td>
                                             <td><label class="label label-warning">completed</label></td>
                                         </tr>
                                         <tr>
@@ -162,9 +197,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Bullying</td>
                                             <td>Oct 21, 2022</td>
                                             <td>8:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla
-                                                
-                                            </td>
+                                            <td>Walk In</td>
                                             <td><label class="label label-danger">canceled</label></td>
                                         </tr>
                                         <tr>
@@ -182,7 +215,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Lying</td>
                                             <td>Oct 22, 2022</td>
                                             <td>11:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla</td>
+                                            <td>https://meet.google.com/yshrvr</td>
                                             <td><label class="label label-info">pending</label></td>
                                         </tr>
                                     </tbody>
@@ -209,7 +242,7 @@ if (mysqli_num_rows($query) > 0) {
     <!-- ============================================================== -->
     <!-- ============================================================== -->
 
-    <?php include 'includes/footer.php'?>
+    <?php include 'includes/footer.php' ?>
 </body>
 
 </html>

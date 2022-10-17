@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['SESSION_EMAIL'])) {
-	header("Location: studentPortal/dashboard.php");
+	header("Location: studentPortal/index.php");
 	die();
 }
 //DB connect
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 		if (empty($row['vkey'])) {
 			$_SESSION['SESSION_EMAIL'] = $sNumber;
-			header("Location: adminPortal/dashboard.php");
+			header("Location: adminPortal/index.php");
 		} else {
 			$msg = "<div class='eml' style='margin-bottom: 2px; margin-top: -10px;'>Please verify your account first.</div>";
 		}

@@ -53,7 +53,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="dashboard.php" style="color: #f4845f;">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Course</li>
                                 </ol>
                             </nav>
@@ -76,7 +76,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="card">
                             <div class="table-responsive">
                             <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
-                        data-target="#add" style="margin-top: 20px;margin-left: 10px;background-color: rgba(131,219,214);"><i
+                        data-target="#add" style="padding: 0.5rem; margin-top: 20px;margin-left: 10px;background-color: #f4845f; color: #fff;"><i
                         class="fa fa-plus"></i> Add New</a>
                         <table id="example" class="table table-hover">
                                     <thead>
@@ -88,38 +88,38 @@ if (mysqli_num_rows($query) > 0) {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>CRS-234-21</td>
+                                            <td>BSIS</td>
+                                            <td>Information System</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>BSIT</td>
                                             <td>Information Technology</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>CRS-654-21</td>
-                                            <td>Medical and Biological Sciences</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td>BSCS</td>
+                                            <td>Computer Science</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>CRS-524-21</td>
-                                            <td>Entrepreneurship</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td>BSEMC</td>
+                                            <td>Entertainment and Multimedia Computing</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>CRS-678-21</td>
-                                            <td>Pure Mathematics and Statistics</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>CRS-345-21</td>
-                                            <td>Engineering</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td>BSTM</td>
+                                            <td>Tourism Management</td>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>

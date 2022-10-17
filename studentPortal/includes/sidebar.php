@@ -57,7 +57,7 @@ if (mysqli_num_rows($query) > 0) {
                     </div>
                     <!-- End User Profile-->
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Dashboard</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="new-appointment.php" aria-expanded="false"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">New Appointment</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="counselling.php" aria-expanded="false"><i class="mdi mdi-account-switch"></i><span class="hide-menu">Counselling</span></a></li>
             </ul>
