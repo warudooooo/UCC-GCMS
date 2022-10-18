@@ -77,9 +77,6 @@ if (mysqli_num_rows($query) > 0) {
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive">
-                            <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
-                        data-target="#add" style="margin-top: 20px;margin-left: 10px;background-color: rgba(131,219,214);"><i
-                        class="fa fa-plus"></i> Add New</a>
                         <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
@@ -103,7 +100,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>10:00 AM</td>
                                         </tr>
                                         <tr>
-                                            <td>Manalo, Ariel P.</td>
+                                            <td>Manalo, Jose P.</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
                                             <td>Mr. Walter James Bayola</td>
                                             <td>Walk In</td>

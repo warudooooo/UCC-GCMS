@@ -78,10 +78,10 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="card">
                             <div class="table-responsive">
                   <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
-                        data-target="#add" style="margin-top: 20px;margin-left: 10px;background-color: rgba(131,219,214);"><i
+                        data-target="#add" style="padding: 0.5rem; margin-top: 20px;margin-left: 10px;background-color: #f4845f; color: #fff;"><i
                         class="fa fa-user-plus"></i> Add New</a>
                         <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
-                        data-target="#add" style="margin-top: 20px;margin-left: 10px;background-color: rgba(131,219,214);"><i
+                        data-target="#add" style="padding: 0.5rem; margin-top: 20px;margin-left: 10px;background-color: #f4845f; color: #fff;"><i
                         class="fa fa-file-csv"></i> Import CSV</a>
                         <table id="example" class="table table-hover">
                                     <thead>
@@ -99,8 +99,8 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Information Technology</td>
                                             <td>19</td>
                                             <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -108,8 +108,8 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Engineering</td>
                                             <td>19</td>
                                             <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -117,8 +117,8 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Pure Mathematics and Statistics</td>
                                             <td>19</td>
                                             <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -126,8 +126,8 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Medical and Biological Sciences</td>
                                             <td>18</td>
                                             <td>Feale</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -135,8 +135,8 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Information Technology</td>
                                             <td>20</td>
                                             <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash"style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -144,8 +144,8 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Entrepreneurship</td>
                                             <td>22</td>
                                             <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
+                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
