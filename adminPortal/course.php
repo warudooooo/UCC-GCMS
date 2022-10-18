@@ -17,7 +17,9 @@ if (mysqli_num_rows($query) > 0) {
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
+<head>
+    <link rel="icon" href="src/images/uccLogo.png">
+</head>
 <?php include 'includes/header.php'?>
 
 <body>

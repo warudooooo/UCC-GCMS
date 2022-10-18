@@ -17,7 +17,9 @@ if (mysqli_num_rows($query) > 0) {
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
+<head>
+    <link rel="icon" href="src/images/uccLogo.png">
+</head>
 <?php include 'includes/header.php'?>
 
 <body>
@@ -49,7 +51,7 @@ if (mysqli_num_rows($query) > 0) {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-switch"></i> Counselling</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-switch"></i> Counselling History</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -81,81 +83,60 @@ if (mysqli_num_rows($query) > 0) {
                         <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Student Name</th>
-                                            <th scope="col">Guidance Message</th>
-                                            <th scope="col">Strategies use</th>
-                                            <th scope="col">Video Record link</th>
-                                            <th scope="col">Remarks</th>
-                                            <th scope="col">Date and Time</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col" style="text-align: center;">Student Name</th>
+                                            <th scope="col" style="text-align: center;">Guidance Message</th>
+                                            <th scope="col" style="text-align: center;">Counselor</th>
+                                            <th scope="col" style="text-align: center;">Type of Counseling</th>
+                                            <th scope="col" style="text-align: center;">Remarks</th>
+                                            <th scope="col" style="text-align: center;">Date</th>
+                                            <th scope="col" style="text-align: center;">Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>William Smith</td>
+                                            <td>Richards, Alden R.</td>
                                             <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                                            <td>strategy name</td>
-                                            <td>https://videolink101.com</td>
+                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Online</td>
                                             <td>Remarks</td>
-                                            <td>Dec 2, 2021</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
+                                            <td>Oct 18, 2022</td>
+                                            <td>10:00 AM</td>
                                         </tr>
                                         <tr>
-                                            <td>Charde Marshall</td>
+                                            <td>Manalo, Ariel P.</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                                            <td>strategy name</td>
-                                            <td>https://videolink101.com</td>
+                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Walk In</td>
                                             <td>Remarks</td>
-                                            <td>Dec 2, 2021</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
+                                            <td>Oct 18, 2022</td>
+                                            <td>10:00 AM</td>
                                         </tr>
                                         <tr>
-                                            <td>Quinn Flynn</td>
+                                            <td>Sotto, Vic C.</td>
                                             <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>strategy name</td>
-                                            <td>https://videolink101.com</td>
+                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Online</td>
                                             <td>Remarks</td>
-                                            <td>Dec 2, 2021</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
+                                            <td>Oct 17, 2022</td>
+                                            <td>10:00 AM</td>
                                         </tr>
                                         <tr>
-                                            <td>Cara Stevens</td>
+                                            <td>Kho, Hayden</td>
                                             <td>Vestibulum porttitor laoreet faucibus.</td>
-                                            <td>strategy name</td>
-                                            <td>Feale</td>
+                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Walk In</td>
                                             <td>Remarks</td>
-                                            <td>Dec 2, 2021</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
+                                            <td>Oct 17, 2022</td>
+                                            <td>10:00 AM</td>
                                         </tr>
                                         <tr>
-                                            <td>John Clement</td>
+                                            <td>Baui, Joel R.</td>
                                             <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>strategy name</td>
-                                            <td>https://videolink101.com</td>
+                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Online</td>
                                             <td>Remarks</td>
-                                            <td>Dec 2, 2021</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Alexam Angles</td>
-                                            <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>strategy name</td>
-                                            <td>https://videolink101.com</td>
-                                            <td>Remarks</td>
-                                            <td>Dec 2, 2021</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
+                                            <td>Oct 17, 2022</td>
+                                            <td>10:00 AM</td>
                                         </tr>
                                     </tbody>
                                 </table>

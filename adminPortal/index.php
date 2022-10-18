@@ -19,6 +19,9 @@ if (mysqli_num_rows($query) > 0) {
 <html dir="ltr" lang="en">
 <link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
 <link rel="stylesheet" href="src/styles/all.css">
+<head>
+    <link rel="icon" href="src/images/uccLogo.png">
+</head>
 <?php include 'includes/header.php' ?>
 
 <body>

@@ -118,7 +118,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <th scope="col">Concern</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Time</th>
-                                            <th scope="col">Meeting Link</th>
+                                            <th scope="col">Meeting Link / Type</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
@@ -140,7 +140,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Depression</td>
                                             <td>Oct 19, 2022</td>
                                             <td>1:00 PM</td>
-                                            <td>https://meet.google.com/wlybyla
+                                            <td>Walk In
                                                 
                                             </td>
                                             <td><label class="label label-success">approved</label></td>
@@ -162,7 +162,7 @@ if (mysqli_num_rows($query) > 0) {
                                             <td>Bullying</td>
                                             <td>Oct 21, 2022</td>
                                             <td>8:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla
+                                            <td>Walk In
                                                 
                                             </td>
                                             <td><label class="label label-danger">canceled</label></td>
