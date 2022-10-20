@@ -51,7 +51,7 @@ if (mysqli_num_rows($query) > 0) {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Appointment Reservation List</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Appointments List</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -73,7 +73,7 @@ if (mysqli_num_rows($query) > 0) {
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive">
@@ -140,7 +140,7 @@ if (mysqli_num_rows($query) > 0) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

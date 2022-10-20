@@ -95,54 +95,54 @@ if (mysqli_num_rows($query) > 0) {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>William Smith</td>
-                                            <td>Information Technology</td>
-                                            <td>19</td>
+                                            <td>Ryan, Jacob Yambao C.</td>
+                                            <td>BSIS</td>
+                                            <td>21</td>
                                             <td>Male</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Charde Marshall</td>
-                                            <td>Engineering</td>
-                                            <td>19</td>
+                                            <td>Baui, Joel B.</td>
+                                            <td>BSIS</td>
+                                            <td>21</td>
                                             <td>Male</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Quinn Flynn</td>
-                                            <td>Pure Mathematics and Statistics</td>
-                                            <td>19</td>
+                                            <td>Conde, Tristan Deo M.</td>
+                                            <td>BSIS</td>
+                                            <td>21</td>
                                             <td>Male</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Cara Stevens</td>
-                                            <td>Medical and Biological Sciences</td>
-                                            <td>18</td>
-                                            <td>Feale</td>
+                                            <td>Bayola, Walter James B.</td>
+                                            <td>BSIT</td>
+                                            <td>22</td>
+                                            <td>Male</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>John Clement</td>
-                                            <td>Information Technology</td>
+                                            <td>Rivera, Yoshika E.</td>
+                                            <td>BSCS</td>
                                             <td>20</td>
-                                            <td>Male</td>
+                                            <td>Female</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"style="color: #f4845f;"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Alexam Angles</td>
-                                            <td>Entrepreneurship</td>
-                                            <td>22</td>
+                                            <td>Reyes, Romualdo M.</td>
+                                            <td>BSIS</td>
+                                            <td>21</td>
                                             <td>Male</td>
                                             <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>

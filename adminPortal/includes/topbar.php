@@ -7,7 +7,9 @@
         font-weight: 600;
         font-family: "Montserrat", sans-serif !important;
     }
-
+    .title2{
+        display: none;
+    }
     .logo-icon img {
         margin-left: 1rem;
     }
@@ -28,6 +30,15 @@
         .logo-icon img {
             margin-left: -40px !important;
             transition: margin-left 300ms;
+        }
+    }
+    
+    @media only screen and (max-width: 900px) {
+        .title{
+            display: none;
+        }
+        .title2{
+            display: block;
         }
     }
 
@@ -52,12 +63,13 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="dashboard.php">
+            <a class="navbar-brand" href="index.php">
                 <!-- Logo icon -->
                 <b class="logo-icon">
                     <img src="../src/images/uccLogo.png" alt="homepage" style="margin-top:-50px;margin-bottom:-50px; width: 50px;" />
                 </b>
-                <h2>UCC Guidance and Counseling (ADMINISTRATOR)</h2>
+                <h2 class="title">UCC Guidance and Counseling (ADMINISTRATOR)</h2>
+                <h2 class="title2">ADMINISTRATOR</h2>
             </a>
             <!-- ============================================================== -->
             <!-- End Logo -->
