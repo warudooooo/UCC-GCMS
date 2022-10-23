@@ -37,11 +37,11 @@ include 'sources/src-register.php';
 							</div>
 							<div class="inputWrap">
 								<input type="text" class="txtbxFields" minlength="4" name="sNumber" autocomplete="off" required>
-								<label> Student Number (Ex: 201xxxxx-M) </label>
+								<label> Student Number (Ex: 20xxxxxx-M) </label>
 							</div>
 							<div class="inputWrap">
-								<input type="text" class="txtbxFields" minlength="8" name="sCourse" autocomplete="off" required>
-								<label> Course </label>
+								<input type="text" class="txtbxFields" minlength="3" name="sCourse" autocomplete="off" required>
+								<label> Course (Ex: BSxx)</label>
 							</div>
 							<div class="inputWrap">
 								<input type="email" class="txtbxFields" minlength="8" name="sEmail" autocomplete="off" required>

@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
 	$sCourse = $_POST['sCourse'];
 	$sEmail = $_POST['sEmail'];
 	$sPassword = md5($_POST['sPassword']);
+	$verified = "no"; 
 
 	//Sanitize
 	$sName = $mysqli->real_escape_string($sName);
@@ -30,7 +31,7 @@ if (isset($_POST['submit'])) {
 		$msg = "<div class='eml' style='margin-bottom: -5px; margin-top: -20px;'>This Student Number already exists.</div>";
 	} else {
 		//Insert to DB
-		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey')";
+		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','$sVerified')";
 		$result = mysqli_query($mysqli, $sql);
 		if ($result) {
 			$mail = new PHPMailer(true);

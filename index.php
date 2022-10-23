@@ -17,6 +17,7 @@ if (isset($_POST['signup'])) {
 if (isset($_GET['verification'])) {
 	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE vkey='{$_GET['verification']}'")) > 0) {
 		$query = mysqli_query($mysqli, "UPDATE tbl_students SET vkey='' WHERE vkey='{$_GET['verification']}'");
+		$del = mysqli_query($mysqli, "UPDATE tbl_students SET studentVerified='yes'");
 		if ($query) {
 			$msg = "<div class='suc'>Verification Successful. You can now Log in.</div>";
 		}

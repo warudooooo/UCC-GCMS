@@ -1,12 +1,14 @@
 <?php
 include 'sources/session.php';
+include 'sources/src-student.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
 </head>
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php' ?>
 
 <body>
     <!-- ============================================================== -->
@@ -21,11 +23,10 @@ include 'sources/session.php';
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-        <?php include 'includes/topbar.php'?>
-        <?php include 'includes/sidebar.php'?>
+        <?php include 'includes/topbar.php' ?>
+        <?php include 'includes/sidebar.php' ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -59,81 +60,100 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <form method="POST" action="" autocomplete="off">
+                    <div class="row">
+                        <div class="col-lg-12 col-xlg-12 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form class="form-horizontal form-material mx-2">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Student Name (Ex. Bayola, Wally B.)</label>
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control form-control-line" name="sName"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Student Number (Ex: 20xxxxxx-M)</label>
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control form-control-line" name="sNumber"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Course (Ex. BSxx)</label>
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control form-control-line" name="sCourse"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-success text-white" style="background-color: #f25c54 !important; border: none;" name="submit" type="submit">Add Student</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </form>
                 <div class="row">
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple"></i>Verified Students</h4>
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive">
-                  <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
-                        data-target="#add" style="padding: 0.5rem; margin-top: 20px;margin-left: 10px;background-color: #f4845f; color: #fff;"><i
-                        class="fa fa-user-plus"></i> Add New</a>
-                        <a class="btn btn-sm elevation-2" href="#" data-toggle="modal"
-                        data-target="#add" style="padding: 0.5rem; margin-top: 20px;margin-left: 10px;background-color: #f4845f; color: #fff;"><i
-                        class="fa fa-file-csv"></i> Import CSV</a>
-                        <table id="example" class="table table-hover">
+                                <table id="example" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Complete Name</th>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">Student Number</th>
                                             <th scope="col">Course</th>
-                                            <th scope="col">Age</th>
-                                            <th scope="col">Gender</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr>
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td>" . $row["studentNumber"] . "</td>
+                                                 <td>" . $row["studentCourse"] . "</td>
+                                                 <td><a href='javascript:void(0)'><i class='fa fa-edit' style='color: #f4845f;'></i></a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>
+                                                 </td>
+                                                 </tr>";
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple" style="margin-top: 20px; margin-bottom: 20px;"></i>Unverified Students</h4>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="table-responsive">
+                                <table id="example" class="table table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>Ryan, Jacob Yambao C.</td>
-                                            <td>BSIS</td>
-                                            <td>21</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                            </td>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">Student Number</th>
+                                            <th scope="col">Course</th>
+                                            <th scope="col">Action</th>
                                         </tr>
-                                        <tr>
-                                            <td>Baui, Joel B.</td>
-                                            <td>BSIS</td>
-                                            <td>21</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Conde, Tristan Deo M.</td>
-                                            <td>BSIS</td>
-                                            <td>21</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bayola, Walter James B.</td>
-                                            <td>BSIT</td>
-                                            <td>22</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rivera, Yoshika E.</td>
-                                            <td>BSCS</td>
-                                            <td>20</td>
-                                            <td>Female</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash"style="color: #f4845f;"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Reyes, Romualdo M.</td>
-                                            <td>BSIS</td>
-                                            <td>21</td>
-                                            <td>Male</td>
-                                            <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                            <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                            </td>
-                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no'");
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr>
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td>" . $row["studentNumber"] . "</td>
+                                                 <td>" . $row["studentCourse"] . "</td>
+                                                 <td><a href='javascript:void(0)'><i class='fa fa-edit' style='color: #f4845f;'></i></a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>
+                                                 </td>
+                                                 </tr>";
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -158,7 +178,7 @@ include 'sources/session.php';
     <!-- ============================================================== -->
     <!-- ============================================================== -->
 
-    <?php include 'includes/footer.php'?>
+    <?php include 'includes/footer.php' ?>
 
 </body>
 
