@@ -1,41 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION['SESSION_EMAIL'])) {
-    header("Location: ../index.php");
-    die();
-}
-
-include '../config.php';
-
-$query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
-
-if (mysqli_num_rows($query) > 0) {
-    $row = mysqli_fetch_assoc($query);
-
-    $sName = $row['studentName'];
-}
-
-if (isset($_POST['submit'])) {
-    $cCode = $_POST['cCode'];
-    $cName = $_POST['cName'];
-    //Sanitize
-    $cCode = $mysqli->real_escape_string($cCode);
-    $cName = $mysqli->real_escape_string($cName);
-
-    // if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_courselist WHERE courseCode='{$cCode}'")) > 0) {
-    // 	$msg = "<div class='eml' style='margin-bottom: 10px; margin-top: -20px;'>This email adress is already in use. Please use a different one.</div>";
-    // } else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_courselist WHERE courseName='{$cName}'")) > 0) {
-    // 	$msg = "<div class='eml' style='margin-bottom: -5px; margin-top: -20px;'>This Student Number already exists.</div>";
-    // } else {
-    //Insert to DB
-
-    $sql = "INSERT INTO tbl_courselist(courseCode,courseName) VALUES('$cCode','$cName')";
-    $result = mysqli_query($mysqli, $sql);
-    // }
-}
-
-
-
+include 'sources/session.php';
+include 'sources/src-course.php';
 
 ?>
 <!DOCTYPE html>
@@ -136,41 +101,19 @@ if (isset($_POST['submit'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>BSIS</td>
-                                    <td>Information System</td>
-                                    <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                        <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_courselist");
+                            while($row = $load->fetch_assoc()){
+                                echo "<tr>
+                                     <td>". $row["courseCode"] . "</td>
+                                    <td>". $row["courseName"] . "</td>
+                                    <td><a href='javascript:void(0)'><i class='fa fa-edit' style='color: #f4845f;'></i></a>
+                                    <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>BSIT</td>
-                                    <td>Information Technology</td>
-                                    <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                        <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>BSCS</td>
-                                    <td>Computer Science</td>
-                                    <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                        <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>BSEMC</td>
-                                    <td>Entertainment and Multimedia Computing</td>
-                                    <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                        <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>BSTM</td>
-                                    <td>Tourism Management</td>
-                                    <td><a href="javascript:void(0)"><i class="fa fa-edit" style="color: #f4845f;"></i></a>
-                                        <a href="javascript:void(0)"><i class="fa fa-trash" style="color: #f4845f;"></i></a>
-                                    </td>
-                                </tr>
+                                    </tr>";
+                            }
+                                
+                            ?>
                             </tbody>
                         </table>
                     </div>
