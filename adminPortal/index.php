@@ -63,7 +63,7 @@ include 'sources/session.php';
                 <h4 class="card-title">Statistics</h4>
                 <div class="cards ">
                     <div class="cards-single">
-                        <div>
+                        <div >
                             <h1>0</h1>
                             <span>Appointments</span></span>
                         </div>
