@@ -14,7 +14,6 @@ if (isset($_POST['submit'])) {
 	$sCourse = $_POST['sCourse'];
 	$sEmail = $_POST['sEmail'];
 	$sPassword = md5($_POST['sPassword']);
-	$verified = "no"; 
 
 	//Sanitize
 	$sName = $mysqli->real_escape_string($sName);
@@ -30,7 +29,7 @@ if (isset($_POST['submit'])) {
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='yes'")) > 0) {
 		$msg = "<div class='eml' style='margin-bottom: -5px; margin-top: -20px;'>VERIFIED NA</div>";
 	}else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
-		$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='$verified' WHERE studentNumber='$sNumber'";
+		$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='nogit' WHERE studentNumber='$sNumber'";
 		$result = mysqli_query($mysqli, $sql);
 		if ($result) {
 			$mail = new PHPMailer(true);
@@ -98,5 +97,4 @@ if (isset($_POST['submit'])) {
 		}
 	}
 }
-
 ?>
