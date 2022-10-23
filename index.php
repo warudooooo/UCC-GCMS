@@ -25,6 +25,7 @@ if (isset($_GET['verification'])) {
 		header("Location: index.php");
 	}
 }
+// test commit
 //Login
 if (isset($_POST['submit'])) {
 
