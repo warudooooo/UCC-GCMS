@@ -64,7 +64,8 @@ include 'sources/session.php';
                 <div class="cards ">
                     <div class="cards-single">
                         <div >
-                            <h1>0</h1>
+                            <a href="#" class="fill-div">0</a>
+                            <!-- <h1>0</h1> -->
                             <span>Appointments</span></span>
                         </div>
                         <div>
@@ -74,7 +75,7 @@ include 'sources/session.php';
 
                     <div class="cards-single">
                         <div>
-                            <h1>0</h1>
+                        <a href="#" class="fill-div">0</a>
                             <span>Completed Appointments</span>
                         </div>
                         <div>
@@ -84,7 +85,7 @@ include 'sources/session.php';
 
                     <div class="cards-single">
                         <div>
-                            <h1>3</h1>
+                        <a href="#" class="fill-div">0</a>
                             <span>Courses</span>
                         </div>
                         <div>
@@ -93,7 +94,7 @@ include 'sources/session.php';
                     </div>
                     <div class="cards-single">
                         <div>
-                            <h1>6</h1>
+                        <a href="#" class="fill-div">0</a>
                             <span>Students Registered</span>
                         </div>
                         <div>

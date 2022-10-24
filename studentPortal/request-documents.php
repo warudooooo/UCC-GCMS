@@ -4,6 +4,7 @@ include 'sources/src-new-appointment.php';
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <link rel="stylesheet" type="text/css" href="src/styles/new-appointmentStyle.css">
+
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
 </head>
@@ -36,12 +37,12 @@ include 'sources/src-new-appointment.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> New Appointment</h4>
+                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> Request Documents</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Appointment</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Request Documents</li>
                                 </ol>
                             </nav>
                         </div>
@@ -66,6 +67,24 @@ include 'sources/src-new-appointment.php';
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="POST">
                                     <div class="form-group">
+                                        <label class="col-md-12">Document Type</label>
+                                        <div class="select-menu">
+                                            <div class="select-btn">
+                                                <span class="sBtn-text">Select your options</span>
+                                                <i class="fas fa-caret-down"></i>
+                                            </div>
+                                            <textarea class="sBtn-text-clone" name="sOptions"></textarea>
+                                            <ul class="options">
+                                                <li class="option">
+                                                    <span class="option-text">Honorable Dismissal</span>
+                                                </li>
+                                                <li class="option">
+                                                    <span class="option-text">Transcript of Records</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
                                         <div class="col-md-12">
                                             <input type="text" placeholder="<?php echo $sName ?>" class="form-control form-control-line" readonly>
@@ -89,24 +108,7 @@ include 'sources/src-new-appointment.php';
                                             <textarea rows="5" class="form-control form-control-line" name="sDetails"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Appointment Type</label>
-                                        <div class="select-menu">
-                                            <div class="select-btn">
-                                                <span class="sBtn-text">Select your options</span>
-                                                <i class="fas fa-caret-down"></i>
-                                            </div>
-                                            <textarea class="sBtn-text-clone" name="sOptions"></textarea>
-                                            <ul class="options">
-                                                <li class="option">
-                                                    <span class="option-text">Physical Apperance</span>
-                                                </li>
-                                                <li class="option">
-                                                    <span class="option-text">Online</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+
                                     <!-- <div class="form-group">
                                         <label class="col-md-12">Select Date</label>
                                         <div class="col-md-12">

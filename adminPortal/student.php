@@ -104,6 +104,7 @@ include 'sources/src-student.php';
                                         <tr>
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Student Number</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col">Course</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -115,6 +116,7 @@ include 'sources/src-student.php';
                                             echo "<tr>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
+                                                 <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
                                                  <td><a href='javascript:void(0)'><i class='fa fa-edit' style='color: #f4845f;'></i></a>
                                                  <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>

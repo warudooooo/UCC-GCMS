@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 	$sEmail = $_POST['sEmail'];
 	$sPassword = md5($_POST['sPassword']);
 
-	//Sanitize
+	
 	$sName = $mysqli->real_escape_string($sName);
 	$sNumber = $mysqli->real_escape_string($sNumber);
 	$sCourse = $mysqli->real_escape_string($sCourse);
