@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
             $sql = "INSERT INTO tbl_pendingrequest(studentNumber,requesterName,requestDetails,requestType) VALUES('$sNumber','$sName','$sDetails','$sOptions')";
             $result = mysqli_query($mysqli, $sql);
 
+            header("Location: redirects/request-success-sub.php");
     }
     }
 ?>

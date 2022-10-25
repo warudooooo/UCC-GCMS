@@ -33,6 +33,8 @@ if (isset($_POST['submit'])) {
     //Insert to DB
 		$sql = "INSERT INTO tbl_pendingappointments(studentNumber,studentName,studentCourse,appointmentReason,appointmentDetails,appointmentType) VALUES('$sNumber','$sName','$sCourse','$sReason','$sDetails','$sOptions')";
         $result = mysqli_query($mysqli, $sql);
+
+        header("Location: redirects/appointment-success-sub.php");
     }
     }
 ?>
