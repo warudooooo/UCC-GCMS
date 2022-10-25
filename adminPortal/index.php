@@ -64,9 +64,9 @@ include 'sources/session.php';
                 <div class="cards ">
                     <div class="cards-single">
                         <div >
-                            <a href="#" class="fill-div">0</a>
+                            <a href="#" class="fill-div">2</a>
                             <!-- <h1>0</h1> -->
-                            <span>Appointments</span></span>
+                            <span>Pending Appointments</span></span>
                         </div>
                         <div>
                             <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
@@ -76,7 +76,7 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                         <a href="#" class="fill-div">0</a>
-                            <span>Completed Appointments</span>
+                            <span>Pending Requests</span>
                         </div>
                         <div>
                             <span class="mdi mdi-alarm-check" style="font-size: 3rem;"></span>
@@ -85,8 +85,8 @@ include 'sources/session.php';
 
                     <div class="cards-single">
                         <div>
-                        <a href="#" class="fill-div">0</a>
-                            <span>Courses</span>
+                        <a href="#" class="fill-div">1</a>
+                            <span>Completed Appointments</span>
                         </div>
                         <div>
                             <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
@@ -94,7 +94,7 @@ include 'sources/session.php';
                     </div>
                     <div class="cards-single">
                         <div>
-                        <a href="#" class="fill-div">0</a>
+                        <a href="#" class="fill-div">6</a>
                             <span>Students Registered</span>
                         </div>
                         <div>
@@ -160,7 +160,7 @@ include 'sources/session.php';
                                             <td>Bullying</td>
                                             <td>Oct 17, 2022</td>
                                             <td>11:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla</td>
+                                            <td>Online</td>
                                             <td><label class="label label-success">approved</label></td>
                                         </tr>
                                         <tr>
@@ -178,7 +178,7 @@ include 'sources/session.php';
                                             <td>Stressed</td>
                                             <td>Oct 20, 2022</td>
                                             <td>2:00 PM</td>
-                                            <td>https://meet.google.com/wlybyla</td>
+                                            <td>Online</td>
                                             <td><label class="label label-warning">completed</label></td>
                                         </tr>
                                         <tr>
@@ -196,7 +196,7 @@ include 'sources/session.php';
                                             <td>Lying</td>
                                             <td>Oct 22, 2022</td>
                                             <td>11:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla</td>
+                                            <td>Online</td>
                                             <td><label class="label label-info">pending</label></td>
                                         </tr>
                                         <tr>
@@ -205,7 +205,7 @@ include 'sources/session.php';
                                             <td>Lying</td>
                                             <td>Oct 22, 2022</td>
                                             <td>11:00 AM</td>
-                                            <td>https://meet.google.com/yshrvr</td>
+                                            <td>Walk In</td>
                                             <td><label class="label label-info">pending</label></td>
                                         </tr>
                                     </tbody>

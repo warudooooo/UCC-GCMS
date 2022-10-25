@@ -34,7 +34,5 @@ if (isset($_POST['submit'])) {
 		$sql = "INSERT INTO tbl_pendingappointments(studentNumber,studentName,studentCourse,appointmentReason,appointmentDetails,appointmentType) VALUES('$sNumber','$sName','$sCourse','$sReason','$sDetails','$sOptions')";
         $result = mysqli_query($mysqli, $sql);
     }
-    }else{
-    echo "something";
-}
+    }
 ?>

@@ -1,14 +1,11 @@
-<?php
-include 'sources/src-new-appointment.php';
-?>
+<?php include 'sources/src-new-appointment.php';?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<link rel="stylesheet" type="text/css" href="src/styles/new-appointmentStyle.css">
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" type="text/css" href="src/styles/new-appointmentStyle.css">
 </head>
 <?php include 'includes/header.php' ?>
-
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

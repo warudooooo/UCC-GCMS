@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 		}
 	} else {
 		//Insert to DB
-		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','$sVerified')";
+		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no')";
 		$result = mysqli_query($mysqli, $sql);
 		if ($result) {
 			$mail = new PHPMailer(true);
@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
 			} catch (Exception $e) {
 				$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
 			}
-			header('location:thankyou.php');
+			header('location:redirects/thankyou.php');
 		} else {
 			$msg = "<div class='eml'>Something went wrong.</div>";
 		}

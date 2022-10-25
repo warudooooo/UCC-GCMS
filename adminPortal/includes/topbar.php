@@ -75,7 +75,7 @@
             <!-- End Logo -->
             <!-- ============================================================== -->
             <!-- This is for the sidebar toggle which is visible on mobile only -->
-            <a class="nav-toggler waves-effect waves-dark d-block d-md-none" href="javascript:void(0)" style="color: black !important;"><i class="ti-menu ti-close"></i></a>
+            <a class="nav-toggler waves-effect waves-dark d-block d-md-none" href="javascript:void(0)" style="color: black !important; margin-top: 3px"><i class="ti-menu ti-close"></i></a>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->
