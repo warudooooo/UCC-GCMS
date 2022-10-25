@@ -1,11 +1,13 @@
-<?php include 'sources/src-new-appointment.php';?>
+<?php include 'sources/src-new-appointment.php'; ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
     <link rel="stylesheet" type="text/css" href="src/styles/new-appointmentStyle.css">
 </head>
 <?php include 'includes/header.php' ?>
+
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -63,30 +65,6 @@
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="POST">
                                     <div class="form-group">
-                                        <label class="col-md-12">Full Name</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $sName ?>" class="form-control form-control-line" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Student Number</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Reasons for Referral</label>
-                                        <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sReason"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">State Reasons/Concern</label>
-                                        <div class="col-md-12">
-                                            <textarea rows="5" class="form-control form-control-line" name="sDetails"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label class="col-md-12">Appointment Type</label>
                                         <div class="select-menu">
                                             <div class="select-btn">
@@ -104,6 +82,30 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $sName ?>" class="form-control form-control-line" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Student Number</label>
+                                        <div class="col-md-12">
+                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Reasons for Referral</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="1" class="form-control form-control-line" name="sReason"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">State Reasons/Concern</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line" name="sDetails"></textarea>
+                                        </div>
+                                    </div>
                                     <!-- <div class="form-group">
                                         <label class="col-md-12">Select Date</label>
                                         <div class="col-md-12">
@@ -115,6 +117,7 @@
                                             <button class="btn btn-success text-white" name="submit">Submit</button>
                                         </div>
                                     </div>
+                                    <?php echo $msg; ?>
                                 </form>
                             </div>
                         </div>

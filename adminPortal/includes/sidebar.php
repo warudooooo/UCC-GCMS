@@ -19,15 +19,16 @@ if (mysqli_num_rows($query) > 0) {
     .user-content a small {
         color: #343a40 !important;
     }
-    .left-sidebar{
-        height: auto !important;
+    .left-sidebar {
+            height: auto !important;
     }
-    @media only screen and (max-width: 768px) {
-        .left-sidebar {
-            margin-top: -15px !important;
-            transition: 300ms;
-        }
+    @media only screen and (max-width: 768px){
+    .left-sidebar {
+        margin-top: -15px !important;
+        transition: 300ms;
+        height: 100% !important;
     }
+}
 </style>
 <!-- ============================================================== -->
 <!-- Left Sidebar - style you can find in sidebar.scss  -->

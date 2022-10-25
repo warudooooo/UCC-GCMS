@@ -1,4 +1,4 @@
-<?php include 'sources/src-new-appointment.php';?>
+<?php include 'sources/src-request-documents.php';?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -83,23 +83,17 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $sName ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $sName ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Reasons for Referral</label>
-                                        <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sReason"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">State Reasons/Concern</label>
+                                        <label class="col-md-12">State Details</label>
                                         <div class="col-md-12">
                                             <textarea rows="5" class="form-control form-control-line" name="sDetails"></textarea>
                                         </div>
@@ -113,9 +107,10 @@
                                     </div> -->
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success text-white" name="submit">Submit</button>
+                                            <button class="btn btn-success text-white" name="submit">Request</button>
                                         </div>
                                     </div>
+                                    <?php echo $msg; ?>
                                 </form>
                             </div>
                         </div>

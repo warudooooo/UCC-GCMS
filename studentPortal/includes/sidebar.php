@@ -31,6 +31,7 @@ if (mysqli_num_rows($query) > 0) {
     .left-sidebar {
         margin-top: -15px !important;
         transition: 300ms;
+        height: 100% !important;
     }
 }
 </style>

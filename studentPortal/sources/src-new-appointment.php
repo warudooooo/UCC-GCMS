@@ -6,6 +6,7 @@ if (!isset($_SESSION['SESSION_EMAIL'])) {
 }
 
 include '../config.php';
+$msg = "";
 
 $query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
 
@@ -18,9 +19,8 @@ if (mysqli_num_rows($query) > 0) {
 
 }
 if (isset($_POST['submit'])) {
-
-    if($sDetails == '' || $sReason == '' || $sOptions == ''){
-        header("Location: index.php");
+    if($_POST['sDetails'] == '' || $_POST['sReason'] == '' || $_POST['sOptions'] == ''){
+        $msg = "<div class='eml'>PLEASE FILL UP ALL THE FIELDS</div>";
     }else{
     $sReason = $_POST['sReason'];
 	$sDetails = $_POST['sDetails'];
