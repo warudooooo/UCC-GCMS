@@ -8,6 +8,7 @@ include 'sources/src-student.php';
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 <?php include 'includes/header.php' ?>
 

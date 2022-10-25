@@ -97,13 +97,13 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Reasons for Referral</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sReason"></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" name="sReason" style="text-transform: uppercase;"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">State Reasons/Concern</label>
                                         <div class="col-md-12">
-                                            <textarea rows="5" class="form-control form-control-line" name="sDetails"></textarea>
+                                            <textarea rows="8" class="form-control form-control-line" name="sDetails"></textarea>
                                         </div>
                                     </div>
                                     <!-- <div class="form-group">

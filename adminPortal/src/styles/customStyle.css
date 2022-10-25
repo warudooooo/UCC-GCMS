@@ -1,0 +1,13 @@
+.page-item.active .page-link{
+    background: #333 !important;
+    border-color: #333 !important;
+}
+.form-control{
+    font-size: 15px !important;
+}
+.page-link{
+    color: #333 !important;
+}
+.page-item.active .page-link{
+    color: #fff !important;
+}

@@ -30,7 +30,7 @@ include 'sources/src-index.php';
 						</div>
 						<div class="actualForm">
 							<div class="inputWrap">
-								<input type="text" class="txtbxFields" minlength="4" name="sNumber" autocomplete="off" required>
+								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="4" name="sNumber" autocomplete="off" required>
 								<label> Student Number (Ex: 201xxxxx-M) </label>
 							</div>
 							<div class="inputWrap">

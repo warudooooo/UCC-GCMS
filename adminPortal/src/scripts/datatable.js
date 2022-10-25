@@ -1,6 +1,18 @@
 $(document).ready(function() {
-    $('#dataTable').DataTable();
+    $('#dataTable').DataTable({
+        info: false,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search",
+        }
+    });
 });
 $(document).ready(function() {
-    $('#dataTable2').DataTable();
+    $('#dataTable2').DataTable({
+        info: false,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search",
+        }
+    });
 });

@@ -36,11 +36,11 @@ include 'sources/src-register.php';
 								<label> Full Name (Ex: Bayola, Wally B.)</label>
 							</div>
 							<div class="inputWrap">
-								<input type="text" class="txtbxFields" minlength="4" name="sNumber" autocomplete="off" required>
+								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="4" name="sNumber" autocomplete="off" required>
 								<label> Student Number (Ex: 20xxxxxx-M) </label>
 							</div>
 							<div class="inputWrap">
-								<input type="text" class="txtbxFields" minlength="3" name="sCourse" autocomplete="off" required>
+								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="3" name="sCourse" autocomplete="off" required>
 								<label> Course (Ex: BSxx)</label>
 							</div>
 							<div class="inputWrap">
