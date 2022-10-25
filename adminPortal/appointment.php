@@ -6,7 +6,7 @@ include 'sources/session.php';
 
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap10.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 <?php include 'includes/header.php' ?>
@@ -24,7 +24,7 @@ include 'sources/session.php';
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin10" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
         <?php include 'includes/topbar.php' ?>
         <?php include 'includes/sidebar.php' ?>
@@ -38,7 +38,7 @@ include 'sources/session.php';
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
-                    <div class="col-10">
+                    <div class="col-5">
                         <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Pending Appointments List</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
@@ -94,7 +94,7 @@ include 'sources/session.php';
                                                  <td>" . $row["appointmentReason"] . "</td>
                                                  <td>" . $row["appointmentType"] . "</td>
                                                  <td>" . $row["requestDate"] . "</td>
-                                                 <td style='text-align:center;'><a href='index.php' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>OPEN</a>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>SEE MORE</a>
                                                  <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>APPROVE</a>
                                                  <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
                                                  </td>
@@ -128,7 +128,7 @@ include 'sources/session.php';
 
     <?php include 'includes/footer.php' ?>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap10.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="src/scripts/datatable.js"></script>
 </body>
 

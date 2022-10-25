@@ -123,8 +123,8 @@ include 'sources/src-student.php';
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
-                                                 <td><a href='javascript:void(0)' style='color: #f4845f;'><i class='fa fa-edit' style='color: #0096c7; padding: 0px 10px;'></i></a>
-                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000;'></i></a>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
                                                  </td>
                                                  </tr>";
                                             $i++;
@@ -161,8 +161,8 @@ include 'sources/src-student.php';
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
-                                                 <td><a href='javascript:void(0)' style='color: #f4845f;'><i class='fa fa-edit' style='color: #0096c7; padding: 0px 10px;'></i></a>
-                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000;'></i></a>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
                                                  </td>
                                                  </tr>";
                                             $i++;
