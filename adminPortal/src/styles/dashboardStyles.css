@@ -1,7 +1,7 @@
 .cards {
     
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -47,12 +47,6 @@
 .cards-single:last-child div:first-child span,
 .cards-single:last-child div:last-child span {
     color: #fff;
-}
-
-@media only screen and (max-width: 1280px) {
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
 
 @media only screen and (max-width: 1170px) {

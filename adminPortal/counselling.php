@@ -3,10 +3,12 @@ include 'sources/session.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php' ?>
 
 <body>
     <!-- ============================================================== -->
@@ -21,11 +23,10 @@ include 'sources/session.php';
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-        <?php include 'includes/topbar.php'?>
-        <?php include 'includes/sidebar.php'?>
+        <?php include 'includes/topbar.php' ?>
+        <?php include 'includes/sidebar.php' ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -61,25 +62,25 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card" style="padding: 20px;">
                             <div class="table-responsive">
-                        <table id="example" class="table table-hover">
-                                    <thead>
+                                <table id="dataTable" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
                                         <tr>
-                                            <th scope="col" style="text-align: center;">Student Name</th>
-                                            <th scope="col" style="text-align: center;">Guidance Message</th>
-                                            <th scope="col" style="text-align: center;">Counselor</th>
-                                            <th scope="col" style="text-align: center;">Type of Counseling</th>
-                                            <th scope="col" style="text-align: center;">Remarks</th>
-                                            <th scope="col" style="text-align: center;">Date</th>
-                                            <th scope="col" style="text-align: center;">Time</th>
+                                            <th scope="col" style="color:#fff;">Student Name</th>
+                                            <th scope="col" style="color:#fff;">Guidance Message</th>
+                                            <th scope="col" style="color:#fff;">Counselor</th>
+                                            <th scope="col" style="color:#fff;">Meeting Type</th>
+                                            <th scope="col" style="color:#fff;">Remarks</th>
+                                            <th scope="col" style="color:#fff;">Date</th>
+                                            <th scope="col" style="color:#fff;">Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Richards, Alden R.</td>
                                             <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Walter James Bayola</td>
                                             <td>Online</td>
                                             <td>Remarks</td>
                                             <td>Oct 18, 2022</td>
@@ -88,7 +89,7 @@ include 'sources/session.php';
                                         <tr>
                                             <td>Manalo, Jose P.</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Walter James Bayola</td>
                                             <td>Walk In</td>
                                             <td>Remarks</td>
                                             <td>Oct 18, 2022</td>
@@ -97,7 +98,7 @@ include 'sources/session.php';
                                         <tr>
                                             <td>Sotto, Vic C.</td>
                                             <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Walter James Bayola</td>
                                             <td>Online</td>
                                             <td>Remarks</td>
                                             <td>Oct 17, 2022</td>
@@ -106,7 +107,7 @@ include 'sources/session.php';
                                         <tr>
                                             <td>Kho, Hayden</td>
                                             <td>Vestibulum porttitor laoreet faucibus.</td>
-                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Walter James Bayola</td>
                                             <td>Walk In</td>
                                             <td>Remarks</td>
                                             <td>Oct 17, 2022</td>
@@ -115,7 +116,7 @@ include 'sources/session.php';
                                         <tr>
                                             <td>Baui, Joel R.</td>
                                             <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>Mr. Walter James Bayola</td>
+                                            <td>Walter James Bayola</td>
                                             <td>Online</td>
                                             <td>Remarks</td>
                                             <td>Oct 17, 2022</td>
@@ -145,8 +146,10 @@ include 'sources/session.php';
     <!-- ============================================================== -->
     <!-- ============================================================== -->
 
-    <?php include 'includes/footer.php'?>
-
+    <?php include 'includes/footer.php' ?>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/datatable.js"></script>
 </body>
 
 </html>

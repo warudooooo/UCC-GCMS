@@ -7,6 +7,7 @@ include 'sources/src-student.php';
 
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <?php include 'includes/header.php' ?>
 
@@ -98,16 +99,16 @@ include 'sources/src-student.php';
                     <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Verified Students</h4>
                     <div class="col-12">
                         <div class="card">
-                            <div class="table-responsive">
-                                <table id="example" class="table table-hover">
-                                    <thead>
-                                        <tr style="text-align: center;">
-                                            <th scope="col">-</th>
-                                            <th scope="col">Student Name</th>
-                                            <th scope="col">Student Number</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Course</th>
-                                            <th scope="col">Action</th>
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Student Name</th>
+                                            <th scope="col" style="color: #fff;">Student Number</th>
+                                            <th scope="col" style="color: #fff;">Email</th>
+                                            <th scope="col" style="color: #fff;">Course</th>
+                                            <th scope="col" style="color: #fff;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -115,14 +116,14 @@ include 'sources/src-student.php';
                                         $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
-                                            echo "<tr style='text-align: center;'>
+                                            echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
-                                                 <td><a href='javascript:void(0)'><i class='fa fa-edit' style='color: #f4845f;'></i></a>
-                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>
+                                                 <td><a href='javascript:void(0)' style='color: #f4845f;'><i class='fa fa-edit' style='color: #0096c7; padding: 0px 10px;'></i></a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000;'></i></a>
                                                  </td>
                                                  </tr>";
                                             $i++;
@@ -136,16 +137,16 @@ include 'sources/src-student.php';
                     <h4 class="page-title"><i class="mdi mdi-account-multiple" style="margin-top: 20px; margin-bottom: 20px;"></i> Unverified Students</h4>
                     <div class="col-12">
                         <div class="card">
-                            <div class="table-responsive">
-                                <table id="example" class="table table-hover">
-                                    <thead>
-                                        <tr style="text-align: center;">
-                                            <th scope="col">-</th>
-                                            <th scope="col">Student Name</th>
-                                            <th scope="col">Student Number</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Course</th>
-                                            <th scope="col">Action</th>
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable2" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Student Name</th>
+                                            <th scope="col" style="color: #fff;">Student Number</th>
+                                            <th scope="col" style="color: #fff;">Email</th>
+                                            <th scope="col" style="color: #fff;">Course</th>
+                                            <th scope="col" style="color: #fff;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -153,14 +154,14 @@ include 'sources/src-student.php';
                                         $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no'");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
-                                            echo "<tr style='text-align: center;'>
+                                            echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
-                                                 <td><a href='javascript:void(0)'><i class='fa fa-edit' style='color: #f4845f;'></i></a>
-                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>
+                                                 <td><a href='javascript:void(0)' style='color: #f4845f;'><i class='fa fa-edit' style='color: #0096c7; padding: 0px 10px;'></i></a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000;'></i></a>
                                                  </td>
                                                  </tr>";
                                             $i++;
@@ -191,7 +192,9 @@ include 'sources/src-student.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
-
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/datatable.js"></script>
 </body>
 
 </html>

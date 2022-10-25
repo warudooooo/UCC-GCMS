@@ -6,6 +6,7 @@ include 'sources/session.php';
 
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <?php include 'includes/header.php' ?>
 
@@ -62,28 +63,28 @@ include 'sources/session.php';
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="table-responsive">
-                                <table id="example" class="table table-hover">
-                                    <thead>
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
                                         <tr style="text-align: center;">
-                                            <th scope="col">-</th>
-                                            <th scope="col">Student Name</th>
-                                            <th scope="col">Student Number</th>
-                                            <th scope="col">Course</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Referral Reason</th>
-                                            <th scope="col">Meeting Type</th>
-                                            <th scope="col">Date Created</th>
-                                            <th scope="col">Action</th>
-                                            <th scope="col">Edit/Delete</th>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Student Name</th>
+                                            <th scope="col" style="color: #fff;">Student Number</th>
+                                            <th scope="col" style="color: #fff;">Course</th>
+                                            <th scope="col" style="color: #fff;">Email</th>
+                                            <th scope="col" style="color: #fff;">Referral Reason</th>
+                                            <th scope="col" style="color: #fff;">Meeting Type</th>
+                                            <th scope="col" style="color: #fff;">Date Created</th>
+                                            <th scope="col" style="color: #fff;">Action</th>
+                                            <th scope="col" style="color: #fff;">Edit/Delete</th>
                                         </tr>
                                     </thead>
-                                    <tbody>            
+                                    <tbody>
                                         <?php
                                         $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
-                                            echo "<tr style='text-align: center;'>
+                                            echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
@@ -97,7 +98,7 @@ include 'sources/session.php';
                                                  <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000;'></i></a>
                                                  </td>
                                                  </tr>";
-                                                 $i++;
+                                            $i++;
                                         }
                                         ?>
                                     </tbody>
@@ -125,7 +126,9 @@ include 'sources/session.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
-
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/datatable.js"></script>
 </body>
 
 </html>
