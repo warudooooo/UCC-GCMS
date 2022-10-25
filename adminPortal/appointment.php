@@ -3,10 +3,11 @@ include 'sources/session.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
 </head>
-<?php include 'includes/header.php'?>
+<?php include 'includes/header.php' ?>
 
 <body>
     <!-- ============================================================== -->
@@ -21,11 +22,10 @@ include 'sources/session.php';
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-        <?php include 'includes/topbar.php'?>
-        <?php include 'includes/sidebar.php'?>
+        <?php include 'includes/topbar.php' ?>
+        <?php include 'includes/sidebar.php' ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -37,12 +37,12 @@ include 'sources/session.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Appointments List</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Pending Appointments List</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Appointment</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Pending Appointment</li>
                                 </ol>
                             </nav>
                         </div>
@@ -59,74 +59,53 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive">
-                        <table id="example" class="table table-hover">
+                                <table id="example" class="table table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr style="text-align: center;">
+                                            <th scope="col">-</th>
                                             <th scope="col">Student Name</th>
+                                            <th scope="col">Student Number</th>
+                                            <th scope="col">Course</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col">Referral Reason</th>
-                                            <th scope="col">Concern</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Meeting Link</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Meeting Type</th>
+                                            <th scope="col">Date Created</th>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Edit/Delete</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Steve Jobs</td>
-                                            <td>Bullying</td>
-                                            <td>Bullying</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
-                                            <td><label class="label label-success">approved</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jane Doe</td>
-                                            <td>Depression</td>
-                                            <td>Depression</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
-                                            <td><label class="label label-success">approved</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>William Smith</td>
-                                            <td>Stressed</td>
-                                            <td>Stressed</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
-                                            <td><label class="label label-warning">completed</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Steve Lee</td>
-                                            <td>Bullying</td>
-                                            <td>Bullying</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
-                                            <td><label class="label label-danger">canceled</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Simon Philips</td>
-                                            <td>Lying</td>
-                                            <td>Lying</td>
-                                            <td>Dec 1, 2021</td>
-                                            <td>10:00 AM</td>
-                                            <td>https://meetinglink101.com</td>
-                                            <td><label class="label label-info">pending</label></td>
-                                        </tr>
+                                    <tbody>            
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments");
+                                        $i = 1;
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr style='text-align: center;'>
+                                                 <td>" . $i . "</td>
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td>" . $row["studentNumber"] . "</td>
+                                                 <td>" . $row["studentCourse"] . "</td>
+                                                 <td>" . $row["studentEmail"] . "</td>
+                                                 <td>" . $row["appointmentReason"] . "</td>
+                                                 <td>" . $row["appointmentType"] . "</td>
+                                                 <td>" . $row["requestDate"] . "</td>
+                                                 <td><a href='index.php' style='color: #38b000; font-weight: 800;'>OPEN</a>
+                                                 <td><a href='javascript:void(0)' style='color: #f4845f;'><i class='fa fa-edit' style='color: #0096c7; padding: 0px 10px;'></i></a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000;'></i></a>
+                                                 </td>
+                                                 </tr>";
+                                                 $i++;
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -145,7 +124,7 @@ include 'sources/session.php';
     <!-- ============================================================== -->
     <!-- ============================================================== -->
 
-    <?php include 'includes/footer.php'?>
+    <?php include 'includes/footer.php' ?>
 
 </body>
 
