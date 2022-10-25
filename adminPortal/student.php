@@ -95,13 +95,14 @@ include 'sources/src-student.php';
                         </div>
                 </form>
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple"></i>Verified Students</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Verified Students</h4>
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive">
                                 <table id="example" class="table table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr style="text-align: center;">
+                                            <th scope="col">-</th>
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Student Number</th>
                                             <th scope="col">Email</th>
@@ -112,8 +113,10 @@ include 'sources/src-student.php';
                                     <tbody>
                                         <?php
                                         $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
+                                        $i = 1;
                                         while ($row = $load->fetch_assoc()) {
-                                            echo "<tr>
+                                            echo "<tr style='text-align: center;'>
+                                                 <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
@@ -122,6 +125,7 @@ include 'sources/src-student.php';
                                                  <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>
                                                  </td>
                                                  </tr>";
+                                            $i++;
                                         }
                                         ?>
                                     </tbody>
@@ -129,15 +133,17 @@ include 'sources/src-student.php';
                             </div>
                         </div>
                     </div>
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple" style="margin-top: 20px; margin-bottom: 20px;"></i>Unverified Students</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple" style="margin-top: 20px; margin-bottom: 20px;"></i> Unverified Students</h4>
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive">
                                 <table id="example" class="table table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr style="text-align: center;">
+                                            <th scope="col">-</th>
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Student Number</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col">Course</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -145,15 +151,19 @@ include 'sources/src-student.php';
                                     <tbody>
                                         <?php
                                         $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no'");
+                                        $i = 1;
                                         while ($row = $load->fetch_assoc()) {
-                                            echo "<tr>
+                                            echo "<tr style='text-align: center;'>
+                                                 <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
+                                                 <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
                                                  <td><a href='javascript:void(0)'><i class='fa fa-edit' style='color: #f4845f;'></i></a>
                                                  <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #f4845f;'></i></a>
                                                  </td>
                                                  </tr>";
+                                            $i++;
                                         }
                                         ?>
                                     </tbody>
