@@ -5,6 +5,7 @@ include 'sources/session.php';
 <html dir="ltr" lang="en">
 <link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
 <link rel="stylesheet" href="src/styles/all.css">
+
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
 </head>
@@ -63,9 +64,16 @@ include 'sources/session.php';
                 <h4 class="card-title">Statistics</h4>
                 <div class="cards ">
                     <div class="cards-single">
-                        <div >
-                            <a href="#" class="fill-div">2</a>
-                            <!-- <h1>0</h1> -->
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
                             <span>Pending Appointments</span></span>
                         </div>
                         <div>
@@ -75,35 +83,67 @@ include 'sources/session.php';
 
                     <div class="cards-single">
                         <div>
-                        <a href="#" class="fill-div">0</a>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingrequest");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
                             <span>Pending Requests</span>
                         </div>
                         <div>
                             <span class="mdi mdi-alarm-check" style="font-size: 3rem;"></span>
                         </div>
                     </div>
-
                     <div class="cards-single">
                         <div>
-                        <a href="#" class="fill-div">1</a>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
+                            <span>Verified Students</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
+                            <span>Not Verified Students</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <a href="#" class="fill-div">1</a>
                             <span>Completed Appointments</span>
                         </div>
                         <div>
                             <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
                         </div>
                     </div>
-                    <div class="cards-single">
-                        <div>
-                        <a href="#" class="fill-div">6</a>
-                            <span>Students Registered</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
                 </div>
-                
-                 <!--<div class="row">
+
+                <!--<div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
