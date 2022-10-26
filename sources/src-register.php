@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='yes'")) > 0) {
 		$msg = "<div class='eml' style='margin-bottom: -5px; margin-top: -20px;'>VERIFIED NA</div>";
 	}else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
-		$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='nogit' WHERE studentNumber='$sNumber'";
+		$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='no',userType='user' WHERE studentNumber='$sNumber'";
 		$result = mysqli_query($mysqli, $sql);
 		if ($result) {
 			$mail = new PHPMailer(true);
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 		}
 	} else {
 		//Insert to DB
-		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no')";
+		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user')";
 		$result = mysqli_query($mysqli, $sql);
 		if ($result) {
 			$mail = new PHPMailer(true);

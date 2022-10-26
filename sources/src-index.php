@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['SESSION_EMAIL'])) {
-	header("Location: index.php");
+	header("Location: adminPortal/index.php");
 	die();
 }
 //DB connect
@@ -39,19 +39,20 @@ if (isset($_POST['submit'])) {
 	$result = mysqli_query($mysqli, $sql);
 	$row = mysqli_fetch_assoc($result);
 	
-	if($row["userType"] == "admin"){
-		$_SESSION['SESSION_EMAIL'] = $sNumber;
-		header("Location: adminPortal/index.php");
-	} else if ($row["userType"] == "user") {
-		$row = mysqli_fetch_assoc($result);
+	 if (mysqli_num_rows($result) === 1 && $row["userType"] == "user") {
 
 		if (empty($row['vkey'])) {
 			$_SESSION['SESSION_EMAIL'] = $sNumber;
+			$_SESSION['SESSION_ROLE'] = $row["userType"];
 			header("Location: studentPortal/index.php");
 		} else {
 			$msg = "<div class='eml' style='margin-bottom: 2px; margin-top: -10px;'>Please verify your account first.</div>";
 		}
-	} else {
+	} else if(mysqli_num_rows($result) === 1 && $row["userType"] == "admin"){
+		$_SESSION['SESSION_EMAIL'] = $sNumber;
+		$_SESSION['SESSION_ROLE'] = $row["userType"];
+		header("Location: adminPortal/index.php");
+	}else {
 		$msg = "<div class='eml'>Student Number or Password does not match.</div>";
 	}
 }
