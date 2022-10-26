@@ -11,3 +11,78 @@
 .page-item.active .page-link{
     color: #fff !important;
 }
+
+.cards {
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cards-single {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 4px;
+}
+
+.cards-single a{
+    display: block;
+    color: rgb(87, 87, 87);
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.cards-single a:hover{
+    color: #f4845f;
+}
+
+.cards-single a+span {
+    color: rgb(87, 87, 87);
+}
+
+.cards-single div:last-child span {
+    font-size: 6rem;
+    color: #f4845f;
+}
+
+.cards-single div:first-child span {
+    color: #424242;
+}
+
+.cards-single:last-child {
+    background-color: #f4845f;
+}
+
+.cards-single:last-child a,
+.cards-single:last-child div:first-child span,
+.cards-single:last-child div:last-child span {
+    color: #fff;
+}
+
+@media only screen and (max-width: 1170px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .cards {
+        grid-template-columns: 100%;
+    }
+
+    .main-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .user-wrapper {
+        display: none;
+    }
+
+    .sidebar .user-wrapper2 {
+        display: inline !important;
+    }
+}

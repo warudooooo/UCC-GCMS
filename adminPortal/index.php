@@ -4,6 +4,7 @@ include 'sources/session.php';
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="src/styles/all.css">
 
 <head>
@@ -61,7 +62,7 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <h4 class="card-title">Statistics</h4>
+                <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
                 <div class="cards ">
                     <div class="cards-single">
                         <div>
@@ -129,7 +130,7 @@ include 'sources/session.php';
                             <span>Not Verified Students</span>
                         </div>
                         <div>
-                            <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
+                            <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
                         </div>
                     </div>
                     <div class="cards-single">

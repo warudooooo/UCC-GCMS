@@ -16,3 +16,12 @@ $(document).ready(function() {
         }
     });
 });
+$(document).ready(function() {
+    $('#dataTable3').DataTable({
+        info: false,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search",
+        }
+    });
+});

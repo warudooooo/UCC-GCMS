@@ -8,6 +8,7 @@ include 'sources/src-student.php';
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 <?php include 'includes/header.php' ?>
@@ -62,42 +63,62 @@ include 'sources/src-student.php';
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <form method="POST" action="" autocomplete="off">
-                    <div class="row">
-                        <div class="col-lg-12 col-xlg-12 col-md-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form class="form-horizontal form-material mx-2">
-                                        <div class="form-group">
-                                            <label class="col-md-12">Student Name (Ex. Bayola, Wally B.)</label>
-                                            <div class="col-md-12">
-                                                <textarea rows="1" class="form-control form-control-line" name="sName"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-12">Student Number (Ex: 20xxxxxx-M)</label>
-                                            <div class="col-md-12">
-                                                <textarea rows="1" class="form-control form-control-line" name="sNumber"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-12">Course (Ex. BSxx)</label>
-                                            <div class="col-md-12">
-                                                <textarea rows="1" class="form-control form-control-line" name="sCourse"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <button class="btn btn-success text-white" style="background-color: #f25c54 !important; border: none;" name="submit" type="submit">Add Student</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
+                <div class="cards ">
+                    <div class="cards-single">
+                        <div>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
+                            <span>Verified Students</span>
                         </div>
-                </form>
+                        <div>
+                            <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
+                            <span>Not Verified Students</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail=''");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
+                            <span>Admin Created Students</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Verified Students</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Verified Students</h4>
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive" style="padding: 20px;">
@@ -135,7 +156,7 @@ include 'sources/src-student.php';
                             </div>
                         </div>
                     </div>
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple" style="margin-top: 20px; margin-bottom: 20px;"></i> Unverified Students</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Unverified Students</h4>
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive" style="padding: 20px;">
@@ -152,7 +173,7 @@ include 'sources/src-student.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no'");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != ''");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
@@ -173,11 +194,82 @@ include 'sources/src-student.php';
                             </div>
                         </div>
                     </div>
+                    <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> Admin Created Students</h4>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable3" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Student Name</th>
+                                            <th scope="col" style="color: #fff;">Student Number</th>
+                                            <th scope="col" style="color: #fff;">Course</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail=''");
+                                        $i = 1;
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr>
+                                                 <td>" . $i . "</td>
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
+                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
+                                                 </td>
+                                                 </tr>";
+                                            $i++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
+                <h4 class="page-title"><i class="mdi mdi-account-plus"></i> Add Student</h4>
+                <form method="POST" action="" autocomplete="off">
+                    <div class="row">
+                        <div class="col-lg-12 col-xlg-12 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form class="form-horizontal form-material mx-2">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Student Name (Ex. Bayola, Wally B.)</label>
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control form-control-line" name="sName"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Student Number (Ex: 20xxxxxx-M)</label>
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control form-control-line" name="sNumber"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Course (Ex. BSxx)</label>
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control form-control-line" name="sCourse"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-success text-white" style="background-color: #f25c54 !important; border: none;" name="submit" type="submit">Add Student</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </form>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

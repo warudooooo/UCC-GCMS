@@ -39,7 +39,7 @@ include 'sources/session.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Pending Appointments List</h4>
+                        <h4 class="page-title"><i class="mdi mdi mdi-file-document"></i> Pending Request List</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
