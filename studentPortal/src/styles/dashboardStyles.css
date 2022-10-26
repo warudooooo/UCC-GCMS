@@ -1,9 +1,10 @@
 .cards {
-    padding: 1.3rem;
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .cards-single {
@@ -14,7 +15,18 @@
     border-radius: 4px;
 }
 
-.cards-single h1+span {
+.cards-single a{
+    display: block;
+    color: rgb(87, 87, 87);
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.cards-single a:hover{
+    color: #f4845f;
+}
+
+.cards-single a+span {
     color: rgb(87, 87, 87);
 }
 
@@ -31,20 +43,14 @@
     background-color: #f4845f;
 }
 
-.cards-single:last-child h1,
+.cards-single:last-child a,
 .cards-single:last-child div:first-child span,
 .cards-single:last-child div:last-child span {
     color: #fff;
 }
 
-@media only screen and (max-width: 960px) {
 
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1170px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }

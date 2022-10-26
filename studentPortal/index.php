@@ -1,28 +1,18 @@
-<?php
-session_start();
-if (!isset($_SESSION['SESSION_EMAIL'])) {
-    header("Location: ../index.php");
-    die();
-}
-
+<?php 
 include '../config.php';
-
-$query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
-
-if (mysqli_num_rows($query) > 0) {
-    $row = mysqli_fetch_assoc($query);
-
-    $sName = $row['studentName'];
-}
+include 'sources/session.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
-<link rel="stylesheet" href="src/styles/all.css">
 <?php include 'includes/header.php' ?>
 
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
+    <link rel="stylesheet" href="src/styles/all.css">
+    <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 
 <body>
@@ -69,17 +59,25 @@ if (mysqli_num_rows($query) > 0) {
                 <div class="cards-single">
                     <div>
                         <h1>0</h1>
-                        <span>My Violations</span>
+                        <span>My Violations</span></span>
                     </div>
                     <div>
                         <span class="mdi mdi-alert-circle" style="font-size: 3rem;"></span>
                     </div>
                 </div>
-
                 <div class="cards-single">
                     <div>
-                        <h1>0</h1>
-                        <span>My Pending Appointments</span>
+                        <?php
+                        $sName = $row['studentName'];
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments WHERE studentName = '$sName'");
+
+                        if ($total = mysqli_num_rows($load)) {
+                            echo '<a href="#" class="fill-div">' . $total . '</a>';
+                        } else {
+                            echo '<a href="#" class="fill-div">' . $total . '</a>';
+                        }
+                        ?>
+                        <span>My Pending Appointments</span></span>
                     </div>
                     <div>
                         <span class="mdi mdi-account-alert" style="font-size: 3rem;"></span>
@@ -88,7 +86,7 @@ if (mysqli_num_rows($query) > 0) {
 
                 <div class="cards-single">
                     <div>
-                        <h1>3</h1>
+                        <a href="#" class="fill-div">0</a>
                         <span>My Completed Appointments</span>
                     </div>
                     <div>
@@ -107,87 +105,46 @@ if (mysqli_num_rows($query) > 0) {
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
+                    <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> My Appointnents </h4>
                     <div class="col-12">
-                        <div class="card">
-                            <div class="table-responsive">
-                                <table id="example" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Student Name</th>
-                                            <th scope="col">Referral Reason</th>
-                                            <th scope="col">Concern</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Meeting Link / Type</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Conde, Tristan Deo M.</td>
-                                            <td>Bullying</td>
-                                            <td>Bullying</td>
-                                            <td>Oct 17, 2022</td>
-                                            <td>11:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla
-                                                
-                                            </td>
-                                            <td><label class="label label-success">approved</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Baui, Joel R.</td>
-                                            <td>Depression</td>
-                                            <td>Depression</td>
-                                            <td>Oct 19, 2022</td>
-                                            <td>1:00 PM</td>
-                                            <td>Walk In
-                                                
-                                            </td>
-                                            <td><label class="label label-success">approved</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Reyes, Romualdo M.</td>
-                                            <td>Stressed</td>
-                                            <td>Stressed</td>
-                                            <td>Oct 20, 2022</td>
-                                            <td>2:00 PM</td>
-                                            <td>https://meet.google.com/wlybyla
-                                                
-                                            </td>
-                                            <td><label class="label label-warning">completed</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Yambao, Ryan Jacob C.</td>
-                                            <td>Bullying</td>
-                                            <td>Bullying</td>
-                                            <td>Oct 21, 2022</td>
-                                            <td>8:00 AM</td>
-                                            <td>Walk In
-                                                
-                                            </td>
-                                            <td><label class="label label-danger">canceled</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bayola, Walter James B.</td>
-                                            <td>Lying</td>
-                                            <td>Lying</td>
-                                            <td>Oct 22, 2022</td>
-                                            <td>11:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td><label class="label label-info">pending</label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rivera, Yoshika E.</td>
-                                            <td>Lying</td>
-                                            <td>Lying</td>
-                                            <td>Oct 22, 2022</td>
-                                            <td>11:00 AM</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td><label class="label label-info">pending</label></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="table-responsive" style="padding: 20px;">
+                            <table id="dataTable" class="table table-bordered table-hover">
+                                <thead class="table-dark">
+                                    <tr style="text-align: center;">
+                                        <th scope="col" style="color: #fff;">#</th>
+                                        <th scope="col" style="color: #fff;">Request Type</th>
+                                        <th scope="col" style="color: #fff;">Student Name</th>
+                                        <th scope="col" style="color: #fff;">Student Number</th>
+                                        <th scope="col" style="color: #fff;">Course</th>
+                                        <th scope="col" style="color: #fff;">Email</th>
+                                        <th scope="col" style="color: #fff;">Referral Reason</th>
+                                        <th scope="col" style="color: #fff;">Date Created</th>
+                                        <th scope="col" style="color: #fff;">Edit</th>
+                                        <th scope="col" style="color: #fff;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
+                                    $i = 1;
+                                    while ($row = $load->fetch_assoc()) {
+                                        echo "<tr>
+                                                 <td>" . $i . "</td>
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td>" . $row["studentEmail"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
+                                                 <td>" . $row["appointmentType"] . "</td>
+                                                 <td>" . $row["requestDate"] . "</td>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a></td>
+                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; font-size: 20px;'></i></a></td>
+                                                 </tr>";
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -210,7 +167,9 @@ if (mysqli_num_rows($query) > 0) {
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
-
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/datatable.js"></script>
 </body>
 
 </html>
