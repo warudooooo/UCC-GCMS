@@ -301,8 +301,9 @@ main.movingForm {
 }
 
 .textGroup h2 {
+	padding: 2px;
 	font-weight: 600;
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 }
 
 .bullets {
