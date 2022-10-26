@@ -1,11 +1,18 @@
 <?php
 session_start();
 if (!isset($_SESSION['SESSION_EMAIL'])) {
-    header("Location: ../index.php");
-    die();
+        header("Location: ../index.php");
+	die();
 }
-
 include '../config.php';
+
+$sql = "SELECT * FROM tbl_students";
+$result = mysqli_query($mysqli, $sql);
+$row = mysqli_fetch_assoc($result);
+
+if ($row["userType"] == "user"){
+    header("Location: ../studentPortal/index.php");
+}
 
 $query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
 
