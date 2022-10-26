@@ -52,7 +52,7 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="dashboard.php">
+            <a class="navbar-brand" href="index.php">
                 <!-- Logo icon -->
                 <b class="logo-icon">
                     <img src="../src/images/uccLogo.png" alt="homepage" style="margin-top:-50px;margin-bottom:-50px; width: 50px;" />

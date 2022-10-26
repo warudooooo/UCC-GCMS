@@ -15,6 +15,8 @@ if (mysqli_num_rows($query) > 0) {
 
     $sName = $row['studentName'];
     $sNumber = $row['studentNumber'];
+    $sCourse = $row['studentCourse'];
+    $sEmail = $row['studentEmail'];
 
 }
 
@@ -30,7 +32,7 @@ if (isset($_POST['submit'])) {
         $sOptions = $mysqli->real_escape_string($sOptions);
     
         //Insert to DB
-            $sql = "INSERT INTO tbl_pendingrequest(studentNumber,requesterName,requestDetails,requestType) VALUES('$sNumber','$sName','$sDetails','$sOptions')";
+            $sql = "INSERT INTO tbl_pendingrequest(studentNumber,requesterName,studentCourse,studentEmail,requestDetails,requestType) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sDetails','$sOptions')";
             $result = mysqli_query($mysqli, $sql);
 
             header("Location: redirects/request-success-sub.php");

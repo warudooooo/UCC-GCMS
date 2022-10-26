@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['SESSION_EMAIL'])) {
-	header("Location: studentPortal/index.php");
+	header("Location: index.php");
 	die();
 }
 //DB connect
@@ -37,11 +37,12 @@ if (isset($_POST['submit'])) {
 
 	$sql = "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' AND studentPassword='{$sPassword}'";
 	$result = mysqli_query($mysqli, $sql);
-
-	if($sNumber == "admin" || $sPassword == "admin123"){
+	$row = mysqli_fetch_assoc($result);
+	
+	if($row["userType"] == "admin"){
 		$_SESSION['SESSION_EMAIL'] = $sNumber;
 		header("Location: adminPortal/index.php");
-	} else if (mysqli_num_rows($result) === 1) {
+	} else if ($row["userType"] == "user") {
 		$row = mysqli_fetch_assoc($result);
 
 		if (empty($row['vkey'])) {

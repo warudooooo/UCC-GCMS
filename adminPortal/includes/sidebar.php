@@ -63,6 +63,7 @@ if (mysqli_num_rows($query) > 0) {
                 <!-- User Profile-->
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Pending Appointments</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pendingrequest.php" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Pending Requests</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="referral.php" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">Reason for Referral</span></a></li> -->
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="student.php" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Student List</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="course.php" aria-expanded="false"><i class="mdi mdi-book-open-page-variant"></i><span class="hide-menu">Course</span></a></li> -->

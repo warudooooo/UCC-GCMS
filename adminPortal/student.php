@@ -120,9 +120,9 @@ include 'sources/src-student.php';
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
-                                                 <td>" . $row["studentNumber"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
-                                                 <td>" . $row["studentCourse"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
                                                  <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
                                                  </td>
@@ -158,9 +158,9 @@ include 'sources/src-student.php';
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
-                                                 <td>" . $row["studentNumber"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
-                                                 <td>" . $row["studentCourse"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
                                                  <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
                                                  </td>

@@ -67,14 +67,14 @@ include 'sources/session.php';
                             <div class="table-responsive" style="padding: 20px;">
                                 <table id="dataTable" class="table table-bordered table-hover">
                                     <thead class="table-dark">
-                                        <tr>
+                                        <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Request Type</th>
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
                                             <th scope="col" style="color: #fff;">Email</th>
                                             <th scope="col" style="color: #fff;">Referral Reason</th>
-                                            <th scope="col" style="color: #fff;">Meeting Type</th>
                                             <th scope="col" style="color: #fff;">Date Created</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Approve</th>
@@ -83,17 +83,17 @@ include 'sources/session.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingrequest");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
                                                  <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td>" . $row["requestType"] . "</td>
+                                                 <td>" . $row["requesterName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
-                                                 <td>" . $row["appointmentType"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["requestDetails"] . "</td>
                                                  <td>" . $row["requestDate"] . "</td>
                                                  <td style='text-align:center;'><a href='index.php' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>DETAILS</a></td>
                                                  <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>APPROVE</a></td>
