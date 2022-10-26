@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     } else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
     	$msg = "<div class='eml' style='margin-bottom: -5px; margin-top: -20px;'>This Student Number already exists.</div>";
     } else {
-    $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified) VALUES('$sName','$sNumber','$sCourse','$sVerified')";
+    $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified,studentEmail,studentPassword,userType,vkey) VALUES('$sName','$sNumber','$sCourse','$sVerified','','','','')";
     $result = mysqli_query($mysqli, $sql);
     }
 }

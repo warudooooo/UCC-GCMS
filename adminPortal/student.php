@@ -68,7 +68,7 @@ include 'sources/src-student.php';
                     <div class="cards-single">
                         <div>
                         <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != '' AND userType = 'user'");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">'.$total.'</a>';
@@ -135,7 +135,7 @@ include 'sources/src-student.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != '' AND userType != 'admin'");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
