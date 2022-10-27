@@ -74,7 +74,6 @@ include 'sources/session.php';
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
                                             <th scope="col" style="color: #fff;">Email</th>
-                                            <th scope="col" style="color: #fff;">Referral Reason</th>
                                             <th scope="col" style="color: #fff;">Date Created</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Approve</th>
@@ -93,7 +92,6 @@ include 'sources/session.php';
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["requestDetails"] . "</td>
                                                  <td>" . $row["requestDate"] . "</td>
                                                  <td style='text-align:center;'><a href='index.php' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>DETAILS</a></td>
                                                  <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>APPROVE</a></td>

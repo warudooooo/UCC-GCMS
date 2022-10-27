@@ -130,12 +130,13 @@ include 'sources/src-student.php';
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Email</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff;">Action</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != '' AND userType != 'admin'");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user'");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
@@ -144,9 +145,8 @@ include 'sources/src-student.php';
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
-                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
-                                                 </td>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a></td>
+                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a></td>
                                                  </tr>";
                                             $i++;
                                         }
@@ -168,7 +168,8 @@ include 'sources/src-student.php';
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Email</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff;">Action</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -182,9 +183,8 @@ include 'sources/src-student.php';
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
-                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
-                                                 </td>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a></td>
+                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a></td>
                                                  </tr>";
                                             $i++;
                                         }
@@ -205,7 +205,8 @@ include 'sources/src-student.php';
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff; text-align: center;">Action</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -218,9 +219,8 @@ include 'sources/src-student.php';
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a>
-                                                 <a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a>
-                                                 </td>
+                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a></td>
+                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; padding:0px 0px 0px 20px; font-size: 20px;'></i></a></td>
                                                  </tr>";
                                             $i++;
                                         }
