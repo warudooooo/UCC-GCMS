@@ -119,7 +119,7 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                         <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no'");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND userType != ''");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">'.$total.'</a>';
