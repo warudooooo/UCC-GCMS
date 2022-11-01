@@ -1,11 +1,12 @@
 <?php
 include 'sources/session.php';
+include 'sources/src-appointment.php';
+include 'includes/modal.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
-    <link rel="icon" href="src/images/uccLogo.png">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
@@ -79,6 +80,7 @@ include 'sources/session.php';
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Approve</th>
                                             <th scope="col" style="color: #fff;">Delete</th>
+                                            <th scope="col" style="color: #fff; display: none;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -95,9 +97,14 @@ include 'sources/session.php';
                                                  <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
                                                  <td>" . $row["appointmentType"] . "</td>
                                                  <td>" . $row["requestDate"] . "</td>
-                                                 <td style='text-align:center;'><a href='index.php' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>DETAILS</a></td>
-                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>APPROVE</a></td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>
+                                                     SEE MORE
+                                                 </button></td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary approvebtn' data-bs-toggle='modal' data-bs-target='#approveModal'>
+                                                    Approve
+                                                </button></td>
                                                  <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; font-size: 20px;'></i></a></td>
+                                                 <td style='display: none'>" . $row["appointmentDetails"] . "</td>
                                                  </tr>";
                                             $i++;
                                         }
@@ -130,6 +137,10 @@ include 'sources/session.php';
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="src/scripts/datatable.js"></script>
+    <script src="src/scripts/modal.js"></script>
+    <script>
+
+    </script>
 </body>
 
 </html>

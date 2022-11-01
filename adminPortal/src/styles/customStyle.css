@@ -63,6 +63,70 @@
     color: #fff;
 }
 
+.seemorebtn{
+    background: #38b000 !important;
+    color: #fff !important;
+    padding: 10px 10px 10px 10px !important;
+    border-style:none !important;
+    border-radius: 4px !important;
+}
+
+.approvebtn{
+    background: #0096c7 !important;
+    color: #fff !important;
+    padding: 10px 10px 10px 10px !important;
+    border-style:none !important;
+    border-radius: 4px !important;
+}
+
+.approvebtn:hover,
+.seemorebtn:hover{
+    background-color: #333 !important; 
+    color: #fff !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlapprovebtn{
+    background: #0096c7 !important;
+    color: #fff !important; 
+    padding: 10px 30px 10px 30px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlapprovebtn:hover{
+    background-color: #333 !important; 
+    color: #fff !important; 
+    padding: 10px 30px 10px 30px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlclosebtn:hover{
+    background-color: #333 !important; 
+    color: #fff !important; 
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlclosebtn{
+    background-color: #f4845f !important; 
+    color: #fff !important; 
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.seemore,
+.approve{
+    background-color: #fff !important;
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    border-style: none !important;
+}
+
 @media only screen and (max-width: 1170px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
