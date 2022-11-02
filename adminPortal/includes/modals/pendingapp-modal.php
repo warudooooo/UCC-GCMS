@@ -79,7 +79,7 @@
                 <div class="modal-body">
                     <div class="col-md-12">
                         <h2 class="col-md-12">Are you sure you want to DELETE?</h2>
-                        <input style="pointer-events: none; display:auto;" type="text" id="appID" name="appID" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; display:none;" type="text" id="appID" name="appID" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">

@@ -105,7 +105,7 @@ include 'includes/modals/scheduledapp-modal.php';
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary markasdonebtn' data-bs-toggle='modal' data-bs-target='#markasdoneModal'>
                                                     Mark as Done
                                                 </button></td>
-                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deletemodal'>
+                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn scheduledappbtn' data-bs-toggle='modal' data-bs-target='#scheduledappdeletemodal'>
                                                 DELETE
                                                 </button></td>
                                                  <td style='display: none'>" . $row["appointmentDetails"] . "</td>

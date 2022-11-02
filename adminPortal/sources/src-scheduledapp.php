@@ -1,4 +1,15 @@
 <?php 
+
+if (isset($_POST['delete_scheduledapp'])) {
+	$appID = $_POST['appID'];
+
+	$appID = $mysqli->real_escape_string($appID);
+
+	$delete = "DELETE FROM tbl_approvedappointments WHERE appointmentID='$appID'";
+	$del = mysqli_query($mysqli, $delete);
+
+}
+
 if (isset($_POST['submit'])) {
 	$hID = $_POST['hID'];
 	$sName = $_POST['sName'];
