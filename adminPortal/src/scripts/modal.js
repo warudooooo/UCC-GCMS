@@ -84,3 +84,54 @@ $(document).ready(function(){
                 $('#studentCourse').val(data[4]);
 	});
 });
+
+$(document).ready(function(){
+	$('.studenteditbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#sName').val(data[1]);
+                $('#sNumber').val(data[2]);
+                $('#sEmail').val(data[3]);
+                $('#sCourse').val(data[4]);
+                $('#sPassword').val(data[5]);
+	});
+});
+
+$(document).ready(function(){
+	$('.unvstudenteditbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#unvsName').val(data[1]);
+                $('#unvsNumber').val(data[2]);
+                $('#unvsEmail').val(data[3]);
+                $('#unvsCourse').val(data[4]);
+                $('#unvsPassword').val(data[5]);
+                $('#unvvkey').val(data[6]);
+	});
+});
+
+$(document).ready(function(){
+	$('.admstudenteditbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#admsName').val(data[1]);
+                $('#admsNumber').val(data[2]);
+                $('#admsCourse').val(data[4]);
+	});
+});
+

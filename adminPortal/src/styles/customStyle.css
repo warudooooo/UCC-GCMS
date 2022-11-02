@@ -77,7 +77,10 @@
 }
 
 .mdladdbtn,
-.editbtn{
+.editbtn,
+.studenteditbtn,
+.admstudenteditbtn,
+.unvstudenteditbtn{
     background: #0096c7 !important;
     color: #fff !important; 
     padding: 10px 30px 10px 30px !important; 
@@ -87,7 +90,10 @@
 
 .mdladdbtn:hover,
 .addstudentbtn:hover,
-.studentdeletebtn:hover{
+.studentdeletebtn:hover,
+.studenteditbtn:hover,
+.admstudenteditbtn:hover,
+.unvstudenteditbtn:hover{
     background: #333 !important;
     color: #fff !important; 
 }

@@ -144,6 +144,7 @@ include 'includes/modals/student-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Student Number</th>
                                                 <th scope="col" style="color: #fff;">Email</th>
                                                 <th scope="col" style="color: #fff;">Course</th>
+                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                             </tr>
@@ -159,7 +160,8 @@ include 'includes/modals/student-modal.php'; ?>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary editbtn' data-bs-toggle='modal' data-bs-target='#editMotal'>
+                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studenteditbtn' data-bs-toggle='modal' data-bs-target='#studenteditModal'>
                                                     EDIT
                                                  </button></td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
@@ -186,6 +188,8 @@ include 'includes/modals/student-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Student Number</th>
                                                 <th scope="col" style="color: #fff;">Email</th>
                                                 <th scope="col" style="color: #fff;">Course</th>
+                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
+                                                <th scope="col" style="color: #fff; display:none;">vkey</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                             </tr>
@@ -201,7 +205,9 @@ include 'includes/modals/student-modal.php'; ?>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary editbtn' data-bs-toggle='modal' data-bs-target='#editMotal'>
+                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
+                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary unvstudenteditbtn' data-bs-toggle='modal' data-bs-target='#unvstudenteditModal'>
                                                  EDIT
                                                  </button></td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
@@ -243,7 +249,7 @@ include 'includes/modals/student-modal.php'; ?>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase; display:none;'></td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary editbtn' data-bs-toggle='modal' data-bs-target='#editMotal'>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary admstudenteditbtn' data-bs-toggle='modal' data-bs-target='#admstudenteditModal'>
                                                  EDIT
                                                  </button></td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
