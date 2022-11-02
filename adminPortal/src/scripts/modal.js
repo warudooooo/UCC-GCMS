@@ -135,3 +135,18 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('.appointmentdeletebtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var datas = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(datas);
+                $('#appID').val(datas[1]);
+                $('#appsName').val(datas[2]);
+                $('#appsNumber').val(datas[3]);
+                $('#appsCourse').val(datas[4]);
+	});
+});

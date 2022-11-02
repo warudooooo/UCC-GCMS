@@ -105,7 +105,7 @@ include 'includes/modals/pendingapp-modal.php';
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary approvebtn' data-bs-toggle='modal' data-bs-target='#approveModal'>
                                                     Approve
                                                 </button></td>
-                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deletemodal'>
+                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn appointmentdeletebtn' data-bs-toggle='modal' data-bs-target='#appointmentdeletemodal'>
                                                 DELETE
                                                 </button></td>
                                                  <td style='display: none'>" . $row["appointmentDetails"] . "</td>
