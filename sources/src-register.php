@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
 			} catch (Exception $e) {
 				$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
 			}
-			header('location:thankyou.php');
+			header('location:redirects/thankyou.php');
 		}
 	} else {
 		//Insert to DB
