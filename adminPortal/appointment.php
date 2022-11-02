@@ -105,7 +105,9 @@ include 'includes/pendingapp-modal.php';
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary approvebtn' data-bs-toggle='modal' data-bs-target='#approveModal'>
                                                     Approve
                                                 </button></td>
-                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; font-size: 20px;'></i></a></td>
+                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deletemodal'>
+                                                DELETE
+                                                </button></td>
                                                  <td style='display: none'>" . $row["appointmentDetails"] . "</td>
                                                  </tr>";
                                             $i++;

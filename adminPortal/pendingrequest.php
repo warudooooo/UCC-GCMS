@@ -116,7 +116,9 @@ include 'sources/session.php';
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
                                                      Approve
                                                 </button></td>
-                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; font-size: 20px;'></i></a></td>
+                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deletemodal'>
+                                                DELETE
+                                                </button></td>
                                                  </tr>";
                                             $i++;
                                         }
