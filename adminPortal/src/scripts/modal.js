@@ -68,3 +68,19 @@ $(document).ready(function(){
                 $('#studentEmail').val(data[5]);
 	});
 });
+
+$(document).ready(function(){
+	$('.studentdeletebtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#ID').val(data[0]);
+                $('#studentName').val(data[1]);
+                $('#studentNumber').val(data[2]);
+                $('#studentCourse').val(data[4]);
+	});
+});

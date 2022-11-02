@@ -20,4 +20,12 @@ if (isset($_POST['submit'])) {
     }
 }
 
+if (isset($_POST['delete_student'])) {
+    $sNumber = $_POST['sNumber'];
+
+    $sNumber = $mysqli->real_escape_string($sNumber);
+
+	$delete = "DELETE FROM tbl_students WHERE studentNumber = '$sNumber'";
+    $result = mysqli_query($mysqli, $delete);
+}
 ?>
