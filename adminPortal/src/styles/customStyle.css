@@ -71,12 +71,17 @@
     border-radius: 4px !important;
 }
 
-.approvebtn{
+.approvebtn,
+.markasdonebtn{
     background: #0096c7 !important;
     color: #fff !important;
     padding: 10px 10px 10px 10px !important;
     border-style:none !important;
     border-radius: 4px !important;
+}
+
+.markasdonebtn:hover{
+    background: #333 !important;
 }
 
 .approvebtn:hover,

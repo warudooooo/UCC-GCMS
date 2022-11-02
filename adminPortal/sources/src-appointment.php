@@ -1,5 +1,6 @@
 <?php 
 if (isset($_POST['submit'])) {
+	$aID = $_POST['aID'];
 	$sName = $_POST['sName'];
 	$sNumber = $_POST['sNumber'];
 	$sCourse = $_POST['sCourse'];
@@ -10,7 +11,7 @@ if (isset($_POST['submit'])) {
     $Details = ($_POST['Details']);
 
 
-	
+	$aID = $mysqli->real_escape_string($aID);
 	$sName = $mysqli->real_escape_string($sName);
 	$sNumber = $mysqli->real_escape_string($sNumber);
 	$sCourse = $mysqli->real_escape_string($sCourse);
@@ -20,9 +21,11 @@ if (isset($_POST['submit'])) {
     $aType = $mysqli->real_escape_string($aType);
     $Details = $mysqli->real_escape_string($Details);
 
-    $sql = "INSERT INTO tbl_approvedappointments(studentNumber,studentName,studentCourse,studentEmail,appointmentSchedule,appointmentReason,appointmentType,appointmentDetails) 
+    $add = "INSERT INTO tbl_approvedappointments(studentNumber,studentName,studentCourse,studentEmail,appointmentSchedule,appointmentReason,appointmentType,appointmentDetails)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$aSchedule','$aReason','$aType','$Details')";
-    $result = mysqli_query($mysqli, $sql);
+	$delete = "DELETE FROM tbl_pendingappointments WHERE appointmentID='$aID'";
+    $result = mysqli_query($mysqli, $add);
+	$del = mysqli_query($mysqli, $delete);
 
 }
 ?>

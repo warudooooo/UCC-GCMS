@@ -9,7 +9,7 @@
 <?php 
 include 'includes/header.php';
 include 'sources/src-appointment.php';
-include 'includes/pendingapp-modal.php';
+include 'includes/approvedapp-modal.php';
 ?>
 
 <body>
@@ -77,7 +77,7 @@ include 'includes/pendingapp-modal.php';
                                             <th scope="col" style="color: #fff;">Email</th>
                                             <th scope="col" style="color: #fff;">Referral Reason</th>
                                             <th scope="col" style="color: #fff;">Meeting Type</th>
-                                            <th scope="col" style="color: #fff;">Date Created</th>
+                                            <th scope="col" style="color: #fff;">Schedule</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Approve</th>
                                             <th scope="col" style="color: #fff;">Delete</th>
@@ -86,7 +86,7 @@ include 'includes/pendingapp-modal.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
@@ -98,12 +98,12 @@ include 'includes/pendingapp-modal.php';
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
                                                  <td>" . $row["appointmentType"] . "</td>
-                                                 <td>" . $row["requestDate"] . "</td>
+                                                 <td>" . $row["appointmentSchedule"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>
                                                      SEE MORE
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary approvebtn' data-bs-toggle='modal' data-bs-target='#approveModal'>
-                                                    Approve
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary markasdonebtn' data-bs-toggle='modal' data-bs-target='#markasdoneModal'>
+                                                    Mark as Done
                                                 </button></td>
                                                  <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; font-size: 20px;'></i></a></td>
                                                  <td style='display: none'>" . $row["appointmentDetails"] . "</td>
