@@ -1,15 +1,11 @@
-<?php 
-include '../config.php';
-include 'sources/session.php';
-?>
+<?php include 'sources/src-counselling.php';?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" type="text/css" href="src/styles/new-appointmentStyle.css">
 </head>
 <?php include 'includes/header.php' ?>
-
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -28,7 +24,6 @@ include 'sources/session.php';
         <?php include 'includes/topbar.php' ?>
         <?php include 'includes/sidebar.php' ?>
 
-        <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -38,12 +33,12 @@ include 'sources/session.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-switch"></i> Counselling</h4>
+                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> Request Documents</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Counselling</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Request Documents</li>
                                 </ol>
                             </nav>
                         </div>
@@ -60,73 +55,77 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <!-- Row -->
                 <div class="row">
-                    <div class="col-12">
+                    <!-- Column -->
+                    <div class="col-lg-12 col-xlg-12 col-md-12">
                         <div class="card">
-                            <div class="table-responsive">
-                                <table id="example" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Guidance Message</th>
-                                            <th scope="col">Strategies use</th>
-                                            <th scope="col">Video Record link</th>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Date and Time</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 22, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 23, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 24, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vestibulum porttitor laoreet faucibus.</td>
-                                            <td>WLY BYL</td>
-                                            <td>Feale</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 25, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 26, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 27, 2022</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2" method="POST">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Counselling Type</label>
+                                        <div class="select-menu">
+                                            <div class="select-btn">
+                                                <span class="sBtn-text">select your options</span>
+                                                <i class="fas fa-caret-down"></i>
+                                            </div>
+                                            <textarea class="sBtn-text-clone" name="sOptions"></textarea>
+                                            <ul class="options">
+                                                <li class="option">
+                                                    <span class="option-text">Behavior Theraphy</span>
+                                                </li>
+                                                <li class="option">
+                                                    <span class="option-text">Cognitive Theraphy</span>
+                                                </li>
+                                                <li class="option">
+                                                    <span class="option-text">Holistic Theraphy</span>
+                                                </li>
+                                                <li class="option">
+                                                    <span class="option-text">Educational Counselling</span>
+                                                </li>
+                                                <li class="option">
+                                                    <span class="option-text">Mental Health Counselling</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $sName ?>" class="form-control form-control-line" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Student Number</label>
+                                        <div class="col-md-12">
+                                            <input style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">State the Details</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line" name="sDetails"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="form-group">
+                                        <label class="col-md-12">Select Date</label>
+                                        <div class="col-md-12">
+                                            <input type="date" placeholder="Johnathan Doe" class="form-control form-control-line">
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success text-white" name="submit">Request</button>
+                                        </div>
+                                    </div>
+                                    <?php echo $msg; ?>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    <!-- Column -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -142,7 +141,7 @@ include 'sources/session.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
-
+    <script src="src/scripts/new-appointmentScript.js"></script>
 </body>
 
 </html>

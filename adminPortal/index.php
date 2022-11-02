@@ -118,7 +118,7 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingrequest");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingcounsellings");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">' . $total . '</a>';
@@ -126,7 +126,7 @@ include 'sources/session.php';
                                 echo '<a href="#" class="fill-div">' . $total . '</a>';
                             }
                             ?>
-                            <span>Pending Requests</span>
+                            <span>Pending Counselings</span>
                         </div>
                         <div>
                             <span class="mdi mdi-alarm-check" style="font-size: 3rem;"></span>

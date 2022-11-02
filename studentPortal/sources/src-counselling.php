@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
         $sOptions = $mysqli->real_escape_string($sOptions);
     
         //Insert to DB
-            $sql = "INSERT INTO tbl_pendingrequest(studentNumber,requesterName,studentCourse,studentEmail,requestDetails,requestType) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sDetails','$sOptions')";
+            $sql = "INSERT INTO tbl_pendingcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingDetails,counsellingType) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sDetails','$sOptions')";
             $result = mysqli_query($mysqli, $sql);
 
             header("Location: redirects/request-success-sub.php");
