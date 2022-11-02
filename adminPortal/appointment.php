@@ -9,7 +9,7 @@
 <?php 
 include 'includes/header.php';
 include 'sources/src-appointment.php';
-include 'includes/pendingapp-modal.php';
+include 'includes/modals/pendingapp-modal.php';
 ?>
 
 <body>

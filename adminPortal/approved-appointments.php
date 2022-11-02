@@ -9,7 +9,7 @@
 <?php 
 include 'includes/header.php';
 include 'sources/src-approveapp.php';
-include 'includes/approvedapp-modal.php';
+include 'includes/modals/approvedapp-modal.php';
 ?>
 
 <body>

@@ -9,7 +9,7 @@
 <?php 
 include 'includes/header.php';
 include 'sources/src-history.php';
-include 'includes/history-modal.php';
+include 'includes/modals/history-modal.php';
 ?>
 
 <body>

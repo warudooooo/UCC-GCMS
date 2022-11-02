@@ -29,7 +29,7 @@
     <div class="modal-dialog">
         <div class="modal-content approve">
             <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLabel" style="color: #f25c54;">Create Schedule</h2>
+                <h2 class="modal-title" id="exampleModalLabel" style="color: #f25c54;">Mark as Done</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -38,23 +38,23 @@
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Full Name</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none;" type="text" id="studentName" name="sName" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentName" name="sName" class="form-control form-control-line" readonly>
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Student Number</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Course</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
                 </div>
                 <h4 class="col-md-12" style="margin-top: 10px;" name="remarks">Person in Charge</h4>
                 <div class="col-md-12">
-                <textarea rows="1" class="form-control form-control-line" name="pIncharge" id remarks></textarea>
+                <textarea rows="1" class="form-control form-control-line" name="pIncharge" id remarks style="background-color: #eff7f6;" required></textarea>
                 </div>
                 <h3 class="col-md-12" style="margin-top: 10px;" name="remarks">Remarks</h3>
                 <div class="col-md-12">
-                <textarea rows="8" class="form-control form-control-line" name="remarks" id remarks></textarea>
+                <textarea rows="8" class="form-control form-control-line" name="remarks" id remarks style="background-color: #eff7f6;" required></textarea>
                 </div>
                 <input style="display:none;" id="appointmentID" name="hID" readonly>
                 <input style="display:none;" id="studentEmail" name="sEmail" readonly>

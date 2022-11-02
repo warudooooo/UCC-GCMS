@@ -16,15 +16,15 @@
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Full Name</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none;" type="text" id="studentName" name="sName" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentName" name="sName" class="form-control form-control-line" readonly>
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Student Number</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Course</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
                 </div>
                 <h3 class="col-md-12" style="margin-top: 10px;">Select Date and Time</h3>
                 <div class="col-md-12">
