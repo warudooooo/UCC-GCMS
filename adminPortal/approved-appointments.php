@@ -8,7 +8,7 @@
 </head>
 <?php 
 include 'includes/header.php';
-include 'sources/src-appointment.php';
+include 'sources/src-approveapp.php';
 include 'includes/approvedapp-modal.php';
 ?>
 
@@ -40,12 +40,12 @@ include 'includes/approvedapp-modal.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Pending Appointments List</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Approved Appointments List</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Pending Appointment</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Approved Appointment</li>
                                 </ol>
                             </nav>
                         </div>
@@ -105,7 +105,9 @@ include 'includes/approvedapp-modal.php';
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary markasdonebtn' data-bs-toggle='modal' data-bs-target='#markasdoneModal'>
                                                     Mark as Done
                                                 </button></td>
-                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; font-size: 20px;'></i></a></td>
+                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deletemodal'>
+                                                DELETE
+                                                </button></td>
                                                  <td style='display: none'>" . $row["appointmentDetails"] . "</td>
                                                  </tr>";
                                             $i++;

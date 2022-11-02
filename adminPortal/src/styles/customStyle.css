@@ -63,8 +63,27 @@
     color: #fff;
 }
 
+.yesbtn{
+    background: #d00000 !important;
+    color: #fff !important; 
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.yesbtn:hover{
+    background: #333 !important;
+}
 .seemorebtn{
     background: #38b000 !important;
+    color: #fff !important;
+    padding: 10px 10px 10px 10px !important;
+    border-style:none !important;
+    border-radius: 4px !important;
+}
+
+.deletebtn{
+    background-color: #d00000 !important;
     color: #fff !important;
     padding: 10px 10px 10px 10px !important;
     border-style:none !important;

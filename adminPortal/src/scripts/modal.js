@@ -51,3 +51,20 @@ $(document).ready(function(){
                 $('#Details').val(data[12]);
 	});
 });
+
+$(document).ready(function(){
+	$('.deletebtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#historyID').val(data[1]);
+                $('#studentName').val(data[2]);
+                $('#studentNumber').val(data[3]);
+                $('#studentCourse').val(data[4]);
+                $('#studentEmail').val(data[5]);
+	});
+});

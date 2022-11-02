@@ -48,11 +48,15 @@
                 <div class="col-md-12">
                     <input style="pointer-events: none;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
                 </div>
-                <h3 class="col-md-12" style="margin-top: 10px;">Remarks</h3>
+                <h4 class="col-md-12" style="margin-top: 10px;" name="remarks">Person in Charge</h4>
+                <div class="col-md-12">
+                <textarea rows="1" class="form-control form-control-line" name="pIncharge" id remarks></textarea>
+                </div>
+                <h3 class="col-md-12" style="margin-top: 10px;" name="remarks">Remarks</h3>
                 <div class="col-md-12">
                 <textarea rows="8" class="form-control form-control-line" name="remarks" id remarks></textarea>
                 </div>
-                <input style="display:none;" id="appointmentID" name="aID" readonly>
+                <input style="display:none;" id="appointmentID" name="hID" readonly>
                 <input style="display:none;" id="studentEmail" name="sEmail" readonly>
                 <input style="display:none;" id="appointmentReason" name="aReason" readonly>
                 <input style="display:none;" id="appointmentType" name="aType" readonly>
