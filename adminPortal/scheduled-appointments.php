@@ -8,8 +8,8 @@
 </head>
 <?php 
 include 'includes/header.php';
-include 'sources/src-approveapp.php';
-include 'includes/modals/approvedapp-modal.php';
+include 'sources/src-scheduledapp.php';
+include 'includes/modals/scheduledapp-modal.php';
 ?>
 
 <body>
