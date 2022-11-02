@@ -98,7 +98,23 @@ include 'sources/session.php';
                             <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
                         </div>
                     </div>
+                    <div class="cards-single">
+                        <div>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_history");
 
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
+                            <span>Completed Appointments</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
                     <div class="cards-single">
                         <div>
                             <?php
@@ -119,7 +135,7 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                         <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes'");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND userType='user'");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">'.$total.'</a>';
@@ -136,7 +152,7 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                         <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND userType != ''");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND vkey != ''");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">'.$total.'</a>';
@@ -148,23 +164,6 @@ include 'sources/session.php';
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                        <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_history");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            } else {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            }
-                            ?>
-                            <span>Completed Appointments</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
                         </div>
                     </div>
                 </div>
