@@ -8,8 +8,8 @@
 </head>
 <?php 
 include 'includes/header.php';
-include 'sources/src-history.php';
-include 'includes/modals/history-modal.php';
+include 'sources/src-appointmenthistory.php';
+include 'includes/modals/appointmenthistory-modal.php';
 ?>
 
 <body>
@@ -40,12 +40,12 @@ include 'includes/modals/history-modal.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Approved Appointments List</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Appointment History</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Approved Appointment</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Appointment History</li>
                                 </ol>
                             </nav>
                         </div>
@@ -77,7 +77,7 @@ include 'includes/modals/history-modal.php';
                                             <th scope="col" style="color: #fff;">Email</th>
                                             <th scope="col" style="color: #fff;">Referral Reason</th>
                                             <th scope="col" style="color: #fff;">Meeting Type</th>
-                                            <th scope="col" style="color: #fff; width: 150px;">Person In Charge</th>
+                                            <th scope="col" style="color: #fff;">Person In Charge</th>
                                             <th scope="col" style="color: #fff;">Remarks</th>
                                             <th scope="col" style="color: #fff;">Date Completed</th>
                                             <th scope="col" style="color: #fff;">Delete</th>
@@ -99,7 +99,7 @@ include 'includes/modals/history-modal.php';
                                                  <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
                                                  <td>" . $row["appointmentType"] . "</td>
                                                  <td>" . $row["personIncharge"] . "</td>
-                                                 <td>" . $row["remarks"] . "</td>
+                                                 <td style='width: 100px;'>" . $row["remarks"] . "</td>
                                                  <td>" . $row["dateCompleted"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deleteModal'>
                                                      DELETE
