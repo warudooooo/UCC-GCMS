@@ -64,6 +64,23 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
                 <div class="cards ">
+                <div class="cards-single">
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Scheduled Appointments</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
                     <div class="cards-single">
                         <div>
                             <?php
@@ -135,7 +152,15 @@ include 'sources/session.php';
                     </div>
                     <div class="cards-single">
                         <div>
-                            <a href="#" class="fill-div">1</a>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_history");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
                             <span>Completed Appointments</span>
                         </div>
                         <div>
