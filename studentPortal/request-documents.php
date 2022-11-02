@@ -89,7 +89,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
