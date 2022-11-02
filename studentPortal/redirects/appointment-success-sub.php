@@ -18,7 +18,6 @@
       <div class="modal-box">
         <i class="fa-regular fa-circle-check"></i>
         <h2>Successfuly Submitted.</h2>
-        <h3>We appreciate you sharing your concern.</h3>
         <h3>We'll get back to you once we reviewed your concern.</h3>
         <form method="POST">
         <div class="buttons">

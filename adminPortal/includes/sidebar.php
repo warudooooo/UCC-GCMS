@@ -69,7 +69,7 @@ if (mysqli_num_rows($query) > 0) {
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Appointments</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="scheduled-appointments.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Scheduled Appointments</span></a></li>
                 <hr class="hr" />
-                <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Counselling</h4>
+                <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Counsellings</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pendingcounseling.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Counsellings</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="scheduled-counseling.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Scheduled Counselings</span></a></li>                
                 <hr class="hr" />
