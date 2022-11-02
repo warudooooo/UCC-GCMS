@@ -28,5 +28,6 @@ $(document).ready(function(){
                 $('#studentEmail').val(data[4]);
                 $('#appointmentReason').val(data[5]);
                 $('#appointmentType').val(data[6]);
+                $('#Details').val(data[11]);
 	});
 });

@@ -33,6 +33,7 @@
                 <input style="display:none;" id="studentEmail" name="sEmail" readonly>
                 <input style="display:none;" id="appointmentReason" name="aReason" readonly>
                 <input style="display:none;" id="appointmentType" name="aType" readonly>
+                <input style="display:auto;" id="Details" name="Details" readonly>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>

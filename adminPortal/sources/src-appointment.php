@@ -4,10 +4,10 @@ if (isset($_POST['submit'])) {
 	$sNumber = $_POST['sNumber'];
 	$sCourse = $_POST['sCourse'];
 	$sEmail = $_POST['sEmail'];
-	$aSchedule = md5($_POST['aSchedule']);
-    $aReason = md5($_POST['aReason']);
-    $aType = md5($_POST['aType']);
-    $aDetails = md5($_POST['aDetails']);
+	$aSchedule = ($_POST['aSchedule']);
+    $aReason = ($_POST['aReason']);
+    $aType = ($_POST['aType']);
+    $Details = ($_POST['Details']);
 
 
 	
@@ -18,10 +18,10 @@ if (isset($_POST['submit'])) {
 	$aSchedule = $mysqli->real_escape_string($aSchedule);
     $aReason = $mysqli->real_escape_string($aReason);
     $aType = $mysqli->real_escape_string($aType);
-    $aDetails = $mysqli->real_escape_string($aDetails);
+    $Details = $mysqli->real_escape_string($Details);
 
     $sql = "INSERT INTO tbl_approvedappointments(studentNumber,studentName,studentCourse,studentEmail,appointmentSchedule,appointmentReason,appointmentType,appointmentDetails) 
-    VALUES('$sNumber','$sName','$sCourse','$sEmail','$aSchedule','$aReason','$aType','$aDetails')";
+    VALUES('$sNumber','$sName','$sCourse','$sEmail','$aSchedule','$aReason','$aType','$Details')";
     $result = mysqli_query($mysqli, $sql);
 
 }
