@@ -40,12 +40,12 @@ include 'includes/modals/approvedapp-modal.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Approved Appointments List</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Scheduled Appointments List</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Approved Appointment</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Scheduled Appointment</li>
                                 </ol>
                             </nav>
                         </div>

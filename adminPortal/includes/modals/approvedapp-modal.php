@@ -42,11 +42,11 @@
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Student Number</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb; text-transform: uppercase;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
                 </div>
                 <label class="col-md-12" style="margin-top: 10px;">Course</label>
                 <div class="col-md-12">
-                    <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #f0efeb; text-transform: uppercase;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
                 </div>
                 <h4 class="col-md-12" style="margin-top: 10px;" name="remarks">Person in Charge</h4>
                 <div class="col-md-12">

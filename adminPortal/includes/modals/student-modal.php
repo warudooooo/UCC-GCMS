@@ -182,7 +182,7 @@
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="background-color: #edf2fb; text-transform: uppercase; text-transform: uppercase;" type="text" id="admsCourse" name="sCourse" class="form-control form-control-line">
+                        <input style="background-color: #edf2fb; text-transform: uppercase;" type="text" id="admsCourse" name="sCourse" class="form-control form-control-line">
                     </div>
                 </div>
                 <div class="modal-footer">
