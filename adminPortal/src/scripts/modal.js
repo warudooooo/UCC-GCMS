@@ -152,7 +152,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	$('.scheduledappbtn').on('click', function(){
+	$('.scdeletebtn').on('click', function(){
 		$tr = $(this).closest('tr');
 
                 var datas = $tr.children("td").map(function () {
@@ -166,3 +166,5 @@ $(document).ready(function(){
                 $('#appsCourse').val(datas[4]);
 	});
 });
+
+

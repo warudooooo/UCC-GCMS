@@ -6,7 +6,7 @@ include 'sources/session.php';
 <link rel="stylesheet" type="text/css" href="src/styles/dashboardStyles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="src/styles/all.css">
-
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
 </head>
@@ -95,13 +95,13 @@ include 'sources/session.php';
                             <span>Pending Appointments</span></span>
                         </div>
                         <div>
-                            <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                            <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
                         </div>
                     </div>
                     <div class="cards-single">
                         <div>
                         <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_history");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_appointmenthistory");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">'.$total.'</a>';
@@ -118,6 +118,23 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                             <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedcounsellings");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Scheduled Counselings</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingcounsellings");
 
                             if ($total = mysqli_num_rows($load)) {
@@ -129,7 +146,24 @@ include 'sources/session.php';
                             <span>Pending Counselings</span>
                         </div>
                         <div>
-                            <span class="mdi mdi-alarm-check" style="font-size: 3rem;"></span>
+                            <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                        <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counsellinghistory");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            } else {
+                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                            }
+                            ?>
+                            <span>Completed Counselings</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
                         </div>
                     </div>
                     <div class="cards-single">

@@ -8,7 +8,7 @@
 </head>
 <?php 
 include 'includes/header.php';
-include 'sources/src-appointmenthistory.php';
+include 'sources/src-history.php';
 include 'includes/modals/appointmenthistory-modal.php';
 ?>
 
@@ -86,7 +86,7 @@ include 'includes/modals/appointmenthistory-modal.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_history");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_appointmenthistory");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>

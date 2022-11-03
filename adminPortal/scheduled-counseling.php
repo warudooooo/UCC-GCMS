@@ -8,8 +8,8 @@
 </head>
 <?php 
 include 'includes/header.php';
-include 'sources/src-scheduledapp.php';
-include 'includes/modals/scheduledapp-modal.php';
+include 'sources/src-scheduledcouns.php';
+include 'includes/modals/scheduledcouns-modal.php';
 ?>
 
 <body>
@@ -40,7 +40,7 @@ include 'includes/modals/scheduledapp-modal.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Scheduled Request List</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Scheduled Counselings</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -70,45 +70,43 @@ include 'includes/modals/scheduledapp-modal.php';
                                     <thead class="table-dark">
                                         <tr>
                                             <th scope="col" style="color: #fff;">#</th>
-                                            <th scope="col" style="color: #fff; display: none;">id</th>
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
                                             <th scope="col" style="color: #fff;">Email</th>
-                                            <th scope="col" style="color: #fff;">Referral Reason</th>
-                                            <th scope="col" style="color: #fff;">Meeting Type</th>
+                                            <th scope="col" style="color: #fff;">Counselling Type</th>
                                             <th scope="col" style="color: #fff;">Schedule</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Approve</th>
                                             <th scope="col" style="color: #fff;">Delete</th>
                                             <th scope="col" style="color: #fff; display: none;"></th>
+                                            <th scope="col" style="color: #fff; display: none;">id</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedcounsellings");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
                                                  <td>" . $i . "</td>
-                                                 <td style='display: none'>" . $row["appointmentID"] . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td>" . $row["requesterName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
-                                                 <td>" . $row["appointmentType"] . "</td>
-                                                 <td>" . $row["appointmentSchedule"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>
+                                                 <td>" . $row["counsellingType"] . "</td>
+                                                 <td>" . $row["counsellingSchedule"] . "</td>
+                                                 <td style='text-align:center;'><button type='button'  class='btn btn-primary scseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
                                                      SEE MORE
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary markasdonebtn' data-bs-toggle='modal' data-bs-target='#markasdoneModal'>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary scmarkasdonebtn' data-bs-toggle='modal' data-bs-target='#markasdoneModal' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
                                                     Mark as Done
                                                 </button></td>
-                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn scheduledappbtn' data-bs-toggle='modal' data-bs-target='#scheduledappdeletemodal'>
+                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn scdeletebtn' data-bs-toggle='modal' data-bs-target='#scheduledcounsdeletemodal'>
                                                 DELETE
                                                 </button></td>
-                                                 <td style='display: none'>" . $row["appointmentDetails"] . "</td>
+                                                 <td style='display: none'>" . $row["counsellingDetails"] . "</td>
+                                                 <td style='display: none'>" . $row["counsellingID"] . "</td>
                                                  </tr>";
                                             $i++;
                                         }
@@ -141,7 +139,7 @@ include 'includes/modals/scheduledapp-modal.php';
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="src/scripts/datatable.js"></script>
-    <script src="src/scripts/modal.js"></script>
+    <script src="src/scripts/modal-couns.js"></script>
     <script>
 
     </script>

@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $aType = $mysqli->real_escape_string($aType);
     $Details = $mysqli->real_escape_string($Details);
 
-    $add = "INSERT INTO tbl_history(studentNumber,studentName,studentCourse,studentEmail,personIncharge,remarks,appointmentReason,appointmentType,appointmentDetails)
+    $add = "INSERT INTO tbl_appointmenthistory(studentNumber,studentName,studentCourse,studentEmail,personIncharge,remarks,appointmentReason,appointmentType,appointmentDetails)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$pIncharge','$remarks','$aReason','$aType','$Details')";
 	$delete = "DELETE FROM tbl_approvedappointments WHERE appointmentID='$hID'";
     $result = mysqli_query($mysqli, $add);

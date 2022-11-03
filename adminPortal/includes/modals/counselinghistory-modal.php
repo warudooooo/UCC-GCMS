@@ -30,7 +30,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary yesbtn" name="appsubmit">YES</button>
+                <button type="submit" class="btn btn-primary yesbtn" name="counsubmit">YES</button>
             </div>
             </div>
         </div>
