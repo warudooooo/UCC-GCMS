@@ -23,7 +23,7 @@
 
     @media only screen and (max-width: 1169px) {
         header {
-            margin-left: 100px !important;
+            margin-left: 50px !important;
             transition: margin-left 300ms;
         }
 
