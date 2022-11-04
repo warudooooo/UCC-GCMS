@@ -52,8 +52,8 @@ if (isset($_POST['submit'])) {
 				$mail->isHTML(true);                                  //Set email format to HTML
 				$mail->Subject = 'no reply';
 				
-				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
-				// 				  <p>http://192.168.100.105/Guidance/?verification=' . $vkey . '</p></b>';
+				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
+				// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
 
 				$mail->send();
 			} catch (Exception $e) {
@@ -205,7 +205,7 @@ if (isset($_POST['submit'])) {
 								<table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
 									<tr>
 										<td bgcolor='#ffffff' align='center' valign='top' style='padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;'>
-											<img src='https://cdn.discordapp.com/attachments/768805813098905620/1037554696778432522/logo-2.png' width='350' height='350' style='display: block; border: 0px; margin-top: 40px;' /><h3 style='font-size: 48px; font-weight: 400; margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Hi, " . $sName . "</h3> 
+											<img src='https://cdn.discordapp.com/attachments/768805813098905620/1037554696778432522/logo-2.png' width'391' height='78' style='display: block; border: 0px; margin-top: 40px;' /><h3 style='font-size: 48px; font-weight: 400; margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Hi, " . $sName . "</h3> 
 										</td>
 									</tr>
 								</table>
@@ -226,9 +226,9 @@ if (isset($_POST['submit'])) {
 													<td bgcolor='#ffffff' align='center' style='padding: 20px 30px 60px 30px;'>
 														<table border='0' cellspacing='0' cellpadding='0'>
 															<tr>
-																<td align='center' style='border-radius: 3px;' bgcolor='#f4845f'><a href='http://192.168.100.105/Guidance/?verification=" . $vkey . "' target='_blank' style='margin-bottom: -20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #F4845F; display: inline-block;'>Confirm Account</a></td>
+																<td align='center' style='border-radius: 3px;' bgcolor='#f4845f'><a href='http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=" . $vkey . "' target='_blank' style='margin-bottom: -20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #F4845F; display: inline-block;'>Confirm Account</a></td>
 															</tr>
-														</table>
+														</table>	
 													</td>
 												</tr>
 											</table>
@@ -241,7 +241,7 @@ if (isset($_POST['submit'])) {
 									</tr> <!-- COPY -->
 									<tr>
 										<td bgcolor='#ffffff' align='left' style='padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-											<p style='margin-left: 20px; margin-top: 0px; margin-bottom: 3px;'><a href='http://192.168.100.105/Guidance/?verification=" . $vkey . "' target='_blank' style='color: #F4845F; pointer-events: none;'>http://192.168.100.105/Guidance/?verification=" . $vkey . "</a></p>
+											<p style='margin-left: 20px; margin-top: 0px; margin-bottom: 3px;'><a href='http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=" . $vkey . "' target='_blank' style='color: #F4845F; pointer-events: none;'>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=" . $vkey . "</a></p>
 										</td>
 									</tr>
 									<tr>
@@ -251,7 +251,7 @@ if (isset($_POST['submit'])) {
 									</tr>
 									<tr>
 										<td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-											<p style='margin-left: 20px; margin-top: 10; margin-bottom: 25px;'>Regards,<br>UCC Guidance and Counseling</p>
+											<p style='margin-left: 20px; margin-top: 10; margin-bottom: 25px;'>Regards,<br>UCC Guidance redirects/checkifemailverified.php/and Counseling</p>
 										</td>
 									</tr>
 								</table>
@@ -284,8 +284,8 @@ if (isset($_POST['submit'])) {
 				</body>
 				
 				</html>";
-				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
-				// 				  <p>http://192.168.100.105/Guidance/?verification=' . $vkey . '</p></b>';
+				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
+				// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
 
 				$mail->send();
 			} catch (Exception $e) {
