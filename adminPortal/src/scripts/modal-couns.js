@@ -97,3 +97,7 @@ $(document).ready(function(){
                 $('#scdCourse').val(data[3]);
 	});
 });
+
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
