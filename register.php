@@ -65,7 +65,9 @@ include 'sources/src-register.php';
 					<div class="textSlider">
 						<div class="textWrap">
 							<div class="textGroup">
-								<h2>Happiness can be found even in the darkest of times, if one only remembers to turn on the light.</h2>
+								<h1>Address</h1>
+								<h2>Biglang Awa St Cor 11th Ave Catleya,</h2>
+								<h2>Caloocan, 1400 Metro Manila, Philippines</h2>
 							</div>
 						</div>
 					</div>

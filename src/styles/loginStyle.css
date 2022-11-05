@@ -300,10 +300,17 @@ main.movingForm {
 	transition: 0.5s;
 }
 
+.textGroup h1 {
+	padding: 2px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	font-size: 1.5rem;
+}
+
 .textGroup h2 {
 	padding: 2px;
 	font-weight: 600;
-	font-size: 1.3rem;
+	font-size: 1rem;
 }
 
 .bullets {
@@ -406,8 +413,12 @@ main.movingForm {
 		border-radius: 1.6rem;
 	}
 
-	.textGroup h2 {
+	.textGroup h1 {
 		font-size: 1rem;
+	}
+
+	.textGroup h2 {
+		font-size: .7rem;
 	}
 
 	form {

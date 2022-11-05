@@ -50,7 +50,9 @@ include 'sources/src-index.php';
 					<div class="textSlider">
 						<div class="textWrap">
 							<div class="textGroup">
-								<h2>You don’t have to control your thoughts. You just have to stop letting them control you.</h2>
+								<h1>Address</h1>
+								<h2>Biglang Awa St Cor 11th Ave Catleya,</h2>
+								<h2>Caloocan, 1400 Metro Manila, Philippines</h2>
 							</div>
 						</div>
 					</div>
