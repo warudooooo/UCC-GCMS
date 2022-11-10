@@ -1,9 +1,9 @@
 <link rel="icon" href="src/images/uccLogo.png">
 <!-- ================================================================================================================================================ -->
-<!-- ==================APPROVE MODAL========================== -->
+<!-- ==================RESTORE MODAL========================== -->
 <!-- ================================================================================================================================================ -->
 <form method="POST" action="" autocomplete="off">
-    <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="restoreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">
                 <div class="modal-header">
@@ -13,32 +13,29 @@
                 <div class="modal-body">
                     <div class="col-md-12">
                         <h2 class="col-md-12">Student Details</h2>
+                        <input style="pointer-events: none; display:none;" type="text" id="appID" name="appID" class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top: 10px;">Full Name</label>
+                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentName" name="sName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="appsName" name="appsName" class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top: 10px;">Student Number</label>
+                    <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="appsNumber" id="appsNumber" class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top: 10px;">Course</label>
+                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="appsCourse" name="appsCourse" class="form-control form-control-line" readonly>
                     </div>
-                    <h3 class="col-md-12" style="margin-top: 10px;">Select Date and Time</h3>
-                    <div class="col-md-12">
-                        <input class="form-control" type="datetime-local" name="aSchedule" required>
-                    </div>
-                    <input style="display:none;" id="appointmentID" name="aID" readonly>
-                    <input style="display:none;" id="studentEmail" name="sEmail" readonly>
-                    <input style="display:none;" id="appointmentReason" name="aReason" readonly>
-                    <input style="display:none;" id="appointmentType" name="aType" readonly>
-                    <input style="display:none;" id="Details" name="Details" readonly>
+                    <input style="display:none;" id="appsEmail" name="appsEmail" readonly>
+                    <input style="display:none;" id="appReason" name="appReason" readonly>
+                    <input style="display:none;" id="appType" name="appType" readonly>
+                    <input style="display:none;" id="appDate" name="rDate" readonly>
+                    <input style="display:none;" id="appDetails" name="appDetails" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary mdlapprovebtn" name="submit">Approve</button>
+                    <button type="submit" class="btn btn-primary mdlapprovebtn" name="submit">Restore</button>
                 </div>
             </div>
         </div>
@@ -73,31 +70,27 @@
         <div class="modal-dialog">
             <div class="modal-content approve">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel" style="color: #d00000;">DELETE</h2>
+                    <h2 class="modal-title" id="exampleModalLabel" style="color: #d00000;">DELETE PERMANENTLY</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <h2 class="col-md-12">Are you sure you want to DELETE?</h2>
-                        <input style="pointer-events: none; display:none;" type="text" id="appID" name="appID" class="form-control form-control-line" readonly>
+                    <h2 class="col-md-12" style="color: #d00000; text-align: center;">Are you sure?</h2>
+                        <h4 class="col-md-12" style="text-align: center;">Do you really want to delete these records? This process cannot be undone.</h4>
+                        <input style="pointer-events: none; display:none;" type="text" id="aID" name="aID" class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
+                    <label class="col-md-12" style="margin-top: 10px;">Full Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="appsName" name="appsName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentName" name="sName" class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top:10px;">Student Number</label>
+                    <label class="col-md-12" style="margin-top: 10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="appsNumber" id="appsNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentNumber" name="sNumber" class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
+                    <label class="col-md-12" style="margin-top: 10px;">Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="appsCourse" name="appsCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
                     </div>
-                    <input style="display:none;" id="appsEmail" name="appsEmail" readonly>
-                    <input style="display:none;" id="appReason" name="appReason" readonly>
-                    <input style="display:none;" id="appType" name="appType" readonly>
-                    <input style="display:none;" id="appDate" name="rDate" readonly>
-                    <input style="display:none;" id="appDetails" name="appDetails" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
