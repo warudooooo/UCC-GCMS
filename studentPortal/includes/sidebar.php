@@ -27,6 +27,14 @@ if (mysqli_num_rows($query) > 0) {
     .left-sidebar {
             height: auto !important;
     }
+    @media only screen and (max-width: 1169px){
+        .left-sidebar{
+            margin-top: -15px !important;
+        }
+        h4{
+            display: none;
+        }
+    }
     @media only screen and (max-width: 768px){
     .left-sidebar {
         margin-top: -15px !important;

@@ -21,13 +21,22 @@
 
     @media only screen and (max-width: 1169px) {
         header {
-            margin-left: 100px !important;
+            margin-left: 50px !important;
             transition: margin-left 300ms;
         }
 
         .logo-icon img {
             margin-left: -40px !important;
             transition: margin-left 300ms;
+        }
+    }
+    
+    @media only screen and (max-width: 900px) {
+        .title{
+            display: none;
+        }
+        .title2{
+            display: block;
         }
     }
 
