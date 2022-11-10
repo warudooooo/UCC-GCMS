@@ -12,7 +12,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <h2 class="col-md-12">Are you sure you want to DELETE?</h2>
+                        <h2 class="col-md-12" style="color: #d00000; text-align: center;">Are you sure?</h2>
+                        <h4 class="col-md-12" style="text-align: center;">Do you really want to delete these records? This process cannot be undone.</h4>
+                        <h2 class="col-md-12"></h2>
                         <input style="pointer-events: none; display:none;" type="text" id="historyID" name="hID" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>

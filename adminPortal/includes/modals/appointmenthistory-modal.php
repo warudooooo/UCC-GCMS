@@ -12,7 +12,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <h2 class="col-md-12">Are you sure you want to DELETE?</h2>
+                        <h2 class="col-md-12" style="color: #d00000; text-align: center;">Are you sure?</h2>
+                        <h4 class="col-md-12" style="text-align: center;">Do you really want to delete these records? This process cannot be undone.</h4>
                         <input style="pointer-events: none; display:none;" type="text" id="historyID" name="hID" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
@@ -29,9 +30,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary yesbtn" name="appsubmit">YES</button>
-            </div>
+                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary yesbtn" name="appsubmit">YES</button>
+                </div>
             </div>
         </div>
     </div>
