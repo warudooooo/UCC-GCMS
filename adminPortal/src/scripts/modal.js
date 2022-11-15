@@ -169,46 +169,6 @@ $(document).ready(function(){
                 $('#appsName').val(datas[2]);
                 $('#appsNumber').val(datas[3]);
                 $('#appsCourse').val(datas[4]);
-	});
-});
-
-if ( window.history.replaceState ) {
-    window.history.replaceState( null, null, window.location.href );
-}
-
-
-// ====================================================================================================
-
-$(document).ready(function(){
-	$('.appointmentdeletebtn').on('click', function(){
-		$tr = $(this).closest('tr');
-
-                var datas = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(datas);
-                $('#aID').val(datas[1]);
-                $('#studentName').val(data[2]);
-                $('#studentNumber').val(data[3]);
-                $('#studentCourse').val(data[4]);
-	});
-});
-
-
-$(document).ready(function(){
-	$('.restorebtn').on('click', function(){
-		$tr = $(this).closest('tr');
-
-                var datas = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(datas);
-                $('#appID').val(datas[1]);
-                $('#appsName').val(datas[2]);
-                $('#appsNumber').val(datas[3]);
-                $('#appsCourse').val(datas[4]);
                 $('#appsEmail').val(datas[5]);
                 $('#appReason').val(datas[6]);
                 $('#appType').val(datas[7]);
@@ -216,3 +176,7 @@ $(document).ready(function(){
                 $('#appDetails').val(datas[12]);
 	});
 });
+
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}

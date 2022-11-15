@@ -102,7 +102,7 @@ include 'includes/modals/student-modal.php'; ?>
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail=''");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND studentEmail=''");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">' . $total . '</a>';

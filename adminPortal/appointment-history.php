@@ -71,7 +71,7 @@ include 'includes/modals/appointmenthistory-modal.php';
                                         <tr>
                                             <th scope="col" style="color: #fff;">#</th>
                                             <th scope="col" style="color: #fff; display: none;">id</th>
-                                            <th scope="col" style="color: #fff; width: 100px;">Student Name</th>
+                                            <th scope="col" style="color: #fff; width: 125px;">Student Name</th>
                                             <th scope="col" style="color: #fff; width: 120px;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
                                             <th scope="col" style="color: #fff;">Email</th>

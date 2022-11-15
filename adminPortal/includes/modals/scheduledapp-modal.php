@@ -88,7 +88,7 @@
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="appsName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="appsName" name="appsName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
@@ -96,8 +96,13 @@
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="appsCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="appsCourse" name="appsCourse" class="form-control form-control-line" readonly>
                     </div>
+                    <input style="display:none;" id="appsEmail" name="appsEmail" readonly>
+                    <input style="display:none;" id="appReason" name="appReason" readonly>
+                    <input style="display:none;" id="appType" name="appType" readonly>
+                    <input style="display:none;" id="appDate" name="appDate" readonly>
+                    <input style="display:none;" id="appDetails" name="appDetails" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
