@@ -82,7 +82,7 @@
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="counsName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="counsName" name="counsName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
@@ -90,8 +90,11 @@
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="counsCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="counsCourse" name="counsCourse" class="form-control form-control-line" readonly>
                     </div>
+                <input style="display:none;" id="counsEmail" name="counsEmail" readonly>
+                <input style="display:none;" id="counsType" name="counsType" readonly>
+                <input style="display:none;" id="counsDetails" name="counsDetails" readonly>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>

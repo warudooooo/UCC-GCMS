@@ -58,7 +58,6 @@
                     </div>
                     <input style="display:none;" id="scID" name="scID" readonly>
                     <input style="display:none;" id="studentEmail" name="sEmail" readonly>
-
                     <input style="display:none;" id="scType" name="scType" readonly>
                     <input style="display:none;" id="Details" name="Details" readonly>
                 </div>
@@ -88,16 +87,21 @@
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="scdName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="scdName" name="scdName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="appsNumber" id="scdNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="scdNumber" id="scdNumber" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="scdCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="scdCourse" name="scdCourse" class="form-control form-control-line" readonly>
                     </div>
+                    <input style="display:none;" id="scdEmail" name="scdEmail" readonly>
+                    <input style="display:none;" id="scdSchedule" name="scdSchedule" readonly>
+                    <input style="display:none;" id="scdDateapproved" name="scdDateapproved" readonly>
+                    <input style="display:none;" id="scdType" name="scdType" readonly>
+                    <input style="display:none;" id="scdDetails" name="scdDetails" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>

@@ -44,6 +44,9 @@ $(document).ready(function(){
                 $('#counsName').val(datas[2]);
                 $('#counsNumber').val(datas[3]);
                 $('#counsCourse').val(datas[4]);
+                $('#counsEmail').val(datas[5]);
+                $('#counsType').val(datas[1]);
+                $('#counsDetails').val(datas[10]);
 	});
 });
 
@@ -59,7 +62,7 @@ $(document).ready(function(){
 
                 console.log(data);
 
-                $('#appointmentDetails').val(data[10]);
+                $('#appointmentDetails').val(data[11]);
 	});
 });
 
@@ -78,7 +81,7 @@ $(document).ready(function(){
                 $('#studentCourse').val(data[3]);
                 $('#studentEmail').val(data[4]);
                 $('#scType').val(data[5]);
-                $('#Details').val(data[10]);
+                $('#Details').val(data[11]);
 	});
 });
 
@@ -91,10 +94,16 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-                $('#scdID').val(data[11]);
+                $('#scdID').val(data[12]);
                 $('#scdName').val(data[1]);
                 $('#scdNumber').val(data[2]);
                 $('#scdCourse').val(data[3]);
+                $('#scdEmail').val(data[4]);
+                $('#scdSchedule').val(data[6]);
+                $('#scdDateapproved').val(data[7]);
+                $('#scdType').val(data[5]);
+                $('#scdDetails').val(data[11]);
+
 	});
 });
 

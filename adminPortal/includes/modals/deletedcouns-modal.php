@@ -13,25 +13,25 @@
                 <div class="modal-body">
                     <div class="col-md-12">
                         <h2 class="col-md-12">Student Details</h2>
-                        <input style="pointer-events: none; display:none;" type="text" id="appID" name="appID" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; display:auto;" type="text" id="cNum" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="appsName" name="appsName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="csName" name="csName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="appsNumber" id="appsNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="csNumber" id="csNumber" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="appsCourse" name="appsCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="csCourse" name="csCourse" class="form-control form-control-line" readonly>
                     </div>
-                    <input style="display:none;" id="appsEmail" name="appsEmail" readonly>
-                    <input style="display:none;" id="appReason" name="appReason" readonly>
-                    <input style="display:none;" id="appType" name="appType" readonly>
-                    <input style="display:none;" id="appDate" name="rDate" readonly>
-                    <input style="display:none;" id="appDetails" name="appDetails" readonly>
+                    <input style="display:none;" type="text" id="cID" name="cID"readonly>
+                    <input style="display:none;" id="csEmail" name="csEmail" readonly>
+                    <input style="display:none;" id="cType" name="cType" readonly>
+                    <input style="display:none;" id="cDate" name="cDate" readonly>
+                    <input style="display:none;" id="cDetails" name="cDetails" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
@@ -47,12 +47,12 @@
         <div class="modal-dialog">
             <div class="modal-content seemore">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Appointment Details</h3>
+                    <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Counseling Details</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <textarea rows="20" class="form-control form-control-line" id="appointmentDetails" name="aDetails" style="background-color: #f0efeb; padding: 20px;" readonly></textarea>
+                        <textarea rows="20" class="form-control form-control-line" id="csDetails" name="cDetails" style="background-color: #f0efeb; padding: 20px;" readonly></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -66,7 +66,7 @@
 <!-- ==================DELETE MODAL========================== -->
 <!-- ================================================================================================================================================ -->
 <form method="POST" action="" autocomplete="off">
-    <div class="modal fade" id="appointmentdeletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="counselingdeletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">
                 <div class="modal-header">
@@ -77,24 +77,25 @@
                     <div class="col-md-12">
                     <h2 class="col-md-12" style="color: #d00000; text-align: center;">Are you sure?</h2>
                         <h4 class="col-md-12" style="text-align: center;">Do you really want to delete these records? This process cannot be undone.</h4>
-                        <input style="pointer-events: none; display:none;" type="text" id="aID" name="aID" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; display:auto;" type="text" id="cdNum" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top: 10px;">Full Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="cdsName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top: 10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;"type="text" id="studentNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;"type="text" id="cdsNumber" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top: 10px;">Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="studentCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="cdsCourse" class="form-control form-control-line" readonly>
                     </div>
+                    <input style="display:none;" type="text" id="cdID" name="cdID"readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary yesbtn" name="delete_appointment">YES</button>
+                    <button type="submit" class="btn btn-primary yesbtn" name="delete_counseling">YES</button>
                 </div>
             </div>
         </div>
@@ -111,7 +112,7 @@
 <!-- ==================RESTORE MODAL========================== -->
 <!-- ================================================================================================================================================ -->
 <form method="POST" action="" autocomplete="off">
-    <div class="modal fade" id="srestoreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="csrestoreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">
                 <div class="modal-header">
@@ -121,25 +122,26 @@
                 <div class="modal-body">
                     <div class="col-md-12">
                         <h2 class="col-md-12">Student Details</h2>
-                        <input style="pointer-events: none; display:none;" type="text" id="sappID" name="appID" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="scsNum" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="sappsName" name="appsName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="scsName" name="scsName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="appsNumber" id="sappsNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="scsNumber" id="scsNumber" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="sappsCourse" name="appsCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="scsCourse" name="scsCourse" class="form-control form-control-line" readonly>
                     </div>
-                    <input style="display:none;" id="sappsEmail" name="appsEmail" readonly>
-                    <input style="display:none;" id="sappReason" name="appReason" readonly>
-                    <input style="display:none;" id="sappType" name="appType" readonly>
-                    <input style="display:none;" id="sappDate" name="rDate" readonly>
-                    <input style="display:none;" id="sappDetails" name="appDetails" readonly>
+                    <input style="display:none;" id="scsID" name="scsID" readonly>
+                    <input style="display:none;" id="scsEmail" name="scsEmail" readonly>
+                    <input style="display:none;" id="scsType" name="scsType" readonly>
+                    <input style="display:none;" id="scsDateapproved" name="scsDateapproved" readonly>
+                    <input style="display:none;" id="scsSchedule" name="scsSchedule" readonly>
+                    <input style="display:none;" id="scsDetails" name="scsDetails" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
@@ -152,7 +154,7 @@
 <!-- ==================DELETE MODAL========================== -->
 <!-- ================================================================================================================================================ -->
 <form method="POST" action="" autocomplete="off">
-    <div class="modal fade" id="sappointmentdeletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="scounselingdeletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">
                 <div class="modal-header">
@@ -163,24 +165,25 @@
                     <div class="col-md-12">
                     <h2 class="col-md-12" style="color: #d00000; text-align: center;">Are you sure?</h2>
                         <h4 class="col-md-12" style="text-align: center;">Do you really want to delete these records? This process cannot be undone.</h4>
-                        <input style="pointer-events: none; display:none;" type="text" id="saID" name="saID" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="scNum" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top: 10px;">Full Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="sName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="scName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top: 10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;"type="text" id="sNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;"type="text" id="scNumber" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top: 10px;">Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="sCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #f0efeb;" type="text" id="scCourse" class="form-control form-control-line" readonly>
                     </div>
+                    <input style="pointer-events: none; display:none;" type="text" id="scID" name="scID" class="form-control form-control-line" readonly>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary yesbtn" name="sdelete_appointment">YES</button>
+                    <button type="submit" class="btn btn-primary yesbtn" name="sdelete_counseling">YES</button>
                 </div>
             </div>
         </div>

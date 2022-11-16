@@ -2,11 +2,32 @@
 
 if (isset($_POST['schedulecouns_delete'])) {
 	$scdID = $_POST['scdID'];
+	$scdName = $_POST['scdName'];
+	$scdNumber = $_POST['scdNumber'];
+	$scdCourse = $_POST['scdCourse'];
+	$scdEmail = $_POST['scdEmail'];
+	$scdSchedule = ($_POST['scdSchedule']);
+	$scdDateapproved = ($_POST['scdDateapproved']);
+    $scdType = ($_POST['scdType']);
+    $scdDetails = ($_POST['scdDetails']);
+
 
 	$scdID = $mysqli->real_escape_string($scdID);
+	$scdName = $mysqli->real_escape_string($scdName);
+	$scdNumber = $mysqli->real_escape_string($scdNumber);
+	$scdCourse = $mysqli->real_escape_string($scdCourse);
+	$scdEmail = $mysqli->real_escape_string($scdEmail);
+	$scdSchedule = $mysqli->real_escape_string($scdSchedule);
+	$scdDateapproved = $mysqli->real_escape_string($scdDateapproved);
+    $scdType = $mysqli->real_escape_string($scdType);
+    $scdDetails = $mysqli->real_escape_string($scdDetails);
 
+    $add = "INSERT INTO tbl_delapprovedcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingSchedule,counsellingType,counsellingDetails,dateApproved)
+    VALUES('$scdNumber','$scdName','$scdCourse','$scdEmail','$scdSchedule','$scdType','$scdDetails','$scdDateapproved')";
 	$delete = "DELETE FROM tbl_approvedcounsellings WHERE counsellingID='$scdID'";
+    $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
+
 
 }
 

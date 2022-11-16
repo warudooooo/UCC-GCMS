@@ -76,8 +76,9 @@ include 'includes/modals/scheduledcouns-modal.php';
                                             <th scope="col" style="color: #fff;">Email</th>
                                             <th scope="col" style="color: #fff;">Counselling Type</th>
                                             <th scope="col" style="color: #fff;">Schedule</th>
+                                            <th scope="col" style="color: #fff;">Date Approved</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
-                                            <th scope="col" style="color: #fff;">Approve</th>
+                                            <th scope="col" style="color: #fff;">Mark as Done</th>
                                             <th scope="col" style="color: #fff;">Delete</th>
                                             <th scope="col" style="color: #fff; display: none;"></th>
                                             <th scope="col" style="color: #fff; display: none;">id</th>
@@ -96,6 +97,7 @@ include 'includes/modals/scheduledcouns-modal.php';
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["counsellingType"] . "</td>
                                                  <td>" . $row["counsellingSchedule"] . "</td>
+                                                 <td>" . $row["dateApproved"] . "</td>
                                                  <td style='text-align:center;'><button type='button'  class='btn btn-primary scseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
                                                      SEE MORE
                                                  </button></td>

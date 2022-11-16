@@ -1,10 +1,26 @@
 <?php 
 if (isset($_POST['delete_counseling'])) {
+
 	$counsID = $_POST['counsID'];
+	$counsName = $_POST['counsName'];
+	$counsNumber = $_POST['counsNumber'];
+	$counsCourse = $_POST['counsCourse'];
+	$counsEmail = $_POST['counsEmail'];
+    $counsType = ($_POST['counsType']);
+    $counsDetails = ($_POST['counsDetails']);
 
 	$counsID = $mysqli->real_escape_string($counsID);
+	$counsName = $mysqli->real_escape_string($counsName);
+	$counsNumber = $mysqli->real_escape_string($counsNumber);
+	$counsCourse = $mysqli->real_escape_string($counsCourse);
+	$counsEmail = $mysqli->real_escape_string($counsEmail);
+    $counsType = $mysqli->real_escape_string($counsType);
+    $counsDetails = $mysqli->real_escape_string($counsDetails);
 
+    $add = "INSERT INTO tbl_delpendingcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingType,counsellingDetails)
+    VALUES('$counsNumber','$counsName','$counsCourse','$counsEmail','$counsType','$counsDetails')";
 	$delete = "DELETE FROM tbl_pendingcounsellings WHERE ID='$counsID'";
+    $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
 
 }
