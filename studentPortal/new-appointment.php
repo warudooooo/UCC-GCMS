@@ -74,10 +74,10 @@
                                             <textarea class="sBtn-text-clone" name="sOptions"></textarea>
                                             <ul class="options">
                                                 <li class="option">
-                                                    <span class="option-text">Physical Apperance</span>
+                                                    <span class="option-text">Clearance</span>
                                                 </li>
                                                 <li class="option">
-                                                    <span class="option-text">Online</span>
+                                                    <span class="option-text">Honorable Dismissal</span>
                                                 </li>
                                             </ul>
                                         </div>
