@@ -65,13 +65,15 @@ if (isset($_POST['admedit_student'])) {
     $sName = $_POST['sName'];
     $sNumber = $_POST['sNumber'];
     $sCourse = $_POST['sCourse'];
+    $sEmail = $_POST['sEmail'];
 
     $sName = $mysqli->real_escape_string($sName);
     $sNumber = $mysqli->real_escape_string($sNumber);
     $sCourse = $mysqli->real_escape_string($sCourse);
+    $sEmail = $mysqli->real_escape_string($sEmail);
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
-    $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='',studentPassword='',vkey='',studentVerified='no',userType='user' WHERE studentNumber='$sNumber'";
+    $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='',vkey='',studentVerified='no',userType='user' WHERE studentNumber='$sNumber'";
 	$result = mysqli_query($mysqli, $sql);
     }
 }
@@ -84,4 +86,20 @@ if (isset($_POST['delete_student'])) {
 	$delete = "DELETE FROM tbl_students WHERE studentNumber = '$sNumber'";
     $result = mysqli_query($mysqli, $delete);
 }
+
+if (isset($_POST['sanction_btn'])) {
+
+    $sName = $_POST["sName"];
+    $sNumber = $_POST["sNumber"];
+    $sCourse = $_POST["sCourse"];
+
+}
+
+if (isset($_POST['counsel_btn'])) {
+
+   header("location: services.php");
+
+}
+
 ?>
+

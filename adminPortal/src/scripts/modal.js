@@ -177,6 +177,22 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('.actionbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#sName').val(data[1]);
+                $('#sNumber').val(data[2]);
+                $('#sCourse').val(data[3]);
+	});
+});
+
+
 if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
 }

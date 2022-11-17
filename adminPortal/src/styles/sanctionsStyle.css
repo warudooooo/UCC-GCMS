@@ -1,0 +1,98 @@
+.select-menu{
+    width: 380px;
+}
+.select-menu .select-btn{
+    display: flex;
+    height: 20px;
+    background-color: #555555;
+    color: #fff;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(0,0,0,0,1);
+}
+
+.select-menu .select-btn:hover{
+    background-color: #f4845f;
+    transition: 300ms;
+}
+
+.select-menu .options{
+    display: none;
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background: #555555;
+    list-style: none;
+    color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0,1);
+}
+
+.select-menu.active .select-btn i{
+    transform: rotate(180deg);
+    transition: 0.3s;
+}
+
+.select-menu textarea{
+    display: none;
+}
+
+.select-menu.active .options{
+    display: block;
+}
+
+.options .option{
+    transition: 300ms;
+    display: flex;
+    height: 40px;
+    cursor: pointer;
+    padding: 0 16px;
+    border-radius: 5px;
+    align-items: center;
+    background-color: #555555;
+}
+
+.options .option:hover{
+    background-color: #f4845f;
+    transition: 300ms;
+}
+
+.option .option-text{
+    font-size: 18px;
+    color: #fff;
+}
+
+.col-sm-12 button{
+    background-color: #555555 !important;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    width: 380px;
+}
+
+.col-sm-12 button:hover{
+    background-color: #f4845f !important;
+    transition: 300ms;
+}
+
+.eml{
+    color: rgb(202, 0, 0);
+    font-size: 24px !important;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 560px) {
+    .col-sm-12 button,
+    .select-menu, .select-btn,
+    .options .option{
+        width: 100%;
+    }
+
+}

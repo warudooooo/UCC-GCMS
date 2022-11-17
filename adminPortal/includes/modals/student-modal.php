@@ -184,6 +184,10 @@
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; text-transform: uppercase;" type="text" id="admsCourse" name="sCourse" class="form-control form-control-line">
                     </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
+                    <div class="col-md-12">
+                        <input style="background-color: #edf2fb;" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
+                    </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>

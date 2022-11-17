@@ -80,7 +80,8 @@
 .editbtn,
 .studenteditbtn,
 .admstudenteditbtn,
-.unvstudenteditbtn{
+.unvstudenteditbtn,
+.btnblue{
     background: #0096c7 !important;
     color: #fff !important; 
     padding: 10px 30px 10px 30px !important; 
@@ -93,7 +94,10 @@
 .studentdeletebtn:hover,
 .studenteditbtn:hover,
 .admstudenteditbtn:hover,
-.unvstudenteditbtn:hover{
+.unvstudenteditbtn:hover,
+.btnblue:hover,
+.btnred:hover,
+.btngreen:hover{
     background: #333 !important;
     color: #fff !important; 
 }
@@ -118,7 +122,8 @@
 .yesbtn:hover{
     background: #333 !important;
 }
-.seemorebtn{
+.seemorebtn,
+.btngreen{
     background: #38b000 !important;
     color: #fff !important;
     padding: 10px 10px 10px 10px !important;
@@ -126,7 +131,8 @@
     border-radius: 4px !important;
 }
 
-.deletebtn{
+.deletebtn,
+.btnred{
     background-color: #d00000 !important;
     color: #fff !important;
     padding: 10px 20px 10px 20px !important;
