@@ -63,7 +63,7 @@
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="POST">
                                     <div class="form-group">
-                                        <label class="col-md-12">Counselling Type</label>
+                                        <label class="col-md-12">Counseling Type</label>
                                         <div class="select-menu">
                                             <div class="select-btn">
                                                 <span class="sBtn-text">select your options</span>
@@ -81,10 +81,10 @@
                                                     <span class="option-text">Holistic Theraphy</span>
                                                 </li>
                                                 <li class="option">
-                                                    <span class="option-text">Educational Counselling</span>
+                                                    <span class="option-text">Educational Counseling</span>
                                                 </li>
                                                 <li class="option">
-                                                    <span class="option-text">Mental Health Counselling</span>
+                                                    <span class="option-text">Mental Health Counseling</span>
                                                 </li>
                                             </ul>
                                         </div>

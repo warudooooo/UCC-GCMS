@@ -31,8 +31,7 @@
                     <button class="btn btn-primary btngreen" style="width: 40%;" value="counsel_btn" name="counsel_btn">Counsel this student</button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary yesbtn" name="edit_student">YES</button>
+                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
