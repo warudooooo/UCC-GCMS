@@ -16,8 +16,8 @@ if (isset($_POST['signup'])) {
 //Login
 if (isset($_POST['submit'])) {
 
-	$sNumber = $_POST['sNumber'];
-	$sPassword = md5($_POST['sPassword']);
+	$sNumber = $_POST['sNumberPHP'];
+	$sPassword = md5($_POST['sPasswordPHP']);
 
 	$mysqli = $mysqli;
 	$sNumber = $mysqli->real_escape_string($sNumber);
@@ -26,22 +26,23 @@ if (isset($_POST['submit'])) {
 	$sql = "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' AND studentPassword='{$sPassword}'";
 	$result = mysqli_query($mysqli, $sql);
 	$row = mysqli_fetch_assoc($result);
-	
-	 if (mysqli_num_rows($result) === 1 && $row["userType"] == "user") {
+	if($sNumber == "" || $sPassword == ""){
+		exit('Please fill up all the text fields.');
+	} else if (mysqli_num_rows($result) === 1 && $row["userType"] == "user") {
 
 		if (empty($row['vkey'])) {
 			$_SESSION['SESSION_EMAIL'] = $sNumber;
-			$_SESSION['SESSION_ROLE'] = $row["userType"];
-			header("Location: studentPortal/index.php");
+			$_SESSION['SESSION_ROLE'] = $row["userType"]; 
+			exit('<font color="green">Student login successful, you will be redirected in the dashboard page.</font>');
 		} else {
-			$msg = "<div class='eml' style='margin-bottom: 2px; margin-top: -10px;'>Please verify your account first.</div>";
+			exit('<style="text-align: center;">Please verify your account first.</style>');
 		}
 	} else if(mysqli_num_rows($result) === 1 && $row["userType"] == "admin"){
 		$_SESSION['SESSION_EMAIL'] = $sNumber;
 		$_SESSION['SESSION_ROLE'] = $row["userType"];
-		header("Location: adminPortal/index.php");
+		exit('<font color="green">Admin login successful, you will be redirected in the dashboard page.</font>');
 	}else {
-		$msg = "<div class='eml'>Student Number or Password does not match.</div>";
+		exit('Student Number or Password does not match.');
 	}
 }
 
