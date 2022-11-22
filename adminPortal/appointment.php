@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 <?php 
+$msg = "";
 include 'includes/header.php';
 include 'sources/src-appointment.php';
 include 'includes/modals/pendingapp-modal.php';
@@ -52,6 +53,7 @@ include 'includes/modals/pendingapp-modal.php';
                     </div>
                 </div>
             </div>
+            <?php echo $msg; ?>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->

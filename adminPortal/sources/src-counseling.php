@@ -46,7 +46,9 @@ if (isset($_POST['submit'])) {
     $Details = $mysqli->real_escape_string($Details);
 
 	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_approvedcounsellings WHERE counsellingSchedule='{$cSchedule}'")) > 0) {
-		
+		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>THE SCHEDULE YOU SELECTED IS NOT AVAILABLE AT THIS TIME.</h3></div>';
+	}else if ($cSchedule == ""){
+		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>PLEASE SELECT A DATE</h3></div>';
 	}else{
 	$add = "INSERT INTO tbl_approvedcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingSchedule,counsellingType,counsellingDetails)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$cSchedule','$cType','$Details')";

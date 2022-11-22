@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 <?php 
+$msg = "";
 include 'includes/header.php';
 include 'sources/src-counseling.php';
 include 'includes/modals/pendingcouns-modal.php';
@@ -52,6 +53,7 @@ include 'includes/modals/pendingcouns-modal.php';
                     </div>
                 </div>
             </div>
+            <?php echo $msg; ?>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->

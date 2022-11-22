@@ -53,9 +53,9 @@ if (isset($_POST['submit'])) {
 
 
 	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments WHERE appointmentSchedule='{$aSchedule}'")) > 0) {
-		header("Location: index.php");
+		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>THE SCHEDULE YOU SELECTED IS NOT AVAILABLE AT THIS TIME.</h3></div>';
 	}else if ($aSchedule == ""){
-		header("Location: index.php");
+		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>PLEASE SELECT A DATE</h3></div>';
 	}else{
 	$add = "INSERT INTO tbl_approvedappointments(studentNumber,studentName,studentCourse,studentEmail,appointmentSchedule,appointmentReason,appointmentType,appointmentDetails)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$aSchedule','$aReason','$aType','$Details')";

@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 	$vkey = md5(time() . $sName);
 
 	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='{$sEmail}'")) > 0) {
-		$msg = "<div class='eml' style='margin-left-b20pxttom: 10px; margin-left-t20pxp: -20px;'>This email adress is already in use. Please use a different one.</div>";
+		$msg = "<div class='eml' style='margin-left:20px; margin-bottom: 10px; margin-left20pxp: -20px;'>This email adress is already in use. Please use a different one.</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='yes'")) > 0) {
 		$msg = "<div class='eml' style='margin-left-b20pxttom: -5px; margin-left-t20pxp: -20px;'>VERIFIED NA</div>";
 	}else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
