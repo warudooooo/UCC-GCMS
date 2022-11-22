@@ -51,11 +51,17 @@ if (isset($_POST['submit'])) {
     $aType = $mysqli->real_escape_string($aType);
     $Details = $mysqli->real_escape_string($Details);
 
-    $add = "INSERT INTO tbl_approvedappointments(studentNumber,studentName,studentCourse,studentEmail,appointmentSchedule,appointmentReason,appointmentType,appointmentDetails)
+
+	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments WHERE appointmentSchedule='{$aSchedule}'")) > 0) {
+		header("Location: index.php");
+	}else if ($aSchedule == ""){
+		header("Location: index.php");
+	}else{
+	$add = "INSERT INTO tbl_approvedappointments(studentNumber,studentName,studentCourse,studentEmail,appointmentSchedule,appointmentReason,appointmentType,appointmentDetails)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$aSchedule','$aReason','$aType','$Details')";
     $result = mysqli_query($mysqli, $add);
 	$delete = "DELETE FROM tbl_pendingappointments WHERE appointmentID='$aID'";
 	$del = mysqli_query($mysqli, $delete);
-
+	}
 }
 ?>

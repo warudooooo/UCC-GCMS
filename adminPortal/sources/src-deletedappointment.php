@@ -46,12 +46,12 @@ if (isset($_POST['submit'])) {
 
 
 <?php 
-if (isset($_POST['delete_appointment'])) {
+if (isset($_POST['sdelete_appointment'])) {
 
-	$aID = $_POST['aID'];
-	$aID = $mysqli->real_escape_string($aID);
+	$saID = $_POST['saID'];
+	$saID = $mysqli->real_escape_string($saID);
 
-	$delete = "DELETE FROM tbl_delapprovedappointments WHERE appointmentID='$aID'";
+	$delete = "DELETE FROM tbl_delapprovedappointments WHERE appointmentID='$saID'";
 	$del = mysqli_query($mysqli, $delete);
 }
 

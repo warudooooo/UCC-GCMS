@@ -107,6 +107,18 @@ $(document).ready(function(){
 	});
 });
 
+flatpickr("input[type=datetime-local]", {
+    disableMobile: "true",
+    minDate: "today",
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    altInput: true,
+    altFormat: "F j, Y (h:i K)",
+    minTime: "08:00",
+    maxTime: "17:00",
+    minuteIncrement: "10",
+});
+
 if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
 }

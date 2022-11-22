@@ -1,4 +1,5 @@
 <link rel="icon" href="src/images/uccLogo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!-- ================================================================================================================================================ -->
 <!-- ==================APPROVE MODAL========================== -->
 <!-- ================================================================================================================================================ -->
@@ -28,7 +29,7 @@
                 </div>
                 <h3 class="col-md-12" style="margin-top: 10px;">Select Date and Time</h3>
                 <div class="col-md-12">
-                    <input class="form-control" type="datetime-local" name="cSchedule" required >
+                    <input class="form-control" type="datetime-local" name="cSchedule" placeholder="MM/DD/YY" required >
                 </div>
                 <input style="display:none;" id="counselingID" name="cID" readonly>
                 <input style="display:none;" id="studentEmail" name="sEmail" readonly>

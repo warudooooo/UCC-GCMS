@@ -1,4 +1,5 @@
 <link rel="icon" href="src/images/uccLogo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!-- ================================================================================================================================================ -->
 <!-- ==================APPROVE MODAL========================== -->
 <!-- ================================================================================================================================================ -->
@@ -28,7 +29,7 @@
                     </div>
                     <h3 class="col-md-12" style="margin-top: 10px;">Select Date and Time</h3>
                     <div class="col-md-12">
-                        <input class="form-control" type="datetime-local" name="aSchedule" required>
+                        <input class="form-control" type="datetime-local" name="aSchedule" placeholder="MM/DD/YY" value="" required>
                     </div>
                     <input style="display:none;" id="appointmentID" name="aID" readonly>
                     <input style="display:none;" id="studentEmail" name="sEmail" readonly>
@@ -98,6 +99,30 @@
                     <input style="display:none;" id="appType" name="appType" readonly>
                     <input style="display:none;" id="appDate" name="rDate" readonly>
                     <input style="display:none;" id="appDetails" name="appDetails" readonly>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary yesbtn" name="delete_appointment">YES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- ================================================================================================================================================ -->
+<!-- ==================TEST========================== -->
+<!-- ================================================================================================================================================ -->
+<form method="POST" action="" autocomplete="off">
+    <div class="modal fade" id="testmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content approve">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel" style="color: #d00000;">TTTEEE</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <h2 class="col-md-12">Are you sure you want to DELETE?</h2>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>

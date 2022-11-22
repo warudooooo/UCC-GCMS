@@ -45,11 +45,14 @@ if (isset($_POST['submit'])) {
     $cType = $mysqli->real_escape_string($cType);
     $Details = $mysqli->real_escape_string($Details);
 
-    $add = "INSERT INTO tbl_approvedcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingSchedule,counsellingType,counsellingDetails)
+	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_approvedcounsellings WHERE counsellingSchedule='{$cSchedule}'")) > 0) {
+		
+	}else{
+	$add = "INSERT INTO tbl_approvedcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingSchedule,counsellingType,counsellingDetails)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$cSchedule','$cType','$Details')";
 	$delete = "DELETE FROM tbl_pendingcounsellings WHERE ID='$cID'";
     $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
-
+	}
 }
 ?>

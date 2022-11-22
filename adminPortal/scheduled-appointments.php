@@ -98,7 +98,7 @@ include 'includes/modals/scheduledapp-modal.php';
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
                                                  <td>" . $row["appointmentType"] . "</td>
-                                                 <td>" . $row["appointmentSchedule"] . "</td>
+                                                 <td>" . date('m/d/Y h:i A', strtotime($row["appointmentSchedule"])) . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>
                                                      SEE MORE
                                                  </button></td>
