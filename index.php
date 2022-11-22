@@ -18,7 +18,7 @@ include 'sources/src-index.php';
 		<div class="mainBox">
 			<div class="innerBox">
 				<div class="logregForm">
-					<form method="POST" action="" autocomplete="off" class="signinForm">
+					<form method="POST" action="index.php" id="signinForm" autocomplete="off" class="signinForm" onsubmit="return false">
 						<div class="uccLogo">
 							<img src="src/images/uccLogo.png">
 							<h4>University of Caloocan City Guidance and Counseling</h4>
@@ -30,15 +30,15 @@ include 'sources/src-index.php';
 						</div>
 						<div class="actualForm">
 							<div class="inputWrap">
-								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="4" name="sNumber" autocomplete="off" required>
+								<input type="text" id="sNumber" style="text-transform: uppercase;" class="txtbxFields" name="sNumber" autocomplete="off">
 								<label> Student Number (Ex: 201xxxxx-M) </label>
 							</div>
 							<div class="inputWrap">
-								<input type="Password" class="txtbxFields" minlength="8" name="sPassword" autocomplete="off" required>
+								<input type="Password" id="sPassword" class="txtbxFields"name="sPassword" autocomplete="off">
 								<label> Password </label>
 							</div>
-							<?php echo $msg; ?>
-							<input type="submit" name="submit" value="Sign In" class="btnSignin">
+							<div style="display: none;" id='result' class='eml'></div>
+							<input type="submit" id="btnSignin" name="submit" value="Sign In" class="btnSignin">
 							<p class="txtForgot">Did you forgot your password? <a href="#"> Get help </a> signing in</p>
 						</div>
 					</form>
@@ -60,6 +60,8 @@ include 'sources/src-index.php';
 			</div>
 		</div>
 	</main>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript" src="src/scripts/loginScript.js"></script>
 </body>
 
