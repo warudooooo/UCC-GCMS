@@ -1,6 +1,6 @@
 <?php
 include 'sources/session.php';
-include 'sources/src-student.php';
+include 'sources/src-services-sanctions.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -41,7 +41,7 @@ include 'includes/modals/services-modal.php'; ?>
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> Create Sanction</h4>
+                        <h3 class="page-title"><i class="mdi mdi-alarm-check"></i> Create Sanction</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -71,13 +71,13 @@ include 'includes/modals/services-modal.php'; ?>
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="POST">
                                     <div class="form-group">
-                                        <h4 class="col-md-12">Sanction Type</h4>
+                                        <h3 class="col-md-12">Select Sanction</h3>
                                         <div class="select-menu">
                                             <div class="select-btn">
-                                                <span class="sBtn-text">Select your options</span>
+                                                <span class="sBtn-text" required>Select Sanction</span>
                                                 <i class="fas fa-caret-down"></i>
                                             </div>
-                                            <textarea class="sBtn-text-clone" name="sOptions"></textarea>
+                                            <textarea class="sBtn-text-clone" name="sancType" required></textarea>
                                             <ul class="options">
                                                 <li class="option">
                                                     <span class="option-text">Disciplinary Sanction</span>
@@ -89,43 +89,58 @@ include 'includes/modals/services-modal.php'; ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h4 class="col-md-12">Full Name</h4>
+                                        <h3 class="col-md-12">Full Name</h3>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $_POST["sName"]; ?>" class="form-control form-control-line" readonly>
+                                            <input name="sName" style="pointer-events: none;" type="text" placeholder="<?php echo $_POST["sName"]; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h4 class="col-md-12">Student Number</h4>
+                                        <h3 class="col-md-12">Student Number</h3>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h3 class="col-md-12">Type </h3>
-                                        <label class="col-md-12"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
-                                        <label class="col-md-12"><b>Educational Sanctions:</b> Seminar, Assessment, Educational/Reflective Assignment </label>
+                                        <h3 class="col-md-12">Course</h3>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sReason" style="text-transform: uppercase;"></textarea>
+                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sCourse ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">State Details</label>
-                                        <div class="col-md-12">
-                                            <textarea rows="8" class="form-control form-control-line" name="sDetails"></textarea>
+                                        <h3 class="col-md-16">Sanction Types </h3>
+                                        <div class="form-group">
+                                            <label class="col-md-12 sanclbl"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
+                                            <label class="col-md-12 sanclbl"><b>Educational Sanctions:</b> Seminar, Assessment, Educational/Reflective Assignment </label>
                                         </div>
-                                    </div>
-                                    <!-- <div class="form-group">
+                                        <div class="form-group">
+                                            <select name="sancKind" class="form-select" aria-label="Default select example" required>
+                                                <option class="option" value="" selected>Select type</option>
+                                                <option class="option" value="1">Probation</option>
+                                                <option class="option" value="2">Suspension</option>
+                                                <option class="option" value="3">Dismissal</option>
+                                                <option class="option" value="1">Seminar</option>
+                                                <option class="option" value="2">Assessment</option>
+                                                <option class="option" value="3">Educational/Reflective Assignment</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="col-md-12">State Details</h4>
+                                            <div class="col-md-12">
+                                                <textarea rows="8" class="form-control form-control-line" name="sDetails" required></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group">
                                         <label class="col-md-12">Select Date</label>
                                         <div class="col-md-12">
                                             <input type="date" placeholder="Johnathan Doe" class="form-control form-control-line">
                                         </div>
                                     </div> -->
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-success text-white" name="submit">Submit</button>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-success text-white" name="submit">Submit</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- <?php echo $msg; ?> -->
+                                        <!-- <?php echo $msg; ?> -->
                                 </form>
                             </div>
                         </div>
@@ -133,23 +148,23 @@ include 'includes/modals/services-modal.php'; ?>
                     <!-- Column -->
                 </div>
             </div>
-                <!-- ============================================================== -->
-                <!-- End Container fluid  -->
-                <!-- ============================================================== -->
-            </div>
             <!-- ============================================================== -->
-            <!-- End Page wrapper  -->
+            <!-- End Container fluid  -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Wrapper -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
 
-        <?php include 'includes/footer.php' ?>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-        <script src="src/scripts/sanctionsScript.js"></script>
+    <?php include 'includes/footer.php' ?>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/sanctionsScript.js"></script>
 </body>
 
 </html>
