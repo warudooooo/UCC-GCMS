@@ -71,13 +71,38 @@ include 'includes/modals/services-modal.php'; ?>
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="POST">
                                     <div class="form-group">
+                                        <h3 class="col-md-12">Full Name</h3>
+                                        <div class="col-md-12">
+                                            <input name="sName" style="pointer-events: none;" type="text" placeholder="<?php echo $_POST["sName"]; ?>" value="<?php echo $_POST["sName"]; ?>" class="form-control form-control-line" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h3 class="col-md-12">Student Number</h3>
+                                        <div class="col-md-12">
+                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" value="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h3 class="col-md-12">Course</h3>
+                                        <div class="col-md-12">
+                                            <input name="sCourse" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sCourse ?>" value="<?php echo $sCourse ?>" class="form-control form-control-line" readonly>
+                                        </div>
+                                    </div>
+                                    <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $stEmail ?>" value="<?php echo $stEmail ?>" class="form-control form-control-line" readonly>
+                                    <div class="form-group">
+                                            <h4 class="col-md-12">Case</h4>
+                                            <div class="col-md-12">
+                                                <textarea rows="2" class="form-control form-control-line" name="sCase" required></textarea>
+                                            </div>
+                                        </div>
+                                    <div class="form-group">
                                         <h3 class="col-md-12">Select Sanction</h3>
                                         <div class="select-menu">
                                             <div class="select-btn">
                                                 <span class="sBtn-text" required>Select Sanction</span>
                                                 <i class="fas fa-caret-down"></i>
                                             </div>
-                                            <textarea class="sBtn-text-clone" name="sancType" required></textarea>
+                                            <textarea class="sBtn-text-clone" name="sSanction" required></textarea>
                                             <ul class="options">
                                                 <li class="option">
                                                     <span class="option-text">Disciplinary Sanction</span>
@@ -89,31 +114,13 @@ include 'includes/modals/services-modal.php'; ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h3 class="col-md-12">Full Name</h3>
-                                        <div class="col-md-12">
-                                            <input name="sName" style="pointer-events: none;" type="text" placeholder="<?php echo $_POST["sName"]; ?>" class="form-control form-control-line" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <h3 class="col-md-12">Student Number</h3>
-                                        <div class="col-md-12">
-                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <h3 class="col-md-12">Course</h3>
-                                        <div class="col-md-12">
-                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sCourse ?>" class="form-control form-control-line" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <h3 class="col-md-16">Sanction Types </h3>
                                         <div class="form-group">
                                             <label class="col-md-12 sanclbl"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
-                                            <label class="col-md-12 sanclbl"><b>Educational Sanctions:</b> Seminar, Assessment, Educational/Reflective Assignment </label>
+                                            <label class="col-md-12 sanclbl"><b>Educational Sanctions:</b> nameinar, Assessment, Educational/Reflective Assignment </label>
                                         </div>
                                         <div class="form-group">
-                                            <select name="sancKind" class="form-select" aria-label="Default select example" required>
+                                            <select name="sType" class="form-select" aria-label="Default select example" required>
                                                 <option class="option" value="" selected>Select type</option>
                                                 <option class="option" value="1">Probation</option>
                                                 <option class="option" value="2">Suspension</option>
@@ -124,9 +131,9 @@ include 'includes/modals/services-modal.php'; ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <h4 class="col-md-12">State Details</h4>
+                                            <h4 class="col-md-12">Message</h4>
                                             <div class="col-md-12">
-                                                <textarea rows="8" class="form-control form-control-line" name="sDetails" required></textarea>
+                                                <textarea rows="8" class="form-control form-control-line" name="sMessage" required></textarea>
                                             </div>
                                         </div>
                                         <!-- <div class="form-group">

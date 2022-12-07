@@ -86,7 +86,7 @@
 <!-- ================================================================================================================================================ -->
 <!-- ==================EDIT MODAL========================== -->
 <!-- ================================================================================================================================================ -->
-<form method="POST" action="" autocomplete="off">
+<form method="POST" action="student.php" autocomplete="off">
     <div class="modal fade" id="studenteditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">
@@ -124,7 +124,7 @@
 <!-- ================================================================================================================================================ -->
 <!-- ==================EDIT MODAL (UNVERIFIED STUDENT ACCOUNTS)========================== -->
 <!-- ================================================================================================================================================ -->
-<form method="POST" action="" autocomplete="off">
+<form method="POST" action="student.php" autocomplete="off">
     <div class="modal fade" id="unvstudenteditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">
@@ -163,7 +163,7 @@
 <!-- ================================================================================================================================================ -->
 <!-- ==================EDIT MODAL (ADMIN CREATED ACCOUNTS)========================== -->
 <!-- ================================================================================================================================================ -->
-<form method="POST" action="" autocomplete="off">
+<form method="POST" action="student.php" autocomplete="off">
     <div class="modal fade" id="admstudenteditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">

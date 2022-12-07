@@ -189,6 +189,7 @@ $(document).ready(function(){
                 $('#sName').val(data[1]);
                 $('#sNumber').val(data[2]);
                 $('#sCourse').val(data[3]);
+                $('#stEmail').val(data[4]);
 	});
 });
 

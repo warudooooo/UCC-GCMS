@@ -1,6 +1,6 @@
 <?php
 include 'sources/session.php';
-include 'sources/src-student.php';
+include 'sources/src-admissiontest-records.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -11,7 +11,7 @@ include 'sources/src-student.php';
     
 </head>
 <?php include 'includes/header.php';
-include 'includes/modals/services-modal.php'; ?>
+include 'includes/modals/addrecords-modal.php'; ?>
 
 <body>
     <!-- ============================================================== -->
@@ -29,7 +29,7 @@ include 'includes/modals/services-modal.php'; ?>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
         <?php include 'includes/topbar.php' ?>
-        <?php include 'includes/sidebar.php' ?>
+        <?php include 'includes/sidebar-admtest.php' ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -41,12 +41,12 @@ include 'includes/modals/services-modal.php'; ?>
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Admission Test Records</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Students</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Admission Test Records</li>
                                 </ol>
                             </nav>
                         </div>
@@ -63,20 +63,20 @@ include 'includes/modals/services-modal.php'; ?>
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
-                <div class="cards ">
-                    <div class="cards-single">
+                <!-- <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
+                <div class="cards "> -->
+                    <!-- <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
+                            // $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user'");
 
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            }
+                            // if ($total = mysqli_num_rows($load)) {
+                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            // } else {
+                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            // }
                             ?>
-                            <span>Student Lists</span>
+                            <span>Verified Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
@@ -85,15 +85,15 @@ include 'includes/modals/services-modal.php'; ?>
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != ''");
+                            // $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != ''");
 
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            }
+                            // if ($total = mysqli_num_rows($load)) {
+                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            // } else {
+                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            // }
                             ?>
-                            <span>Students with Disiplinary Sanctions</span>
+                            <span>Not Verified Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
@@ -102,23 +102,37 @@ include 'includes/modals/services-modal.php'; ?>
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND studentEmail=''");
+                            // $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND studentEmail=''");
 
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            }
+                            // if ($total = mysqli_num_rows($load)) {
+                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            // } else {
+                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            // }
                             ?>
-                            <span>Students with Educational Sanctions</span>
+                            <span>Admin Created Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
                 <div class="row">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Student Lists Students</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Attach Files</h4>
+                    <div class="col-lg-12 col-xlg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="form-horizontal form-material mx-2">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addrecordModal'>Attach File   </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Admission Test Records List</h4>
                         <div class="col-12">
                             <div class="card">
                                 <div class="table-responsive" style="padding: 20px;">
@@ -126,27 +140,33 @@ include 'includes/modals/services-modal.php'; ?>
                                         <thead class="table-dark">
                                             <tr>
                                                 <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
-                                                <th scope="col" style="color: #fff;">Course</th>
-                                                <th scope="col" style="color: #fff; display: none;">Email</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
+                                                <th scope="col" style="display: none;">#</th>
+                                                <th scope="col" style="color: #fff; width: 250px;"">Admission Test Year</th>
+                                                <th scope="col" style="color: #fff; width: 500px;"">File</th>
+                                                <th scope="col" style="color: #fff; width: 500px;"">Size</th>
+                                                <th scope="col" style="color: #fff; width: 500px;"">Total Downloads</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">Download</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_admissiontestrecords");
                                             $i = 1;
                                             while ($row = $load->fetch_assoc()) {
                                                 echo "<tr>
                                                  <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-transform: uppercase; display: none;'>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btnblue actionbtn' data-bs-toggle='modal' data-bs-target='#actionModal'>
-                                                    ACTION
+                                                 <td style='display: none;'>" . $row["admID"] . "</td>
+                                                 <td>" . $row["admYear"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["admFile"] . "</td>
+                                                 <td>" . $row["admSize"]/1000 . " KB</td>
+                                                 <td>" . $row["admDownloads"] . "</td>
+                                                 <td style='text-align:center;'><a href='admissiontest-records.php?file_id=" . $row["admID"] . "'><button type='button' class='btn btn-primary btnblue'>
+                                                 Download
                                                  </button></td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn recordsdeletebtn' data-bs-toggle='modal' data-bs-target='#recordsdeleteModal'>
+                                                DELETE
+                                                </button></td>
                                                  </tr>";
                                                 $i++;
                                             }
@@ -156,6 +176,7 @@ include 'includes/modals/services-modal.php'; ?>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <!-- ============================================================== -->
                     <!-- End PAge Content -->
                     <!-- ============================================================== -->
@@ -178,7 +199,7 @@ include 'includes/modals/services-modal.php'; ?>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="src/scripts/datatable.js"></script>
-        <script src="src/scripts/modal.js"></script>
+        <script src="src/scripts/admquestion.js"></script>
 </body>
 
 </html>

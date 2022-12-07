@@ -97,7 +97,7 @@ include 'includes/modals/scheduledcouns-modal.php';
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["counsellingType"] . "</td>
                                                  <td>" . date('m/d/Y h:i A', strtotime($row["counsellingSchedule"])) . "</td>
-                                                 <td>" .  date('m/d/Y h:i A', strtotime($row["dateApproved"])) . "</td>
+                                                 <td>" .  $row["dateApproved"] . "</td>
                                                  <td style='text-align:center;'><button type='button'  class='btn btn-primary scseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
                                                      SEE MORE
                                                  </button></td>

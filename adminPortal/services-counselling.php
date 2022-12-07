@@ -1,10 +1,12 @@
-<?php include 'sources/src-new-appointment.php'; ?>
+<?php include 'sources/session.php';
+include 'sources/src-services-counselling.php'; ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
-    <link rel="icon" href="src/images/uccLogo.png">
-    <link rel="stylesheet" type="text/css" href="src/styles/new-appointmentStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="src/styles/counsellingStyle.css">
 </head>
 <?php include 'includes/header.php' ?>
 
@@ -35,12 +37,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> New Appointment</h4>
+                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> Start Counseling</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Appointment</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Start Counseling</li>
                                 </ol>
                             </nav>
                         </div>
@@ -65,25 +67,28 @@
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="POST">
                                     <div class="form-group">
-                                        <label class="col-md-12">Appointment Type</label>
+                                        <label class="col-md-12">Counseling Type</label>
                                         <div class="select-menu">
                                             <div class="select-btn">
-                                                <span class="sBtn-text">Select your options</span>
+                                                <span class="sBtn-text">select your options</span>
                                                 <i class="fas fa-caret-down"></i>
                                             </div>
-                                            <textarea class="sBtn-text-clone" name="sOptions"></textarea>
+                                            <textarea class="sBtn-text-clone" name="cType"></textarea>
                                             <ul class="options">
                                                 <li class="option">
-                                                    <span class="option-text">Clearance</span>
+                                                    <span class="option-text">Behavior Theraphy</span>
                                                 </li>
                                                 <li class="option">
-                                                    <span class="option-text">Honorable Dismissal</span>
+                                                    <span class="option-text">Cognitive Theraphy</span>
                                                 </li>
                                                 <li class="option">
-                                                    <span class="option-text">Diploma</span>
+                                                    <span class="option-text">Holistic Theraphy</span>
                                                 </li>
                                                 <li class="option">
-                                                    <span class="option-text">Transcript of Records</span>
+                                                    <span class="option-text">Educational Counseling</span>
+                                                </li>
+                                                <li class="option">
+                                                    <span class="option-text">Mental Health Counseling</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -91,25 +96,32 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none;" type="text" placeholder="<?php echo $sName ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none;" type="text" name="sName" placeholder="<?php echo $_POST["sName"]; ?>" value="<?php echo $_POST["sName"]; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; text-transform: uppercase;"name="sNumber" type="text" placeholder="<?php echo $_POST["sNumber"]; ?>" value="<?php echo $_POST["sNumber"]; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; text-transform: uppercase; display: none;"name="stEmail" type="text" placeholder="<?php echo $_POST["stEmail"]; ?>" value="<?php echo $_POST["stEmail"]; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Reasons for Referral</label>
+                                        <label class="col-md-12">Course</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sReason" style="text-transform: uppercase;"></textarea>
+                                            <input style="pointer-events: none; text-transform: uppercase;"name="sCourse" type="text" placeholder="<?php echo $_POST["sCourse"]; ?>" value="<?php echo $_POST["sCourse"]; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">State Reasons/Concern</label>
+                                        <label class="col-md-12">Details</label>
                                         <div class="col-md-12">
-                                            <textarea rows="8" class="form-control form-control-line" name="sDetails"></textarea>
+                                            <textarea rows="5" class="form-control form-control-line" name="cDetails"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h3 class="col-md-12" style="margin-top: 10px;">Select Date and Time</h3>
+                                        <div class="col-md-12">
+                                            <input class="form-control" type="datetime-local" name="cSchedule" placeholder="MM/DD/YY" required>
                                         </div>
                                     </div>
                                     <!-- <div class="form-group">
@@ -145,7 +157,8 @@
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
-    <script src="src/scripts/new-appointmentScript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="src/scripts/counselling.js"></script>
 </body>
 
 </html>

@@ -73,27 +73,13 @@ if (mysqli_num_rows($query) > 0) {
                     <!-- End User Profile-->
                 </li>
                 <!-- User Profile-->
-                <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Admin</h4>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="student.php" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Student List</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-records.php" aria-expanded="false"><i class="mdi mdi-briefcase-account"></i><span class="hide-menu">Admission Test</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services.php" aria-expanded="false"><i class="mdi mdi-briefcase-account"></i><span class="hide-menu">Services</span></a></li>
+                <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Admission Test</h4>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-records.php" aria-expanded="false"><i class="mdi mdi-content-save-all-outline"></i><span class="hide-menu">Admission Test Records</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-questions.php" aria-expanded="false"><i class="mdi mdi-newspaper-variant-outline"></i><span class="hide-menu">Admission Test Questions</span></a></li>
                 <hr class="hr" />
-                <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Appointments</h4>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Appointments</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="scheduled-appointments.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Scheduled Appointments</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="deleted-appointments.php" aria-expanded="false"><i class="mdi mdi-trash-can    "></i><span class="hide-menu">Deleted Appointments</span></a></li>
-                <hr class="hr" />
-                <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Counsellings</h4>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pendingcounseling.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Counsellings</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="scheduled-counseling.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Scheduled Counselings</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="deleted-counseling.php" aria-expanded="false"><i class="mdi mdi-trash-can"></i><span class="hide-menu">Deleted Counselings</span></a></li>                
-                <hr class="hr" />
-                <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">History</h4>
-                <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="referral.php" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">Reason for Referral</span></a></li> -->
-                <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="course.php" aria-expanded="false"><i class="mdi mdi-book-open-page-variant"></i><span class="hide-menu">Course</span></a></li> -->
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-history.php" aria-expanded="false"><i class="mdi mdi-account-switch"></i><span class="hide-menu">Appointment History</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="counseling-history.php" aria-expanded="false"><i class="mdi mdi-account-clock"></i><span class="hide-menu">Counseling History</span></a></li>                
+                <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Proctors</h4>
+              
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="schedule.php" aria-expanded="false"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Appointment Schedule</span></a></li> -->
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-reports.php" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Appointment Reports</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="referral-reports.php" aria-expanded="false"><i class="mdi mdi-chart-pie"></i><span class="hide-menu">Referral Reports</span></a></li>-->

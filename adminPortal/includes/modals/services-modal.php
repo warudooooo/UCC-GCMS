@@ -24,11 +24,11 @@
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; pointer-events:none; text-transform: uppercase; text-transform: uppercase;" type="text" id="sCourse" name="sCourse" class="form-control form-control-line">
                     </div>
-                    <input style="display:none;" type="text" id="sPassword" name="sPassword" class="form-control form-control-line">
+                    <input style="display:none;" type="text" id="stEmail" name="stEmail" class="form-control form-control-line">
                 </div>
                 <div class="btn-sanctions" style="text-align: center; margin-bottom: 5%;">
                     <button class="btn btn-secondary btnblue" style="width: 40%;" value="sanction_btn" name="sanction_btn">Create a Sanction</button>
-                    <button class="btn btn-primary btngreen" style="width: 40%;" value="counsel_btn" name="counsel_btn">Counsel this student</button>
+                    <button class="btn btn-primary btngreen" style="width: 40%;" formaction="services-counselling.php" value="counsel_btn" name="counsel_btn">Counsel this student</button>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
