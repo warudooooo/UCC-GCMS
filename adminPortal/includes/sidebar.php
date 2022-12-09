@@ -61,9 +61,7 @@ if (mysqli_num_rows($query) > 0) {
                                 <h5 class="m-b-0 user-name font-medium"><?php echo $sName ?><i class="fa fa-angle-down"></i></h5>
                                 <small style="color: black;">Administrator</small>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd"">
-                                <a class=" dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                <div class="dropdown-divider"></div>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
@@ -77,7 +75,7 @@ if (mysqli_num_rows($query) > 0) {
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="student.php" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Student List</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-records.php" aria-expanded="false"><i class="mdi mdi-briefcase-account"></i><span class="hide-menu">Admission Test</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services.php" aria-expanded="false"><i class="mdi mdi-briefcase-account"></i><span class="hide-menu">Services</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services.php" aria-expanded="false"><i class="mdi mdi-toolbox-outline"></i><span class="hide-menu">Services</span></a></li>
                 <hr class="hr" />
                 <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Appointments</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Appointments</span></a></li>

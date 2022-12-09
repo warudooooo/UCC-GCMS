@@ -106,8 +106,8 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <div class="row">
                     <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> My Appointnents </h4>
-                    <div class="col-12">
-                        <div class="table-responsive" style="padding: 20px;">
+                    <div class="col-12" style="background-color:#fff;">
+                        <div class="table-responsive" style="padding:20px;">
                             <table id="dataTable" class="table table-bordered table-hover">
                                 <thead class="table-dark">
                                     <tr style="text-align: center;">

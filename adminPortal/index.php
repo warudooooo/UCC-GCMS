@@ -7,6 +7,7 @@ include 'sources/session.php';
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="src/styles/all.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
 </head>
@@ -64,21 +65,61 @@ include 'sources/session.php';
                 <!-- ============================================================== -->
                 <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
                 <div class="cards ">
-                <div class="cards-single">
+                    <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType='user'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="student.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="student.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
-                            <span>Scheduled Appointments</span></span>
+                            <span>Total Students</span>
                         </div>
                         <div>
-                            <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                            <a href="student.php" class="fill-div">
+                                <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND userType='user'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="student.php" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="student.php" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Verified Students</span>
+                        </div>
+                        <div>
+                            <a href="student.php" class="fill-div">
+                                <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND vkey != ''");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="student.php" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="student.php" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Not Verified Students</span>
+                        </div>
+                        <div>
+                            <a href="student.php" class="fill-div">
+                                <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;">
+                            </a></span>
                         </div>
                     </div>
                     <div class="cards-single">
@@ -87,49 +128,55 @@ include 'sources/session.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="appointment.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="appointment.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
                             <span>Pending Appointments</span></span>
                         </div>
                         <div>
-                            <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                        <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_appointmenthistory");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            } else {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            }
-                            ?>
-                            <span>Completed Appointments</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
+                            <a href="appointment.php" class="fill-div">
+                                <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
+                            </a>
                         </div>
                     </div>
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedcounsellings");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="scheduled-appointments.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="scheduled-appointments.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
-                            <span>Scheduled Counselings</span></span>
+                            <span>Scheduled Appointments</span></span>
                         </div>
                         <div>
-                            <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                            <a href="scheduled-appointments.php" class="fill-div">
+                                <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;">
+                            </a></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_appointmenthistory");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="appointment-history.php" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="appointment-history.php" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Completed Appointments</span>
+                        </div>
+                        <div>
+                            <a href="appointment-history.php" class="fill-div">
+                                <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
+                            </a>
                         </div>
                     </div>
                     <div class="cards-single">
@@ -138,66 +185,56 @@ include 'sources/session.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingcounsellings");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="pendingcounseling.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<a href="pendingcounseling.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
                             <span>Pending Counselings</span>
                         </div>
                         <div>
-                            <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
+                            <a href="pendingcounseling.php" class="fill-div">
+                                <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
+
+                            </a>
                         </div>
                     </div>
                     <div class="cards-single">
                         <div>
-                        <?php
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedcounsellings");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="scheduled-counseling.php" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="scheduled-counseling.php" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Scheduled Counselings</span>
+                        </div>
+                        <div>
+                            <a href="scheduled-counseling.php" class="fill-div">
+                                <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_counsellinghistory");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                                echo '<a href="counseling-history.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
+                                echo '<a href="counseling-history.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
                             <span>Completed Counselings</span>
                         </div>
                         <div>
-                            <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                        <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND userType='user'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            } else {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            }
-                            ?>
-                            <span>Verified Students</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                        <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND vkey != ''");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            } else {
-                                echo '<a href="#" class="fill-div">'.$total.'</a>';
-                            }
-                            ?>
-                            <span>Not Verified Students</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
+                            <a href="counseling-history.php" class="fill-div">
+                                <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
+                            </a>
                         </div>
                     </div>
                 </div>

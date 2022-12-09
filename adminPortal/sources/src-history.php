@@ -17,5 +17,3 @@ if (isset($_POST['counsubmit'])) {
     $result = mysqli_query($mysqli, $delete);
 }
 ?>
-
-?>

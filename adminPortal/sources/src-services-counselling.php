@@ -1,10 +1,11 @@
 <?php 
 if (isset($_POST['counsel_btn'])) {
 
-    $sName = $_POST["sName"];
-    $sNumber = $_POST["sNumber"];
-    $sCourse = $_POST["sCourse"];
-    $stEmail = $_POST["stEmail"];
+    $_SESSION['sName'] = $_POST["sName"];
+    $_SESSION['sNumber'] = $_POST["sNumber"];
+    $_SESSION['sCourse'] = $_POST["sCourse"];
+    $_SESSION['stEmail'] = $_POST["stEmail"];
+
 
 }
 

@@ -71,9 +71,9 @@ include 'includes/modals/student-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             }
                             ?>
                             <span>Verified Students</span>
@@ -88,9 +88,9 @@ include 'includes/modals/student-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != ''");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             }
                             ?>
                             <span>Not Verified Students</span>
@@ -105,9 +105,9 @@ include 'includes/modals/student-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND studentEmail=''");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1 style="color:white;">' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1style="color:white;">' . $total . '</h1>';
                             }
                             ?>
                             <span>Admin Created Students</span>

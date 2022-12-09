@@ -26,7 +26,7 @@ include 'sources/src-services-counselling.php'; ?>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
         <?php include 'includes/topbar.php' ?>
-        <?php include 'includes/sidebar.php' ?>
+        <?php include 'includes/sidebar-services.php' ?>
 
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -96,26 +96,26 @@ include 'sources/src-services-counselling.php'; ?>
                                     <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none;" type="text" name="sName" placeholder="<?php echo $_POST["sName"]; ?>" value="<?php echo $_POST["sName"]; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none;" type="text" name="sName" placeholder="<?php echo $_SESSION['sName']; ?>" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none; text-transform: uppercase;"name="sNumber" type="text" placeholder="<?php echo $_POST["sNumber"]; ?>" value="<?php echo $_POST["sNumber"]; ?>" class="form-control form-control-line" readonly>
-                                            <input style="pointer-events: none; text-transform: uppercase; display: none;"name="stEmail" type="text" placeholder="<?php echo $_POST["stEmail"]; ?>" value="<?php echo $_POST["stEmail"]; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; text-transform: uppercase;" name="sNumber" type="text" placeholder="<?php echo  $_SESSION['sNumber']; ?>" value="<?php echo  $_SESSION['sNumber']; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; text-transform: uppercase; display: none;" name="stEmail" type="text" placeholder="<?php echo $_SESSION['stEmail']; ?>" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Course</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none; text-transform: uppercase;"name="sCourse" type="text" placeholder="<?php echo $_POST["sCourse"]; ?>" value="<?php echo $_POST["sCourse"]; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; text-transform: uppercase;" name="sCourse" type="text" placeholder="<?php echo $_SESSION['sCourse']; ?>" value="<?php echo $_SESSION['sCourse']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Details</label>
                                         <div class="col-md-12">
-                                            <textarea rows="5" class="form-control form-control-line" name="cDetails"></textarea>
+                                            <textarea rows="5" class="form-control form-control-line" name="cDetails" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">

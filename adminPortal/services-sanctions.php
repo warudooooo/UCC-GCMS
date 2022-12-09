@@ -29,7 +29,7 @@ include 'includes/modals/services-modal.php'; ?>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
         <?php include 'includes/topbar.php' ?>
-        <?php include 'includes/sidebar.php' ?>
+        <?php include 'includes/sidebar-services.php' ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -116,8 +116,8 @@ include 'includes/modals/services-modal.php'; ?>
                                     <div class="form-group">
                                         <h3 class="col-md-16">Sanction Types </h3>
                                         <div class="form-group">
-                                            <label class="col-md-12 sanclbl"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
-                                            <label class="col-md-12 sanclbl"><b>Educational Sanctions:</b> nameinar, Assessment, Educational/Reflective Assignment </label>
+                                            <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
+                                            <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Educational Sanctions:</b> nameinar, Assessment, Educational/Reflective Assignment </label>
                                         </div>
                                         <div class="form-group">
                                             <select name="sType" class="form-select" aria-label="Default select example" required>

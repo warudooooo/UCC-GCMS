@@ -29,7 +29,7 @@ include 'includes/modals/services-modal.php'; ?>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
         <?php include 'includes/topbar.php' ?>
-        <?php include 'includes/sidebar.php' ?>
+        <?php include 'includes/sidebar-services.php' ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
