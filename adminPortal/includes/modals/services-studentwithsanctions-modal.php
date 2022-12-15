@@ -1,10 +1,10 @@
 <link rel="icon" href="src/images/uccLogo.png">
 <link rel="stylesheet" href="src/styles/customStyle.css">
 <!-- ================================================================================================================================================ -->
-<!-- ==================ACTION MODAL========================== -->
+<!-- ==================Details MODAL========================== -->
 <!-- ================================================================================================================================================ -->
 <form method="POST" action="services-sanctions.php" autocomplete="off">
-    <div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content approve">
                 <div class="modal-header">
@@ -12,7 +12,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <label class="col-md-12" style="margin-top:10px;">Row Name</label>
+                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; pointer-events:none;" type="text" name="sName" id="sName" class="form-control form-control-line">
                     </div>

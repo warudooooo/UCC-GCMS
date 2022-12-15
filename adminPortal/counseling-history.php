@@ -74,7 +74,7 @@ include 'includes/modals/counselinghistory-modal.php';
                                             <th scope="col" style="color: #fff; width: 100px;">Student Name</th>
                                             <th scope="col" style="color: #fff; width: 120px;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff;">Email</th>
+                                            <th scope="col" style="color: #fff; display: none;">Email</th>
                                             <th scope="col" style="color: #fff;">Counseling Type</th>
                                             <th scope="col" style="color: #fff;">Person In Charge</th>
                                             <th scope="col" style="color: #fff;">Date Completed</th>
@@ -94,7 +94,7 @@ include 'includes/modals/counselinghistory-modal.php';
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
+                                                 <td style='display: none'>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["counsellingType"] . "</td>
                                                  <td>" . $row["personIncharge"] . "</td>
                                                  <td>" . $row["dateCompleted"] . "</td>

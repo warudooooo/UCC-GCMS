@@ -73,12 +73,12 @@ include 'includes/modals/pendingapp-modal.php';
                                         <tr>
                                             <th scope="col" style="color: #fff;">#</th>
                                             <th scope="col" style="color: #fff; display: none;">id</th>
+                                            <th scope="col" style="color: #fff;">Meeting Type</th>
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff;">Email</th>
+                                            <th scope="col" style="color: #fff; display: none;">Email</th>
                                             <th scope="col" style="color: #fff;">Referral Reason</th>
-                                            <th scope="col" style="color: #fff;">Meeting Type</th>
                                             <th scope="col" style="color: #fff;">Date Created</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Approve</th>
@@ -94,12 +94,12 @@ include 'includes/modals/pendingapp-modal.php';
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td style='display: none'>" . $row["appointmentID"] . "</td>
+                                                 <td>" . $row["appointmentType"] . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
+                                                 <td style='display: none'>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
-                                                 <td>" . $row["appointmentType"] . "</td>
                                                  <td>" . $row["requestDate"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>
                                                      SEE MORE

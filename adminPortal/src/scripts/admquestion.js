@@ -50,6 +50,48 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('.proceditbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#pID').val(data[1]);
+                $('#pName').val(data[2]);
+	});
+});
+
+$(document).ready(function(){
+	$('.viewschedbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#peditID').val(data[1]);
+                $('#peditName').val(data[2]);
+	});
+});
+
+$(document).ready(function(){
+	$('.procdelbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#pdelID').val(data[1]);
+                $('#pdelName').val(data[2]);
+	});
+});
+
 if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
 }

@@ -72,11 +72,11 @@ include 'includes/modals/deletedcouns-modal.php';
                                         <tr>
                                         <th scope="col" style="color: #fff;">#</th>
                                             <th scope="col" style="color: #fff; display: none;">id</th>
+                                            <th scope="col" style="color: #fff;">Counseling Type</th>
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff;">Email</th>
-                                            <th scope="col" style="color: #fff;">Counseling Type</th>
+                                            <th scope="col" style="color: #fff; display: none;">Email</th>
                                             <th scope="col" style="color: #fff;">Date Created</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Restore</th>
@@ -92,11 +92,11 @@ include 'includes/modals/deletedcouns-modal.php';
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td style='display: none'>" . $row["ID"] . "</td>
+                                                 <td>" . $row["counsellingType"] . "</td>
                                                  <td>" . $row["requesterName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
-                                                 <td>" . $row["counsellingType"] . "</td>
+                                                 <td style='display: none;'>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["dateCreated"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>
                                                      SEE MORE
@@ -127,12 +127,12 @@ include 'includes/modals/deletedcouns-modal.php';
                                 <thead class="table-dark">
                                         <tr>
                                             <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Counseling Type</th>
                                             <th scope="col" style="color: #fff; display: none;">id</th>
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff;">Email</th>
-                                            <th scope="col" style="color: #fff;">Counseling Type</th>
+                                            <th scope="col" style="color: #fff; display: none;">Email</th>
                                             <th scope="col" style="color: #fff;">Schedule</th>
                                             <th scope="col" style="color: #fff;">Date Approved</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
@@ -149,11 +149,11 @@ include 'includes/modals/deletedcouns-modal.php';
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td style='display: none'>" . $row["counsellingID"] . "</td>
+                                                 <td>" . $row["counsellingType"] . "</td>
                                                  <td>" . $row["requesterName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
-                                                 <td>" . $row["counsellingType"] . "</td>
+                                                 <td style='display: none;'>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["counsellingSchedule"] . "</td>
                                                  <td>" . $row["dateApproved"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn scseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>

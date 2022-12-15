@@ -1,11 +1,11 @@
 <?php 
+$msg = "";
 if (isset($_POST['counsel_btn'])) {
 
     $_SESSION['sName'] = $_POST["sName"];
     $_SESSION['sNumber'] = $_POST["sNumber"];
     $_SESSION['sCourse'] = $_POST["sCourse"];
     $_SESSION['stEmail'] = $_POST["stEmail"];
-
 
 }
 
@@ -19,12 +19,14 @@ if (isset($_POST['submit'])) {
     $cType = $mysqli->real_escape_string($_POST['cType']);
     $cSchedule = $mysqli->real_escape_string($_POST['cSchedule']);
 
+    if($cSchedule == "" || $cType == ""){
+        $msg = "<div class='eml' style='margin-bottom: 10px:'>Please fill up all fields.</div>";
+    }else{
+        $add = "INSERT INTO tbl_approvedcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingSchedule,counsellingType,counsellingDetails)
+        VALUES('$sNumber','$sName','$sCourse','$stEmail','$cSchedule','$cType','$cDetails')";
+        $result = mysqli_query($mysqli, $add);
+    }
 
-	$add = "INSERT INTO tbl_approvedcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingSchedule,counsellingType,counsellingDetails)
-    VALUES('$sNumber','$sName','$sCourse','$stEmail','$cSchedule','$cType','$cDetails')";
-    $result = mysqli_query($mysqli, $add);
-
-    header("Location: services.php");
 }
 
 ?>

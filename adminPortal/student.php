@@ -126,6 +126,7 @@ include 'includes/modals/student-modal.php'; ?>
                                             <div class="form-group">
                                                 <div class="col-sm-12">
                                                 <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addstudentModal'>Add Student</button>
+                                                <?php echo $msg; ?>
                                                 </div>
                                             </div>
                                         </form>

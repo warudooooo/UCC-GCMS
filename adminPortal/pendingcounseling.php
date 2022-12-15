@@ -76,7 +76,7 @@ include 'includes/modals/pendingcouns-modal.php';
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
-                                            <th scope="col" style="color: #fff;">Email</th>
+                                            <th scope="col" style="color: #fff; display: none;">Email</th>
                                             <th scope="col" style="color: #fff;">Date Created</th>
                                             <th scope="col" style="color: #fff;">More Details</th>
                                             <th scope="col" style="color: #fff;">Approve</th>
@@ -96,7 +96,7 @@ include 'includes/modals/pendingcouns-modal.php';
                                                  <td>" . $row["requesterName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
+                                                 <td style='display: none;'>" . $row["studentEmail"] . "</td>
                                                  <td>" . $row["dateCreated"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
                                                      SEE MORE

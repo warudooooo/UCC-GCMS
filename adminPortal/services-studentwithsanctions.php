@@ -11,7 +11,7 @@ include 'sources/src-student.php';
     
 </head>
 <?php include 'includes/header.php';
-include 'includes/modals/services-modal.php'; ?>
+include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
 
 <body>
     <!-- ============================================================== -->
@@ -41,7 +41,7 @@ include 'includes/modals/services-modal.php'; ?>
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students with Sanctions</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -68,7 +68,7 @@ include 'includes/modals/services-modal.php'; ?>
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="#" class="fill-div">' . $total . '</a>';
@@ -76,7 +76,7 @@ include 'includes/modals/services-modal.php'; ?>
                                 echo '<a href="#" class="fill-div">' . $total . '</a>';
                             }
                             ?>
-                            <span>Student Lists</span>
+                            <span>Total Student with Sanctions</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
@@ -118,7 +118,7 @@ include 'includes/modals/services-modal.php'; ?>
                     </div>
                 </div>
                 <div class="row">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Student Lists Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Students with Sanctions</h4>
                         <div class="col-12">
                             <div class="card">
                                 <div class="table-responsive" style="padding: 20px;">
@@ -129,13 +129,15 @@ include 'includes/modals/services-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Student Name</th>
                                                 <th scope="col" style="color: #fff;">Student Number</th>
                                                 <th scope="col" style="color: #fff;">Course</th>
+                                                <th scope="col" style="color: #fff;">Sanction</th>
                                                 <th scope="col" style="color: #fff; display: none;">Email</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
+                                                <th scope="col" style="color: #fff;">Details</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">View Sanction</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions");
                                             $i = 1;
                                             while ($row = $load->fetch_assoc()) {
                                                 echo "<tr>
@@ -143,8 +145,12 @@ include 'includes/modals/services-modal.php'; ?>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["sanctionType"] . "</td>
                                                  <td style='text-transform: uppercase; display: none;'>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btnblue actionbtn' data-bs-toggle='modal' data-bs-target='#actionModal'>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#'>
+                                                     DETAILS
+                                                 </button></td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btnblue actionbtn' data-bs-toggle='modal' data-bs-target='#'>
                                                     ACTION
                                                  </button></td>
                                                  </tr>";

@@ -7,6 +7,7 @@ include 'sources/src-services-counselling.php'; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="src/styles/counsellingStyle.css">
+    <link rel="icon" href="src/images/uccLogo.png">
 </head>
 <?php include 'includes/header.php' ?>
 

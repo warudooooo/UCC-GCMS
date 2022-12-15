@@ -22,12 +22,12 @@ $(document).ready(function(){
 
                 console.log(data);
                 $('#appointmentID').val(data[1]);
-                $('#studentName').val(data[2]);
-                $('#studentNumber').val(data[3]);
-                $('#studentCourse').val(data[4]);
-                $('#studentEmail').val(data[5]);
-                $('#appointmentReason').val(data[6]);
-                $('#appointmentType').val(data[7]);
+                $('#studentName').val(data[3]);
+                $('#studentNumber').val(data[4]);
+                $('#studentCourse').val(data[5]);
+                $('#studentEmail').val(data[6]);
+                $('#appointmentReason').val(data[7]);
+                $('#appointmentType').val(data[2]);
                 $('#Details').val(data[12]);
 	});
 });
@@ -42,12 +42,12 @@ $(document).ready(function(){
 
                 console.log(data);
                 $('#appointmentID').val(data[1]);
-                $('#studentName').val(data[2]);
-                $('#studentNumber').val(data[3]);
-                $('#studentCourse').val(data[4]);
-                $('#studentEmail').val(data[5]);
-                $('#appointmentReason').val(data[6]);
-                $('#appointmentType').val(data[7]);
+                $('#studentName').val(data[3]);
+                $('#studentNumber').val(data[4]);
+                $('#studentCourse').val(data[5]);
+                $('#studentEmail').val(data[6]);
+                $('#appointmentReason').val(data[7]);
+                $('#appointmentType').val(data[2]);
                 $('#Details').val(data[12]);
 	});
 });
@@ -145,12 +145,12 @@ $(document).ready(function(){
 
                 console.log(datas);
                 $('#appID').val(datas[1]);
-                $('#appsName').val(datas[2]);
-                $('#appsNumber').val(datas[3]);
-                $('#appsCourse').val(datas[4]);
-                $('#appsEmail').val(datas[5]);
-                $('#appReason').val(datas[6]);
-                $('#appType').val(datas[7]);
+                $('#appsName').val(datas[3]);
+                $('#appsNumber').val(datas[4]);
+                $('#appsCourse').val(datas[5]);
+                $('#appsEmail').val(datas[6]);
+                $('#appReason').val(datas[7]);
+                $('#appType').val(datas[2]);
                 $('#appDate').val(datas[8]);
                 $('#appDetails').val(datas[12]);
 	});
@@ -166,12 +166,12 @@ $(document).ready(function(){
 
                 console.log(datas);
                 $('#appID').val(datas[1]);
-                $('#appsName').val(datas[2]);
-                $('#appsNumber').val(datas[3]);
-                $('#appsCourse').val(datas[4]);
-                $('#appsEmail').val(datas[5]);
-                $('#appReason').val(datas[6]);
-                $('#appType').val(datas[7]);
+                $('#appsName').val(datas[3]);
+                $('#appsNumber').val(datas[4]);
+                $('#appsCourse').val(datas[5]);
+                $('#appsEmail').val(datas[6]);
+                $('#appReason').val(datas[7]);
+                $('#appType').val(datas[2]);
                 $('#appDate').val(datas[8]);
                 $('#appDetails').val(datas[12]);
 	});

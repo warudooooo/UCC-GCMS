@@ -122,12 +122,12 @@ include 'includes/modals/services-modal.php'; ?>
                                         <div class="form-group">
                                             <select name="sType" class="form-select" aria-label="Default select example" required>
                                                 <option class="option" value="" selected>Select type</option>
-                                                <option class="option" value="1">Probation</option>
-                                                <option class="option" value="2">Suspension</option>
-                                                <option class="option" value="3">Dismissal</option>
-                                                <option class="option" value="1">Seminar</option>
-                                                <option class="option" value="2">Assessment</option>
-                                                <option class="option" value="3">Educational/Reflective Assignment</option>
+                                                <option class="option" value="Probation">Probation</option>
+                                                <option class="option" value="Suspension">Suspension</option>
+                                                <option class="option" value="Dismissal">Dismissal</option>
+                                                <option class="option" value="Seminar">Seminar</option>
+                                                <option class="option" value="Assessment">Assessment</option>
+                                                <option class="option" value="Educational/Reflective Assignment">Educational/Reflective Assignment</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

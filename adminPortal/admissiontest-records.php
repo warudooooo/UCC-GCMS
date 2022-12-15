@@ -1,4 +1,5 @@
 <?php
+ $msg = "";
 include 'sources/session.php';
 include 'sources/src-admissiontest-records.php';
 ?>
@@ -118,14 +119,15 @@ include 'includes/modals/addrecords-modal.php'; ?>
                     </div> -->
                 <!-- </div> -->
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Attach Files</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Attach Files<i style="margin-left: 10px;"><b>Reminder: Only Documents and PDF Files only</b></i></h4>
                     <div class="col-lg-12 col-xlg-12 col-md-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <form class="form-horizontal form-material mx-2">
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addrecordModal'>Attach File   </button>
+                                            <div class="form-group" style="display: inline-block;">
+                                                <div class="col-sm-12" style="display: inline-block;">
+                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addrecordModal'>Attach File</button>
+                                                <?php echo $msg; ?>
                                                 </div>
                                             </div>
                                         </form>

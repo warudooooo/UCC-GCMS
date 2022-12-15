@@ -21,13 +21,13 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-                $('#counselingID').val(data[11]);
+                $('#counselingType').val(data[1]);
                 $('#studentName').val(data[2]);
                 $('#studentNumber').val(data[3]);
                 $('#studentCourse').val(data[4]);
                 $('#studentEmail').val(data[5]);
-                $('#counselingType').val(data[1]);
                 $('#Details').val(data[10]);
+                 $('#counselingID').val(data[11]);
 	});
 });
 
@@ -76,11 +76,11 @@ $(document).ready(function(){
 
                 console.log(data);
                 $('#scID').val(data[11]);
-                $('#studentName').val(data[1]);
-                $('#studentNumber').val(data[2]);
-                $('#studentCourse').val(data[3]);
-                $('#studentEmail').val(data[4]);
-                $('#scType').val(data[5]);
+                $('#studentName').val(data[2]);
+                $('#studentNumber').val(data[3]);
+                $('#studentCourse').val(data[4]);
+                $('#studentEmail').val(data[5]);
+                $('#scType').val(data[1]);
                 $('#Details').val(data[11]);
 	});
 });
@@ -95,13 +95,13 @@ $(document).ready(function(){
 
                 console.log(data);
                 $('#scdID').val(data[12]);
-                $('#scdName').val(data[1]);
-                $('#scdNumber').val(data[2]);
-                $('#scdCourse').val(data[3]);
-                $('#scdEmail').val(data[4]);
+                $('#scdName').val(data[2]);
+                $('#scdNumber').val(data[3]);
+                $('#scdCourse').val(data[4]);
+                $('#scdEmail').val(data[5]);
                 $('#scdSchedule').val(data[6]);
                 $('#scdDateapproved').val(data[7]);
-                $('#scdType').val(data[5]);
+                $('#scdType').val(data[1]);
                 $('#scdDetails').val(data[11]);
 
 	});
