@@ -1,6 +1,6 @@
 <?php
 include 'sources/session.php';
-include 'sources/src-student.php';
+include 'sources/src-services-sanctions.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -71,9 +71,9 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             }
                             ?>
                             <span>Total Student with Sanctions</span>
@@ -88,9 +88,9 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Disciplinary Sanction'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             }
                             ?>
                             <span>Students with Disiplinary Sanctions</span>
@@ -105,9 +105,9 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Educational Sanction'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1 style="color: white;">' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1 style="color: white;">' . $total . '</h1>';
                             }
                             ?>
                             <span>Students with Educational Sanctions</span>
@@ -127,12 +127,15 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                             <tr>
                                                 <th scope="col" style="color: #fff;">#</th>
                                                 <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
+                                                <th scope="col" style="color: #fff; display: none;">Student Number</th>
                                                 <th scope="col" style="color: #fff;">Course</th>
+                                                <th scope="col" style="color: #fff; display: none;">Case</th>
+                                                <th scope="col" style="color: #fff;">Sanction Type</th>
                                                 <th scope="col" style="color: #fff;">Sanction</th>
+                                                <th scope="col" style="color: #fff; display: none;">Message</th>
                                                 <th scope="col" style="color: #fff; display: none;">Email</th>
                                                 <th scope="col" style="color: #fff;">Details</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">View Sanction</th>
+                                                <th scope="col" style="color: #fff; display: none;">#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -143,16 +146,17 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                                 echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
+                                                 <td style='text-transform: uppercase; display: none;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td style='text-transform: uppercase; display: none;'>" . $row["sanctionCase"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["sanction"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["sanctionType"] . "</td>
+                                                 <td style='text-transform: uppercase; display: none;'>" . $row["sanctionMessage"] . "</td>
                                                  <td style='text-transform: uppercase; display: none;'>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#'>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn' data-bs-toggle='modal' data-bs-target='#detailsModal'>
                                                      DETAILS
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btnblue actionbtn' data-bs-toggle='modal' data-bs-target='#'>
-                                                    ACTION
-                                                 </button></td>
+                                                 <td style='display: none;'>" . $row["sanctionID"] . "</td>
                                                  </tr>";
                                                 $i++;
                                             }
@@ -184,7 +188,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="src/scripts/datatable.js"></script>
-        <script src="src/scripts/modal.js"></script>
+        <script src="src/scripts/sanction.js"></script>
 </body>
 
 </html>

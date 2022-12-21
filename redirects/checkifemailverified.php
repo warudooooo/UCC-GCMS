@@ -7,10 +7,10 @@ if (isset($_GET['verification'])) {
 		$del = mysqli_query($mysqli, "UPDATE tbl_students SET studentVerified='yes' WHERE vkey='{$_GET['verification']}'");
 		$query = mysqli_query($mysqli, "UPDATE tbl_students SET vkey='' WHERE vkey='{$_GET['verification']}'");
 		if ($query) {
-			header("Location: emailverified.php");
+			header("Location: ../emailverified.php");
 		}
 	} else {
-		header("Location: ../index.php");
+		header("Location: ../../index.php");
 	}
 }
 ?>

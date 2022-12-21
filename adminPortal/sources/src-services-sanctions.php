@@ -1,10 +1,10 @@
 <?php 
 if (isset($_POST['sanction_btn'])) {
 
-    $sName = $_POST["sName"];
-    $sNumber = $_POST["sNumber"];
-    $sCourse = $_POST["sCourse"];
-    $stEmail = $_POST["stEmail"];
+    $sancName = $_POST["sName"];
+    $sancNumber = $_POST["sNumber"];
+    $sancCourse = $_POST["sCourse"];
+    $sanctEmail = $_POST["stEmail"];
 
 }
 

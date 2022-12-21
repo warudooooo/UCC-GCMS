@@ -19,7 +19,6 @@ if (isset($_POST['submit'])) {
 	$sNumber = $_POST['sNumberPHP'];
 	$sPassword = md5($_POST['sPasswordPHP']);
 
-	$mysqli = $mysqli;
 	$sNumber = $mysqli->real_escape_string($sNumber);
 	$sPassword = $mysqli->real_escape_string($sPassword);
 

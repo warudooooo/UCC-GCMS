@@ -70,6 +70,26 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+	$('.markasactivebtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#actID').val(data[0]);
+                $('#actName').val(data[1]);
+                $('#actNumber').val(data[2]);
+                $('#actCourse').val(data[4]);
+                $('#actEmail').val(data[3]);
+                $('#actPassword').val(data[5]);
+                $('#actvkey').val(data[6]);
+                $('#actVerified').val(data[7]);
+	});
+});
+
+$(document).ready(function(){
 	$('.studentdeletebtn').on('click', function(){
 		$tr = $(this).closest('tr');
 
@@ -82,6 +102,27 @@ $(document).ready(function(){
                 $('#studentName').val(data[1]);
                 $('#studentNumber').val(data[2]);
                 $('#studentCourse').val(data[4]);
+                $('#studentEmail').val(data[3]);
+                $('#studentPassword').val(data[5]);
+                $('#vkey').val(data[6]);
+                $('#sVerified').val(data[7]);
+	});
+});
+
+$(document).ready(function(){
+	$('.studentdeletepermanentbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#delID').val(data[0]);
+                $('#delName').val(data[1]);
+                $('#delNumber').val(data[2]);
+                $('#delEmail').val(data[3]);
+                $('#delCourse').val(data[4]);
 	});
 });
 

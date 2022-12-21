@@ -179,7 +179,8 @@ label {
 
 }
 
-.btnSignin {
+.btnSignin,
+.btnReset {
 	display: inline-block;
 	width: 100%;
 	height: 43px;
@@ -193,7 +194,8 @@ label {
 	transition: 0.3s;
 }
 
-.btnSignin:hover {
+.btnSignin:hover,
+.btnReset:hover {
 	background-color: #f79d65;
 }
 

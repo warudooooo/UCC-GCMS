@@ -85,6 +85,9 @@
                                                 <li class="option">
                                                     <span class="option-text">Transcript of Records</span>
                                                 </li>
+                                                <li class="option">
+                                                    <span class="option-text">Others (Explain details below)</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

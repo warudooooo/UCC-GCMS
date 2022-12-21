@@ -16,5 +16,6 @@ if (mysqli_num_rows($query) > 0) {
     $row = mysqli_fetch_assoc($query);
 
     $sName = $row['studentName'];
+    $admName = $row['studentName'];
 }
 ?>

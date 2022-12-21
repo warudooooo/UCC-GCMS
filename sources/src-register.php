@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+
 //DB Connect
 include 'config.php';
 $msg = "";
@@ -25,11 +26,11 @@ if (isset($_POST['submit'])) {
 	$vkey = md5(time() . $sName);
 
 	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='{$sEmail}'")) > 0) {
-		$msg = "<div class='eml' style='margin-left:20px; margin-bottom: 10px; margin-left20pxp: -20px;'>This email adress is already in use. Please use a different one.</div>";
+		$msg = "<div class='eml' style='margin-left:20px; margin-bottom: 10px;'>This email adress is already in use. Please use a different one.</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='yes'")) > 0) {
-		$msg = "<div class='eml' style='margin-left-b20pxttom: -5px; margin-left-t20pxp: -20px;'>VERIFIED NA</div>";
+		$msg = "<div class='eml' style='margin-left: 20px; margin-botttom: 5px;'>This student already exist and verified.</div>";
 	}else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
-		$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='no',userType='user' WHERE studentNumber='$sNumber'";
+		$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='no',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
 		$result = mysqli_query($mysqli, $sql);
 		if ($result) {
 			$mail = new PHPMailer(true);
@@ -217,7 +218,7 @@ if (isset($_POST['submit'])) {
 									</tr>
 									<tr>
 										<td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-											<p style='margin-left: 20px; margin-top: 10; margin-bottom: 25px;'>Regards,<br>UCC Guidance redirects/checkifemailverified.php/and Counseling</p>
+											<p style='margin-left: 20px; margin-top: 10; margin-bottom: 25px;'>Regards,<br>UCC Guidance and Counseling</p>
 										</td>
 									</tr>
 								</table>
@@ -261,7 +262,8 @@ if (isset($_POST['submit'])) {
 		}
 	} else {
 		//Insert to DB
-		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType) VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user')";
+		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType,userStatus,resetCode) 
+		VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user','1','')";
 		$result = mysqli_query($mysqli, $sql);
 		if ($result) {
 			$mail = new PHPMailer(true);

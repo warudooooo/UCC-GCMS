@@ -65,6 +65,23 @@ include 'includes/modals/student-modal.php'; ?>
                 <!-- ============================================================== -->
                 <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
                 <div class="cards ">
+                <div class="cards-single">
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType = 'user'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<h1>' . $total . '</h1>';
+                            } else {
+                                echo '<h1>' . $total . '</h1>';
+                            }
+                            ?>
+                            <span>Total Students</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
                     <div class="cards-single">
                         <div>
                             <?php
@@ -105,12 +122,29 @@ include 'includes/modals/student-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND studentEmail=''");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1 style="color:white;">' . $total . '</h1>';
+                                echo '<h1>' . $total . '</h1>';
                             } else {
-                                echo '<h1style="color:white;">' . $total . '</h1>';
+                                echo '<h1>' . $total . '</h1>';
                             }
                             ?>
                             <span>Admin Created Students</span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userStatus='0'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<h1 style="color:white;">' . $total . '</h1>';
+                            } else {
+                                echo '<h1 style="color:white;">' . $total . '</h1>';
+                            }
+                            ?>
+                            <span>Inactive Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
@@ -146,13 +180,15 @@ include 'includes/modals/student-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Email</th>
                                                 <th scope="col" style="color: #fff;">Course</th>
                                                 <th scope="col" style="color: #fff; display:none;">PASS</th>
+                                                <th scope="col" style="color: #fff; display:none;">vkey</th>
+                                                <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user'");
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user' AND userStatus = '1'");
                                             $i = 1;
                                             while ($row = $load->fetch_assoc()) {
                                                 echo "<tr>
@@ -162,11 +198,13 @@ include 'includes/modals/student-modal.php'; ?>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='display:none;'>" . $row["studentPassword"] . "</td>
+                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
+                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary studenteditbtn' data-bs-toggle='modal' data-bs-target='#studenteditModal'>
                                                     EDIT
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
-                                                     DELETE
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#markasInactiveModal'>
+                                                     Mark as Inactive
                                                  </button></td>
                                                  </tr>";
                                                 $i++;
@@ -191,13 +229,14 @@ include 'includes/modals/student-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Course</th>
                                                 <th scope="col" style="color: #fff; display:none;">PASS</th>
                                                 <th scope="col" style="color: #fff; display:none;">vkey</th>
+                                                <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != ''");
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != '' AND userStatus = '1'");
                                             $i = 1;
                                             while ($row = $load->fetch_assoc()) {
                                                 echo "<tr>
@@ -208,11 +247,12 @@ include 'includes/modals/student-modal.php'; ?>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='display:none;'>" . $row["studentPassword"] . "</td>
                                                  <td style='display:none;'>" . $row["vkey"] . "</td>
+                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary unvstudenteditbtn' data-bs-toggle='modal' data-bs-target='#unvstudenteditModal'>
                                                  EDIT
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
-                                                  DELETE
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn studentdeletepermanentbtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
+                                                    DELETE
                                                  </button></td>
                                                  </tr>";
                                                 $i++;
@@ -235,26 +275,74 @@ include 'includes/modals/student-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Student Number</th>
                                                 <th scope="col" style="color: #fff; display:none;">Email</th>
                                                 <th scope="col" style="color: #fff;">Course</th>
+                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
+                                                <th scope="col" style="color: #fff; display:none;">vkey</th>
+                                                <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail=''");
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='' AND userStatus = '1'");
                                             $i = 1;
                                             while ($row = $load->fetch_assoc()) {
                                                 echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td style='text-transform: uppercase; display:none;'></td>
+                                                 <td style='display:none;'>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
+                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
+                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary admstudenteditbtn' data-bs-toggle='modal' data-bs-target='#admstudenteditModal'>
-                                                 EDIT
+                                                    EDIT
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
-                                                  DELETE
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#markasInactiveModal'>
+                                                     Mark as Inactive
+                                                 </button></td>
+                                                 </tr>";
+                                                $i++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> Inactive Students</h4>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="table-responsive" style="padding: 20px;">
+                                    <table id="dataTable4" class="table table-bordered table-hover">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col" style="color: #fff;">#</th>
+                                                <th scope="col" style="color: #fff;">Student Name</th>
+                                                <th scope="col" style="color: #fff;">Student Number</th>
+                                                <th scope="col" style="color: #fff; display:none;">Email</th>
+                                                <th scope="col" style="color: #fff;">Course</th>
+                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">Mark as Active</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userStatus = '0'");
+                                            $i = 1;
+                                            while ($row = $load->fetch_assoc()) {
+                                                echo "<tr>
+                                                 <td>" . $i . "</td>
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
+                                                 <td style='display:none;'>" . $row["studentEmail"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
+                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
+                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn markasactivebtn' data-bs-toggle='modal' data-bs-target='#markasactiveModal'>
+                                                     Mark as Active
                                                  </button></td>
                                                  </tr>";
                                                 $i++;

@@ -237,6 +237,25 @@ include 'sources/session.php';
                             </a>
                         </div>
                     </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="services-studentwithsanctions.php" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="services-studentwithsanctions.php" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Student with Sanctions</span>
+                        </div>
+                        <div>
+                            <a href="services-studentwithsanctions.php" class="fill-div">
+                                <span class="mdi mdi-account-cancel-outline" style="font-size: 3rem;"></span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- Table -->

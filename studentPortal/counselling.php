@@ -86,6 +86,9 @@
                                                 <li class="option">
                                                     <span class="option-text">Mental Health Counseling</span>
                                                 </li>
+                                                <li class="option">
+                                                    <span class="option-text">Others (Explain details below)</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

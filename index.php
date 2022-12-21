@@ -34,12 +34,12 @@ include 'sources/src-index.php';
 								<label> Student Number (Ex: 201xxxxx-M) </label>
 							</div>
 							<div class="inputWrap">
-								<input type="Password" id="sPassword" class="txtbxFields"name="sPassword" autocomplete="off">
+								<input type="Password" id="sPassword" class="txtbxFields" name="sPassword" autocomplete="off">
 								<label> Password </label>
 							</div>
 							<div style="display: none;" id='result' class='eml'></div>
 							<input type="submit" id="btnSignin" name="submit" value="Sign In" class="btnSignin">
-							<p class="txtForgot">Did you forgot your password? <a href="#"> Get help </a> signing in</p>
+							<p class="txtForgot">Did you forgot your password? <a href="forgotpass.php"> Get help </a> signing in</p>
 						</div>
 					</form>
 				</div>

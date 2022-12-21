@@ -71,9 +71,9 @@ include 'includes/modals/services-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             }
                             ?>
                             <span>Student Lists</span>
@@ -88,9 +88,9 @@ include 'includes/modals/services-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Disciplinary Sanction'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1>' . $total . '</h1>';
                             }
                             ?>
                             <span>Students with Disiplinary Sanctions</span>
@@ -105,9 +105,9 @@ include 'includes/modals/services-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Educational Sanction'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1 style="color: white;">' . $total . '</h1>';
                             } else {
-                                echo '<a href="#" class="fill-div">' . $total . '</a>';
+                                echo '<h1 style="color: white;">' . $total . '</h1>';
                             }
                             ?>
                             <span>Students with Educational Sanctions</span>

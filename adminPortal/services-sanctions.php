@@ -79,16 +79,16 @@ include 'includes/modals/services-modal.php'; ?>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Student Number</h3>
                                         <div class="col-md-12">
-                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" value="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sancNumber ?>" value="<?php echo $sancNumber ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Course</h3>
                                         <div class="col-md-12">
-                                            <input name="sCourse" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sCourse ?>" value="<?php echo $sCourse ?>" class="form-control form-control-line" readonly>
+                                            <input name="sCourse" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sancCourse ?>" value="<?php echo $sancCourse ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
-                                    <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $stEmail ?>" value="<?php echo $stEmail ?>" class="form-control form-control-line" readonly>
+                                    <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sanctEmail ?>" value="<?php echo $sanctEmail ?>" class="form-control form-control-line" readonly>
                                     <div class="form-group">
                                             <h4 class="col-md-12">Case</h4>
                                             <div class="col-md-12">

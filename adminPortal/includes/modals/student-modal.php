@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Course (Ex. BSxx)</label>
+                                        <label class="col-md-12">Course, Year and Section (Ex. BSxx 1-A)</label>
                                         <div class="col-md-12">
                                             <textarea rows="1" class="form-control form-control-line" name="sCourse" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
                                         </div>
@@ -47,6 +47,88 @@
         </div>
     </div>
 <!-- ================================================================================================================================================ -->
+<!-- ==================MARK AS INACTIVE MODAL========================== -->
+<!-- ================================================================================================================================================ -->
+<form method="POST" action="" autocomplete="off">
+    <div class="modal fade" id="markasInactiveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content approve">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel" style="color: #d00000;">MARK AS INACTIVE</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <h2 class="col-md-12">Are you sure you want to mark this student as INACTIVE?</h2>
+                        <input style="pointer-events: none; display:none;" type="text" id="ID" name="ID" class="form-control form-control-line" readonly>
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
+                    <div class="col-md-12">
+                        <input style="pointer-events: none;" type="text" id="studentName" name="sName" class="form-control form-control-line" readonly>
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Number</label>
+                    <div class="col-md-12">
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="sNumber" id="studentNumber" class="form-control form-control-line" readonly>
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
+                    <div class="col-md-12">
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
+                    </div>
+                    <input style="display:none;" type="text" id="vkey" name="vkey" class="form-control form-control-line">
+                    <input style="display:none;" type="text" id="sVerified" name="sVerified" class="form-control form-control-line">
+                    <input style="display:none;" type="text" id="sPassword" name="sPassword" class="form-control form-control-line">
+                    <input style="display:none;" type="text" id="studentEmail" name="sEmail" class="form-control form-control-line">
+                </div>
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-primary yesbtn" name="delete_student">YES</button>
+                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- ================================================================================================================================================ -->
+<!-- ==================MARK AS ACTIVE MODAL========================== -->
+<!-- ================================================================================================================================================ -->
+<form method="POST" action="" autocomplete="off">
+    <div class="modal fade" id="markasactiveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content approve">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel" style="color: #0096c7">MARK AS ACTIVE</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <h2 class="col-md-12">Are you sure you want to mark this student as ACTIVE?</h2>
+                        <input style="pointer-events: none; display:none;" type="text" id="actID" name="ID" class="form-control form-control-line" readonly>
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
+                    <div class="col-md-12">
+                        <input style="pointer-events: none;" type="text" id="actName" name="sName" class="form-control form-control-line" readonly>
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Number</label>
+                    <div class="col-md-12">
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="sNumber" id="actNumber" class="form-control form-control-line" readonly>
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
+                    <div class="col-md-12">
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="actCourse" name="sCourse" class="form-control form-control-line" readonly>
+                    </div>
+                    <input style="display:none;" type="text" id="actvkey" name="vkey" class="form-control form-control-line">
+                    <input style="display:none;" type="text" id="actVerified" name="sVerified" class="form-control form-control-line">
+                    <input style="display:none;" type="text" id="actPassword" name="sPassword" class="form-control form-control-line">
+                    <input style="display:none;" type="text" id="actEmail" name="sEmail" class="form-control form-control-line">
+                </div>
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-primary seemorebtn" style="width: 100px;" name="markas_active">YES</button>
+                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- ================================================================================================================================================ -->
 <!-- ==================DELETE MODAL========================== -->
 <!-- ================================================================================================================================================ -->
 <form method="POST" action="" autocomplete="off">
@@ -60,24 +142,24 @@
                 <div class="modal-body">
                     <div class="col-md-12">
                         <h2 class="col-md-12">Are you sure you want to DELETE?</h2>
-                        <input style="pointer-events: none; display:none;" type="text" id="ID" name="ID" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; display:none;" type="text" id="delID" name="ID" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="studentName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="delName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="sNumber" id="studentNumber" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" name="sNumber" id="delNumber" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="studentCourse" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase;" type="text" id="delCourse" class="form-control form-control-line" readonly>
                     </div>
                 </div>
                 <div class="modal-footer">
+                <button type="submit" class="btn btn-primary yesbtn" name="delete_permanent">YES</button>
                 <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary yesbtn" name="delete_student">YES</button>
             </div>
             </div>
         </div>
@@ -114,8 +196,8 @@
                     <input style="display:none;" type="text" id="sPassword" name="sPassword" class="form-control form-control-line">
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary yesbtn" name="edit_student">YES</button>
+                <button type="submit" class="btn btn-primary editbtn" name="edit_student">Edit</button>
+                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
             </div>
             </div>
         </div>
@@ -153,8 +235,8 @@
                     <input style="display:none;" type="text" id="unvvkey" name="vkey" class="form-control form-control-line">
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary yesbtn" name="unvedit_student">YES</button>
+                <button type="submit" class="btn btn-primary editbtn" name="unvedit_student">Edit</button>
+                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
             </div>
             </div>
         </div>
@@ -184,14 +266,14 @@
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; text-transform: uppercase;" type="text" id="admsCourse" name="sCourse" class="form-control form-control-line">
                     </div>
-                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
+                    <label class="col-md-12" style="margin-top:10px;">Student Email</label>
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb;" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary yesbtn" name="admedit_student">YES</button>
+                <button type="submit" class="btn btn-primary editbtn" name="admedit_student">Edit</button>
+                <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
             </div>
             </div>
         </div>

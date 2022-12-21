@@ -26,6 +26,16 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#dataTable4').DataTable({
+        info: false,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search",
+        }
+    });
+});
+
 if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
 }

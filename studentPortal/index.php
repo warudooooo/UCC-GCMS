@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../config.php';
 include 'sources/session.php';
 ?>
@@ -58,39 +58,113 @@ include 'sources/session.php';
             <div class="cards ">
                 <div class="cards-single">
                     <div>
-                        <h1>0</h1>
-                        <span>My Violations</span></span>
+                        <?php
+                        $sName = $row['studentName'];
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$sNumber'");
+
+                        if ($total = mysqli_num_rows($load)) {
+                            echo '<a href="sanctions.php" class="fill-div">' . $total . '</a>';
+                        } else {
+                            echo '<a href="sanctions.php" class="fill-div">' . $total . '</a>';
+                        }
+                        ?>
+                        <span>Sanctions</span></span>
                     </div>
                     <div>
-                        <span class="mdi mdi-alert-circle" style="font-size: 3rem;"></span>
+                        <span class="mdi mdi-account-alert" style="font-size: 3rem;"></span>
                     </div>
                 </div>
                 <div class="cards-single">
                     <div>
                         <?php
                         $sName = $row['studentName'];
-                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments WHERE studentName = '$sName'");
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingappointments WHERE studentNumber = '$sNumber'");
 
                         if ($total = mysqli_num_rows($load)) {
-                            echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                         } else {
-                            echo '<a href="#" class="fill-div">' . $total . '</a>';
+                            echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                         }
                         ?>
-                        <span>My Pending Appointments</span></span>
+                        <span>Pending Appointments</span></span>
                     </div>
                     <div>
-                        <span class="mdi mdi-account-alert" style="font-size: 3rem;"></span>
+                        <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
                     </div>
                 </div>
-
                 <div class="cards-single">
                     <div>
-                        <a href="#" class="fill-div">0</a>
-                        <span>My Completed Appointments</span>
+                        <?php
+                        $sName = $row['studentName'];
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingcounsellings WHERE studentNumber = '$sNumber'");
+
+                        if ($total = mysqli_num_rows($load)) {
+                            echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
+                        } else {
+                            echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
+                        }
+                        ?>
+                        <span>Pending Counselings</span></span>
                     </div>
                     <div>
-                        <span class="mdi mdi-account-check" style="font-size: 3rem;"></span>
+                        <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
+                    </div>
+                </div>
+                <div class="cards-single">
+                    <div>
+                        <?php
+                        $sName = $row['studentName'];
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedappointments WHERE studentNumber = '$sNumber'");
+
+                        if ($total = mysqli_num_rows($load)) {
+                            echo '<a href="appointmentscounselings.php" class="fill-div">' . $total . '</a>';
+                        } else {
+                            echo '<a href="appointmentscounselings.php" class="fill-div">' . $total . '</a>';
+                        }
+                        ?>
+                        <span>Appointments</span></span>
+                    </div>
+                    <div>
+                        <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                    </div>
+                </div>
+                <div class="cards-single">
+                    <div>
+                        <?php
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_approvedcounsellings WHERE studentNumber = '$sNumber'");
+
+                        if ($total = mysqli_num_rows($load)) {
+                            echo '<a href="appointmentscounselings.php" class="fill-div">' . $total . '</a>';
+                        } else {
+                            echo '<a href="appointmentscounselings.php" class="fill-div">' . $total . '</a>';
+                        }
+                        ?>
+                        <span>Counselings</span></span>
+                    </div>
+                    <div>
+                        <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
+                    </div>
+                </div>
+                <div class="cards-single">
+                    <div>
+                        <?php
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_appointmenthistory WHERE studentNumber = '$sNumber'");
+                        $loadd = mysqli_query($mysqli, "SELECT * FROM tbl_counsellinghistory WHERE studentNumber = '$sNumber'");
+
+                        $total_1 = mysqli_num_rows($load);
+                        $total_2 = mysqli_num_rows($loadd);
+
+                        $total = $total_1 + $total_2;
+                        if ($total) {
+                            echo '<h1 style="pointer-events: none; color: #fff;">' . $total . '</h1>';
+                        } else {
+                            echo '<h1 style="pointer-events: none; color: #fff;">' . $total . '</h1>';
+                        }
+                        ?>
+                        <span>Completed Appointments and Counselings</span></span>
+                    </div>
+                    <div>
+                        <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
                     </div>
                 </div>
             </div>
@@ -105,22 +179,17 @@ include 'sources/session.php';
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> My Appointnents </h4>
+                    <h4 class="page-title" style="margin-top: 20px; margin-bottom: 20px; display:block !important;"><i class="mdi mdi-account-wrench"></i> Pending Appointnents </h4>
                     <div class="col-12" style="background-color:#fff;">
                         <div class="table-responsive" style="padding:20px;">
                             <table id="dataTable" class="table table-bordered table-hover">
                                 <thead class="table-dark">
                                     <tr style="text-align: center;">
-                                        <th scope="col" style="color: #fff;">#</th>
-                                        <th scope="col" style="color: #fff;">Request Type</th>
-                                        <th scope="col" style="color: #fff;">Student Name</th>
-                                        <th scope="col" style="color: #fff;">Student Number</th>
-                                        <th scope="col" style="color: #fff;">Course</th>
-                                        <th scope="col" style="color: #fff;">Email</th>
+                                        <th scope="col" style="color: #fff; width: 20px;">#</th>
+                                        <th scope="col" style="color: #fff; width: 200px;">Request Type</th>
                                         <th scope="col" style="color: #fff;">Referral Reason</th>
                                         <th scope="col" style="color: #fff;">Date Created</th>
-                                        <th scope="col" style="color: #fff;">Edit</th>
-                                        <th scope="col" style="color: #fff;">Delete</th>
+                                        <th scope="col" style="color: #fff; width: 20px;">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,14 +200,43 @@ include 'sources/session.php';
                                         echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["appointmentType"] . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
                                                  <td>" . $row["requestDate"] . "</td>
-                                                 <td style='text-align:center;'><a href='index.php' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-radius: 4px;'>EDIT</a></td>
-                                                 <td style='text-align:center;'><a href='javascript:void(0)'><i class='fa fa-trash' style='color: #d00000; font-size: 20px;'></i></a></td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn procdelbtn' data-bs-toggle='modal' data-bs-target='#deleteProctorModal'>
+                                                 DELETE
+                                                </button></td>
+                                                 </tr>";
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 class="page-title" style="margin-top: 20px; margin-bottom: 20px; display: block !important;"><i class="mdi mdi-account-wrench"></i> Pending Counselings </h4>
+                    <div class="col-12" style="background-color:#fff;">
+                        <div class="table-responsive" style="padding:20px;">
+                            <table id="dataTable2" class="table table-bordered table-hover">
+                                <thead class="table-dark">
+                                    <tr style="text-align: center;">
+                                        <th scope="col" style="color: #fff; width: 20px;">#</th>
+                                        <th scope="col" style="color: #fff; width: 200px;">Counseling Type</th>
+                                        <th scope="col" style="color: #fff;">Date Created</th>
+                                        <th scope="col" style="color: #fff; width: 20px;">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingcounsellings WHERE studentNumber='{$_SESSION['SESSION_EMAIL']}'");
+                                    $i = 1;
+                                    while ($row = $load->fetch_assoc()) {
+                                        echo "<tr>
+                                                 <td>" . $i . "</td>
+                                                 <td>" . $row["counsellingType"] . "</td>
+                                                 <td>" . $row["dateCreated"] . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn procdelbtn' data-bs-toggle='modal' data-bs-target='#deleteProctorModal'>
+                                                 DELETE
+                                                 </button></td>
                                                  </tr>";
                                         $i++;
                                     }
@@ -148,18 +246,19 @@ include 'sources/session.php';
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Container fluid  -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
+        <!-- End Container fluid  -->
         <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->

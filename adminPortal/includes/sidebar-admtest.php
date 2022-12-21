@@ -10,8 +10,11 @@ $query = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='
 
 if (mysqli_num_rows($query) > 0) {
     $row = mysqli_fetch_assoc($query);
+    $sNumber = $row['studentNumber'];
     $sName = $row['studentName'];
     $sEmail = $row['studentEmail'];
+    $sCourse = $row['studentCourse'];
+    $sPassword = $row['studentPassword'];
 }
 ?>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
@@ -20,24 +23,35 @@ if (mysqli_num_rows($query) > 0) {
     .user-content a small {
         color: #343a40 !important;
     }
+
     .left-sidebar {
-            height: auto !important;
+        height: auto !important;
     }
-    @media only screen and (max-width: 1169px){
-        .left-sidebar{
+
+    .dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #f4845f !important;
+}
+
+    @media only screen and (max-width: 1169px) {
+        .left-sidebar {
             margin-top: -15px !important;
         }
-        h4{
+
+        h4 {
             display: none;
         }
     }
-    @media only screen and (max-width: 768px){
+
+    @media only screen and (max-width: 768px) {
         .left-sidebar {
             margin-top: -15px !important;
             transition: 300ms;
             height: 100% !important;
         }
-        h4{
+
+        h4 {
             display: block !important;
         }
     }
@@ -49,7 +63,7 @@ if (mysqli_num_rows($query) > 0) {
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
-        <nav class="sidebar-nav" >
+        <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <!-- User Profile-->
                 <li>
@@ -62,7 +76,11 @@ if (mysqli_num_rows($query) > 0) {
                                 <small style="color: black;">Administrator</small>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd"">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                            <a class=" dropdown-item" href="accountsettings.php"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="manageaccounts.php"><i class="ti-settings m-r-5 m-l-5"></i> Manage Accounts</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="activitylog.php"><i class="ti-settings m-r-5 m-l-5"></i> Activity Log</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                             </div>
@@ -76,7 +94,7 @@ if (mysqli_num_rows($query) > 0) {
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="proctors.php" aria-expanded="false"><i class="mdi mdi-account-badge"></i><span class="hide-menu">Proctors</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-records.php" aria-expanded="false"><i class="mdi mdi-content-save-all-outline"></i><span class="hide-menu">Records</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-questions.php" aria-expanded="false"><i class="mdi mdi-newspaper-variant-outline"></i><span class="hide-menu">Admission Test Questions</span></a></li> -->
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-credit-card-clock"></i><span class="hide-menu">Admission Test Schedule</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-schedule.php" aria-expanded="false"><i class="mdi mdi-credit-card-clock"></i><span class="hide-menu">Admission Test Schedule</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="schedule.php" aria-expanded="false"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Appointment Schedule</span></a></li> -->
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-reports.php" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Appointment Reports</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="referral-reports.php" aria-expanded="false"><i class="mdi mdi-chart-pie"></i><span class="hide-menu">Referral Reports</span></a></li>-->

@@ -34,7 +34,7 @@
                 <input style="display:none;" id="counselingID" name="cID" readonly>
                 <input style="display:none;" id="studentEmail" name="sEmail" readonly>
                 <input style="display:none;" id="counselingType" name="cType" readonly>
-                <input style="display:none;" id="Details" name="Details" readonly>
+                <input style="display:none;" id="Details" name="Details" readonly>  
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
@@ -96,6 +96,7 @@
                 <input style="display:none;" id="counsEmail" name="counsEmail" readonly>
                 <input style="display:none;" id="counsType" name="counsType" readonly>
                 <input style="display:none;" id="counsDetails" name="counsDetails" readonly>
+                <input style="display:none;" id="counsDate" name="date" readonly> 
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>

@@ -45,6 +45,7 @@ $(document).ready(function(){
                 $('#counsNumber').val(datas[3]);
                 $('#counsCourse').val(datas[4]);
                 $('#counsEmail').val(datas[5]);
+                $('#counsDate').val(datas[6]);
                 $('#counsType').val(datas[1]);
                 $('#counsDetails').val(datas[10]);
 	});

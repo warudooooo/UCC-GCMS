@@ -1,3 +1,4 @@
+
 .page-item.active .page-link{
     background: #333 !important;
     border-color: #333 !important;
@@ -61,6 +62,145 @@
 .cards-single:last-child div:first-child span,
 .cards-single:last-child div:last-child span {
     color: #fff;
+}
+
+.editbtn:hover,
+.deletebtn:hover{
+    background: #333 !important;
+}
+
+.studentdeletebtn{
+    background-color: #d00000 !important;
+    color: #fff !important;
+    padding: 10px 20px 10px 20px !important;
+    border-style:none !important;
+    border-radius: 4px !important;
+}
+
+.mdladdbtn,
+.editbtn,
+.studenteditbtn,
+.admstudenteditbtn,
+.unvstudenteditbtn,
+.btnblue{
+    background: #0096c7 !important;
+    color: #fff !important; 
+    padding: 10px 30px 10px 30px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdladdbtn:hover,
+.addstudentbtn:hover,
+.studentdeletebtn:hover,
+.studenteditbtn:hover,
+.admstudenteditbtn:hover,
+.unvstudenteditbtn:hover,
+.btnblue:hover,
+.btnred:hover,
+.btngreen:hover{
+    background: #333 !important;
+    color: #fff !important; 
+}
+
+.yesbtn{
+    background: #d00000 !important;
+    color: #fff !important; 
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.addstudentbtn{
+    background: #f4845f !important;
+    color: #fff !important; 
+    margin-top: 10px !important;
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.yesbtn:hover{
+    background: #333 !important;
+}
+.seemorebtn,
+.btngreen{
+    background: #38b000 !important;
+    color: #fff !important;
+    padding: 10px 10px 10px 10px !important;
+    border-style:none !important;
+    border-radius: 4px !important;
+}
+
+.deletebtn,
+.btnred{
+    background-color: #d00000 !important;
+    color: #fff !important;
+    padding: 10px 20px 10px 20px !important;
+    border-style:none !important;
+    border-radius: 4px !important;
+}
+
+.approvebtn,
+.markasdonebtn{
+    background: #0096c7 !important;
+    color: #fff !important;
+    padding: 10px 10px 10px 10px !important;
+    border-style:none !important;
+    border-radius: 4px !important;
+}
+
+.markasdonebtn:hover{
+    background: #333 !important;
+}
+
+.approvebtn:hover,
+.seemorebtn:hover{
+    background-color: #333 !important; 
+    color: #fff !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlapprovebtn{
+    background: #0096c7 !important;
+    color: #fff !important; 
+    padding: 10px 30px 10px 30px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlapprovebtn:hover{
+    background-color: #333 !important; 
+    color: #fff !important; 
+    padding: 10px 30px 10px 30px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlclosebtn:hover{
+    background-color: #333 !important; 
+    color: #fff !important; 
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.mdlclosebtn,
+.btnorange{
+    background-color: #f4845f !important; 
+    color: #fff !important; 
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 4px !important;
+}
+
+.seemore,
+.approve{
+    background-color: #fff !important;
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    border-style: none !important;
 }
 
 @media only screen and (max-width: 1170px) {

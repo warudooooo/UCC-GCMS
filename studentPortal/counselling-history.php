@@ -1,14 +1,16 @@
-<?php 
-include '../config.php';
-include 'sources/session.php';
-?>
+<?php include 'sources/session.php'; ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
-    <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
-<?php include 'includes/header.php' ?>
+<?php
+include 'includes/header.php';
+include 'sources/src-history.php';
+include 'includes/modals/counselinghistory-modal.php';
+?>
 
 <body>
     <!-- ============================================================== -->
@@ -38,12 +40,12 @@ include 'sources/session.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-switch"></i> Counselling</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Counseling History</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Counselling</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Counseling History</li>
                                 </ol>
                             </nav>
                         </div>
@@ -63,60 +65,48 @@ include 'sources/session.php';
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="table-responsive">
-                                <table id="example" class="table table-hover">
-                                    <thead>
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
                                         <tr>
-                                            <th scope="col">Guidance Message</th>
-                                            <th scope="col">Strategies use</th>
-                                            <th scope="col">Video Record link</th>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Date and Time</th>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff; display: none;">id</th>
+                                            <th scope="col" style="color: #fff; width: 100px;">Student Name</th>
+                                            <th scope="col" style="color: #fff; width: 120px;">Student Number</th>
+                                            <th scope="col" style="color: #fff;">Course</th>
+                                            <th scope="col" style="color: #fff; display: none;">Email</th>
+                                            <th scope="col" style="color: #fff;">Counseling Type</th>
+                                            <th scope="col" style="color: #fff;">Person In Charge</th>
+                                            <th scope="col" style="color: #fff;">Date Completed</th>
+                                            <th scope="col" style="color: #fff;">Counselor Remarks</th>
+                                            <th scope="col" style="color: #fff; display: none;">Delete</th>
+                                            <th scope="col" style="color: #fff; display: none;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 22, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 23, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 24, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vestibulum porttitor laoreet faucibus.</td>
-                                            <td>WLY BYL</td>
-                                            <td>Feale</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 25, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 26, 2022</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maecenas mattis tempor libero pretium.</td>
-                                            <td>WLY BYL</td>
-                                            <td>https://meet.google.com/wlybyla</td>
-                                            <td>10:30 AM</td>
-                                            <td>Oct 27, 2022</td>
-                                        </tr>
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counsellinghistory WHERE studentNumber='$sNumber '");
+                                        $i = 1;
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr>
+                                                 <td>" . $i . "</td>
+                                                 <td style='display: none'>" . $row["historyID"] . "</td>
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td style='display: none'>" . $row["studentEmail"] . "</td>
+                                                 <td>" . $row["counsellingType"] . "</td>
+                                                 <td>" . $row["personIncharge"] . "</td>
+                                                 <td>" . $row["dateCompleted"] . "</td>
+                                                 <td style='width: 150px;'>" . $row["remarks"] . "</td>
+                                                 <td style='text-align:center; display:none;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deleteModal'>
+                                                     DELETE
+                                                 </button></td>
+                                                 <td style='display: none'>" . $row["counsellingDetails"] . "</td>
+                                                 </tr>";
+                                            $i++;
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -142,7 +132,27 @@ include 'sources/session.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/datatable.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.deletebtn').on('click', function() {
+                $tr = $(this).closest('tr');
 
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#historyID').val(data[1]);
+                $('#studentName').val(data[2]);
+                $('#studentNumber').val(data[3]);
+                $('#studentCourse').val(data[4]);
+                $('#studentEmail').val(data[5]);
+            });
+        });
+    </script>
 </body>
 
 </html>

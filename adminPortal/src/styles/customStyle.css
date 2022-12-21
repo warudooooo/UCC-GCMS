@@ -186,7 +186,8 @@
     border-radius: 4px !important;
 }
 
-.mdlclosebtn{
+.mdlclosebtn,
+.btnorange{
     background-color: #f4845f !important; 
     color: #fff !important; 
     padding: 10px 40px 10px 40px !important; 
