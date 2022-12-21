@@ -9,6 +9,8 @@ if (isset($_POST['addproctor'])){
         $add = "INSERT INTO tbl_proctors(proctorName)
         VALUES('$pName')";
         $result = mysqli_query($mysqli, $add);
+        $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED PROCTOR [ Details: $pName ]')";
+	    $runActivity = mysqli_query($mysqli, $activity);
     }
 }
 
@@ -22,6 +24,8 @@ if (isset($_POST['editproctor'])){
     }else{
         $edit = "UPDATE `tbl_proctors` SET proctorName='$pName' WHERE proctorID='$pID'";
         $result = mysqli_query($mysqli, $edit);
+        $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED PROCTOR DETAILS [ Details: $pName ]')";
+	    $runActivity = mysqli_query($mysqli, $activity);
     }
 }
 
@@ -35,10 +39,13 @@ if (isset($_POST['viewsched'])){
 if (isset($_POST['deleteproctor'])){
 
     $pID = $mysqli->real_escape_string($_POST['pID']);
+    $pName = $mysqli->real_escape_string($_POST['pName']);
 
 	$delete = "DELETE FROM tbl_proctors WHERE proctorID = '$pID'";
     $result = mysqli_query($mysqli, $delete);
 
+    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED PROCTOR [ Details: $pName ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 ?>

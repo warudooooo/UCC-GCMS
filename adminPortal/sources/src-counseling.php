@@ -8,6 +8,7 @@ if (isset($_POST['delete_counseling'])) {
 	$counsEmail = $_POST['counsEmail'];
     $counsType = ($_POST['counsType']);
     $counsDetails = ($_POST['counsDetails']);
+	$date = ($_POST['date']);
 
 	$counsID = $mysqli->real_escape_string($counsID);
 	$counsName = $mysqli->real_escape_string($counsName);
@@ -16,13 +17,15 @@ if (isset($_POST['delete_counseling'])) {
 	$counsEmail = $mysqli->real_escape_string($counsEmail);
     $counsType = $mysqli->real_escape_string($counsType);
     $counsDetails = $mysqli->real_escape_string($counsDetails);
+	$date = $mysqli->real_escape_string($date);
 
-    $add = "INSERT INTO tbl_delpendingcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingType,counsellingDetails)
-    VALUES('$counsNumber','$counsName','$counsCourse','$counsEmail','$counsType','$counsDetails')";
+    $add = "INSERT INTO tbl_delpendingcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingType,counsellingDetails,dateCreated)
+    VALUES('$counsNumber','$counsName','$counsCourse','$counsEmail','$counsType','$counsDetails','$date')";
 	$delete = "DELETE FROM tbl_pendingcounsellings WHERE ID='$counsID'";
     $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
-
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED PENDING COUNSELING [ Details: $counsName- $date ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['submit'])) {
@@ -55,6 +58,8 @@ if (isset($_POST['submit'])) {
 	$delete = "DELETE FROM tbl_pendingcounsellings WHERE ID='$cID'";
     $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','APPROVED COUNSELING [ Details: $sName- $cSchedule ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 	}
 }
 ?>

@@ -27,7 +27,8 @@ if (isset($_POST['schedulecouns_delete'])) {
 	$delete = "DELETE FROM tbl_approvedcounsellings WHERE counsellingID='$scdID'";
     $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
-
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED SCHEDULED COUNSELING [ Details: $scdName- $scdSchedule ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 
 }
 
@@ -59,6 +60,7 @@ if (isset($_POST['submit'])) {
 	$delete = "DELETE FROM tbl_approvedcounsellings WHERE counsellingID='$scID'";
     $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
-
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS DONE (COUNSELING) [ Details: $sName ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 ?>

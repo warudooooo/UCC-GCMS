@@ -25,6 +25,9 @@ if (isset($_POST['submit'])) { // if save button on the form is clicked
         if (move_uploaded_file($file, $destination)) {
             $sql = "INSERT INTO tbl_admissiontestrecords(admYear, admFile, admSize, admDownloads) VALUES ('$qYear','$filename', $size, 0)";
             mysqli_query($mysqli, $sql);
+            $activity = "INSERT INTO tbl_activitylog(admName,activityAction)
+            VALUES('$admName','ADDED $filename')";
+            $runActivity = mysqli_query($mysqli, $activity);
             header('Location: admissiontest-records.php');
         } else {
             echo "Failed to upload file.";
@@ -63,7 +66,9 @@ if (isset($_GET['file_id'])) {
 
 if (isset($_POST['delete_records'])){
     $admID = $mysqli->real_escape_string($_POST['admID']);
-
+    $activity = "INSERT INTO tbl_activitylog(admName,activityAction)
+    VALUES('$admName','DELETED RECORDS ON ADMISSION TEST')";
+    $runActivity = mysqli_query($mysqli, $activity);
     $delete = "DELETE FROM tbl_admissiontestrecords WHERE admID='$admID'";
 	$del = mysqli_query($mysqli, $delete);
 }

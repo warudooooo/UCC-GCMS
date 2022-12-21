@@ -6,6 +6,9 @@ if (isset($_POST['delete_counseling'])) {
 
 	$delete = "DELETE FROM tbl_delpendingcounsellings WHERE ID='$cdID'";
 	$del = mysqli_query($mysqli, $delete);
+
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','PERMANENTLY DELETE (PENDING COUNSELING)')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['submit'])) {
@@ -34,10 +37,11 @@ if (isset($_POST['submit'])) {
     VALUES('$cID','$csNumber','$csName','$csCourse','$csEmail','$cDate','$cType','$cDetails')";
 	$arc = mysqli_query($mysqli, $archive);
 
-
 	$delete = "DELETE FROM tbl_delpendingcounsellings WHERE ID='$cID'";
 	$del = mysqli_query($mysqli, $delete);
 
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','RESTORED PENDING COUNSELING [ Details: $csName- $cDate ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 ?>
 
@@ -53,6 +57,9 @@ if (isset($_POST['sdelete_counseling'])) {
 
 	$delete = "DELETE FROM tbl_delapprovedcounsellings WHERE counsellingID='$scID'";
 	$del = mysqli_query($mysqli, $delete);
+
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','PERMANENTLY DELETE (APPROVED COUNSELING)')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['ssubmit'])) {
@@ -87,5 +94,7 @@ if (isset($_POST['ssubmit'])) {
 	$delete = "DELETE FROM tbl_delapprovedcounsellings WHERE counsellingID='$scsID'";
 	$del = mysqli_query($mysqli, $delete);
 
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','RESTORED APPROVED COUNSELING [ Details: $scsName- $scsDateapproved ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 ?>

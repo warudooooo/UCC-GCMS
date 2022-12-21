@@ -6,6 +6,8 @@ if (isset($_POST['delete_appointment'])) {
 
 	$delete = "DELETE FROM tbl_delpendingappointments WHERE appointmentID='$aID'";
 	$del = mysqli_query($mysqli, $delete);
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','PERMANENTLY DELETE (APPOINTMENT)')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['submit'])) {
@@ -33,11 +35,10 @@ if (isset($_POST['submit'])) {
 	$archive = "INSERT INTO tbl_pendingappointments(appointmentID,studentNumber,studentName,studentCourse,studentEmail,requestDate,appointmentReason,appointmentType,appointmentDetails)
     VALUES('$appID','$appsNumber','$appsName','$appsCourse','$appsEmail','$rDate','$appReason','$appType','$appDetails')";
 	$arc = mysqli_query($mysqli, $archive);
-
-
 	$delete = "DELETE FROM tbl_delpendingappointments WHERE appointmentID='$appID'";
 	$del = mysqli_query($mysqli, $delete);
-
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','RESTORED PENDING APPOINTMENT [ Details: $appsName- $rDate ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 ?>
 
@@ -53,6 +54,9 @@ if (isset($_POST['sdelete_appointment'])) {
 
 	$delete = "DELETE FROM tbl_delapprovedappointments WHERE appointmentID='$saID'";
 	$del = mysqli_query($mysqli, $delete);
+
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','PERMANENTLY DELETE (APPROVED APPOINTMENT)')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['ssubmit'])) {
@@ -85,5 +89,7 @@ if (isset($_POST['ssubmit'])) {
 	$delete = "DELETE FROM tbl_delapprovedappointments WHERE appointmentID='$appID'";
 	$del = mysqli_query($mysqli, $delete);
 
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','RESTORED APPROVED APPOINTMENT [ Details: $appsName- $rDate ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 ?>

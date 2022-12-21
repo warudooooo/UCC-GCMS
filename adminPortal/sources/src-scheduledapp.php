@@ -27,7 +27,8 @@ if (isset($_POST['delete_scheduledapp'])) {
 	$arc = mysqli_query($mysqli, $archive);
 	$delete = "DELETE FROM tbl_approvedappointments WHERE appointmentID='$appID'";
 	$del = mysqli_query($mysqli, $delete);
-
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED SCHEDULED APPOINTMENT [ Details: $appsName- $appDate ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['submit'])) {
@@ -59,6 +60,7 @@ if (isset($_POST['submit'])) {
 	$delete = "DELETE FROM tbl_approvedappointments WHERE appointmentID='$hID'";
     $result = mysqli_query($mysqli, $add);
 	$del = mysqli_query($mysqli, $delete);
-
+	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS DONE (APPOINTMENT) [ Details: $sName ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
 }
 ?>

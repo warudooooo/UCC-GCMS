@@ -17,6 +17,18 @@ if (isset($_POST['counsel_btn'])) {
 
 }
 
+if (isset($_POST['remove_sanction'])) {
+
+    $ssID = $mysqli->real_escape_string($_POST['ssID']);
+
+	$delete = "DELETE FROM tbl_sanctions WHERE sanctionID = '$ssID'";
+    $result = mysqli_query($mysqli, $delete);
+    
+    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','REMOVED SANCTION [ Details: $sName ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
+}
+
+
 if (isset($_POST['submit'])) {
 
 	$sName = $mysqli->real_escape_string($_POST['sName']);
@@ -32,7 +44,8 @@ if (isset($_POST['submit'])) {
 	$add = "INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanction,sanctionType,sanctionMessage)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$sCase','$sSanction','$sType','$sMessage')";
     $result = mysqli_query($mysqli, $add);
-
+    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
+	$runActivity = mysqli_query($mysqli, $activity);
     header("Location: services.php");
 
 }

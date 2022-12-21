@@ -25,6 +25,9 @@ if (isset($_POST['submit'])) {
         $add = "INSERT INTO tbl_approvedcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingSchedule,counsellingType,counsellingDetails)
         VALUES('$sNumber','$sName','$sCourse','$stEmail','$cSchedule','$cType','$cDetails')";
         $result = mysqli_query($mysqli, $add);
+        $msg = "<div class='suc' style='margin-bottom: 10px:'>Successfuly Submited</div>";
+        $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','COUNSELED STUDENT [ Details: $sName ]')";
+	    $runActivity = mysqli_query($mysqli, $activity);
     }
 
 }
