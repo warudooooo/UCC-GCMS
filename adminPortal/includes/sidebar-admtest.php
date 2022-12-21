@@ -91,8 +91,8 @@ if (mysqli_num_rows($query) > 0) {
                 <!-- User Profile-->
                 <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Admission Test</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="proctors.php" aria-expanded="false"><i class="mdi mdi-account-badge"></i><span class="hide-menu">Proctors</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-records.php" aria-expanded="false"><i class="mdi mdi-content-save-all-outline"></i><span class="hide-menu">Records</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="proctors.php" aria-expanded="false"><i class="mdi mdi-account-badge"></i><span class="hide-menu">Proctors</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-questions.php" aria-expanded="false"><i class="mdi mdi-newspaper-variant-outline"></i><span class="hide-menu">Admission Test Questions</span></a></li> -->
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-schedule.php" aria-expanded="false"><i class="mdi mdi-credit-card-clock"></i><span class="hide-menu">Admission Test Schedule</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="schedule.php" aria-expanded="false"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Appointment Schedule</span></a></li> -->
