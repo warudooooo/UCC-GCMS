@@ -73,7 +73,7 @@ if (mysqli_num_rows($query) > 0) {
                         <div class="user-pic"><img src="../assets/images/users/d3.jpg" alt="users" class="rounded-circle" width="40" /></div>
                         <div class="user-content hide-menu m-l-10">
                             <a href="#" class="" id="Userdd" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <h5 class="m-b-0 user-name font-medium"><?php echo $sName ?><i class="fa fa-angle-down"></i></h5>
+                                <h5 class="m-b-0 user-name font-medium"><?php echo $sName ?> <i class="fa fa-angle-down"></i></h5>
                                 <small style="color: black;">Administrator</small>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">

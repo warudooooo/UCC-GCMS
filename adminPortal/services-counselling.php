@@ -104,7 +104,7 @@ include 'sources/src-services-counselling.php'; ?>
                                         <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
                                             <input style="pointer-events: none; text-transform: uppercase;" name="sNumber" type="text" placeholder="<?php echo  $_SESSION['sNumber']; ?>" value="<?php echo  $_SESSION['sNumber']; ?>" class="form-control form-control-line" readonly>
-                                            <input style="pointer-events: none; text-transform: uppercase; display: none;" name="stEmail" type="text" placeholder="<?php echo $_SESSION['stEmail']; ?>" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; display: none;" name="stEmail" type="text" placeholder="<?php echo $_SESSION['stEmail']; ?>" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">

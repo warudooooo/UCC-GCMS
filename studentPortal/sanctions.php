@@ -75,6 +75,7 @@ include 'sources/session.php';
                                             <th scope="col" style="color: #fff; width: 20px;">#</th>
                                             <th scope="col" style="color: #fff; width: 200px;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Sanction</th>
+                                            <th scope="col" style="color: #fff;">Guidance Message</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,6 +88,7 @@ include 'sources/session.php';
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["sanctionType"] . "</td>
+                                                 <td>" . $row["sanctionMessage"] . "</td>
                                                  </tr>";
                                             $i++;
                                         }

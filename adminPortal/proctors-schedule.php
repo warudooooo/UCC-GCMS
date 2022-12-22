@@ -115,7 +115,7 @@ include 'includes/modals/proctor-schedule-modal.php';
                                                  <td>" . $i . "</td>
                                                  <td style='display: none;'>" . $row["proctorID"] . "</td>
                                                  <td>" . $row["proctorName"] . "</td>
-                                                 <td>" . $row["roomAssigned"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["roomAssigned"] . "</td>
                                                  <td>" . date('h:i A', strtotime($row["startTime"])) . "</td>
                                                  <td>" . date('h:i A', strtotime($row["endTime"])) . "</td>
                                                  <td>" . date('m/d/Y', strtotime($row["examDate"])) . "</td>

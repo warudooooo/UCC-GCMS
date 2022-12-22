@@ -25,7 +25,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Room Assigned</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="roomAssigned" style="background-color: #edf2fb;" maxlength="40" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" name="roomAssigned" style="background-color: #edf2fb; text-transform: uppercase;" maxlength="40" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary mdladdbtn" name="addsched">submit</button>
+                    <button type="submit" class="btn btn-primary mdladdbtn" name="addsched">Submit</button>
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Room Assigned</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="roomAssigned" style="background-color: #edf2fb;" maxlength="40" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line"  name="roomAssigned" style="background-color: #edf2fb; text-transform: uppercase;" maxlength="40" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
