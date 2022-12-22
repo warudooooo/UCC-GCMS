@@ -8,10 +8,11 @@ include 'sources/src-student.php';
 <head>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
-    
+    <link rel="icon" href="src/images/uccLogo.png">
+    <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 <?php include 'includes/header.php';
-include 'includes/modals/student-modal.php'; ?>
+ ?>
 
 <body>
     <!-- ============================================================== -->
@@ -29,7 +30,8 @@ include 'includes/modals/student-modal.php'; ?>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
         <?php include 'includes/topbar.php' ?>
-        <?php include 'includes/sidebar.php' ?>
+        <?php include 'includes/sidebar.php';
+        include 'includes/modals/student-modal.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->

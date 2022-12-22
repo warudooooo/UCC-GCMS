@@ -131,6 +131,9 @@ include 'includes/modals/proctor-schedule-modal.php';
                                         ?>
                                     </tbody>
                                 </table>
+                                <form action="export-schedule.php" method="POST">
+                                <button type='submit' class='btn btn-primary editbtn' name="export"> Export as Excel file</button>
+                                </form>
                             </div>
                         </div>
                     </div>

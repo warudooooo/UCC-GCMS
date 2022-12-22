@@ -1,11 +1,11 @@
 <?php
 $msg = "";
 if (isset($_POST['submit'])) {
-    
+
     $sName = $_POST['sName'];
     $sNumber = $_POST['sNumber'];
     $sCourse = $_POST['sCourse'];
-    $sVerified = 'no'; 
+    $sVerified = 'no';
 
     $sName = $mysqli->real_escape_string($sName);
     $sNumber = $mysqli->real_escape_string($sNumber);
@@ -16,11 +16,12 @@ if (isset($_POST['submit'])) {
     } else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h3>This Student Number already exists.</h3></div>';
     } else {
-    $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified,studentEmail,studentPassword,userType,vkey,userStatus)
+        $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified,studentEmail,studentPassword,userType,vkey,userStatus)
     VALUES('$sName','$sNumber','$sCourse','$sVerified','','','user','','1')";
-    $result = mysqli_query($mysqli, $sql);
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED STUDENT [ Details: $sName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+        $result = mysqli_query($mysqli, $sql);
+        $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED STUDENT [ Details: $sName ]')";
+        $runActivity = mysqli_query($mysqli, $activity);
+        $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
     }
 }
 
@@ -36,12 +37,19 @@ if (isset($_POST['edit_student'])) {
     $sEmail = $mysqli->real_escape_string($sEmail);
     $sCourse = $mysqli->real_escape_string($sCourse);
     $sPassword = $mysqli->real_escape_string($sPassword);
+    $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
-    $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='',studentVerified='yes',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
-	$result = mysqli_query($mysqli, $sql);
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED STUDENT [ Details: $sName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+        if ($admPassword == $curPassword) {
+            $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='',studentVerified='yes',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
+            $result = mysqli_query($mysqli, $sql);
+            $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED STUDENT [ Details: $sName ]')";
+            $runActivity = mysqli_query($mysqli, $activity);
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+        } else {
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+        }
     }
 }
 
@@ -60,12 +68,19 @@ if (isset($_POST['unvedit_student'])) {
     $sCourse = $mysqli->real_escape_string($sCourse);
     $sPassword = $mysqli->real_escape_string($sPassword);
     $vkey = $mysqli->real_escape_string($vkey);
+    $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
-    $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='no',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
-	$result = mysqli_query($mysqli, $sql);
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED STUDENT [ Details: $sName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+        if ($admPassword == $curPassword) {
+            $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='no',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
+            $result = mysqli_query($mysqli, $sql);
+            $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED STUDENT [ Details: $sName ]')";
+            $runActivity = mysqli_query($mysqli, $activity);
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+        } else {
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+        }
     }
 }
 
@@ -79,13 +94,20 @@ if (isset($_POST['admedit_student'])) {
     $sNumber = $mysqli->real_escape_string($sNumber);
     $sCourse = $mysqli->real_escape_string($sCourse);
     $sEmail = $mysqli->real_escape_string($sEmail);
+    $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
-    $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='',vkey='',studentVerified='no',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
-	$result = mysqli_query($mysqli, $sql);
+        if ($admPassword == $curPassword) {
+            $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='',vkey='',studentVerified='no',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
+            $result = mysqli_query($mysqli, $sql);
+            $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED STUDENT [ Details: $sName ]')";
+            $runActivity = mysqli_query($mysqli, $activity);
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+        } else {
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+        }
     }
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED STUDENT [ Details: $sName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['delete_student'])) {
@@ -104,12 +126,20 @@ if (isset($_POST['delete_student'])) {
     $sPassword = $mysqli->real_escape_string($sPassword);
     $vkey = $mysqli->real_escape_string($vkey);
     $sVerified = $mysqli->real_escape_string($sVerified);
+    $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
+
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
-    $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='$sVerified',userType='user',userStatus='0' WHERE studentNumber='$sNumber'";
-	$result = mysqli_query($mysqli, $sql);
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS INACTIVE STUDENT[ Details: $sName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+        if ($admPassword == $curPassword) {
+            $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='$sVerified',userType='user',userStatus='0' WHERE studentNumber='$sNumber'";
+            $result = mysqli_query($mysqli, $sql);
+            $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS INACTIVE STUDENT[ Details: $sName ]')";
+            $runActivity = mysqli_query($mysqli, $activity);
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+        } else {
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+        }
     }
 }
 
@@ -129,12 +159,19 @@ if (isset($_POST['markas_active'])) {
     $sPassword = $mysqli->real_escape_string($sPassword);
     $vkey = $mysqli->real_escape_string($vkey);
     $sVerified = $mysqli->real_escape_string($sVerified);
+    $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
-    $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='$sVerified',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
-	$result = mysqli_query($mysqli, $sql);
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS ACTIVE STUDENT [ Details: $sName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+        if ($admPassword == $curPassword) {
+            $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='$sVerified',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
+            $result = mysqli_query($mysqli, $sql);
+            $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS ACTIVE STUDENT [ Details: $sName ]')";
+            $runActivity = mysqli_query($mysqli, $activity);
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+        } else {
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+        }
     }
 }
 
@@ -147,11 +184,18 @@ if (isset($_POST['delete_permanent'])) {
 
     $sNumber = $mysqli->real_escape_string($sNumber);
     $sName = $mysqli->real_escape_string($sName);
+    $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
 
-	$delete = "DELETE FROM tbl_students WHERE studentNumber = '$sNumber'";
-    $result = mysqli_query($mysqli, $delete);
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED STUDENT [ Details: $sName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+    if ($admPassword == $curPassword) {
+        $delete = "DELETE FROM tbl_students WHERE studentNumber = '$sNumber'";
+        $result = mysqli_query($mysqli, $delete);
+        $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED STUDENT [ Details: $sName ]')";
+        $runActivity = mysqli_query($mysqli, $activity);
+        $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+    } else {
+        $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+    }
 }
 
 if (isset($_POST['sanction_btn'])) {
@@ -160,7 +204,6 @@ if (isset($_POST['sanction_btn'])) {
     $sancNumber = $_POST["sNumber"];
     $sancCourse = $_POST["sCourse"];
     $sanctEmail = $_POST["stEmail"];
-
 }
 
 if (isset($_POST['counsel_btn'])) {
@@ -169,5 +212,4 @@ if (isset($_POST['counsel_btn'])) {
     $_SESSION['sNumber'] = $_POST["sNumber"];
     $_SESSION['sCourse'] = $_POST["sCourse"];
     $_SESSION['stEmail'] = $_POST["stEmail"];
-
 }

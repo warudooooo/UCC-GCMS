@@ -105,7 +105,7 @@ include 'sources/src-accountsettings.php'; ?>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Enter Old Password to Update: </label>
-                                                        <input type="hidden" class="form-control" value="<?php echo $sPassword ?>" name="oldPass">
+                                                        <input type="hidden" class="form-control" value="<?php echo $admPassword ?>" name="oldPass">
                                                         <input type="password" class="form-control" name="confPass" required>
                                                     </div>
                                                 </div>
@@ -136,7 +136,7 @@ include 'sources/src-accountsettings.php'; ?>
                                                 <div class="form-group">
                                                     <label>Old password</label>
                                                     <input type="hidden" class="form-control" value="<?php echo $sNumber ?>" name="sNumber" required>
-                                                    <input type="hidden" class="form-control" value="<?php echo $sPassword ?>" name="oldPass">
+                                                    <input type="hidden" class="form-control" value="<?php echo $admPassword ?>" name="oldPass">
                                                     <input type="password" name="confPass" class="form-control" required>
                                                 </div>
                                             </div>

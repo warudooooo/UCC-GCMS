@@ -36,7 +36,7 @@ if (isset($_POST['addsched'])) {
 	if ($total < 10) {
 		if ($roomAssigned == "" || $startTime == "" || $endTime == "" || $date == "") {
 			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h1>Please fill up all fields.</h1></div>';
-		} else if($StartTimeCount > 0 && $EndTimeCount > 0 &&  $dateCount > 0 && $RoomAssignedCount > 0){
+		} else if ($StartTimeCount > 0 && $EndTimeCount > 0 &&  $dateCount > 0 && $RoomAssignedCount > 0) {
 			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h1>The schedule for this room is already taken.</h1></div>';
 		} else if ($startTime >= $endTime) {
 			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h1>Invalid Schedule.</h1></div>';
@@ -72,7 +72,6 @@ if (isset($_POST['editsched'])) {
 		$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED PROCTOR SCHEDULE [ Details: $pName- $date ]')";
 		$runActivity = mysqli_query($mysqli, $activity);
 	}
-
 }
 
 if (isset($_POST['deletesched'])) {
@@ -81,8 +80,9 @@ if (isset($_POST['deletesched'])) {
 	$pName = $mysqli->real_escape_string($_POST['pName']);
 
 	$delete = "DELETE FROM tbl_proctorschedule WHERE proctorID = '$pID'";
-    $result = mysqli_query($mysqli, $delete);
+	$result = mysqli_query($mysqli, $delete);
 
 	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED PROCTOR SCHEDULE [ Details: $pName ]')";
 	$runActivity = mysqli_query($mysqli, $activity);
 }
+

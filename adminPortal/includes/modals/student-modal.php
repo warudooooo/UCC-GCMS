@@ -1,5 +1,3 @@
-<link rel="icon" href="src/images/uccLogo.png">
-<link rel="stylesheet" href="src/styles/customStyle.css">
 <!-- ================================================================================================================================================ -->
 <!-- ==================ADD STUDENT MODAL========================== -->
 <!-- ================================================================================================================================================ -->
@@ -74,6 +72,11 @@
                     <div class="col-md-12">
                         <input style="pointer-events: none; text-transform: uppercase;" type="text" id="studentCourse" name="sCourse" class="form-control form-control-line" readonly>
                     </div>
+                    <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="admPassword" class="form-control form-control-line" required>
+                    </div>
+                    <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="vkey" name="vkey" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="sVerified" name="sVerified" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="sPassword" name="sPassword" class="form-control form-control-line">
@@ -115,6 +118,11 @@
                     <div class="col-md-12">
                         <input style="pointer-events: none; text-transform: uppercase;" type="text" id="actCourse" name="sCourse" class="form-control form-control-line" readonly>
                     </div>
+                    <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="admPassword" class="form-control form-control-line" required>
+                    </div>
+                    <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="actvkey" name="vkey" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="actVerified" name="sVerified" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="actPassword" name="sPassword" class="form-control form-control-line">
@@ -146,7 +154,7 @@
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="delName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none;" type="text" id="delName" name="sName" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
@@ -156,6 +164,11 @@
                     <div class="col-md-12">
                         <input style="pointer-events: none; text-transform: uppercase;" type="text" id="delCourse" class="form-control form-control-line" readonly>
                     </div>
+                    <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="admPassword" class="form-control form-control-line" required>
+                    </div>
+                    <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                 </div>
                 <div class="modal-footer">
                 <button type="submit" class="btn btn-primary yesbtn" name="delete_permanent">YES</button>
@@ -194,6 +207,11 @@
                         <input style="background-color: #edf2fb; text-transform: uppercase; text-transform: uppercase;" type="text" id="sCourse" name="sCourse" class="form-control form-control-line">
                     </div>
                     <input style="display:none;" type="text" id="sPassword" name="sPassword" class="form-control form-control-line">
+                    <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="admPassword" class="form-control form-control-line" required>
+                    </div>
+                    <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                 </div>
                 <div class="modal-footer">
                 <button type="submit" class="btn btn-primary editbtn" name="edit_student">Edit</button>
@@ -231,6 +249,11 @@
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; text-transform: uppercase; text-transform: uppercase;" type="text" id="unvsCourse" name="sCourse" class="form-control form-control-line">
                     </div>
+                    <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="admPassword" class="form-control form-control-line" required>
+                    </div>
+                    <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="unvsPassword" name="sPassword" class="form-control form-control-line">
                     <input style="display:none;" type="text" id="unvvkey" name="vkey" class="form-control form-control-line">
                 </div>
@@ -270,6 +293,11 @@
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb;" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
                     </div>
+                    <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
+                    <div class="col-md-12">
+                        <input type="password" name="admPassword" class="form-control form-control-line" required>
+                    </div>
+                    <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                 </div>
                 <div class="modal-footer">
                 <button type="submit" class="btn btn-primary editbtn" name="admedit_student">Edit</button>

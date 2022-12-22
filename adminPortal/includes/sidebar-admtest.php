@@ -15,6 +15,7 @@ if (mysqli_num_rows($query) > 0) {
     $sEmail = $row['studentEmail'];
     $sCourse = $row['studentCourse'];
     $sPassword = $row['studentPassword'];
+    $admPassword = $row['studentPassword'];
 }
 ?>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
