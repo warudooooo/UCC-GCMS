@@ -139,7 +139,7 @@ form.signupForm {
 .inputWrap {
 	position: relative;
 	height: 37px;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 }
 
 .txtbxFields {
@@ -163,7 +163,7 @@ label {
 	top: 50%;
 	transform: translateY(-50%);
 	font-size: 0.95rem;
-	color: #bfbdc1;
+	color: #8f8f8f;
 	pointer-events: none;
 	transition: 0.4s;
 }

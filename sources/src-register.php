@@ -10,13 +10,28 @@ include 'config.php';
 $msg = "";
 
 if (isset($_POST['submit'])) {
+
+	// name of the uploaded file
+	$filename = $_FILES['myfile']['name'];
+
+	// destination of the file on the server
+	$destination = 'uploads/' . $filename;
+
+	// get the file extension
+	$extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+	// the physical file on a temporary uploads directory on the server
+	$file = $_FILES['myfile']['tmp_name'];
+	$size = $_FILES['myfile']['size'];
+
+
 	$sName = $_POST['sName'];
 	$sNumber = $_POST['sNumber'];
 	$sCourse = $_POST['sCourse'];
 	$sEmail = $_POST['sEmail'];
 	$sPassword = md5($_POST['sPassword']);
 
-	
+
 	$sName = $mysqli->real_escape_string($sName);
 	$sNumber = $mysqli->real_escape_string($sNumber);
 	$sCourse = $mysqli->real_escape_string($sCourse);
@@ -25,34 +40,43 @@ if (isset($_POST['submit'])) {
 	//Generate Vkey
 	$vkey = md5(time() . $sName);
 
-	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='{$sEmail}'")) > 0) {
+
+
+
+	if (!in_array($extension, ['png', 'pdf', 'jpg', 'jpeg'])) {
+	    $msg = '<div class="eml" style="display: inline-block; color: crimson; margin-bottom: -15px; font-size: 20px;"><h3>Your file extension must be .png, .jpg, or .jpeg</h3></div>';
+	} else if ($_FILES['myfile']['size'] > 10000000) { // file shouldn't be larger than 1Megabyte
+	    echo "File too large!";
+	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='{$sEmail}'")) > 0) {
 		$msg = "<div class='eml' style='margin-left:20px; margin-bottom: 10px;'>This email adress is already in use. Please use a different one.</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='yes'")) > 0) {
 		$msg = "<div class='eml' style='margin-left: 20px; margin-botttom: 5px;'>This student already exist and verified.</div>";
-	}else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
-		$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',vkey='$vkey',studentVerified='no',userType='user',userStatus='1' WHERE studentNumber='$sNumber'";
-		$result = mysqli_query($mysqli, $sql);
-		if ($result) {
-			$mail = new PHPMailer(true);
-			try {
-				//Server settings
-				//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
-				$mail->isSMTP();                                            //Send using SMTP
-				$mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-				$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-				$mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
-				$mail->Password   = 'ljubpkiypermvnkz';						//SMTP password
-				$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-				$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
+		if (move_uploaded_file($file, $destination)) {
+			$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',
+			vkey='$vkey',studentVerified='no',userType='user',userStatus='1',regForm='$filename' WHERE studentNumber='$sNumber'";
+			$result = mysqli_query($mysqli, $sql);
+			if ($result) {
+				$mail = new PHPMailer(true);
+				try {
+					//Server settings
+					//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
+					$mail->isSMTP();                                            //Send using SMTP
+					$mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+					$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+					$mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
+					$mail->Password   = 'ljubpkiypermvnkz';						//SMTP password
+					$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+					$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-				//Recipients
-				$mail->setFrom('s@gmail.com');
-				$mail->addAddress($sEmail);
+					//Recipients
+					$mail->setFrom('s@gmail.com');
+					$mail->addAddress($sEmail);
 
-				//Content
-				$mail->isHTML(true);                                  //Set email format to HTML
-				$mail->Subject = 'no reply';
-				$mail->Body = "<!DOCTYPE html>
+					//Content
+					$mail->isHTML(true);                                  //Set email format to HTML
+					$mail->Subject = 'no reply';
+					$mail->Body = "<!DOCTYPE html>
 				<html>
 				
 				<head>
@@ -251,41 +275,48 @@ if (isset($_POST['submit'])) {
 				</body>
 				
 				</html>";
-				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
-				// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
+					// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
+					// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
 
-				$mail->send();
-			} catch (Exception $e) {
-				$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+					$mail->send();
+				} catch (Exception $e) {
+					$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+				}
+				header('location:redirects/thankyou.php');
+				$activity = "INSERT INTO tbl_activitylog(admName,activityAction)
+            VALUES('$admName','ADDED $filename')";
+				$runActivity = mysqli_query($mysqli, $activity);
 			}
-			header('location:redirects/thankyou.php');
+		} else {
+			$msg = "Failed to upload file.";
 		}
 	} else {
-		//Insert to DB
-		$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType,userStatus,resetCode) 
-		VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user','1','')";
-		$result = mysqli_query($mysqli, $sql);
-		if ($result) {
-			$mail = new PHPMailer(true);
-			try {
-				//Server settings
-				//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
-				$mail->isSMTP();                                            //Send using SMTP
-				$mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-				$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-				$mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
-				$mail->Password   = 'ljubpkiypermvnkz';						//SMTP password
-				$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-				$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-				
-				//Recipients
-				$mail->setFrom('s@gmail.com');
-				$mail->addAddress($sEmail);
+		if (move_uploaded_file($file, $destination)) {
+			//Insert to DB
+			$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType,userStatus,regForm,resetCode) 
+			VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user','1','$filename','')";
+			$result = mysqli_query($mysqli, $sql);
+			if ($result) {
+				$mail = new PHPMailer(true);
+				try {
+					//Server settings
+					//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
+					$mail->isSMTP();                                            //Send using SMTP
+					$mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+					$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+					$mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
+					$mail->Password   = 'ljubpkiypermvnkz';						//SMTP password
+					$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+					$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-				//Content
-				$mail->isHTML(true);                                  //Set email format to HTML
-				$mail->Subject = 'no reply';
-				$mail->Body = "<!DOCTYPE html>
+					//Recipients
+					$mail->setFrom('s@gmail.com');
+					$mail->addAddress($sEmail);
+
+					//Content
+					$mail->isHTML(true);                                  //Set email format to HTML
+					$mail->Subject = 'no reply';
+					$mail->Body = "<!DOCTYPE html>
 				<html>
 				
 				<head>
@@ -484,17 +515,19 @@ if (isset($_POST['submit'])) {
 				</body>
 				
 				</html>";
-				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
-				// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
+					// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
+					// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
 
-				$mail->send();
-			} catch (Exception $e) {
-				$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+					$mail->send();
+				} catch (Exception $e) {
+					$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+				}
+				header('location:redirects/thankyou.php');
+			} else {
+				$msg = "<div class='eml'>Something went wrong.</div>";
 			}
-			header('location:redirects/thankyou.php');
 		} else {
-			$msg = "<div class='eml'>Something went wrong.</div>";
+			echo "Failed to upload file.";
 		}
 	}
 }
-?>

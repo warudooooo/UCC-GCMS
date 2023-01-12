@@ -37,7 +37,6 @@ include 'sources/src-index.php';
 								<input type="Password" id="sPassword" class="txtbxFields" name="sPassword" autocomplete="off">
 								<label> Password </label>
 							</div>
-							<div style="display: none;" id='result' class='eml'></div>
 							<input type="submit" id="btnSignin" name="submit" value="Sign In" class="btnSignin">
 							<p class="txtForgot">Did you forgot your password? <a href="forgotpass.php"> Get help </a> signing in</p>
 						</div>
@@ -50,7 +49,7 @@ include 'sources/src-index.php';
 					<div class="textSlider">
 						<div class="textWrap">
 							<div class="textGroup">
-								<h1>Address</h1>
+								<h1><div id='result' class='eml' style="display: inline-block; color: crimson; margin-bottom: 0px; font-size: 20px;"></div></h1>
 								<h2>Biglang Awa St Cor 11th Ave Catleya,</h2>
 								<h2>Caloocan, 1400 Metro Manila, Philippines</h2>
 							</div>

@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) { // if save button on the form is clicked
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 50px; "><h3>This File already exists.</h3></div>';
     } else if (!in_array($extension, ['doc', 'pdf', 'docx'])) {
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 50px;"><h3>Your file extension must be .doc, .docx or .pdf</h3></div>';
-    } elseif ($_FILES['myfile']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
+    } elseif ($_FILES['myfile']['size'] > 10000000) { // file shouldn't be larger than 1Megabyte
         echo "File too large!";
     } else {
         // move the uploaded (temporary) file to the specified destination

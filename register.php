@@ -19,8 +19,7 @@ include 'sources/src-register.php';
 		<div class="mainBox">
 			<div class="innerBox">
 				<div class="logregForm">
-
-					<form method="POST" action="" autocomplete="off" class="signupForm">
+					<form method="POST" action="register.php" enctype="multipart/form-data" autocomplete="off" class="signupForm">
 						<div class="uccLogo">
 							<img src="src/images/uccLogo.png">
 							<h4>University of Caloocan City Guidance and Counseling</h4>
@@ -51,8 +50,13 @@ include 'sources/src-register.php';
 								<input type="Password" class="txtbxFields" minlength="8" name="sPassword" autocomplete="off" required>
 								<label> Password </label>
 							</div>
-							<?php echo $msg; ?>
-							<input type="submit" name="submit" value="Sign Up" class="btnSignin">
+							<div class="inputWrap">
+								<label class="col-md-12" style="margin-top: -10px;">Latest Registration Form </label>
+								<div class="col-md-12">
+									<input class="form-control form-control-lg" style="margin-top: 30px;" id="formFileLg" name="myfile" type="file" required />
+								</div>
+							</div>
+							<input type="submit" name="submit" value="Sign Up" class="btnSignin" style="margin-top: 15px;">
 							<p class="txtForgot" style="margin-top: -20px;">By signing up, I agree to the <a href="#"> Privacy Policy</a> of University of Caloocan City.</p>
 						</div>
 					</form>
@@ -65,9 +69,8 @@ include 'sources/src-register.php';
 					<div class="textSlider">
 						<div class="textWrap">
 							<div class="textGroup">
-								<h1>Address</h1>
-								<h2>Biglang Awa St Cor 11th Ave Catleya,</h2>
-								<h2>Caloocan, 1400 Metro Manila, Philippines</h2>
+								<h1><?php echo $msg; ?></h1>
+								<h2>Important Note: Only .png, .jpg, or .jpeg are accepted.</h2>
 							</div>
 						</div>
 					</div>
