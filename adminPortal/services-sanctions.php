@@ -79,7 +79,7 @@ include 'includes/modals/services-modal.php'; ?>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Student Number</h3>
                                         <div class="col-md-12">
-                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sancNumber ?>" value="<?php echo $sancNumber ?>" class="form-control form-control-line" readonly>
+                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" value="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">

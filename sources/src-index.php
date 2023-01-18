@@ -28,13 +28,12 @@ if (isset($_POST['submit'])) {
 	if($sNumber == "" || $sPassword == ""){
 		exit('Please fill up all the text fields.');
 	} else if (mysqli_num_rows($result) === 1 && $row["userType"] == "user") {
-
 		if (empty($row['vkey'])) {
 			$_SESSION['SESSION_EMAIL'] = $sNumber;
 			$_SESSION['SESSION_ROLE'] = $row["userType"]; 
 			exit('<font color="green">Student login successful, you will be redirected in the dashboard page.</font>');
 		} else {
-			exit('<style="text-align: center;">Please verify your account first.</style>');
+			exit('<style="text-align: center;">Please wait for your account to be verified by the admin.</style>');
 		}
 	} else if(mysqli_num_rows($result) === 1 && $row["userType"] == "admin"){
 		$_SESSION['SESSION_EMAIL'] = $sNumber;

@@ -12,7 +12,7 @@ include 'sources/src-student.php';
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
 <?php include 'includes/header.php';
- ?>
+?>
 
 <body>
     <!-- ============================================================== -->
@@ -30,7 +30,7 @@ include 'sources/src-student.php';
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
         <?php include 'includes/topbar.php' ?>
-        <?php include 'includes/sidebar.php';
+        <?php include 'includes/sidebar-students.php';
         include 'includes/modals/student-modal.php'; ?>
 
         <!-- ============================================================== -->
@@ -65,9 +65,24 @@ include 'sources/src-student.php';
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Add Student</h4>
+                <div class="col-lg-12 col-xlg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal form-material mx-2">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addstudentModal'>Add Student</button>
+                                        <?php echo $msg; ?>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
                 <div class="cards ">
-                <div class="cards-single">
+                    <div class="cards-single">
                         <div>
                             <?php
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType = 'user'");
@@ -154,142 +169,31 @@ include 'sources/src-student.php';
                     </div>
                 </div>
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Add Student</h4>
-                    <div class="col-lg-12 col-xlg-12 col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form class="form-horizontal form-material mx-2">
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addstudentModal'>Add Student</button>
-                                                <?php echo $msg; ?>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Verified Students</h4>
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="table-responsive" style="padding: 20px;">
-                                    <table id="dataTable" class="table table-bordered table-hover">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
-                                                <th scope="col" style="color: #fff;">Email</th>
-                                                <th scope="col" style="color: #fff;">Course</th>
-                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
-                                                <th scope="col" style="color: #fff; display:none;">vkey</th>
-                                                <th scope="col" style="color: #fff; display:none;">studentVerified</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user' AND userStatus = '1'");
-                                            $i = 1;
-                                            while ($row = $load->fetch_assoc()) {
-                                                echo "<tr>
-                                                 <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
-                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studenteditbtn' data-bs-toggle='modal' data-bs-target='#studenteditModal'>
-                                                    EDIT
-                                                 </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#markasInactiveModal'>
-                                                     Mark as Inactive
-                                                 </button></td>
-                                                 </tr>";
-                                                $i++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Unverified Students</h4>
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="table-responsive" style="padding: 20px;">
-                                    <table id="dataTable2" class="table table-bordered table-hover">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
-                                                <th scope="col" style="color: #fff;">Email</th>
-                                                <th scope="col" style="color: #fff;">Course</th>
-                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
-                                                <th scope="col" style="color: #fff; display:none;">vkey</th>
-                                                <th scope="col" style="color: #fff; display:none;">studentVerified</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != '' AND userStatus = '1'");
-                                            $i = 1;
-                                            while ($row = $load->fetch_assoc()) {
-                                                echo "<tr>
-                                                 <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
-                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary unvstudenteditbtn' data-bs-toggle='modal' data-bs-target='#unvstudenteditModal'>
-                                                 EDIT
-                                                 </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn studentdeletepermanentbtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
-                                                    DELETE
-                                                 </button></td>
-                                                 </tr>";
-                                                $i++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> Admin Created Students</h4>
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="table-responsive" style="padding: 20px;">
-                                    <table id="dataTable3" class="table table-bordered table-hover">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
-                                                <th scope="col" style="color: #fff; display:none;">Email</th>
-                                                <th scope="col" style="color: #fff;">Course</th>
-                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
-                                                <th scope="col" style="color: #fff; display:none;">vkey</th>
-                                                <th scope="col" style="color: #fff; display:none;">studentVerified</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='' AND userStatus = '1'");
-                                            $i = 1;
-                                            while ($row = $load->fetch_assoc()) {
-                                                echo "<tr>
+                    <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> Admin Created Students</h4>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable3" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Student Name</th>
+                                            <th scope="col" style="color: #fff;">Student Number</th>
+                                            <th scope="col" style="color: #fff; display:none;">Email</th>
+                                            <th scope="col" style="color: #fff;">Course</th>
+                                            <th scope="col" style="color: #fff; display:none;">PASS</th>
+                                            <th scope="col" style="color: #fff; display:none;">vkey</th>
+                                            <th scope="col" style="color: #fff; display:none;">studentVerified</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='' AND userStatus = '1'");
+                                        $i = 1;
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
@@ -305,80 +209,38 @@ include 'sources/src-student.php';
                                                      Mark as Inactive
                                                  </button></td>
                                                  </tr>";
-                                                $i++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> Inactive Students</h4>
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="table-responsive" style="padding: 20px;">
-                                    <table id="dataTable4" class="table table-bordered table-hover">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
-                                                <th scope="col" style="color: #fff; display:none;">Email</th>
-                                                <th scope="col" style="color: #fff;">Course</th>
-                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">Mark as Active</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userStatus = '0'");
-                                            $i = 1;
-                                            while ($row = $load->fetch_assoc()) {
-                                                echo "<tr>
-                                                 <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
-                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn markasactivebtn' data-bs-toggle='modal' data-bs-target='#markasactiveModal'>
-                                                     Mark as Active
-                                                 </button></td>
-                                                 </tr>";
-                                                $i++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            $i++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
                 </div>
                 <!-- ============================================================== -->
-                <!-- End Container fluid  -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Page wrapper  -->
+            <!-- End Container fluid  -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Wrapper -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
 
-        <?php include 'includes/footer.php' ?>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-        <script src="src/scripts/datatable.js"></script>
-        <script src="src/scripts/modal.js"></script>
+    <?php include 'includes/footer.php' ?>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/datatable.js"></script>
+    <script src="src/scripts/modal.js"></script>
 </body>
 
 </html>

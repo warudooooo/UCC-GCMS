@@ -1,4 +1,8 @@
 
+.center-all{
+    margin: auto;
+  }
+
 .page-item.active .page-link{
     background: #333 !important;
     border-color: #333 !important;
@@ -127,7 +131,7 @@
 .btngreen{
     background: #38b000 !important;
     color: #fff !important;
-    padding: 10px 10px 10px 10px !important;
+    padding: 10px 20px 10px 20px !important;
     border-style:none !important;
     border-radius: 4px !important;
 }

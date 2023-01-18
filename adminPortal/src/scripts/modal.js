@@ -158,6 +158,8 @@ $(document).ready(function(){
                 $('#unvsCourse').val(data[4]);
                 $('#unvsPassword').val(data[5]);
                 $('#unvvkey').val(data[6]);
+                $('#dbID').val(data[8]);
+                $('#regForm').val(data[9]);
 	});
 });
 
