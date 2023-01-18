@@ -69,24 +69,24 @@ include 'includes/header.php';
                                 <table id="dataTable" class="table table-bordered table-hover">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th scope="col" style="color: #fff; width: 20px">#</th>
+                                            <th scope="col" style="display: none;">#</th>
+                                            <th scope="col" style="color: #fff; width: 150px">Date of Activity</th>
                                             <th scope="col" style="color: #fff; display: none;">id</th>
                                             <th scope="col" style="color: #fff;">Action</th>
-                                            <th scope="col" style="color: #fff; width: 300px">Administrator Name</th>
-                                            <th scope="col" style="color: #fff; width: 300px">Date of Activity</th>
+                                            <th scope="col" style="color: #fff; width: 100px">In Charge</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_activitylog");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_activitylog ORDER BY activityID DESC");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
-                                                 <td>" . $i . "</td>
+                                                 <td style='display: none;'>" . $i . "</td>
+                                                 <td>" . date('m/d/Y h:i A', strtotime($row["date"])) . "</td>
                                                  <td style='display: none'>" . $row["activityID"] . "</td>
                                                  <td>" . $row["activityAction"] . "</td>
                                                  <td>" . $row["admName"] . "</td>
-                                                 <td>" . date('m/d/Y h:i A', strtotime($row["date"])) . "</td>
                                                  </tr>";
                                             $i++;
                                         }
