@@ -192,7 +192,7 @@ if (isset($_POST['approve_student'])) {
                                             <td bgcolor='#f4f4f4' align='center' style='padding: 0px 10px 0px 10px;'>
                                                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                                                     <tr>
-                                                        <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                        <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                             <p style='text-align:center !important; margin-top: -10; margin-bottom: -10px;'>Congratulations! The Guidance has approved your account.</p>
                                                             <p style='text-align:center !important; margin-top: 10; margin-bottom: -10px;'>Please click the button below to log in.</p>
                                                         </td>
@@ -216,22 +216,22 @@ if (isset($_POST['approve_student'])) {
                                                         </td>
                                                     </tr> <!-- COPY -->
                                                     <tr>
-                                                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif !important; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 0px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif !important; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                             <p style='margin-left: 20px; margin-top: 0px; margin-bottom: 0px;'>If that doesn't work, copy and paste the following link in your browser:</p>
                                                         </td>
                                                     </tr> <!-- COPY -->
                                                     <tr>
-                                                        <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                        <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 20px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                             <p style='margin-left: 20px; margin-top: 0px; margin-bottom: 3px;'><a href='http://localhost/guidance/index.php' target='_blank' style='color: #F4845F;'>http://localhost/guidance/index.php</a></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 20px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                             <p style='margin-left: 20px; margin-top: 0px; margin-bottom: 0px;'>If you have any questions, just reply to this email.</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                             <p style='margin-left: 20px; margin-top: 10; margin-bottom: 25px;'>Regards,<br>UCC Guidance and Counseling</p>
                                                         </td>
                                                     </tr>
@@ -283,6 +283,7 @@ if (isset($_POST['approve_student'])) {
 if (isset($_POST['decline_student'])) {
     $adminPassword = $mysqli->real_escape_string(md5($_POST['adminPassword']));
     $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
+    
     $stEmail = $mysqli->real_escape_string($_SESSION['stEmail']);
     $decReason = $mysqli->real_escape_string($_POST['decReason']);
 
@@ -443,19 +444,19 @@ if (isset($_POST['decline_student'])) {
                                         <td bgcolor='#f4f4f4' align='center' style='padding: 0px 10px 0px 10px;'>
                                             <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                                                 <tr>
-                                                    <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                    <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                         <p style='text-align:center !important; margin-top: -10; margin-bottom: 30px;'>Sorry, The Guidance has declined your account.</p>
                                                         <p style='margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Reason: </p>
                                                         <p style='margin-left: 20px; margin-top: 10; margin-bottom: -10px;'> " . $decReason . "</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 20px 30px; color: #666666; font-family: Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                    <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 20px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                         <p style='margin-left: 20px; margin-top: 10px; margin-bottom: 0px;'>If you have any questions, just reply to this email.</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+                                                    <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                         <p style='margin-left: 20px; margin-top: 10; margin-bottom: 25px;'>Regards,<br>UCC Guidance and Counseling</p>
                                                     </td>
                                                 </tr>
