@@ -1,6 +1,6 @@
 <?php
 include 'sources/session.php';
-include 'sources/src-student.php';
+include 'sources/src-studentLists.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -31,7 +31,7 @@ include 'sources/src-student.php';
 
         <?php include 'includes/topbar.php' ?>
         <?php include 'includes/sidebar-students.php';
-        include 'includes/modals/student-modal.php'; ?>
+        include 'includes/modals/studentLists-modal.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -62,7 +62,7 @@ include 'sources/src-student.php';
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Pending Student Accounts</h4>
+                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Active Student Accounts</h4>
                 <div class="col-12">
                     <div class="card">
                         <div class="table-responsive" style="padding: 20px;">
@@ -70,29 +70,54 @@ include 'sources/src-student.php';
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col" style="color: #fff;">#</th>
+                                        <th scope="col" style="color: #fff; text-align: center;">Status</th>
                                         <th scope="col" style="color: #fff;">Student Name</th>
                                         <th scope="col" style="color: #fff;">Student Number</th>
                                         <th scope="col" style="color: #fff;">Email</th>
-                                        <th scope="col" style="color: #fff;">Course / Year / Section</th>
+                                        <th scope="col" style="color: #fff; width: 150px !important;">Course / Year / Section</th>
                                         <th scope="col" style="color: #fff; display:none;">PASS</th>
                                         <th scope="col" style="color: #fff; display:none;">vkey</th>
                                         <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                         <th scope="col" style="color: #fff; display:none;">ID</th>
                                         <th scope="col" style="color: #fff; display:none;">regForm</th>
-                                        <th scope="col" style="color: #fff;">Request Date</th>
+                                        <th scope="col" style="color: #fff;">Creation Date</th>
                                         <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != '' AND userStatus = '1'");
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType ='user' order by studentVerified DESC");
                                     $i = 1;
                                     while ($row = $load->fetch_assoc()) {
                                         echo "<tr>
                                                  <td>" . $i . "</td>
+                                                ";
+                                        if ($row['userStatus'] == '0') {
+                                            echo "<td style='text-align:center;'>
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #6a040f; color: #fff; border-style:none; border-radius: 20px;'>
+                                                           Inactive
+                                                       </button></td>";
+                                        } else if ($row['studentVerified'] == 'no') {
+                                            echo "<td style='text-align:center;'>
+                                                <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px;'>
+                                                   Not Verified
+                                               </button></td>";
+                                        } else if ($row['studentVerified'] == 'yes') {
+                                            echo "<td style='text-align:center;'>
+                                                <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2a9d8f; color: #fff; border-style:none; border-radius: 20px;'>
+                                                   Verified
+                                               </button></td>";
+                                        }
+                                        echo "
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
+                                                 ";
+                                        if ($row["studentEmail"] == "") {
+                                            echo "<td>Email is not available right now.</td>";
+                                        } else {
+                                            echo "<td>" . $row["studentEmail"] . "</td>";
+                                        }
+                                        echo "
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='display:none;'>" . $row["studentPassword"] . "</td>
                                                  <td style='display:none;'>" . $row["vkey"] . "</td>
@@ -101,7 +126,7 @@ include 'sources/src-student.php';
                                                  <td style='display:none;'>" . $row["regForm"] . "</td>
                                                  <td>" . date('m/d/Y h:i A', strtotime($row["studentCreateDate"])) . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary btnApprove unvstudenteditbtn' data-bs-toggle='modal' data-bs-target='#viewstudentModal'>
-                                                 APPROVE / DECLINE 
+                                                 View Student Details
                                                  </button></td>
                                                  </tr>";
                                         $i++;
@@ -135,7 +160,31 @@ include 'sources/src-student.php';
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="src/scripts/datatable.js"></script>
-    <script src="src/scripts/modal.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.unvstudenteditbtn').on('click', function() {
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#unvsName').val(data[2]);
+                $('#unvsNumber').val(data[3]);
+                $('#unvsEmail').val(data[4]);
+                $('#unvsCourse').val(data[5]);
+                $('#unvsPassword').val(data[6]);
+                $('#unvvkey').val(data[7]);
+                $('#dbID').val(data[9]);
+                $('#regForm').val(data[10]);
+            });
+        });
+
+        if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+    </script>
 </body>
 
 </html>

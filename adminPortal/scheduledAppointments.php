@@ -9,7 +9,7 @@
 <?php
 include 'includes/header.php';
 include 'sources/src-scheduledcouns.php';
-include 'includes/modals/scheduledcouns-modal.php';
+include 'includes/modals/scheduledAppointments-modal.php';
 ?>
 
 <body>

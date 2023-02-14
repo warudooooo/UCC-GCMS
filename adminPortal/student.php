@@ -85,7 +85,7 @@ include 'sources/src-student.php';
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType = 'user'");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType = 'user' AND userStatus = '1';");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<h1>' . $total . '</h1>';
@@ -93,7 +93,7 @@ include 'sources/src-student.php';
                                 echo '<h1>' . $total . '</h1>';
                             }
                             ?>
-                            <span>Total Students</span>
+                            <span>Total Active Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
@@ -110,7 +110,7 @@ include 'sources/src-student.php';
                                 echo '<h1>' . $total . '</h1>';
                             }
                             ?>
-                            <span>Verified Students</span>
+                            <span>Verified Student Accounts</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>

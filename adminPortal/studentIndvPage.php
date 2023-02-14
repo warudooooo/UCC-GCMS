@@ -1,6 +1,6 @@
 <?php
 include 'sources/session.php';
-include 'sources/src-student.php';
+include 'sources/src-studentLists.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -31,7 +31,7 @@ include 'sources/src-student.php';
 
         <?php include 'includes/topbar.php' ?>
         <?php include 'includes/sidebar-students.php';
-        include 'includes/modals/student-modal.php'; ?>
+        include 'includes/modals/studentLists-modal.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -43,12 +43,13 @@ include 'sources/src-student.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Student Details ( <?php echo $_SESSION['sName']; ?> )</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Pending Accounts</li>
+                                    <li class="breadcrumb-item"><a href="studentLists.php" style="color: #f4845f;">Student List</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Student Details ( <?php echo $_SESSION['sName']; ?> )</li>
                                 </ol>
                             </nav>
                         </div>
@@ -62,53 +63,55 @@ include 'sources/src-student.php';
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Pending Student Accounts</h4>
+                <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
+                <div class="cards">
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $studNumber = $_SESSION['stNumber'];
+
+                            $sName = $row['studentName'];
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            } else {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            }
+                            ?>
+                            <span>Sanctions</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-alert" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $studNumber = $_SESSION['stNumber'];
+
+                            $sName = $row['studentName'];
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber' AND counselingStatus = 'Pending'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<h1 style="color: #fff;">' . $total . '</h1>';
+                            } else {
+                                echo '<h1 style="color: #fff;">' . $total . '</h1>';
+                            }
+                            ?>
+                            <span>Appointment Requests</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Active Student Accounts</h4>
                 <div class="col-12">
                     <div class="card">
                         <div class="table-responsive" style="padding: 20px;">
-                            <table id="dataTable2" class="table table-bordered table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col" style="color: #fff;">#</th>
-                                        <th scope="col" style="color: #fff;">Student Name</th>
-                                        <th scope="col" style="color: #fff;">Student Number</th>
-                                        <th scope="col" style="color: #fff;">Email</th>
-                                        <th scope="col" style="color: #fff;">Course / Year / Section</th>
-                                        <th scope="col" style="color: #fff; display:none;">PASS</th>
-                                        <th scope="col" style="color: #fff; display:none;">vkey</th>
-                                        <th scope="col" style="color: #fff; display:none;">studentVerified</th>
-                                        <th scope="col" style="color: #fff; display:none;">ID</th>
-                                        <th scope="col" style="color: #fff; display:none;">regForm</th>
-                                        <th scope="col" style="color: #fff;">Request Date</th>
-                                        <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != '' AND userStatus = '1'");
-                                    $i = 1;
-                                    while ($row = $load->fetch_assoc()) {
-                                        echo "<tr>
-                                                 <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentPassword"] . "</td>
-                                                 <td style='display:none;'>" . $row["vkey"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentVerified"] . "</td>
-                                                 <td style='display:none;'>" . $row["ID"] . "</td>
-                                                 <td style='display:none;'>" . $row["regForm"] . "</td>
-                                                 <td>" . date('m/d/Y h:i A', strtotime($row["studentCreateDate"])) . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btnApprove unvstudenteditbtn' data-bs-toggle='modal' data-bs-target='#viewstudentModal'>
-                                                 APPROVE / DECLINE 
-                                                 </button></td>
-                                                 </tr>";
-                                        $i++;
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+
                         </div>
                     </div>
                 </div>
@@ -135,7 +138,31 @@ include 'sources/src-student.php';
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="src/scripts/datatable.js"></script>
-    <script src="src/scripts/modal.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.unvstudenteditbtn').on('click', function() {
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#unvsName').val(data[2]);
+                $('#unvsNumber').val(data[3]);
+                $('#unvsEmail').val(data[4]);
+                $('#unvsCourse').val(data[5]);
+                $('#unvsPassword').val(data[6]);
+                $('#unvvkey').val(data[7]);
+                $('#dbID').val(data[9]);
+                $('#regForm').val(data[10]);
+            });
+        });
+
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>

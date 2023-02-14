@@ -102,14 +102,14 @@ if (mysqli_num_rows($query) > 0) {
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="deleted-appointments.php" aria-expanded="false"><i class="mdi mdi-trash-can    "></i><span class="hide-menu">Deleted Appointments</span></a></li>
                 <hr class="hr" /> -->
                 <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Appointments</h4>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="counseling-dashboard.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pendingcounseling.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Appointments</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="scheduled-counseling.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Scheduled Appointments</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="cancelled-appointments.php" aria-expanded="false"><i class="mdi mdi-trash-can"></i><span class="hide-menu">Cancelled Appointments</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-history.php" aria-expanded="false"><i class="mdi mdi-account-switch"></i><span class="hide-menu">Appointment History</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointmentsDashboard.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pendingAppointments.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Appointments</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="scheduledAppointments.php" aria-expanded="false"><i class="mdi mdi-calendar-multiple-check"></i><span class="hide-menu">Scheduled Appointments</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="cancelledAppointments.php" aria-expanded="false"><i class="mdi mdi-trash-can"></i><span class="hide-menu">Cancelled Appointments</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointmentHistory.php" aria-expanded="false"><i class="mdi mdi-account-switch"></i><span class="hide-menu">Appointment History</span></a></li>
                 <hr class="hr" />
                 <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Reports</h4>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-reports.php" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Appointment Reports</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointmentReports.php" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Appointment Reports</span></a></li>
                 <hr class="hr" />
                 <!-- <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">History</h4> -->
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="referral.php" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">Reason for Referral</span></a></li> -->

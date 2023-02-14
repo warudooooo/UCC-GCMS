@@ -45,7 +45,7 @@
 $msg = "";
 include 'includes/header.php';
 include 'sources/src-counseling.php';
-include 'includes/modals/pendingcouns-modal.php';
+include 'includes/modals/pendingAppointments-modal.php';
 ?>
 
 <body>
@@ -108,15 +108,15 @@ include 'includes/modals/pendingcouns-modal.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE counselingStatus='Approved'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="scheduled-counseling.php" class="fill-div">' . $total . '</a>';
+                                echo '<a href="scheduledAppointments.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="scheduled-counseling.php" class="fill-div">' . $total . '</a>';
+                                echo '<a href="scheduledAppointments.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
                             <span>Approved Appointments</span>
                         </div>
                         <div>
-                            <a href="scheduled-counseling.php" class="fill-div">
+                            <a href="scheduledAppointments.php" class="fill-div">
                                 <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
                             </a>
                         </div>
@@ -127,15 +127,15 @@ include 'includes/modals/pendingcouns-modal.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE counselingStatus='Pending'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="pendingcounseling.php" class="fill-div">' . $total . '</a>';
+                                echo '<a href="pendingAppointments.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="pendingcounseling.php" class="fill-div">' . $total . '</a>';
+                                echo '<a href="pendingAppointments.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
                             <span>Pending Appointments</span>
                         </div>
                         <div>
-                            <a href="pendingcounseling.php" class="fill-div">
+                            <a href="pendingAppointments.php" class="fill-div">
                                 <span class="mdi mdi-calendar-clock" style="font-size: 3rem;"></span>
                             </a>
                         </div>

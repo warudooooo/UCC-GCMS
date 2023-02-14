@@ -10,7 +10,7 @@
 $msg = "";
 include 'includes/header.php';
 include 'sources/src-counseling.php';
-include 'includes/modals/pendingcouns-modal.php';
+include 'includes/modals/pendingAppointments-modal.php';
 ?>
 
 <body>
@@ -88,7 +88,7 @@ include 'includes/modals/pendingcouns-modal.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE counselingStatus = 'Pending'");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE counselingStatus = 'Pending' ORDER BY counselingSchedule DESC");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>

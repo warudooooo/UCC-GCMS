@@ -75,7 +75,7 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
                         <div class="col-md-12">
-                            <input type="password" name="admPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter you password here" name="admPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                         <input style="display:none;" type="text" id="vkey" name="vkey" class="form-control form-control-line">
@@ -83,9 +83,9 @@
                         <input style="display:none;" type="text" id="sPassword" name="sPassword" class="form-control form-control-line">
                         <input style="display:none;" type="text" id="studentEmail" name="sEmail" class="form-control form-control-line">
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary yesbtn" name="delete_student">YES</button>
-                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
+                    <div class="modal-footer" style="margin:auto;">
+                        <button type="submit" class="btn btn-primary yesbtn" name="delete_student" style="width: 200px;">YES</button>
+                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal" style="width: 200px;">No</button>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
                         <div class="col-md-12">
-                            <input type="password" name="admPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter you password here" name="admPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                         <input style="display:none;" type="text" id="actvkey" name="vkey" class="form-control form-control-line">
@@ -129,9 +129,9 @@
                         <input style="display:none;" type="text" id="actPassword" name="sPassword" class="form-control form-control-line">
                         <input style="display:none;" type="text" id="actEmail" name="sEmail" class="form-control form-control-line">
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary seemorebtn" style="width: 100px;" name="markas_active">YES</button>
-                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
+                    <div class="modal-footer" style="margin:auto;">
+                        <button type="submit" class="btn btn-primary seemorebtn" style="width: 200px;" name="markas_active">YES</button>
+                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal" style="width: 200px;">No</button>
                     </div>
                 </div>
             </div>
@@ -230,21 +230,21 @@
             <div class="modal-dialog">
                 <div class="modal-content approve">
                     <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLabel" style="color: #38b000;">VIEW STUDENT DETAILS</h2>
+                        <h2 class="modal-title" id="exampleModalLabel" style="color: #457b9d;">VIEW STUDENT DETAILS</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb; pointer-events: none;" type="text" name="sName" id="unvsName" class="form-control form-control-line" readonly>
+                            <input style="background-color: #e8eddf; pointer-events: none;" type="text" name="sName" id="unvsName" class="form-control form-control-line" readonly>
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb; pointer-events: none; text-transform: uppercase;" type="text" name="stNumber" id="unvsNumber" class="form-control form-control-line" readonly>
+                            <input style="background-color: #e8eddf; pointer-events: none; text-transform: uppercase;" type="text" name="stNumber" id="unvsNumber" class="form-control form-control-line" readonly>
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb; pointer-events: none; text-transform: uppercase;" type="text" name="stCourse" id="unvsCourse" class="form-control form-control-line" readonly>
+                            <input style="background-color: #e8eddf; pointer-events: none; text-transform: uppercase;" type="text" name="stCourse" id="unvsCourse" class="form-control form-control-line" readonly>
                         </div>
                         <input style="display:none;" id="dbID" name="dbID">
                         <input style="display:none;" id="regForm" name="regForm">
@@ -253,7 +253,7 @@
                         <input style="display:none;" type="text" id="unvvkey" name="vkey" class="form-control form-control-line">
                     </div>
                     <div class="modal-footer center-all">
-                        <button type="submit" class="btn btn-primary btngreen editbtn" value="view_student" name="view_student">VIEW STUDENT DETAILS</button>
+                        <button type="submit" class="btn btn-primary btnApprove" value="view_student" name="view_student">VIEW STUDENT DETAILS</button>
                         <button type="button" class="btn btn-secondary mdlclosebtn" style="width: 200px;" data-bs-dismiss="modal">CLOSE</button>
                     </div>
                 </div>
@@ -315,8 +315,8 @@
                         <input style="display:none;" type="text" value="<?php echo  $_SESSION['admPassword']; ?>" name="curPassword" class="form-control form-control-line">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btngreen" name="approve_student"  style="width: 200px;">APPROVE</button>
-                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal"  style="width: 200px;">Close</button>
+                        <button type="submit" class="btn btn-primary btngreen" name="approve_student" style="width: 200px;">APPROVE</button>
+                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal" style="width: 200px;">Close</button>
                     </div>
                 </div>
             </div>
@@ -363,8 +363,8 @@
                         <input style="display:none;" type="text" value="<?php echo  $_SESSION['admPassword']; ?>" name="curPassword" class="form-control form-control-line">
                     </div>
                     <div class="modal-footer" style="margin: 0 auto;">
-                        <button type="submit" class="btn btn-primary btnred" name="decline_student"  style="width: 200px;">Decline</button>
-                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal"  style="width: 200px;">Close</button>
+                        <button type="submit" class="btn btn-primary btnred" name="decline_student" style="width: 200px;">Decline</button>
+                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal" style="width: 200px;">Close</button>
                     </div>
                 </div>
             </div>
@@ -398,9 +398,9 @@
                         <div class="col-md-12">
                             <input style="background-color: #edf2fb;" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
                         </div>
-                        <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
+                        <label class="col-md-12" style="margin-top:10px;">To edit this student details. You need to type again your password</label>
                         <div class="col-md-12">
-                            <input type="password" name="admPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter you password here" name="admPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     </div>

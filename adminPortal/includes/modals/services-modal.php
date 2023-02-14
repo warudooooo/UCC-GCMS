@@ -12,7 +12,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <label class="col-md-12" style="margin-top:10px;">Row Name</label>
+                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; pointer-events:none;" type="text" name="sName" id="sName" class="form-control form-control-line">
                     </div>

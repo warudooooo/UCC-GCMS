@@ -29,7 +29,7 @@ if (isset($_POST['delete_counseling'])) {
 
 	$decReason = $mysqli->real_escape_string($_POST['decReason']);
 	$curPassword = $mysqli->real_escape_string($_POST['curPassword']);
-	$adminPassword = $mysqli->real_escape_string($_POST['adminPassword']);
+	$adminPassword = $mysqli->real_escape_string(md5($_POST['adminPassword']));
 
 	// $add = "INSERT INTO tbl_delpendingcounsellings(studentNumber,requesterName,studentCourse,studentEmail,counsellingType,counsellingDetails,dateCreated)
 	// VALUES('$counsNumber','$counsName','$counsCourse','$counsEmail','$counsType','$counsDetails','$date')";

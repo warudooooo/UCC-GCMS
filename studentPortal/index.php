@@ -171,7 +171,7 @@ include 'includes/modals/index-modal.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE requesterName = '$sName' AND counselingStatus != 'Cancelled'");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE requesterName = '$sName' AND counselingStatus != 'Cancelled' ORDER BY counselingSchedule DESC");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>

@@ -73,67 +73,58 @@ include 'includes/modals/services-modal.php'; ?>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Full Name</h3>
                                         <div class="col-md-12">
-                                            <input name="sName" style="pointer-events: none;" type="text" placeholder="<?php echo $_POST["sName"]; ?>" value="<?php echo $_POST["sName"]; ?>" class="form-control form-control-line" readonly>
+                                            <input name="sName" style="pointer-events: none;" type="text" placeholder="<?php echo $_SESSION['sancName']; ?>" value="<?php echo $_SESSION['sancName']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Student Number</h3>
                                         <div class="col-md-12">
-                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sNumber ?>" value="<?php echo $sNumber ?>" class="form-control form-control-line" readonly>
+                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sancNumber']; ?>" value="<?php echo $_SESSION['sancNumber']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Course</h3>
                                         <div class="col-md-12">
-                                            <input name="sCourse" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sancCourse ?>" value="<?php echo $sancCourse ?>" class="form-control form-control-line" readonly>
+                                            <input name="sCourse" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sancCourse']; ?>" value="<?php echo $_SESSION['sancCourse']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
-                                    <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $sanctEmail ?>" value="<?php echo $sanctEmail ?>" class="form-control form-control-line" readonly>
+                                    <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sanctEmail']; ?>" value="<?php echo $_SESSION['sanctEmail']; ?>" class="form-control form-control-line" readonly>
                                     <div class="form-group">
-                                            <h4 class="col-md-12">Case</h4>
-                                            <div class="col-md-12">
-                                                <textarea rows="2" class="form-control form-control-line" name="sCase" required></textarea>
-                                            </div>
+                                        <h4 class="col-md-12">Case</h4>
+                                        <div class="col-md-12">
+                                            <textarea style="background-color: #edf2fb;" rows="3" class="form-control form-control-line" name="sCase" placeholder="Enter here.." required></textarea>
                                         </div>
+                                    </div>
+                                    <h3 class="col-md-16">Sanction Types </h3>
                                     <div class="form-group">
-                                        <h3 class="col-md-12">Select Sanction</h3>
-                                        <div class="select-menu">
-                                            <div class="select-btn">
-                                                <span class="sBtn-text" required>Select Sanction</span>
-                                                <i class="fas fa-caret-down"></i>
+                                        <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
+                                        <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Educational Sanctions:</b> Seminar, Assessment, Educational/Reflective Assignment </label>
+                                        <div class="form-group">
+                                            <h3 class="col-md-12">Select Sanction</h3>
+                                            <div class="select-menu">
+                                                <div class="select-btn">
+                                                    <span class="sBtn-text">Select your options</span>
+                                                    <i class="fas fa-caret-down"></i>
+                                                </div>
+                                                <textarea class="sBtn-text-clone" name="sType"></textarea>
+                                                <ul class="options">
+                                                    <?php
+                                                    $query = mysqli_query($mysqli, "SELECT * FROM tbl_sanctionservices");
+                                                    while ($row = mysqli_fetch_array($query)) {
+                                                    ?>
+                                                        <li class="option">
+                                                            <span class="option-text" value="<?php echo $row['sanctionID']; ?>"><?php echo $row['sanctionName']; ?></span>
+                                                        </li>
+                                                    <?php } ?>
+                                                </ul>
                                             </div>
-                                            <textarea class="sBtn-text-clone" name="sSanction" required></textarea>
-                                            <ul class="options">
-                                                <li class="option">
-                                                    <span class="option-text">Disciplinary Sanction</span>
-                                                </li>
-                                                <li class="option">
-                                                    <span class="option-text">Educational Sanction</span>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h3 class="col-md-16">Sanction Types </h3>
-                                        <div class="form-group">
-                                            <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
-                                            <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Educational Sanctions:</b> nameinar, Assessment, Educational/Reflective Assignment </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <select name="sType" class="form-select" aria-label="Default select example" required>
-                                                <option class="option" value="" selected>Select type</option>
-                                                <option class="option" value="Probation">Probation</option>
-                                                <option class="option" value="Suspension">Suspension</option>
-                                                <option class="option" value="Dismissal">Dismissal</option>
-                                                <option class="option" value="Seminar">Seminar</option>
-                                                <option class="option" value="Assessment">Assessment</option>
-                                                <option class="option" value="Educational/Reflective Assignment">Educational/Reflective Assignment</option>
-                                            </select>
-                                        </div>
                                         <div class="form-group">
                                             <h4 class="col-md-12">Message</h4>
                                             <div class="col-md-12">
-                                                <textarea rows="8" class="form-control form-control-line" name="sMessage" required></textarea>
+                                                <textarea rows="5" class="form-control form-control-line" style="background-color: #edf2fb;" placeholder="Enter here.." name="sMessage" required></textarea>
                                             </div>
                                         </div>
                                         <!-- <div class="form-group">
