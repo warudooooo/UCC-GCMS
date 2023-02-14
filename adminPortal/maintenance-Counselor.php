@@ -1,6 +1,6 @@
 <?php
 include 'sources/session.php';
-include 'sources/src-student.php';
+include 'sources/src-maintenance-Counselor.php';
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -11,7 +11,7 @@ include 'sources/src-student.php';
     
 </head>
 <?php include 'includes/header.php';
-include 'includes/modals/services-modal.php'; ?>
+include 'includes/modals/maintenance-Counselor-modal.php'; ?>
 
 <body>
     <!-- ============================================================== -->
@@ -41,12 +41,12 @@ include 'includes/modals/services-modal.php'; ?>
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Counselor Lists</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Students</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Counselor </li>
                                 </ol>
                             </nav>
                         </div>
@@ -60,92 +60,50 @@ include 'includes/modals/services-modal.php'; ?>
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
-                <div class="cards ">
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
-                            } else {
-                                echo '<h1>' . $total . '</h1>';
-                            }
-                            ?>
-                            <span>Student Lists</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Disciplinary Sanction'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
-                            } else {
-                                echo '<h1>' . $total . '</h1>';
-                            }
-                            ?>
-                            <span>Students with Disiplinary Sanctions</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Educational Sanction'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<h1 style="color: white;">' . $total . '</h1>';
-                            } else {
-                                echo '<h1 style="color: white;">' . $total . '</h1>';
-                            }
-                            ?>
-                            <span>Students with Educational Sanctions</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Student Lists</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Add Counselor</h4>
+                    <div class="col-lg-12 col-xlg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form class="form-horizontal form-material mx-2">
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addCounselorModal'>Add Counselor</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo $msg; ?>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Counselor Lists</h4>
                         <div class="col-12">
                             <div class="card">
                                 <div class="table-responsive" style="padding: 20px;">
                                     <table id="dataTable" class="table table-bordered table-hover">
                                         <thead class="table-dark">
                                             <tr>
-                                                <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
-                                                <th scope="col" style="color: #fff;">Course</th>
-                                                <th scope="col" style="color: #fff; display: none;">Email</th>
-                                                <th scope="col" style="color: #fff; text-align: center; width: 150px;">ACTION</th>
+                                                <th scope="col" style="color: #fff; width: 5px;">#</th>
+                                                <th scope="col" style="display: none;">Counselor ID</th>
+                                                <th scope="col" style="color: #fff; text-align: center; width: 400px;"">Counselor Name</th>
+                                                <th scope="col" style="color: #fff; text-align: center; width: 00px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselors");
                                             $i = 1;
                                             while ($row = $load->fetch_assoc()) {
                                                 echo "<tr>
                                                  <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-transform: uppercase; display: none;'>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-align:center;'><button style='width: 120px;' type='button' class='btn btn-primary btnblue actionbtn' data-bs-toggle='modal' data-bs-target='#actionModal'>
-                                                    ACTION
+                                                 <td style='display: none;'>" . $row["counselorID"] . "</td>
+                                                 <td>" . $row["counselorName"] . "</td>
+                                                 <td style='text-align:center;'>
+                                                 <button style='width: 150px;' type='button' class='btn btn-primary editbtn proceditbtn' data-bs-toggle='modal' data-bs-target='#editCounselorModal'>
+                                                    EDIT
+                                                 </button>
+                                                 <button style='width: 150px;' type='button' class='btn btn-primary deletebtn procdelbtn' data-bs-toggle='modal' data-bs-target='#deleteCounselorModal'>
+                                                     DELETE
                                                  </button></td>
                                                  </tr>";
                                                 $i++;
@@ -156,6 +114,7 @@ include 'includes/modals/services-modal.php'; ?>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <!-- ============================================================== -->
                     <!-- End PAge Content -->
                     <!-- ============================================================== -->
@@ -178,7 +137,7 @@ include 'includes/modals/services-modal.php'; ?>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="src/scripts/datatable.js"></script>
-        <script src="src/scripts/modal.js"></script>
+        <script src="src/scripts/admquestion.js"></script>
 </body>
 
 </html>

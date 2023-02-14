@@ -14,17 +14,21 @@
                 <div class="col-md-12">
                     <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="studName" class="form-control form-control-line" readonly>
                 </div>
-                <h5 class="col-md-12" style="margin-top:10px;">Sanction Type</h5>
-                <div class="col-md-12">
-                    <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="sancType" class="form-control form-control-line" readonly>
-                </div>
                 <h5 class="col-md-12" style="margin-top:10px;">Date Issued</h5>
                 <div class="col-md-12">
                     <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="dateIssued" class="form-control form-control-line" readonly>
                 </div>
+                <h5 class="col-md-12" style="margin-top:10px;">Sanction Type</h5>
+                <div class="col-md-12">
+                    <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="sancType" class="form-control form-control-line" readonly>
+                </div>
+                <h5 class="col-md-12" style="margin-top:10px;">Degree</h5>
+                <div class="col-md-12">
+                    <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="ssDegree" class="form-control form-control-line" readonly>
+                </div>
                 <h5 class="col-md-12" style="margin-top: 10px;">Case</h5>
                 <div class="col-md-12">
-                    <textarea rows="4" class="form-control form-control-line" id="sancCase" style="background-color: #e8eddf; padding: 20px; pointer-events: none;" readonly></textarea>
+                    <textarea rows="3" class="form-control form-control-line" id="sancCase" style="background-color: #e8eddf; padding: 20px; pointer-events: none;" readonly></textarea>
                 </div>
                 <h5 class="col-md-12" style="margin-top:10px;">Guidance Message</h5>
                 <div class="col-md-12">

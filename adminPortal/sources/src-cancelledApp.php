@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -7,32 +7,19 @@ use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
 
 if (isset($_POST['reSchedule'])) {
-	$scdID = $_POST['scdID'];
-	$scdName = $_POST['scdName'];
-	$scdNumber = $_POST['scdNumber'];
-	$scdEmail = $_POST['scdEmail'];
-	$scdDateapproved = ($_POST['scdDateapproved']);
-	$scdType = ($_POST['scdType']);
-	$scdDetails = ($_POST['scdDetails']);
 
-
-	$scdID = $mysqli->real_escape_string($scdID);
-	$scdName = $mysqli->real_escape_string($scdName);
-	$scdNumber = $mysqli->real_escape_string($scdNumber);
-	$scdEmail = $mysqli->real_escape_string($scdEmail);
-	$scdDateapproved = $mysqli->real_escape_string($scdDateapproved);
-	$scdType = $mysqli->real_escape_string($scdType);
-	$scdDetails = $mysqli->real_escape_string($scdDetails);
-
+	$scdName = $mysqli->real_escape_string($_POST['scdName']);
+	$scdEmail = $mysqli->real_escape_string($_POST['scdEmail']);
+	$scdID = $mysqli->real_escape_string($_POST['scdID']);
 	$scdSchedule = $mysqli->real_escape_string($_POST['scdSchedule']);
 	$decReason = $mysqli->real_escape_string($_POST['decReason']);
-
+	
 	if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE counselingSchedule='{$scdSchedule}' AND counselingStatus != 'Declined' AND counselingStatus != 'Cancelled'")) > 0) {
 		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>THE SCHEDULE YOU SELECTED IS NOT AVAILABLE AT THIS TIME.</h3></div>';
 	} else if ($scdSchedule == "") {
 		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>PLEASE SELECT A DATE</h3></div>';
 	} else {
-		$update = "UPDATE tbl_counselings SET counselingSchedule = '$scdSchedule' WHERE ID = '$scdID'";
+		$update = "UPDATE tbl_counselings SET counselingSchedule = '$scdSchedule', counselingStatus = 'Approved' WHERE ID = '$scdID'";
 		$result = mysqli_query($mysqli, $update);
 		$mail = new PHPMailer(true);
 		try {
@@ -176,7 +163,7 @@ if (isset($_POST['reSchedule'])) {
 											width'391' height='78' style='display: block; border: 0px; margin-top: 40px;' />
 										<h3
 											style='font-size: 48px; font-weight: 400; margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>
-											Hi, " . $sName . "</h3>
+											Hi, " . $scdName . "</h3>
 									</td>
 								</tr>
 							</table>
@@ -261,32 +248,6 @@ if (isset($_POST['reSchedule'])) {
 		// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED SCHEDULED COUNSELING [ Details: $scdName- $scdSchedule ]')";
 		// $runActivity = mysqli_query($mysqli, $activity);
 	}
-}
-
-if (isset($_POST['completed'])) {
-
-	$scID = $mysqli->real_escape_string($_POST['scID']);
-	$sName = $mysqli->real_escape_string($_POST['sName']);
-	$sNumber = $mysqli->real_escape_string($_POST['sNumber']);
-	$sCourse = $mysqli->real_escape_string($_POST['sCourse']);
-	$sEmail = $mysqli->real_escape_string($_POST['sEmail']);
-	$pInCharge = $mysqli->real_escape_string($_POST['pInCharge']);
-	$remarks = $mysqli->real_escape_string($_POST['remarks']);
-	$scType = $mysqli->real_escape_string($_POST['scType']);
-	$Details = $mysqli->real_escape_string($_POST['Details']);
-	$scScheds = $mysqli->real_escape_string($_POST['scScheds']);
-
-
-
-	if ($pInCharge == "") {
-		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>PLEASE SELECT A PERSON IN CHARGE</h3></div>';
-	} else {
-		$sql = "INSERT INTO tbl_counselinghistory(id,studentNumber,requesterName,studentCourse,studentEmail,counselingDetails,counselingType,counselingSchedule,counselingStatus,counselor,counselorRemarks)
-            	VALUES('$scID','$sNumber','$sName','$sCourse','$sEmail','$Details','$scType','$scScheds','Completed','$pInCharge','$remarks')";
-		$result = mysqli_query($mysqli, $sql);
-		$delete = "DELETE FROM tbl_counselings WHERE id='$scID'";
-		$del = mysqli_query($mysqli, $delete);
-		// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS DONE (COUNSELING) [ Details: $sName ]')";
-		// $runActivity = mysqli_query($mysqli, $activity);
-	}
+	// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','PERMANENTLY DELETE (PENDING COUNSELING)')";
+	// $runActivity = mysqli_query($mysqli, $activity);
 }

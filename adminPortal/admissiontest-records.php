@@ -61,63 +61,6 @@ include 'includes/modals/addrecords-modal.php'; ?>
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <!-- <h4 class="card-title"><i class="mdi mdi-tablet-dashboard"></i> Statistics</h4>
-                <div class="cards "> -->
-                    <!-- <div class="cards-single">
-                        <div>
-                            <?php
-                            // $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user'");
-
-                            // if ($total = mysqli_num_rows($load)) {
-                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            // } else {
-                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            // }
-                            ?>
-                            <span>Verified Students</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            // $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != ''");
-
-                            // if ($total = mysqli_num_rows($load)) {
-                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            // } else {
-                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            // }
-                            ?>
-                            <span>Not Verified Students</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            // $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND studentEmail=''");
-
-                            // if ($total = mysqli_num_rows($load)) {
-                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            // } else {
-                            //     echo '<a href="#" class="fill-div">' . $total . '</a>';
-                            // }
-                            ?>
-                            <span>Admin Created Students</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
-                        </div>
-                    </div> -->
-                <!-- </div> -->
                 <div class="row">
                     <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Attach Files<i style="margin-left: 10px;"><b>Reminder: Only Documents and PDF Files only</b></i></h4>
                     <div class="col-lg-12 col-xlg-12 col-md-12">
@@ -148,7 +91,7 @@ include 'includes/modals/addrecords-modal.php'; ?>
                                                 <th scope="col" style="color: #fff; width: 500px;"">Size</th>
                                                 <th scope="col" style="color: #fff; width: 500px;"">Total Downloads</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">Download</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
+                                                <!-- <th scope="col" style="color: #fff; text-align: center;">DELETE</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -163,12 +106,9 @@ include 'includes/modals/addrecords-modal.php'; ?>
                                                  <td style='text-transform: uppercase;'>" . $row["admFile"] . "</td>
                                                  <td>" . $row["admSize"]/1000 . " KB</td>
                                                  <td>" . $row["admDownloads"] . "</td>
-                                                 <td style='text-align:center;'><a href='admissiontest-records.php?file_id=" . $row["admID"] . "'><button type='button' class='btn btn-primary btnblue'>
+                                                 <td style='text-align:center;'><a href='admissiontest-records.php?file_id=" . $row["admID"] . "'><button type='button' class='btn btn-primary btnblue' style='width: 150px;'>
                                                  Download
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn recordsdeletebtn' data-bs-toggle='modal' data-bs-target='#recordsdeleteModal'>
-                                                DELETE
-                                                </button></td>
                                                  </tr>";
                                                 $i++;
                                             }

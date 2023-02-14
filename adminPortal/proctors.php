@@ -86,9 +86,8 @@ include 'includes/modals/proctor-modal.php'; ?>
                                                 <th scope="col" style="color: #fff; width: 5px;">#</th>
                                                 <th scope="col" style="display: none;">Proctor ID</th>
                                                 <th scope="col" style="color: #fff; text-align: center; width: 400px;"">Proctor Name</th>
-                                                <th scope="col" style="color: #fff; text-align: center; width: 100px;">VIEW / ADD SCHEDULE</th>
-                                                <th scope="col" style="color: #fff; text-align: center; width: 100px;">EDIT</th>
-                                                <th scope="col" style="color: #fff; text-align: center; width: 100px;">DELETE</th>
+                                                <th scope="col" style="color: #fff; text-align: center; width: 00px;">VIEW / ADD SCHEDULE</th>
+                                                <th scope="col" style="color: #fff; text-align: center; width: 00px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -103,10 +102,11 @@ include 'includes/modals/proctor-modal.php'; ?>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary seemorebtn viewschedbtn' data-bs-toggle='modal' data-bs-target='#viewProctorModal'>
                                                      VIEW SCHEDULE
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary editbtn proceditbtn' data-bs-toggle='modal' data-bs-target='#editProctorModal'>
+                                                 <td style='text-align:center;'>
+                                                 <button style='width: 150px;' type='button' class='btn btn-primary editbtn proceditbtn' data-bs-toggle='modal' data-bs-target='#editProctorModal'>
                                                     EDIT
-                                                 </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn procdelbtn' data-bs-toggle='modal' data-bs-target='#deleteProctorModal'>
+                                                 </button>
+                                                 <button style='width: 150px;' type='button' class='btn btn-primary deletebtn procdelbtn' data-bs-toggle='modal' data-bs-target='#deleteProctorModal'>
                                                      DELETE
                                                  </button></td>
                                                  </tr>";

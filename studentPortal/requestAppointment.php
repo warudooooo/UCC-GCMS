@@ -165,7 +165,7 @@
                                     <div class="form-group" style="margin-top: 10px;">
                                         <label class="col-md-12">Describe your concern</label>
                                         <div class="col-md-12">
-                                            <textarea rows="11" placeholder="Enter your concern here.." class="form-control form-control-line details sDetails" name="sDetails"></textarea>
+                                            <textarea rows="11" placeholder="Enter your concern here.." class="form-control form-control-line" name="sDetails"></textarea>
                                         </div>
                                     </div>
 
@@ -252,7 +252,7 @@
                 </div>
                 <!-- Event Details Modal -->
                 <?php
-                $schedules = $mysqli->query("SELECT * FROM `tbl_counselings` WHERE counselingStatus != 'Declined'");
+                $schedules = $mysqli->query("SELECT * FROM `tbl_counselings` WHERE counselingStatus != 'Declined' AND counselingStatus != 'Cancelled'");
                 $sched_res = [];
                 foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
                     $row['sdate'] = date("F d, Y h:i A", strtotime($row['counselingSchedule']));

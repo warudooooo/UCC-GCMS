@@ -1,3 +1,22 @@
+// $(document).ready(function(){
+// 	$('.seemorebtn').on('click', function(){
+// 		$tr = $(this).closest('tr');
+
+//                 var data = $tr.children("td").map(function () {
+//                     return $(this).text();
+//                 }).get();
+
+//                 console.log(data);
+
+//                 $('#sName').val(data[1]);
+//                 $('#sNumber').val(data[2]);
+//                 $('#sCourse').val(data[3]);
+//                 $('#sCase').val(data[4]);
+//                 $('#sType').val(data[6]);
+//                 $('#sMessage').val(data[7]);
+// 	});
+// });
+
 $(document).ready(function(){
 	$('.seemorebtn').on('click', function(){
 		$tr = $(this).closest('tr');
@@ -8,32 +27,15 @@ $(document).ready(function(){
 
                 console.log(data);
 
-                $('#sName').val(data[1]);
-                $('#sNumber').val(data[2]);
-                $('#sCourse').val(data[3]);
-                $('#sCase').val(data[4]);
-                $('#sType').val(data[6]);
-                $('#sMessage').val(data[7]);
-	});
-});
-
-$(document).ready(function(){
-	$('.seemorebtn').on('click', function(){
-		$tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#ssName').val(data[1]);
-                $('#ssNumber').val(data[2]);
-                $('#ssCourse').val(data[3]);
-                $('#ssCase').val(data[4]);
+                $('#ssName').val(data[2]);
+                $('#ssNumber').val(data[3]);
+                $('#ssCourse').val(data[4]);
+                $('#ssCase').val(data[5]);
                 $('#ssType').val(data[6]);
                 $('#ssMessage').val(data[7]);
                 $('#ssID').val(data[10]);
+                $('#ssDegree').val(data[11]);
+                $('#ssDate').val(data[8]);
 	});
 });
 

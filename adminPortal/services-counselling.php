@@ -71,26 +71,19 @@ include 'sources/src-services-counselling.php'; ?>
                                         <label class="col-md-12">Counseling Type</label>
                                         <div class="select-menu">
                                             <div class="select-btn">
-                                                <span class="sBtn-text">select your options</span>
+                                                <span class="sBtn-text">Select your options</span>
                                                 <i class="fas fa-caret-down"></i>
                                             </div>
                                             <textarea class="sBtn-text-clone" name="cType"></textarea>
                                             <ul class="options">
-                                                <li class="option">
-                                                    <span class="option-text">Behavior Theraphy</span>
-                                                </li>
-                                                <li class="option">
-                                                    <span class="option-text">Cognitive Theraphy</span>
-                                                </li>
-                                                <li class="option">
-                                                    <span class="option-text">Holistic Theraphy</span>
-                                                </li>
-                                                <li class="option">
-                                                    <span class="option-text">Educational Counseling</span>
-                                                </li>
-                                                <li class="option">
-                                                    <span class="option-text">Mental Health Counseling</span>
-                                                </li>
+                                                <?php
+                                                $query = mysqli_query($mysqli, "SELECT * FROM tbl_counselingservices");
+                                                while ($row = mysqli_fetch_array($query)) {
+                                                ?>
+                                                    <li class="option">
+                                                        <span class="option-text" value="<?php echo $row['serviceID']; ?>"><?php echo $row['serviceName']; ?></span>
+                                                    </li>
+                                                <?php } ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -116,7 +109,7 @@ include 'sources/src-services-counselling.php'; ?>
                                     <div class="form-group">
                                         <label class="col-md-12">Details</label>
                                         <div class="col-md-12">
-                                            <textarea rows="5" class="form-control form-control-line" name="cDetails" required></textarea>
+                                            <textarea style="background-color: #f8f9fa;" rows="8" placeholder="Enter your details here.." class="form-control form-control-line" name="cDetails"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">

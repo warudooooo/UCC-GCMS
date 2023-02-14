@@ -9,7 +9,44 @@ include 'sources/src-proctor-schedule.php';
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
+    <style>
+        .form-selects{
+            background-color: #555555 !important;
+            border: none !important;
+            color: #fff !important;
+            font-size: 18px !important;
+            font-weight: 400 !important;
+            border-radius: 5px !important;
+            width: 100% !important;
+            padding: 8px 0px 8px 20px !important;
+        }
 
+        .form-selects:hover {
+            background-color: #f4845f !important;
+            transition: 300ms;
+        }
+
+        .form-selects .options {
+            transition: 300ms !important;
+            display: flex !important;
+            height: 40px !important;
+            cursor: pointer !important;
+            padding: 0 16px !important;
+            border-radius: 5px !important;
+            align-items: center !important;
+            background-color: #555555 !important;
+        }
+
+        .form-selects .options:hover {
+            background-color: #f4845f !important;
+            transition: 300ms;
+        }
+
+        .form-selects .options {
+            font-size: 18px !important;
+            color: #fff !important;
+        }
+    </style>
 </head>
 <?php include 'includes/header.php';
 
@@ -118,11 +155,11 @@ include 'includes/modals/proctor-schedule-modal.php';
                                                  <td style='text-transform: uppercase;'>" . $row["roomAssigned"] . "</td>
                                                  <td>" . date('h:i A', strtotime($row["startTime"])) . "</td>
                                                  <td>" . date('h:i A', strtotime($row["endTime"])) . "</td>
-                                                 <td>" . date('m/d/Y', strtotime($row["examDate"])) . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary editbtn editschedbtn' data-bs-toggle='modal' data-bs-target='#editScheduleModal'>
+                                                 <td>" . date('F j, Y', strtotime($row["examDate"])) . "</td>
+                                                 <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary editbtn editschedbtn' data-bs-toggle='modal' data-bs-target='#editScheduleModal'>
                                                     EDIT
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn deleteschedbtn' data-bs-toggle='modal' data-bs-target='#deleteScheduleModal'>
+                                                 <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary deletebtn deleteschedbtn' data-bs-toggle='modal' data-bs-target='#deleteScheduleModal'>
                                                      DELETE
                                                  </button></td>
                                                  </tr>";
@@ -132,7 +169,7 @@ include 'includes/modals/proctor-schedule-modal.php';
                                     </tbody>
                                 </table>
                                 <form action="export-schedule.php" method="POST">
-                                <button type='submit' class='btn btn-primary editbtn' name="export"> Export as Excel file</button>
+                                    <button type='submit' class='btn btn-primary editbtn' name="export"> Export as Excel file</button>
                                 </form>
                             </div>
                         </div>
@@ -162,6 +199,26 @@ include 'includes/modals/proctor-schedule-modal.php';
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="src/scripts/datatable.js"></script>
     <script src="src/scripts/proctors.js"></script>
+    <script>
+        const optionMenu = document.querySelector(".select-menu"),
+            selectBtn = optionMenu.querySelector(".select-btn"),
+            options = optionMenu.querySelectorAll(".option"),
+            sBtn_text = optionMenu.querySelector(".sBtn-text"),
+            sBtn_text_clone = optionMenu.querySelector(".sBtn-text-clone");
+
+
+        selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                let selectedOption = option.querySelector(".option-text").innerText;
+                sBtn_text.innerText = selectedOption;
+                sBtn_text_clone.innerText = selectedOption;
+
+                optionMenu.classList.remove("active");
+            })
+        })
+    </script>
 </body>
 
 </html>

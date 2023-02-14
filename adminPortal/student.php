@@ -88,12 +88,12 @@ include 'sources/src-student.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType = 'user' AND userStatus = '1';");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             } else {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span>Total Active Students</span>
+                            <span style="pointer-events: none;">Total Active Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
@@ -105,12 +105,12 @@ include 'sources/src-student.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'user'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             } else {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span>Verified Student Accounts</span>
+                            <span style="pointer-events: none;">Verified Student Accounts</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
@@ -122,12 +122,12 @@ include 'sources/src-student.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='no' AND studentEmail != ''");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             } else {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span>Not Verified Students</span>
+                            <span style="pointer-events: none;">Not Verified Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
@@ -139,12 +139,12 @@ include 'sources/src-student.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND studentEmail=''");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             } else {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span>Admin Created Students</span>
+                            <span style="pointer-events: none;">Admin Created Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
@@ -156,12 +156,12 @@ include 'sources/src-student.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userStatus='0'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1 style="color:white;">' . $total . '</h1>';
+                                echo '<h1 style="color:white; pointer-events: none;">' . $total . '</h1>';
                             } else {
-                                echo '<h1 style="color:white;">' . $total . '</h1>';
+                                echo '<h1 style="color:white; pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span>Inactive Students</span>
+                            <span style="pointer-events: none;">Inactive Students</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
@@ -185,7 +185,7 @@ include 'sources/src-student.php';
                                             <th scope="col" style="color: #fff; display:none;">vkey</th>
                                             <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                             <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
-                                            <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">Mark as Inactive</th>
                                         </tr>
                                     </thead>
                                     <tbody>

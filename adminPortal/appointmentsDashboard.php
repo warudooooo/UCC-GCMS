@@ -231,7 +231,7 @@ include 'includes/modals/pendingAppointments-modal.php';
                         </div>
                         <!-- Event Details Modal -->
                         <?php
-                        $schedules = $mysqli->query("SELECT * FROM `tbl_counselings` WHERE counselingStatus != 'Declined'");
+                        $schedules = $mysqli->query("SELECT * FROM `tbl_counselings` WHERE counselingStatus != 'Declined' AND counselingStatus != 'Cancelled'");
                         $sched_res = [];
                         foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
                             $row['sdate'] = date("F d, Y h:i A", strtotime($row['counselingSchedule']));

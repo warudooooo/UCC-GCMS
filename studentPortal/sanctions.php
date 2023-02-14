@@ -82,6 +82,8 @@ include 'includes/modals/sanction-modal.php' ?>
                                             <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="color: #fff; width: 150px;">Date Issued</th>
                                             <th scope="col" style="color: #fff; width: 75px;">View Details</th>
+                                            <th scope="col" style="display: none;"></th>
+                                            <th scope="col" style="display: none;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -135,6 +137,8 @@ include 'includes/modals/sanction-modal.php' ?>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style=''>
                                                      View Details
                                                  </button></td>
+                                                 <td style='display: none;'>" . $row["sanctionID"] . "</td>
+                                                 <td style='display: none;'>" . $row["degree"] . "</td>
                                                  </tr>";
                                             $i++;
                                         }
@@ -182,6 +186,7 @@ include 'includes/modals/sanction-modal.php' ?>
                 $('#sancCase').val(data[5]);
                 $('#guideMessage').val(data[7]);
                 $('#dateIssued').val(data[8]);
+                $('#ssDegree').val(data[11]);
             });
         });
     </script>

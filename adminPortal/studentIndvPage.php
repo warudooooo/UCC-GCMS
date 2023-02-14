@@ -106,12 +106,252 @@ include 'sources/src-studentLists.php';
                         </div>
                     </div>
                 </div>
-
-                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Active Student Accounts</h4>
+                <h4 class="page-title"><i class="mdi mdi-account-multiple" style="margin-top: 20px; margin-bottom: 20px;"></i> <?php echo $_SESSION['sName']; ?>'s Account Details</h4>
                 <div class="col-12">
                     <div class="card">
-                        <div class="table-responsive" style="padding: 20px;">
+                        <form method="POST" action="" autocomplete="off">
+                            <div class="tab-content p-4 p-md-4" id="v-pills-tabContent">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Full Name</label>
+                                            <input style="background-color: #edf2fb; pointer-events:none;" type="text" class="form-control" value="<?php echo $_SESSION['sName']; ?>" name="sName" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Student Number</label>
+                                            <input style="background-color: #edf2fb; pointer-events:none;" type="text" class="form-control" value="<?php echo $_SESSION['stNumber']; ?>" name="sNumber" style="pointer-events: none;" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Course, Year and Section</label>
+                                            <input style="background-color: #edf2fb; pointer-events:none;" type="text" class="form-control" value="<?php echo $_SESSION['stCourse']; ?>" name="sCourse" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input style="background-color: #edf2fb; pointer-events:none;" type="email" class="form-control" value="<?php echo $_SESSION['stEmail']; ?>" name="sEmail" readonly>
+                                            <input style="display: none;" name="dbID" value="<?php echo $_SESSION['dbID']; ?>">
+                                        </div>
+                                    </div>
+                                    <?php
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_students  WHERE studentNumber = '$studNumber'");
+                                    $row = mysqli_fetch_assoc($load);
+                                    if ($row["userStatus"] == 1) {
+                                        echo ' <div class="col-md-6">
+                                                    <button type="submit" name="markasinactive" class="btn btn-primary" style="pointer-events: auto; width: 200px; background: #bc4749; color: #fff; border-style:none; border-radius: 20px;">
+                                                    Mark as Inactive
+                                                   </button>
+                                                    </div>';
+                                    } else if ($row["userStatus"] == 0) {
+                                        echo '<div class="col-md-6">
+                                                    <button type="submit" name="markasactive" class="btn btn-primary" style="pointer-events: auto; width: 200px; background: #2d6a4f; color: #fff; border-style:none; border-radius: 20px;">
+                                                    Mark as Active
+                                                   </button>
+                                                    </div>';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
+
+                <h4 class="page-title" style="<?php
+                                                $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
+                                                $exists = mysqli_num_rows($load);
+                                                if ($exists) {
+                                                    echo 'display: auto;';
+                                                } else {
+                                                    echo 'display: none;';
+                                                }
+                                                ?>
+                "><i class="mdi mdi-account-cancel-outline" style="margin-top: 20px; margin-bottom: 20px;"></i> <?php echo $_SESSION['sName']; ?>'s Sanctions</h4>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="table-responsive" style="padding: 20px; 
+                        <?php
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
+                        $exists = mysqli_num_rows($load);
+                        if ($exists) {
+                            echo 'display: auto;';
+                        } else {
+                            echo 'display: none;';
+                        }
+                        ?>">
+                            <table id="dataTable" class="table table-bordered table-hover">
+                                <thead class="table-dark">
+                                    <tr style="text-align: center;">
+                                        <th scope="col" style="color: #fff; width: 0px;">#</th>
+                                        <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction</th>
+                                        <th scope="col" style="color: #fff; width: 150px;">Student Name</th>
+                                        <th scope="col" style="color: #fff; width: 100px;">Student Number</th>
+                                        <th scope="col" style="color: #fff; width: 100px;">Course</th>
+                                        <th scope="col" style="display: none;"></th>
+                                        <th scope="col" style="display: none;"></th>
+                                        <th scope="col" style="display: none;"></th>
+                                        <th scope="col" style="color: #fff; width: 150px;">Date Issued</th>
+                                        <th scope="col" style="color: #fff; width: 150px;">View Details</th>
+                                        <th scope="col" style="display: none;"></th>
+                                        <th scope="col" style="display: none;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
+
+                                    $i = 1;
+                                    while ($row = $load->fetch_assoc()) {
+                                        echo "<tr>
+                                                 <td>" . $i . "</td>
+                                                 ";
+                                        if ($row["sanctionType"] == "Probation") {
+                                            echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
+                                                    Probation
+                                                   </button></td>";
+                                        } else if ($row["sanctionType"] == "Suspension") {
+                                            echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f4845f; color: #fff; border-style:none; border-radius: 20px;'>
+                                                    Suspension
+                                                   </button></td>";
+                                        } else if ($row["sanctionType"] == "Dismissal") {
+                                            echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #cc3300; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
+                                                    Dismissal
+                                                   </button></td>";
+                                        } else if ($row["sanctionType"] == "Seminar") {
+                                            echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
+                                                    Seminar
+                                                   </button></td>";
+                                        } else if ($row["sanctionType"] == "Assessment") {
+                                            echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
+                                                    Assessment
+                                                   </button></td>";
+                                        } else if ($row["sanctionType"] == "Educational/Reflective Assignment") {
+                                            echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
+                                                    Educational/Reflective Assignment
+                                                   </button></td>";
+                                        }
+                                        echo "
+                                                 <td>" . $row["studentName"] . "</td>
+                                                 <td>" . $row["studentNumber"] . "</td>
+                                                 <td>" . $row["studentCourse"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanctionCase"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanction"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanctionMessage"] . "</td>
+                                                 <td>" . date('F j, Y h:i A (l)', strtotime($row["dateIssued"])) . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen viewdetails' data-bs-toggle='modal' data-bs-target='#detailsModal' style=''>
+                                                     View Details
+                                                 </button></td>
+                                                 <td style='display: none;'>" . $row["sanctionID"] . "</td>
+                                                 <td style='display: none;'>" . $row["degree"] . "</td>
+                                                 </tr>";
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <h4 class="page-title" style="<?php
+                                                $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber'");
+                                                $exists = mysqli_num_rows($load);
+                                                if ($exists) {
+                                                    echo 'display: auto;';
+                                                } else {
+                                                    echo 'display: none;';
+                                                }
+                                                ?>
+                "><i class="mdi mdi-account-wrench"></i> <?php echo $_SESSION['sName']; ?>'s Pending Appointnent Lists </h4>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="table-responsive" style="padding: 20px;
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber'");
+                            $exists = mysqli_num_rows($load);
+                            if ($exists) {
+                                echo 'display: auto;';
+                            } else {
+                                echo 'display: none;';
+                            }
+                            ?>
+                            ">
+                            <table id="dataTable2" class="table table-bordered table-hover">
+                                <thead class="table-dark">
+                                    <tr style="text-align: center;">
+                                        <th scope="col" style="color: #fff;">#</th>
+                                        <th scope="col" style="color: #fff; text-align: center;">Status</th>
+                                        <!-- <th scope="col" style="color: #fff; width: 50px;">Status</th> -->
+                                        <th scope="col" style="color: #fff;">Counselling Type</th>
+                                        <th scope="col" style="color: #fff;">Student Name</th>
+                                        <th scope="col" style="color: #fff;">Student Number</th>
+                                        <th scope="col" style="color: #fff;">Course</th>
+                                        <th scope="col" style="color: #fff; display: none;">Email</th>
+                                        <th scope="col" style="color: #fff;">Requested Schedule</th>
+                                        <th scope="col" style="color: #fff; text-align: center; width: 150px;">Appointment Details</th>
+                                        <th scope="col" style="display: none">Approve</th>
+                                        <th scope="col" style="display: none;"></th>
+                                        <th scope="col" style="display: none;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sstName = $_SESSION['sName'];
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE requesterName = '$sstName' AND counselingStatus = 'Pending' ORDER BY counselingSchedule DESC");
+                                    $i = 1;
+                                    while ($row = $load->fetch_assoc()) {
+                                        echo "<tr>
+                                                 <td>" . $i . "</td>
+                                                 ";
+                                        if ($row['counselingStatus'] == "Approved") {
+                                            echo "<td style='text-align:center;'>
+                                                <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #38b000; color: #fff; border-style:none; border-radius: 20px;'>
+                                                   APPROVED
+                                               </button></td>";
+                                        } else if ($row['counselingStatus'] == "Pending") {
+                                            echo "<td style='text-align:center;'>
+                                                <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #0096c7; color: #fff; border-style:none; border-radius: 20px;'>
+                                                   PENDING
+                                               </button></td>";
+                                        } else if ($row['counselingStatus'] == "Declined") {
+                                            echo "<td style='text-align:center;'>
+                                                <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
+                                                   DECLINED
+                                               </button></td>";
+                                        }
+                                        echo "
+                                                 <td>" . $row["counselingType"] . "</td>
+                                                 <td>" . $row["requesterName"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
+                                                 <td style='display: none;'>" . $row["studentEmail"] . "</td>
+                                                 <td>" . date('F j, Y h:i A (l)', strtotime($row["counselingSchedule"])) . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style=''>
+                                                     View Details
+                                                 </button></td>
+                                                 <td style='display: none;'></td>
+                                                <td style='display: none;'>" . $row["counselingDetails"] . "</td>
+                                                <td style='display: none;'>" . $row["ID"] . "</td>
+                                                 </tr>";
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -140,7 +380,7 @@ include 'sources/src-studentLists.php';
     <script src="src/scripts/datatable.js"></script>
     <script>
         $(document).ready(function() {
-            $('.unvstudenteditbtn').on('click', function() {
+            $('.viewdetails').on('click', function() {
                 $tr = $(this).closest('tr');
 
                 var data = $tr.children("td").map(function() {
@@ -148,14 +388,28 @@ include 'sources/src-studentLists.php';
                 }).get();
 
                 console.log(data);
-                $('#unvsName').val(data[2]);
-                $('#unvsNumber').val(data[3]);
-                $('#unvsEmail').val(data[4]);
-                $('#unvsCourse').val(data[5]);
-                $('#unvsPassword').val(data[6]);
-                $('#unvvkey').val(data[7]);
-                $('#dbID').val(data[9]);
-                $('#regForm').val(data[10]);
+                $('#studName').val(data[2]);
+                $('#sancType').val(data[6]);
+                $('#sancCase').val(data[5]);
+                $('#guideMessage').val(data[7]);
+                $('#dateIssued').val(data[8]);
+                $('#ssDegree').val(data[11]);
+            });
+        });
+
+        $(document).ready(function() {
+            $('.cseemorebtn').on('click', function() {
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function() {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#studName').val(data[3]);
+                $('#counselType').val(data[2]);
+                $('#counselSched').val(data[7]);
+                $('#counselingDetails').val(data[10]);
             });
         });
 

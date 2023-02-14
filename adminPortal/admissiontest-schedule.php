@@ -90,7 +90,7 @@ include 'includes/modals/addschedule-modal.php'; ?>
                                             <th scope="col" style="color: #fff; width: 250px;"">Admission Test Year</th>
                                                 <th scope=" col" style="color: #fff; width: 500px;"">Examination Date</th>
                                                 <th scope=" col" style="color: #fff; width: 500px;"">DAY</th>
-                                                <th scope=" col" style="color: #fff; text-align: center;">DELETE</th>
+                                                <!-- <th scope=" col" style="color: #fff; text-align: center;">DELETE</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -104,9 +104,6 @@ include 'includes/modals/addschedule-modal.php'; ?>
                                                  <td>" . date('Y', strtotime($row["admDate"])) . "</td>
                                                  <td>" . date('F d, Y', strtotime($row["admDate"])) . "</td>
                                                  <td>" . date('l', strtotime($row["admDate"])) . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn recordsdeletebtn' data-bs-toggle='modal' data-bs-target='#recordsdeleteModal'>
-                                                DELETE
-                                                </button></td>
                                                  </tr>";
                                             $i++;
                                         }

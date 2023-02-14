@@ -1,6 +1,7 @@
 <?php
 include 'sources/session.php';
 include 'sources/src-services-sanctions.php';
+// $msg = "";
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -9,6 +10,50 @@ include 'sources/src-services-sanctions.php';
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
     <link rel="stylesheet" type="text/css" href="src/styles/sanctionsStyle.css">
+    <style>
+        .form-selects {
+            background-color: #555555 !important;
+            border: none !important;
+            color: #fff !important;
+            font-size: 18px !important;
+            font-weight: 400 !important;
+            border-radius: 5px !important;
+            width: 440px !important;
+            padding: 8px 0px 8px 20px !important;
+        }
+
+        .form-selects:hover {
+            background-color: #f4845f !important;
+            transition: 300ms;
+        }
+
+        .form-selects .options {
+            transition: 300ms !important;
+            display: flex !important;
+            height: 40px !important;
+            cursor: pointer !important;
+            padding: 0 16px !important;
+            border-radius: 5px !important;
+            align-items: center !important;
+            background-color: #555555 !important;
+        }
+
+        .form-selects .options:hover {
+            background-color: #f4845f !important;
+            transition: 300ms;
+        }
+
+        .form-selects .options {
+            font-size: 18px !important;
+            color: #fff !important;
+        }
+
+        @media only screen and (max-width: 560px) {
+            .form-selects{
+                width: 100% !important;
+            }
+        }
+    </style>
 </head>
 <?php include 'includes/header.php';
 include 'includes/modals/services-modal.php'; ?>
@@ -41,7 +86,7 @@ include 'includes/modals/services-modal.php'; ?>
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h3 class="page-title"><i class="mdi mdi-alarm-check"></i> Create Sanction</h3>
+                        <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> Create Sanction</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -71,19 +116,19 @@ include 'includes/modals/services-modal.php'; ?>
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="POST">
                                     <div class="form-group">
-                                        <h3 class="col-md-12">Full Name</h3>
+                                        <h4 class="col-md-12">Full Name</h4>
                                         <div class="col-md-12">
                                             <input name="sName" style="pointer-events: none;" type="text" placeholder="<?php echo $_SESSION['sancName']; ?>" value="<?php echo $_SESSION['sancName']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h3 class="col-md-12">Student Number</h3>
+                                        <h4 class="col-md-12">Student Number</h4>
                                         <div class="col-md-12">
                                             <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sancNumber']; ?>" value="<?php echo $_SESSION['sancNumber']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h3 class="col-md-12">Course</h3>
+                                        <h4 class="col-md-12">Course</h4>
                                         <div class="col-md-12">
                                             <input name="sCourse" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sancCourse']; ?>" value="<?php echo $_SESSION['sancCourse']; ?>" class="form-control form-control-line" readonly>
                                         </div>
@@ -91,16 +136,28 @@ include 'includes/modals/services-modal.php'; ?>
                                     <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sanctEmail']; ?>" value="<?php echo $_SESSION['sanctEmail']; ?>" class="form-control form-control-line" readonly>
                                     <div class="form-group">
                                         <h4 class="col-md-12">Case</h4>
-                                        <div class="col-md-12">
-                                            <textarea style="background-color: #edf2fb;" rows="3" class="form-control form-control-line" name="sCase" placeholder="Enter here.." required></textarea>
-                                        </div>
+                                        <select name="sCase" class="form-selects" aria-label="Default select example" required>
+                                            <option class="options" value="" selected>Select case here</option>
+                                            <?php
+                                            $query = mysqli_query($mysqli, "SELECT * FROM tbl_cases");
+                                            while ($row = mysqli_fetch_array($query)) {
+                                            ?>
+                                                <option class="options" value="<?php echo $row['caseName']; ?>"><?php echo $row['caseName']; ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
-                                    <h3 class="col-md-16">Sanction Types </h3>
+                                    <h4 class="col-md-16">Degree</h4>
+                                    <select name="degree" class="form-selects" aria-label="Default select example" required>
+                                            <option class="options" value="" selected>Select degree here</option>
+                                            <option class="options" value="Mild">Mild</option>
+                                            <option class="options" value="Moderate">Moderate</option>
+                                            <option class="options" value="Severe">Severe</option>
+                                        </select>
                                     <div class="form-group">
-                                        <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Disciplinary Sanctions:</b> Probation, Suspension, Dismissal </label>
-                                        <label class="col-md-12 sanclbl" style="font-style: italic;"><b>Educational Sanctions:</b> Seminar, Assessment, Educational/Reflective Assignment </label>
+                                    </div>
+                                    <div class="form-group">
                                         <div class="form-group">
-                                            <h3 class="col-md-12">Select Sanction</h3>
+                                            <h4 class="col-md-12">Select Sanction</h4>
                                             <div class="select-menu">
                                                 <div class="select-btn">
                                                     <span class="sBtn-text">Select your options</span>
