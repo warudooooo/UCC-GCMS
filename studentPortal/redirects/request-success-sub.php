@@ -1,6 +1,6 @@
 <?php
   if (isset($_POST['submit'])) {
-    header("Location: ../counselling.php");
+    header("Location: ../requestAppointment.php");
   }
 ?>
 <!DOCTYPE html>

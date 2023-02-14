@@ -62,7 +62,7 @@ include 'sources/src-student.php';
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Pending Accounts</h4>
+                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Pending Student Accounts</h4>
                 <div class="col-12">
                     <div class="card">
                         <div class="table-responsive" style="padding: 20px;">
@@ -73,13 +73,13 @@ include 'sources/src-student.php';
                                         <th scope="col" style="color: #fff;">Student Name</th>
                                         <th scope="col" style="color: #fff;">Student Number</th>
                                         <th scope="col" style="color: #fff;">Email</th>
-                                        <th scope="col" style="color: #fff;">Course</th>
+                                        <th scope="col" style="color: #fff;">Course / Year / Section</th>
                                         <th scope="col" style="color: #fff; display:none;">PASS</th>
                                         <th scope="col" style="color: #fff; display:none;">vkey</th>
                                         <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                         <th scope="col" style="color: #fff; display:none;">ID</th>
                                         <th scope="col" style="color: #fff; display:none;">regForm</th>
-                                        <th scope="col" style="color: #fff;">Creation Date</th>
+                                        <th scope="col" style="color: #fff;">Request Date</th>
                                         <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
                                     </tr>
                                 </thead>

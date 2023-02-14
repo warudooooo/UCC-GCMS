@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
-<?php 
+<?php
 $msg = "";
 include 'includes/header.php';
 include 'sources/src-counseling.php';
@@ -41,7 +41,7 @@ include 'includes/modals/pendingcouns-modal.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi mdi-file-document"></i> Pending Counselings</h4>
+                        <h4 class="page-title"><i class="mdi mdi mdi-file-document"></i> Pending Appointments</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -72,42 +72,63 @@ include 'includes/modals/pendingcouns-modal.php';
                                     <thead class="table-dark">
                                         <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff;">#</th>
+                                            <!-- <th scope="col" style="color: #fff; width: 50px;">Status</th> -->
                                             <th scope="col" style="color: #fff;">Counselling Type</th>
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
                                             <th scope="col" style="color: #fff; display: none;">Email</th>
-                                            <th scope="col" style="color: #fff;">Date Created</th>
-                                            <th scope="col" style="color: #fff;">More Details</th>
-                                            <th scope="col" style="color: #fff;">Approve</th>
-                                            <th scope="col" style="color: #fff;">Delete</th>
+                                            <th scope="col" style="color: #fff;">Requested Schedule</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">Appointment Details</th>
+                                            <th scope="col" style="display: none">Approve</th>
+                                            <th scope="col" style="color: #fff; text-align: center; width: 250px;">Action</th>
                                             <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="display: none;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingcounsellings");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE counselingStatus = 'Pending'");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
                                                  <td>" . $i . "</td>
-                                                 <td>" . $row["counsellingType"] . "</td>
+                                                 ";
+                                            // if ($row['status'] == "Approved") {
+                                            //     echo "<td style='text-align:center;'>
+                                            //     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #38b000; color: #fff; border-style:none; border-radius: 20px;'>
+                                            //        APPROVED
+                                            //    </button></td>";
+                                            // } else if ($row['status'] == "Pending") {
+                                            //     echo "<td style='text-align:center;'>
+                                            //     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #0096c7; color: #fff; border-style:none; border-radius: 20px;'>
+                                            //        PENDING
+                                            //    </button></td>";
+                                            // } else if ($row['status'] == "Declined") {
+                                            //     echo "<td style='text-align:center;'>
+                                            //     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px;'>
+                                            //        DECLINED
+                                            //    </button></td>";
+                                            // }
+                                            echo "
+                                                 <td>" . $row["counselingType"] . "</td>
                                                  <td>" . $row["requesterName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='display: none;'>" . $row["studentEmail"] . "</td>
-                                                 <td>" . $row["dateCreated"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style='background: #38b000; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
-                                                     SEE MORE
+                                                 <td>" . date('F j, Y h:i A (l)', strtotime($row["counselingSchedule"])) . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style=''>
+                                                     View Details
                                                  </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary capprovebtn' data-bs-toggle='modal' data-bs-target='#approveModal' style='background: #0096c7; color: #fff; padding: 10px 10px 10px 10px; border-style:none; border-radius: 4px;'>
+                                                 <td style='display: none;'></td>
+                                                <td style='text-align:center;'>
+                                                <button type='button' class='btn btn-primary btnblue capprovebtn' data-bs-toggle='modal' data-bs-target='#approveModal' style='width: 120px;'>
                                                      Approve
+                                                </button>
+                                                <button type='button' style='width: 120px;' class='btn btn-primary btnred cdeletebtn' data-bs-toggle='modal' data-bs-target='#counselingRejectModal'>
+                                                Decline
                                                 </button></td>
-                                                <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn cdeletebtn' data-bs-toggle='modal' data-bs-target='#counselingdeleteModal'>
-                                                DELETE
-                                                </button></td>
-                                                <td style='display: none;'>" . $row["counsellingDetails"] . "</td>
+                                                <td style='display: none;'>" . $row["counselingDetails"] . "</td>
                                                 <td style='display: none;'>" . $row["ID"] . "</td>
                                                  </tr>";
                                             $i++;

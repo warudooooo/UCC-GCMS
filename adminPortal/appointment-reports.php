@@ -82,51 +82,51 @@ include 'sources/session.php';
                               <tbody>
                                  <tr>
                                     <td>January</td>
-                                    <td>15000</td>
+                                    <td>2</td>
                                  </tr>
                                  <tr>
                                     <td>February</td>
-                                    <td>23000</td>
+                                    <td>3</td>
                                  </tr>
                                  <tr>
                                     <td>March</td>
-                                    <td>5500</td>
+                                    <td>4</td>
                                  </tr>
                                  <tr>
                                     <td>April</td>
-                                    <td>17000</td>
+                                    <td>5</td>
                                  </tr>
                                  <tr>
                                     <td>May</td>
-                                    <td>25000</td>
+                                    <td>0</td>
                                  </tr>
                                  <tr>
                                     <td>June</td>
-                                    <td>30000</td>
+                                    <td>0</td>
                                  </tr>
                                  <tr>
                                     <td>July</td>
-                                    <td>2000</td>
+                                    <td>0</td>
                                  </tr>
                                  <tr>
                                     <td>August</td>
-                                    <td>15000</td>
+                                    <td>0</td>
                                  </tr>
                                  <tr>
                                     <td>September</td>
-                                    <td>22000</td>
+                                    <td>0</td>
                                  </tr>
                                  <tr>
                                     <td>October</td>
-                                    <td>34000</td>
+                                    <td>0</td>
                                  </tr>
                                  <tr>
                                     <td>November</td>
-                                    <td>35000</td>
+                                    <td>0</td>
                                  </tr>
                                  <tr>
                                     <td>December</td>
-                                    <td>55000</td>
+                                    <td>4</td>
                                  </tr>
                               </tbody>
                            </table>
@@ -170,11 +170,11 @@ include 'sources/session.php';
          var barChartData = {
             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novermber", "December"],
             datasets: [{
-               label: 'Income',
+               label: 'Successful Appointments',
                backgroundColor: 'rgb(79,129,189)',
                borderColor: 'rgba(0, 158, 251, 1)',
                borderWidth: 1,
-               data: [15000, 2300, 5500, 17000, 25000, 30000, 2000, 15000, 22000, 34000, 35000, 55000]
+               data: [2, 3, 4, 5, 0, 0, 0, 0, 0, 0, 0, 4]
             }]
          };
 

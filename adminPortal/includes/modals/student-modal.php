@@ -18,19 +18,19 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Student Name (Ex. Bayola, Wally B.)</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sName" style="background-color: #edf2fb; pointer-events: none;" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" name="sName" style="background-color: #edf2fb;" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Student Number (Ex: 20xxxxxx-M)</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sNumber" style="background-color: #edf2fb; pointer-events: none; text-transform: uppercase;" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" name="sNumber" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Course, Year and Section (Ex. BSxx 1-A)</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sCourse" style="background-color: #edf2fb; pointer-events: none; text-transform: uppercase;" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" name="sCourse" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -215,8 +215,8 @@
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary editbtn" name="edit_student">Edit</button>
-                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary editbtn" style="width: 200px;" name="edit_student">Edit</button>
+                        <button type="button" class="btn btn-secondary mdlclosebtn" style="width: 200px;" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -293,7 +293,7 @@
                     <div class="modal-body">
                         <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb; pointer-events: none;" type="text" name="sName" placeholder="<?php echo $_SESSION['sName']; ?>" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line" readonly>
+                            <input style="background-color: #edf2fb; pointer-events: none;" type="text" name="stName" placeholder="<?php echo $_SESSION['sName']; ?>" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line" readonly>
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                         <div class="col-md-12">
@@ -339,7 +339,7 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb; pointer-events: none;" type="text" name="sName" placeholder="<?php echo $_SESSION['sName']; ?>" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line" readonly>
+                            <input style="background-color: #edf2fb; pointer-events: none;" type="text" name="stName" placeholder="<?php echo $_SESSION['sName']; ?>" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line" readonly>
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                         <div class="col-md-12">
@@ -362,7 +362,7 @@
                         </div>
                         <input style="display:none;" type="text" value="<?php echo  $_SESSION['admPassword']; ?>" name="curPassword" class="form-control form-control-line">
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="margin: 0 auto;">
                         <button type="submit" class="btn btn-primary btnred" name="decline_student"  style="width: 200px;">Decline</button>
                         <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal"  style="width: 200px;">Close</button>
                     </div>
@@ -404,9 +404,9 @@
                         </div>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary editbtn" name="admedit_student">Edit</button>
-                        <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer" style="margin: 0 auto;">
+                        <button type="submit" class="btn btn-primary editbtn" style="width: 200px;" name="admedit_student">Edit</button>
+                        <button type="button" class="btn btn-secondary mdlclosebtn" style="width: 200px;" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

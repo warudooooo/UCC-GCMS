@@ -67,44 +67,63 @@ include 'includes/modals/appointmenthistory-modal.php';
                         <div class="card">
                             <div class="table-responsive" style="padding: 20px;">
                                 <table id="dataTable" class="table table-bordered table-hover">
-                                    <thead class="table-dark">
-                                        <tr>
+                                <thead class="table-dark">
+                                        <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff;">#</th>
-                                            <th scope="col" style="color: #fff; display: none;">id</th>
-                                            <th scope="col" style="color: #fff; width: 125px;">Student Name</th>
-                                            <th scope="col" style="color: #fff; width: 120px;">Student Number</th>
+                                            <!-- <th scope="col" style="color: #fff; width: 50px;">Status</th> -->
+                                            <th scope="col" style="color: #fff;">Counseling Type</th>
+                                            <th scope="col" style="color: #fff;">Student Name</th>
+                                            <th scope="col" style="color: #fff;">Student Number</th>
                                             <th scope="col" style="color: #fff;">Course</th>
                                             <th scope="col" style="color: #fff; display: none;">Email</th>
-                                            <th scope="col" style="color: #fff;">Referral Reason</th>
-                                            <th scope="col" style="color: #fff;">Meeting Type</th>
-                                            <th scope="col" style="color: #fff;">Person In Charge</th>
-                                            <th scope="col" style="color: #fff;">Remarks</th>
-                                            <th scope="col" style="color: #fff;">Date Completed</th>
-                                            <th scope="col" style="color: #fff;">Delete</th>
-                                            <th scope="col" style="color: #fff; display: none;"></th>
+                                            <th scope="col" style="color: #fff;">Date of Appointment</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">Appointment Details</th>
+                                            <th scope="col" style="display: none">Approve</th>
+                                            <th scope="col" style="display: none;"></th>
+                                            <th scope="col" style="display: none;"></th>
+                                            <th scope="col" style="display: none;"></th>
+                                            <th scope="col" style="display: none;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_appointmenthistory");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE counselingStatus = 'Completed'");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
                                                  <td>" . $i . "</td>
-                                                 <td style='display: none'>" . $row["historyID"] . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
+                                                 ";
+                                            // if ($row['status'] == "Approved") {
+                                            //     echo "<td style='text-align:center;'>
+                                            //     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #38b000; color: #fff; border-style:none; border-radius: 20px;'>
+                                            //        APPROVED
+                                            //    </button></td>";
+                                            // } else if ($row['status'] == "Pending") {
+                                            //     echo "<td style='text-align:center;'>
+                                            //     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #0096c7; color: #fff; border-style:none; border-radius: 20px;'>
+                                            //        PENDING
+                                            //    </button></td>";
+                                            // } else if ($row['status'] == "Declined") {
+                                            //     echo "<td style='text-align:center;'>
+                                            //     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px;'>
+                                            //        DECLINED
+                                            //    </button></td>";
+                                            // }
+                                            echo "
+                                                 <td>" . $row["counselingType"] . "</td>
+                                                 <td>" . $row["requesterName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='display: none'>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["appointmentReason"] . "</td>
-                                                 <td>" . $row["appointmentType"] . "</td>
-                                                 <td>" . $row["personIncharge"] . "</td>
-                                                 <td style='width: 100px;'>" . $row["remarks"] . "</td>
-                                                 <td>" . $row["dateCompleted"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deleteModal'>
-                                                     DELETE
+                                                 <td style='display: none;'>" . $row["studentEmail"] . "</td>
+                                                 <td>" . $row["counselingSchedule"] . "</td>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen scseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal'>
+                                                     View Details
                                                  </button></td>
-                                                 <td style='display: none'>" . $row["appointmentDetails"] . "</td>
+                                                 <td style='display: none;'></td>
+                                                <td style='display: none;'>" . $row["counselingDetails"] . "</td>
+                                                <td style='display: none;'>" . $row["ID"] . "</td>
+                                                <td style='display: none;'>" . $row["counselor"] . "</td>
+                                                <td style='display: none;'>" . $row["counselorRemarks"] . "</td>
                                                  </tr>";
                                             $i++;
                                         }

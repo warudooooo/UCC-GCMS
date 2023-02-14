@@ -182,7 +182,7 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                             <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_pendingcounsellings");
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings");
 
                             if ($total = mysqli_num_rows($load)) {
                                 echo '<a href="pendingcounseling.php" class="fill-div">' . $total . '</a>';
@@ -215,25 +215,6 @@ include 'sources/session.php';
                         <div>
                             <a href="scheduled-counseling.php" class="fill-div">
                                 <span class="mdi mdi-calendar-multiple-check" style="font-size: 3rem;"></span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counsellinghistory");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="counseling-history.php" class="fill-div">' . $total . '</a>';
-                            } else {
-                                echo '<a href="counseling-history.php" class="fill-div">' . $total . '</a>';
-                            }
-                            ?>
-                            <span>Completed Counselings</span>
-                        </div>
-                        <div>
-                            <a href="counseling-history.php" class="fill-div">
-                                <span class="mdi mdi-book-open-page-variant" style="font-size: 3rem;"></span>
                             </a>
                         </div>
                     </div>

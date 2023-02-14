@@ -101,8 +101,10 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-
-                $('#csDetails').val(data[11]);
+                $('#studName').val(data[2]);
+                $('#counselType').val(data[1]);
+                $('#counselSched').val(data[6]);
+                $('#csDetails').val(data[10]);
 	});
 });
 
@@ -160,29 +162,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	$('.csrestorebtn').on('click', function(){
-		$tr = $(this).closest('tr');
-
-                var datas = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(datas);
-                $('#scsNum').val(datas[0]);
-                $('#scsID').val(datas[1]);
-                $('#scsName').val(datas[3]);
-                $('#scsNumber').val(datas[4]);
-                $('#scsCourse').val(datas[5]);
-                $('#scsEmail').val(datas[6]);
-                $('#scsType').val(datas[2]);
-                $('#scsSchedule').val(datas[7]);
-                $('#scsDateapproved').val(datas[8]);
-                $('#scsDetails').val(datas[12]);
-	});
-});
-
-$(document).ready(function(){
-	$('.scounselingdeletebtn').on('click', function(){
+	$('.reSchedule').on('click', function(){
 		$tr = $(this).closest('tr');
 
                 var data = $tr.children("td").map(function () {
@@ -190,10 +170,31 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-                $('#scNum').val(data[0]);
-                $('#scID').val(data[1]);
-                $('#scName').val(data[3]);
-                $('#scNumber').val(data[4]);
-                $('#scCourse').val(data[5]);
+                $('#scdID').val(data[11]);
+                $('#scdName').val(data[2]);
+                $('#scdNumber').val(data[3]);
+                $('#scdCourse').val(data[4]);
+                $('#scdEmail').val(data[5]);
+                $('#scdSchedule').val(data[6]);
+                $('#scdDateapproved').val(data[7]);
+                $('#scdType').val(data[1]);
+                $('#scdDetails').val(data[11]);
+
 	});
 });
+
+flatpickr("input[type=datetime-local]", {
+    disableMobile: "true",
+    minDate: "today",
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    altInput: true,
+    altFormat: "F j, Y (h:i K)",
+    minTime: "08:00",
+    maxTime: "17:00",
+    minuteIncrement: "10",
+});
+
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}

@@ -37,7 +37,7 @@ if (isset($_POST['approve_student'])) {
 
     if ($adminPassword == $curPassword) {
         $dbID = $mysqli->real_escape_string($_POST['dbID']);
-        $stName = $mysqli->real_escape_string($_SESSION['sName']);
+        $stName = $mysqli->real_escape_string($_POST['stName']);
         $stEmail = $mysqli->real_escape_string($_SESSION['stEmail']);
 
         $sql = "UPDATE `tbl_students` SET vkey='',studentVerified='yes'  WHERE ID='$dbID'";
@@ -182,7 +182,7 @@ if (isset($_POST['approve_student'])) {
                                                 <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                                                     <tr>
                                                         <td bgcolor='#ffffff' align='center' valign='top' style='padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;'>
-                                                            <img src='https://cdn.discordapp.com/attachments/768805813098905620/1037554696778432522/logo-2.png' width'391' height='78' style='display: block; border: 0px; margin-top: 40px;' /><h3 style='font-size: 48px; font-weight: 400; margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Hi, " . $sName . "</h3> 
+                                                            <img src='https://cdn.discordapp.com/attachments/768805813098905620/1037554696778432522/logo-2.png' width'391' height='78' style='display: block; border: 0px; margin-top: 40px;' /><h3 style='font-size: 48px; font-weight: 400; margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Hi, " . $stName . "</h3> 
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -283,7 +283,7 @@ if (isset($_POST['approve_student'])) {
 if (isset($_POST['decline_student'])) {
     $adminPassword = $mysqli->real_escape_string(md5($_POST['adminPassword']));
     $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
-    
+    $stName = $mysqli->real_escape_string($_POST['stName']);
     $stEmail = $mysqli->real_escape_string($_SESSION['stEmail']);
     $decReason = $mysqli->real_escape_string($_POST['decReason']);
 
@@ -434,7 +434,7 @@ if (isset($_POST['decline_student'])) {
                                             <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
                                                 <tr>
                                                     <td bgcolor='#ffffff' align='center' valign='top' style='padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;'>
-                                                        <img src='https://cdn.discordapp.com/attachments/768805813098905620/1037554696778432522/logo-2.png' width'391' height='78' style='display: block; border: 0px; margin-top: 40px;' /><h3 style='font-size: 48px; font-weight: 400; margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Hi, " . $sName . "</h3> 
+                                                        <img src='https://cdn.discordapp.com/attachments/768805813098905620/1037554696778432522/logo-2.png' width'391' height='78' style='display: block; border: 0px; margin-top: 40px;' /><h3 style='font-size: 48px; font-weight: 400; margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Hi, " . $stName . "</h3> 
                                                     </td>
                                                 </tr>
                                             </table>

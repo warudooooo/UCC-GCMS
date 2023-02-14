@@ -1,5 +1,5 @@
 .select-menu{
-    width: 380px;
+    width: 100%;
 }
 .select-menu .select-btn{
     display: flex;
@@ -74,7 +74,7 @@
     font-size: 18px;
     font-weight: 400;
     border-radius: 5px;
-    width: 380px;
+    width: 100%;
 }
 
 .col-sm-12 button:hover{
@@ -88,11 +88,53 @@
     font-weight: 600;
 }
 
+.sNumber, .sName{
+    border: none !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+}
+
+.sDetails{
+    background-color: #eeece5 !important;
+    border: none !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+}
+
+.datetimepicker{
+    background-color: #555555 !important;
+    border: none !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+    cursor: pointer !important;
+}
+
+.datetimepicker::placeholder{
+    color: #fff !important;
+}
+.datetimepicker:hover{
+    background-color: #f4845f !important;
+    transition: 300ms;
+}
+
+label{
+    font-size: 15px;
+    font-weight: 600;
+}
 @media only screen and (max-width: 560px) {
     .col-sm-12 button,
     .select-menu, .select-btn,
+    .datetimepicker,.sNumber, .sName,
+    .sDetails,
     .options .option{
-        width: 100%;
+        width: 100% !important;
     }
 
 }

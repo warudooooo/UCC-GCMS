@@ -236,6 +236,22 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('.scseemorebtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#counsName').val(data[11]);
+                $('#counsRemarks').val(data[12]);
+                $('#counselsSched').val(data[6]);
+                $('#counselingDetails').val(data[10]);
+	});
+});
+
 flatpickr("input[type=datetime-local]", {
     disableMobile: "true",
     minDate: "today",

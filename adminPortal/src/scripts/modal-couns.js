@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	$('.cseemorebtn').on('click', function(){
 		$tr = $(this).closest('tr');
@@ -7,7 +8,9 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-
+                $('#studName').val(data[2]);
+                $('#counselType').val(data[1]);
+                $('#counselSched').val(data[6]);
                 $('#counselingDetails').val(data[10]);
 	});
 });
@@ -26,6 +29,7 @@ $(document).ready(function(){
                 $('#studentNumber').val(data[3]);
                 $('#studentCourse').val(data[4]);
                 $('#studentEmail').val(data[5]);
+                $('#requestedSched').val(data[6]);
                 $('#Details').val(data[10]);
                  $('#counselingID').val(data[11]);
 	});
@@ -62,13 +66,15 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-
-                $('#appointmentDetails').val(data[11]);
+                $('#studsName').val(data[2]);
+                $('#counselsType').val(data[1]);
+                $('#counselsSched').val(data[6]);
+                $('#appointmentDetails').val(data[10]);
 	});
 });
 
 $(document).ready(function(){
-	$('.scmarkasdonebtn').on('click', function(){
+	$('.scCompletedBtn').on('click', function(){
 		$tr = $(this).closest('tr');
 
                 var data = $tr.children("td").map(function () {
@@ -81,13 +87,14 @@ $(document).ready(function(){
                 $('#studentNumber').val(data[3]);
                 $('#studentCourse').val(data[4]);
                 $('#studentEmail').val(data[5]);
+                $('#scScheds').val(data[6]);
                 $('#scType').val(data[1]);
                 $('#Details').val(data[11]);
 	});
 });
 
 $(document).ready(function(){
-	$('.scdeletebtn').on('click', function(){
+	$('.reSchedule').on('click', function(){
 		$tr = $(this).closest('tr');
 
                 var data = $tr.children("td").map(function () {
@@ -95,7 +102,7 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-                $('#scdID').val(data[12]);
+                $('#scdID').val(data[11]);
                 $('#scdName').val(data[2]);
                 $('#scdNumber').val(data[3]);
                 $('#scdCourse').val(data[4]);
@@ -114,11 +121,12 @@ flatpickr("input[type=datetime-local]", {
     enableTime: true,
     dateFormat: "Y-m-d H:i",
     altInput: true,
-    altFormat: "F j, Y (h:i K)",
+    altFormat: "F j, Y h:i K (l)",
     minTime: "08:00",
     maxTime: "17:00",
     minuteIncrement: "10",
 });
+
 
 if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );

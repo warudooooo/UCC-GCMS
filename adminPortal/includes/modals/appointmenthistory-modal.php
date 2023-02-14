@@ -1,37 +1,30 @@
 <link rel="icon" href="src/images/uccLogo.png">
-<!-- ================================================================================================================================================ -->
-<!-- ==================Delete MODAL========================== -->
-<!-- ================================================================================================================================================ -->
-<form method="POST" action="" autocomplete="off">
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- ================================================================================================================================================ -->
+    <!-- ==================SEE MORE MODAL========================== -->
+    <!-- ================================================================================================================================================ -->
+    <div class="modal fade" id="seemoreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content approve">
+            <div class="modal-content seemore">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel" style="color: #d00000;">DELETE</h2>
+                    <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Appointment Details</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                <h5 class="col-md-12" style="margin-top: 10px;">Date Completed:</h5>
                     <div class="col-md-12">
-                        <h2 class="col-md-12" style="color: #d00000; text-align: center;">Are you sure?</h2>
-                        <h4 class="col-md-12" style="text-align: center;">Do you really want to delete these records? This process cannot be undone.</h4>
-                        <input style="pointer-events: none; display:none;" type="text" id="historyID" name="hID" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; text-transform: uppercase; background-color: #e8eddf !important;" type="text" id="counselsSched"  class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
+                    <h5 class="col-md-12" style="margin-top:10px;">Counselor Name</h5>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="studentName" class="form-control form-control-line" readonly>
+                        <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="counsName" class="form-control form-control-line" readonly>
                     </div>
-                    <label class="col-md-12" style="margin-top:10px;">Student Number</label>
+                    <h5 class="col-md-12" style="margin-top:10px;">Counselor Remarks</h5>
                     <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="studentNumber" class="form-control form-control-line" readonly>
-                    </div>
-                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
-                    <div class="col-md-12">
-                        <input style="pointer-events: none;" type="text" id="studentCourse" class="form-control form-control-line" readonly>
+                        <textarea rows="8" class="form-control form-control-line" id="counsRemarks" style="background-color: #e8eddf; padding: 20px" readonly></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary yesbtn" name="appsubmit">YES</button>
+                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
