@@ -24,7 +24,7 @@ include 'sources/src-index.php';
 							<h4>University of Caloocan City Guidance and Counseling</h4>
 						</div>
 						<div class="heading">
-							<h2>Welcome back, UCCnian!</h2>
+							<h2>Welcome back, UCCian!</h2>
 							<h6>Not registered yet?</h6>
 							<a href="register.php" class="toggle">Sign up</a>
 						</div>
@@ -37,6 +37,7 @@ include 'sources/src-index.php';
 								<input type="Password" id="sPassword" class="txtbxFields" name="sPassword" autocomplete="off">
 								<label> Password </label>
 							</div>
+							<h1><div id='result' class='eml' style="display: inline-block; color: crimson; margin-bottom: 10px; margin-top: -10px; font-size: 15px;"></div></h1>
 							<input type="submit" id="btnSignin" name="submit" value="Sign In" class="btnSignin">
 							<p class="txtForgot">Did you forgot your password? <a href="forgotpass.php"> Get help </a> signing in</p>
 						</div>

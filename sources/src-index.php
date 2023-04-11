@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
 			$_SESSION['SESSION_ROLE'] = $row["userType"]; 
 			exit('<font color="green">Student login successful, you will be redirected in the dashboard page.</font>');
 		} else {
-			exit('<style="text-align: center;">Please wait for your account to be verified by the admin.</style>');
+			exit('<style="text-align: center;">Please wait for your account to be verified by the Guidance.</style>');
 		}
 	} else if(mysqli_num_rows($result) === 1 && $row["userType"] == "admin"){
 		$_SESSION['SESSION_EMAIL'] = $sNumber;

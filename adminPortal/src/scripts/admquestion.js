@@ -61,6 +61,22 @@ $(document).ready(function(){
                 console.log(data);
                 $('#pID').val(data[1]);
                 $('#pName').val(data[2]);
+                $('#oldPname').val(data[2]);
+	});
+});
+
+$(document).ready(function(){
+	$('.recordeditbtn').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#adID').val(data[1]);
+                $('#adYear').val(data[2]);
+                $('#fileName').val(data[3]);
 	});
 });
 

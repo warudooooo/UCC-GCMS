@@ -125,6 +125,11 @@ include 'includes/modals/sanction-modal.php' ?>
                                                     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
                                                     Educational/Reflective Assignment
                                                    </button></td>";
+                                                } else {
+                                                    echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
+                                                    ". $row["sanctionType"] ."
+                                                   </button></td>";
                                                 } 
                                                  echo "
                                                  <td>" . $row["studentName"] . "</td>

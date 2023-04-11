@@ -157,8 +157,6 @@ include 'sources/src-studentLists.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.unvstudenteditbtn').on('click', function() {
@@ -180,10 +178,12 @@ include 'sources/src-studentLists.php';
             });
         });
 
-        if ( window.history.replaceState ) {
-    window.history.replaceState( null, null, window.location.href );
-}
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
     </script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="src/scripts/datatable.js"></script>
 </body>
 

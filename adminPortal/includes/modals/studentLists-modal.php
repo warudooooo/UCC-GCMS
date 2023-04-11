@@ -91,7 +91,7 @@
             <div class="modal-body">
                 <h5 class="col-md-12" style="margin-top:10px;">Student Name</h5>
                 <div class="col-md-12">
-                    <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="studName" class="form-control form-control-line" readonly>
+                    <input style="pointer-events: none; background-color: #e8eddf;" type="text" id="ssstName" class="form-control form-control-line" readonly>
                 </div>
                 <h5 class="col-md-12" style="margin-top:10px;">Counseling Type</h5>
                 <div class="col-md-12">
@@ -112,3 +112,46 @@
         </div>
     </div>
 </div>
+<!-- ================================================================================================================================================ -->
+<!-- ==================EDIT MODAL (INDIVIDUAL STUDENT ACCOUNTS)========================== -->
+<!-- ================================================================================================================================================ -->
+<form method="POST" action="studentIndvPage.php" autocomplete="off">
+    <div class="modal fade" id="studenteditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content approve">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel" style="color: #0096c7;">EDIT STUDENT</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="col-md-12" style="margin-top:10px;">Student Name</label>
+                    <div class="col-md-12">
+                        <input style="background-color: #edf2fb;" type="text" name="sName" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line">
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Number</label>
+                    <div class="col-md-12">
+                        <input style="background-color: #edf2fb; text-transform: uppercase;" value="<?php echo $_SESSION['stNumber']; ?>" type="text" name="sNumber" class="form-control form-control-line">
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Course</label>
+                    <div class="col-md-12">
+                        <input style="background-color: #edf2fb; text-transform: uppercase;" value="<?php echo $_SESSION['stCourse']; ?>" type="text" name="sCourse" class="form-control form-control-line">
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">Student Email</label>
+                    <div class="col-md-12">
+                        <input style="background-color: #edf2fb;" value="<?php echo $_SESSION['stEmail']; ?>" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
+                    </div>
+                    <label class="col-md-12" style="margin-top:10px;">To edit this student details. You need to type again your password</label>
+                    <div class="col-md-12">
+                        <input type="password" style="background-color: #edf2fb;" placeholder="Enter your password here" name="admPassword" class="form-control form-control-line" required>
+                    </div>
+                    <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
+                    <input style="display:none;" type="text" value="<?php echo $_SESSION['dbID']; ?>" name="dbID" class="form-control form-control-line">
+                </div>
+                <div class="modal-footer" style="margin: 0 auto;">
+                    <button type="submit" class="btn btn-primary editbtn" style="width: 200px;" name="edit_student">Edit</button>
+                    <button type="button" class="btn btn-secondary mdlclosebtn" style="width: 200px;" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

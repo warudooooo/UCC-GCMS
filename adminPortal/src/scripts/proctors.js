@@ -6,6 +6,7 @@ flatpickr("input[type=datetime-local]", {
     maxTime: "17:00",
     altInput: true,
     altFormat: "h:i K",
+    minuteIncrement: "30"
 });
 
 flatpickr("input[type=date]", {
@@ -14,7 +15,7 @@ flatpickr("input[type=date]", {
     enableTime: false,
     altInput: true,
     altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
+    dateFormat: "Y-m-d"
 });
 
 $(document).ready(function(){

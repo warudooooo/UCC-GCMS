@@ -192,7 +192,7 @@ flatpickr("input[type=datetime-local]", {
     altFormat: "F j, Y (h:i K)",
     minTime: "08:00",
     maxTime: "17:00",
-    minuteIncrement: "10",
+    minuteIncrement: "30",
 });
 
 if ( window.history.replaceState ) {

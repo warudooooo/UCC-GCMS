@@ -19,7 +19,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Proctor Name</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" placeholder="Enter here..." name="pName" style="background-color: #edf2fb;" maxlength="40" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" placeholder="(Ex: Dela Cruz, Juan M.)" name="pName" style="background-color: #edf2fb;" maxlength="40" required></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -55,6 +55,7 @@
                                         <label class="col-md-12">Proctor Name</label>
                                         <div class="col-md-12">
                                             <textarea id="pID" name="pID" style="display: none;" required></textarea>
+                                            <textarea id="oldPname" name="oldPname" style="display: none;" required></textarea>
                                             <textarea rows="1" class="form-control form-control-line" id="pName" name="pName" style="background-color: #edf2fb;" maxlength="40" required></textarea>
                                         </div>
                                     </div>
@@ -88,7 +89,7 @@
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2">
                                     <div class="form-group">
-                                        <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">View this selected Proctor?</h3>
+                                        <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">View the schedule of this selected Proctor?</h3>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Proctor Name</label>
@@ -118,7 +119,7 @@
         <div class="modal-dialog">
             <div class="modal-content approve">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">View Proctor</h3>
+                    <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Delete this Proctor</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="row">
@@ -127,7 +128,7 @@
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2">
                                     <div class="form-group">
-                                        <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">View this selected Proctor?</h3>
+                                        <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Are you sure you want to delete this proctor?</h3>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Proctor Name</label>

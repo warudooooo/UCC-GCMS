@@ -1,5 +1,7 @@
 <?php
 
+require '../vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -25,9 +27,9 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified,studentEmail,studentPassword,userType,vkey,userStatus)
     VALUES('$sName','$sNumber','$sCourse','$sVerified','','','user','','1')";
         $result = mysqli_query($mysqli, $sql);
-        $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED STUDENT [ Details: $sName ]')";
-        $runActivity = mysqli_query($mysqli, $activity);
-        $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+        // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED STUDENT [ Details: $sName ]')";
+        // $runActivity = mysqli_query($mysqli, $activity);
+        header("location: redirects/student-added-success.php");
     }
 }
 
@@ -528,7 +530,7 @@ if (isset($_POST['edit_student'])) {
             $runActivity = mysqli_query($mysqli, $activity);
             $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
         } else {
-            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Incorrect Password.</h3></div>';
         }
     }
 }
@@ -541,6 +543,8 @@ if (isset($_POST['view_student'])) {
     $_SESSION['stNumber'] = $_POST['stNumber'];
     $_SESSION['stEmail'] = $_POST['stEmail'];
     $_SESSION['regForm'] = $_POST['regForm'];
+    $_SESSION['regSelfie'] = $_POST['regSelfie'];
+
 }
 
 if (isset($_POST['admedit_student'])) {
@@ -562,14 +566,14 @@ if (isset($_POST['admedit_student'])) {
             $result = mysqli_query($mysqli, $sql);
             $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED STUDENT [ Details: $sName ]')";
             $runActivity = mysqli_query($mysqli, $activity);
-            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; width: 100%;"><h3 style="margin: auto;">Action success.</h3></div>';
         } else {
-            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; width: 100%;"><h3 style="margin: auto;">The password you entered is incorrect.</h3></div>';
         }
     }
 }
 
-if (isset($_POST['delete_student'])) {
+if (isset($_POST['markas_inactive'])) {
     $sName = $_POST['sName'];
     $sNumber = $_POST['sNumber'];
     $sEmail = $_POST['sEmail'];
@@ -595,9 +599,9 @@ if (isset($_POST['delete_student'])) {
             $result = mysqli_query($mysqli, $sql);
             $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS INACTIVE STUDENT[ Details: $sName ]')";
             $runActivity = mysqli_query($mysqli, $activity);
-            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; width: 100%;"><h3 style="margin: auto;">Mark as Inative Successfully</h3></div>';
         } else {
-            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; width: 100%;"><h3 style="margin: auto;">The password you entered is incorrect.</h3></div>';
         }
     }
 }
@@ -653,7 +657,7 @@ if (isset($_POST['delete_permanent'])) {
         $runActivity = mysqli_query($mysqli, $activity);
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: green; margin-left: 500px;"><h3>Success.</h3></div>';
     } else {
-        $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 500px;"><h3>Inorrect Password.</h3></div>';
+        $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; width: 100%;"><h3 style="margin: auto;">The password you entered is incorrect.</h3></div>';
     }
 }
 

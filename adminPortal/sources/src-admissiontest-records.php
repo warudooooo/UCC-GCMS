@@ -18,15 +18,23 @@ if (isset($_POST['submit'])) { // if save button on the form is clicked
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 50px; "><h3>This File already exists.</h3></div>';
     } else if (!in_array($extension, ['doc', 'pdf', 'docx'])) {
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 50px;"><h3>Your file extension must be .doc, .docx or .pdf</h3></div>';
-    } elseif ($_FILES['myfile']['size'] > 10000000) { // file shouldn't be larger than 1Megabyte
-        echo "File too large!";
+    } elseif ($_FILES['myfile']['size'] > 50000000) { // file shouldn't be larger than 1Megabyte
+        $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 50px;"><h3>Your file is too large</h3></div>';
     } else {
         // move the uploaded (temporary) file to the specified destination
         if (move_uploaded_file($file, $destination)) {
             $sql = "INSERT INTO tbl_admissiontestrecords(admYear, admFile, admSize, admDownloads) VALUES ('$qYear','$filename', $size, 0)";
             mysqli_query($mysqli, $sql);
-            $activity = "INSERT INTO tbl_activitylog(admName,activityAction)
-            VALUES('$admName','ADDED $filename')";
+
+            $before = 
+"Year: ".$qYear."
+File: ".$filename."";
+
+$action =
+"$admName Added ".$filename." successfully.";
+
+            $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityReason)
+            VALUES('$admName','$before','$action','')";
             $runActivity = mysqli_query($mysqli, $activity);
             header('Location: admissiontest-records.php');
         } else {
@@ -61,16 +69,28 @@ if (isset($_GET['file_id'])) {
         mysqli_query($mysqli, $updateQuery);
         exit;
     }
-
 }
 
-if (isset($_POST['delete_records'])){
-    $admID = $mysqli->real_escape_string($_POST['admID']);
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction)
-    VALUES('$admName','DELETED RECORDS ON ADMISSION TEST')";
-    $runActivity = mysqli_query($mysqli, $activity);
-    $delete = "DELETE FROM tbl_admissiontestrecords WHERE admID='$admID'";
-	$del = mysqli_query($mysqli, $delete);
-}
+if (isset($_POST['adDelete'])) {
 
-?>
+    $adminPassword = $mysqli->real_escape_string(md5($_POST['adminPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
+    //for act logging
+    $adYear = $mysqli->real_escape_string($_POST['adYear']);
+    $fileName = $mysqli->real_escape_string($_POST['fileName']);
+    $delReason = $mysqli->real_escape_string($_POST['delReason']);
+
+    $before = 
+"Year: ".$adYear."
+File: ".$fileName."";
+
+
+    if ($adminPassword == $curPassword) {
+        $admID = $mysqli->real_escape_string($_POST['admID']);
+        $activity = "INSERT INTO tbl_activitylog(admName,admFile,activityActionBefore,activityActionAfter,activityReason)
+        VALUES('$admName','$fileName','$before','Deleted Successful.','$delReason')";
+        $runActivity = mysqli_query($mysqli, $activity);
+        $delete = "DELETE FROM tbl_admissiontestrecords WHERE admID='$admID'";
+        $del = mysqli_query($mysqli, $delete);
+    }
+}

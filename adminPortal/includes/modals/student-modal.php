@@ -12,25 +12,24 @@
                 <div class="row">
                     <div class="col-lg-12 col-xlg-12 col-md-12">
                         <div class="card">
-                            <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Add Student</h3>
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2">
                                     <div class="form-group">
-                                        <label class="col-md-12">Student Name (Ex. Bayola, Wally B.)</label>
+                                        <label class="col-md-12">Student Name</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sName" style="background-color: #edf2fb;" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" placeholder="(EX: Dela Cruz, Juan M.)" name="sName" style="background-color: #edf2fb;" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Student Number (Ex: 20xxxxxx-M)</label>
+                                        <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sNumber" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" placeholder="(Ex: 20xxxxxx-M)" name="sNumber" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12">Course, Year and Section (Ex. BSxx 1-A)</label>
+                                        <label class="col-md-12">Course, Year and Section</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" name="sCourse" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
+                                            <textarea rows="1" class="form-control form-control-line" placeholder="(Ex: BSxx 1-A)" name="sCourse" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -75,7 +74,7 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Enter you password here" name="admPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter your password here" name="admPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                         <input style="display:none;" type="text" id="vkey" name="vkey" class="form-control form-control-line">
@@ -84,7 +83,7 @@
                         <input style="display:none;" type="text" id="studentEmail" name="sEmail" class="form-control form-control-line">
                     </div>
                     <div class="modal-footer" style="margin:auto;">
-                        <button type="submit" class="btn btn-primary yesbtn" name="delete_student" style="width: 200px;">YES</button>
+                        <button type="submit" class="btn btn-primary yesbtn" name="markas_inactive" style="width: 200px;">YES</button>
                         <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal" style="width: 200px;">No</button>
                     </div>
                 </div>
@@ -121,7 +120,7 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Enter your password</label>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Enter you password here" name="admPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter your password here" name="admPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                         <input style="display:none;" type="text" id="actvkey" name="vkey" class="form-control form-control-line">
@@ -248,6 +247,7 @@
                         </div>
                         <input style="display:none;" id="dbID" name="dbID">
                         <input style="display:none;" id="regForm" name="regForm">
+                        <input style="display:none;" id="regSelfie" name="regSelfie">
                         <input style="display:none;" id="unvsEmail" name="stEmail">
                         <input style="display:none;" type="text" id="unvsPassword" name="sPassword" class="form-control form-control-line">
                         <input style="display:none;" type="text" id="unvvkey" name="vkey" class="form-control form-control-line">
@@ -267,11 +267,43 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content" style="border-radius: 10px;">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel" style="color: #38b000;">Registration Form</h2>
+                    <h2 class="modal-title" id="exampleModalLabel" style="color: #333;">Registration Form</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <img src="../uploads/<?php echo $_SESSION['regForm']; ?>" style="width: 100%;">
+                </div>
+                <div class="modal-footer center-all">
+                    <button type="button" class="btn btn-secondary mdlclosebtn" style="width: 200px;" data-bs-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================================================================================================================================================ -->
+    <!-- ==================VIEW SELFIE MODAL========================== -->
+    <!-- ================================================================================================================================================ -->
+    <div class="modal fade bd-example-modal-lg" id="viewSelfieModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 10px;">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel" style="color: #333;">Selfie With Registration Form</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <?php
+                                                if (empty($_SESSION['regSelfie'])) {
+                                                    echo '<div class="eml" style="display: inline-block; text-align: center; color: black; margin-top: 20%; margin-bottom: 20%;"><h3>No image available.</h3></div>';
+                                                } else {
+                                                }
+                                                ?>
+                <div class="modal-body" style="<?php
+                                                if (empty($_SESSION['regSelfie'])) {
+                                                    echo 'display: none;';
+                                                } else {
+                                                    echo 'display: auto;';
+                                                }
+                                                ?>
+                ">
+                    <img src="../uploads/<?php echo $_SESSION['regSelfie']; ?>" style="width: 100%;">
                 </div>
                 <div class="modal-footer center-all">
                     <button type="button" class="btn btn-secondary mdlclosebtn" style="width: 200px;" data-bs-dismiss="modal">CLOSE</button>
@@ -310,7 +342,7 @@
                         <input name="dbID" style="display: none;" placeholder="<?php echo $_SESSION['dbID']; ?>" value="<?php echo  $_SESSION['dbID']; ?>" readonly>
                         <label class="col-md-12" style="margin-top:10px;">To approve this student, please enter your password for confirmation.</label>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Enter you password here" name="adminPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter your password here" name="adminPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo  $_SESSION['admPassword']; ?>" name="curPassword" class="form-control form-control-line">
                     </div>
@@ -358,7 +390,7 @@
                         <input name="dbID" style="display: none;" placeholder="<?php echo $_SESSION['dbID']; ?>" value="<?php echo  $_SESSION['dbID']; ?>" readonly>
                         <label class="col-md-12" style="margin-top:10px; color:#d00000">To Decline this student, please enter your password for confirmation.</label>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Enter you password here" name="adminPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter your password here" name="adminPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo  $_SESSION['admPassword']; ?>" name="curPassword" class="form-control form-control-line">
                     </div>
@@ -396,11 +428,11 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Email</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb;" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
+                            <input style="background-color: #edf2fb;" id="admsEmail" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">To edit this student details. You need to type again your password</label>
                         <div class="col-md-12">
-                            <input type="password" placeholder="Enter you password here" name="admPassword" class="form-control form-control-line" required>
+                            <input type="password" placeholder="Enter your password here" name="admPassword" class="form-control form-control-line" required>
                         </div>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     </div>

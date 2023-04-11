@@ -73,10 +73,10 @@ include 'sources/src-student.php';
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addstudentModal'>Add Student</button>
-                                        <?php echo $msg; ?>
                                     </div>
                                 </div>
                             </form>
+                            <?php echo $msg; ?>
                         </div>
                     </div>
                 </div>
@@ -179,34 +179,35 @@ include 'sources/src-student.php';
                                             <th scope="col" style="color: #fff;">#</th>
                                             <th scope="col" style="color: #fff;">Student Name</th>
                                             <th scope="col" style="color: #fff;">Student Number</th>
-                                            <th scope="col" style="color: #fff; display:none;">Email</th>
+                                            <th scope="col" style="color: #fff;">Email</th>
                                             <th scope="col" style="color: #fff;">Course</th>
                                             <th scope="col" style="color: #fff; display:none;">PASS</th>
                                             <th scope="col" style="color: #fff; display:none;">vkey</th>
                                             <th scope="col" style="color: #fff; display:none;">studentVerified</th>
-                                            <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
-                                            <th scope="col" style="color: #fff; text-align: center;">Mark as Inactive</th>
+                                            <th scope="col" style="color: #fff; text-align: center; width: 150px;">EDIT</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='' AND userStatus = '1'");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentPassword='' AND userStatus = '1'");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
-                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
-                                                 <td style='display:none;'>" . $row["studentEmail"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>";
+                                            if ($row["studentEmail"] == "") {
+                                                echo "<td>Email is not available right now.</td>";
+                                            } else {
+                                                echo "<td>" . $row["studentEmail"] . "</td>";
+                                            }
+                                            echo "
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='display:none;'>" . $row["studentPassword"] . "</td>
                                                  <td style='display:none;'>" . $row["vkey"] . "</td>
                                                  <td style='display:none;'>" . $row["studentVerified"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary admstudenteditbtn' data-bs-toggle='modal' data-bs-target='#admstudenteditModal'>
+                                                 <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary admstudenteditbtn' data-bs-toggle='modal' data-bs-target='#admstudenteditModal'>
                                                     EDIT
-                                                 </button></td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary studentdeletebtn' data-bs-toggle='modal' data-bs-target='#markasInactiveModal'>
-                                                     Mark as Inactive
                                                  </button></td>
                                                  </tr>";
                                             $i++;

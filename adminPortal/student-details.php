@@ -105,8 +105,16 @@ include 'includes/modals/student-modal.php';?>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Registration Form</h3>
                                         <div class="col-md-12">
-                                            <button type='button' class='btn btn-primary unvstudenteditbtn' data-bs-toggle='modal' data-bs-target='#viewRFModal'>
+                                            <button type='button' class='btn btn-primary unvstudenteditbtn' style="width: 250px;" data-bs-toggle='modal' data-bs-target='#viewRFModal'>
                                                 VIEW REGISTRATION FORM
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h3 class="col-md-12">Selfie With Registration Form</h3>
+                                        <div class="col-md-12">
+                                            <button type='button' class='btn btn-primary unvstudenteditbtn' style="width: 250px;" data-bs-toggle='modal' data-bs-target='#viewSelfieModal'>
+                                                VIEW SELFIE
                                             </button>
                                         </div>
                                     </div>

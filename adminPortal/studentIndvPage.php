@@ -145,22 +145,27 @@ include 'sources/src-studentLists.php';
                                                     <button type="submit" name="markasinactive" class="btn btn-primary" style="pointer-events: auto; width: 200px; background: #bc4749; color: #fff; border-style:none; border-radius: 20px;">
                                                     Mark as Inactive
                                                    </button>
+                                                   <button type="button" name="editStudent" class="btn btn-primary editBtn" style="pointer-events: auto; width: 200px; background: #0096c7; color: #fff; border-style:none; border-radius: 20px;" data-bs-toggle="modal" data-bs-target="#studenteditModal">
+                                                   Edit Student Details
+                                                   </button>
                                                     </div>';
                                     } else if ($row["userStatus"] == 0) {
                                         echo '<div class="col-md-6">
                                                     <button type="submit" name="markasactive" class="btn btn-primary" style="pointer-events: auto; width: 200px; background: #2d6a4f; color: #fff; border-style:none; border-radius: 20px;">
                                                     Mark as Active
                                                    </button>
+                                                   <button type="button" name="editStudent" class="btn btn-primary editBtn" style="pointer-events: auto; width: 200px; background: #0096c7; color: #fff; border-style:none; border-radius: 20px;"  data-bs-toggle="modal" data-bs-target="#studenteditModal">
+                                                   Edit Student Details
+                                                   </button>
                                                     </div>';
                                     }
                                     ?>
+                                <?php echo $msg; ?>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-
-
                 <h4 class="page-title" style="<?php
                                                 $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
                                                 $exists = mysqli_num_rows($load);
@@ -171,6 +176,16 @@ include 'sources/src-studentLists.php';
                                                 }
                                                 ?>
                 "><i class="mdi mdi-account-cancel-outline" style="margin-top: 20px; margin-bottom: 20px;"></i> <?php echo $_SESSION['sName']; ?>'s Sanctions</h4>
+                <h4 class="page-title" style="<?php
+                                                $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
+                                                $exists = mysqli_num_rows($load);
+                                                if ($exists) {
+                                                    echo 'display: none;';
+                                                } else {
+                                                    echo 'display: auto;';
+                                                }
+                                                ?>
+                "><i class="mdi mdi-account-cancel-outline" style="margin-top: 20px; margin-bottom: 20px;"></i> <?php echo $_SESSION['sName']; ?> doesn't have any Sanctions</h4>
                 <div class="col-12">
                     <div class="card">
                         <div class="table-responsive" style="padding: 20px; 
@@ -276,7 +291,17 @@ include 'sources/src-studentLists.php';
                                                     echo 'display: none;';
                                                 }
                                                 ?>
-                "><i class="mdi mdi-account-wrench"></i> <?php echo $_SESSION['sName']; ?>'s Pending Appointnent Lists </h4>
+                "><i class="mdi mdi-account-wrench"></i> <?php echo $_SESSION['sName']; ?>'s Appointnent Lists </h4>
+                <h4 class="page-title" style="<?php
+                                                $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber'");
+                                                $exists = mysqli_num_rows($load);
+                                                if ($exists) {
+                                                    echo 'display: none;';
+                                                } else {
+                                                    echo 'display: auto;';
+                                                }
+                                                ?>
+                "><i class="mdi mdi-account-wrench"></i> <?php echo $_SESSION['sName']; ?> doesn't have any appointments. </h4>
                 <div class="col-12">
                     <div class="card">
                         <div class="table-responsive" style="padding: 20px;
@@ -310,8 +335,8 @@ include 'sources/src-studentLists.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sstName = $_SESSION['sName'];
-                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE requesterName = '$sstName' AND counselingStatus = 'Pending' ORDER BY counselingSchedule DESC");
+                                    $sstNumber = $_SESSION['stNumber'];
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$sstNumber' ORDER BY counselingSchedule DESC");
                                     $i = 1;
                                     while ($row = $load->fetch_assoc()) {
                                         echo "<tr>
@@ -331,6 +356,11 @@ include 'sources/src-studentLists.php';
                                             echo "<td style='text-align:center;'>
                                                 <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
                                                    DECLINED
+                                               </button></td>";
+                                        } else if ($row['counselingStatus'] == "Cancelled") {
+                                            echo "<td style='text-align:center;'>
+                                                <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
+                                                   Cancelled
                                                </button></td>";
                                         }
                                         echo "
@@ -388,7 +418,7 @@ include 'sources/src-studentLists.php';
                 }).get();
 
                 console.log(data);
-                $('#studName').val(data[2]);
+                $('#studName').val(data[3]);
                 $('#sancType').val(data[6]);
                 $('#sancCase').val(data[5]);
                 $('#guideMessage').val(data[7]);
@@ -406,8 +436,8 @@ include 'sources/src-studentLists.php';
                 }).get();
 
                 console.log(data);
-                $('#studName').val(data[3]);
                 $('#counselType').val(data[2]);
+                $('#ssstName').val(data[3]);
                 $('#counselSched').val(data[7]);
                 $('#counselingDetails').val(data[10]);
             });

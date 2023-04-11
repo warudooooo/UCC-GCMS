@@ -40,3 +40,28 @@ if (isset($_POST['remove_sanction'])) {
     $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','REMOVED SANCTION [ Details: $sName ]')";
     $runActivity = mysqli_query($mysqli, $activity);
 }
+
+if (isset($_POST['edit_student'])) {
+    $dbID = $_POST['dbID'];
+    $sName = $_POST['sName'];
+    $sNumber = $_POST['sNumber'];
+    $sCourse = $_POST['sCourse'];
+    $sEmail = $_POST['sEmail'];
+
+    $sName = $mysqli->real_escape_string($sName);
+    $sNumber = $mysqli->real_escape_string($sNumber);
+    $sCourse = $mysqli->real_escape_string($sCourse);
+    $sEmail = $mysqli->real_escape_string($sEmail);
+    $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
+    $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
+
+    if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE ID='{$dbID}'")) > 0) {
+        if ($admPassword == $curPassword) {
+            $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail' WHERE ID='$dbID'";
+            $result = mysqli_query($mysqli, $sql);
+            header("location: redirects/studentIndv-edit-success.php");
+        } else {
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; width: 100%;"><h3 style="margin: auto;">The password you entered is incorrect.</h3></div>';
+        }
+    }
+}

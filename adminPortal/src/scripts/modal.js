@@ -160,6 +160,7 @@ $(document).ready(function(){
                 $('#unvvkey').val(data[6]);
                 $('#dbID').val(data[8]);
                 $('#regForm').val(data[9]);
+                $('#regSelfie').val(data[10]);
 	});
 });
 
@@ -175,6 +176,12 @@ $(document).ready(function(){
                 $('#admsName').val(data[1]);
                 $('#admsNumber').val(data[2]);
                 $('#admsCourse').val(data[4]);
+                if (data[3] == "Email is not available right now."){
+                    $('#admsEmail').val("");
+                } else{
+                    $('#admsEmail').val(data[3]);
+                }
+                
 	});
 });
 
@@ -261,7 +268,7 @@ flatpickr("input[type=datetime-local]", {
     altFormat: "F j, Y (h:i K)",
     minTime: "08:00",
     maxTime: "17:00",
-    minuteIncrement: "10"
+    minuteIncrement: "30"
 });
 
 

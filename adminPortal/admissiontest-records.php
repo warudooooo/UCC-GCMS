@@ -62,7 +62,7 @@ include 'includes/modals/addrecords-modal.php'; ?>
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Attach Files<i style="margin-left: 10px;"><b>Reminder: Only Documents and PDF Files only</b></i></h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Attach Files<i style="margin-left: 10px;"><b>Reminder: Only Documents and PDF Files only (Maximum size is 50MB)</b></i></h4>
                     <div class="col-lg-12 col-xlg-12 col-md-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -91,7 +91,7 @@ include 'includes/modals/addrecords-modal.php'; ?>
                                                 <th scope="col" style="color: #fff; width: 500px;"">Size</th>
                                                 <th scope="col" style="color: #fff; width: 500px;"">Total Downloads</th>
                                                 <th scope="col" style="color: #fff; text-align: center;">Download</th>
-                                                <!-- <th scope="col" style="color: #fff; text-align: center;">DELETE</th> -->
+                                                <th scope="col" style="color: #fff; text-align: center;">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -106,8 +106,11 @@ include 'includes/modals/addrecords-modal.php'; ?>
                                                  <td style='text-transform: uppercase;'>" . $row["admFile"] . "</td>
                                                  <td>" . $row["admSize"]/1000 . " KB</td>
                                                  <td>" . $row["admDownloads"] . "</td>
-                                                 <td style='text-align:center;'><a href='admissiontest-records.php?file_id=" . $row["admID"] . "'><button type='button' class='btn btn-primary btnblue' style='width: 150px;'>
+                                                 <td style='text-align:center;'><a href='admissiontest-records.php?file_id=" . $row["admID"] . "'><button style='width:150px;' type='button' class='btn btn-primary btngreen' style='width: 150px;'>
                                                  Download
+                                                 </button></td>
+                                                 <td style='text-align:center;'><button style='width:160px;' type='button' class='btn btn-primary btnred recordeditbtn' data-bs-toggle='modal' data-bs-target='#editRecordModal'>
+                                                    Delete
                                                  </button></td>
                                                  </tr>";
                                                 $i++;

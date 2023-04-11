@@ -209,7 +209,7 @@ if (isset($_POST['submit'])) {
                                                         <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
                                                             <p style='text-align:center !important; margin-top: -10; margin-bottom: 30px;'>The Guidance has sanctioned you.</p>
                                                             <p style='margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Case: </p>
-                                                            <p style='margin-left: 20px; margin-top: 0; margin-bottom: -10px;'> " . $sMessage . "</p>
+                                                            <p style='margin-left: 20px; margin-top: 0; margin-bottom: -10px;'> " . $sCase . "</p>
                                                             <p style='margin-left: 20px; margin-top: 10; margin-bottom: 10px;'>Guidance Message: </p>
                                                             <p style='margin-left: 20px; margin-top: 0; margin-bottom: -10px;'> " . $sMessage . "</p>
                                                         </td>

@@ -17,7 +17,7 @@
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2">
                                     <div class="form-group">
-                                        <label class="col-md-12">DATE</label>
+                                        <label class="col-md-12">Select Date</label>
                                         <div class="col-md-12">
                                             <input class="form-control" type="date" name="date" placeholder="MM/DD/YY " required>
                                         </div>
@@ -27,9 +27,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary mdladdbtn" name="submit">Submit</button>
-                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Cancel</button>
+                <div class="modal-footer" style="margin: auto;">
+                    <button type="submit" style="width: 200px;" class="btn btn-primary mdladdbtn" name="submit">Submit</button>
+                    <button type="button" style="width: 200px;" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -69,9 +69,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary yesbtn" name="delete_records">YES</button>
-                    <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">NO</button>
+                <div class="modal-footer" style="margin: auto;">
+                    <button type="submit" style="width: 200px;" class="btn btn-primary yesbtn" name="delete_records">YES</button>
+                    <button type="button" style="width: 200px;" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">NO</button>
                 </div>
             </div>
         </div>

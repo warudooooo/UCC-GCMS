@@ -19,7 +19,13 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Case Name</label>
                                         <div class="col-md-12">
-                                            <textarea rows="3" class="form-control form-control-line" placeholder="Enter here..." name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
+                                            <textarea rows="2" class="form-control form-control-line" placeholder="Enter here..." name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="8" class="form-control form-control-line" placeholder="Enter here..." name="pDesc" style="background-color: #edf2fb;" required></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -55,8 +61,14 @@
                                         <label class="col-md-12">Case Name</label>
                                         <div class="col-md-12">
                                             <textarea id="pID" name="pID" style="display: none;" required></textarea>
-                                            <textarea rows="3" class="form-control form-control-line" id="pName" name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
+                                            <textarea rows="2" class="form-control form-control-line" id="pName" name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
                                         </div>
+                                        <div class="form-group">
+                                        <label class="col-md-12">Description</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="8" class="form-control form-control-line" id="pDesc" name="pDesc" style="background-color: #edf2fb;" required></textarea>
+                                        </div>
+                                    </div>
                                     </div>
                                 </form>
                             </div>

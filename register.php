@@ -4,8 +4,8 @@ include 'sources/src-register.php';
 ?>
 <!DOCTYPE html>
 <html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="src/styles/loginStyle.css">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,13 +51,18 @@ include 'sources/src-register.php';
 								<label> Password </label>
 							</div>
 							<div class="inputWrap">
-								<label class="col-md-12" style="margin-top: -10px;">Latest Registration Form </label>
-								<div class="col-md-12">
-									<input class="form-control form-control-lg" style="margin-top: 30px;" id="formFileLg" name="myfile" type="file" required />
+								<div class="mb-3">
+									<label for="formFileSm" class="form-label" style="margin-top: -35px;">Latest Registration Form</label>
+									<input class="form-control form-control-sm" style="margin-top: 40px;" id="formFileSm" name="myfile" type="file" required />
 								</div>
 							</div>
-							<input type="submit" name="submit" value="Sign Up" class="btnSignin" style="margin-top: 15px;">
-							<p class="txtForgot" style="margin-top: -20px;">By signing up, I agree to the <a href="#"> Privacy Policy</a> of University of Caloocan City.</p>
+							<div class="inputWrap">
+								<div class="mb-3">
+									<label for="formFileSm" class="form-label" style="margin-top: -35px;">Selfie with Registration Form</label>
+									<input class="form-control form-control-sm" style="margin-top: 40px;" id="formFileSm" name="myfile2" type="file" required />
+								</div>
+							</div>
+							<input type="submit" name="submit" value="Sign Up" class="btnSignin">
 						</div>
 					</form>
 				</div>
@@ -79,6 +84,7 @@ include 'sources/src-register.php';
 		</div>
 	</main>
 	<script type="text/javascript" src="src/scripts/loginScript.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

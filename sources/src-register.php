@@ -13,16 +13,22 @@ if (isset($_POST['submit'])) {
 
 	// name of the uploaded file
 	$filename = $_FILES['myfile']['name'];
+	$filename2 = $_FILES['myfile2']['name'];
 
 	// destination of the file on the server
 	$destination = 'uploads/' . $filename;
+	$destination2 = 'uploads/' . $filename2;
 
 	// get the file extension
 	$extension = pathinfo($filename, PATHINFO_EXTENSION);
+	$extension2 = pathinfo($filename2, PATHINFO_EXTENSION);
 
 	// the physical file on a temporary uploads directory on the server
 	$file = $_FILES['myfile']['tmp_name'];
+	$file2 = $_FILES['myfile2']['tmp_name'];
+
 	$size = $_FILES['myfile']['size'];
+	$size2 = $_FILES['myfile2']['size'];
 
 
 	$sName = $_POST['sName'];
@@ -45,16 +51,16 @@ if (isset($_POST['submit'])) {
 
 	if (!in_array($extension, ['png', 'pdf', 'jpg', 'jpeg'])) {
 	    $msg = '<div class="eml" style="display: inline-block; color: crimson; margin-bottom: -15px; font-size: 20px;"><h3>Your file extension must be .png, .jpg, or .jpeg</h3></div>';
-	} else if ($_FILES['myfile']['size'] > 10000000) { // file shouldn't be larger than 1Megabyte
+	} else if ($_FILES['myfile']['size'] && $_FILES['myfile2']['size'] > 10000000) { // file shouldn't be larger than 1Megabyte
 	    echo "File too large!";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='{$sEmail}'")) > 0) {
 		$msg = "<div class='eml' style='margin-left:20px; margin-bottom: 10px;'>This email adress is already in use. Please use a different one.</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='yes'")) > 0) {
 		$msg = "<div class='eml' style='margin-left: 20px; margin-botttom: 5px;'>This student already exist and verified.</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
-		if (move_uploaded_file($file, $destination)) {
+		if (move_uploaded_file($file, $destination) && move_uploaded_file($file2, $destination2)) {
 			$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',
-			vkey='$vkey',studentVerified='no',userType='user',userStatus='1',regForm='$filename' WHERE studentNumber='$sNumber'";
+			vkey='$vkey',studentVerified='no',userType='user',userStatus='1',regForm='$filename',regSelfie='$filename2' WHERE studentNumber='$sNumber'";
 			$result = mysqli_query($mysqli, $sql);
 			if ($result) {
 				$mail = new PHPMailer(true);
@@ -257,18 +263,18 @@ if (isset($_POST['submit'])) {
 					$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
 				}
 				header('location:redirects/thankyou.php');
-				$activity = "INSERT INTO tbl_activitylog(admName,activityAction)
-            VALUES('$admName','ADDED $filename')";
-				$runActivity = mysqli_query($mysqli, $activity);
+			// 	$activity = "INSERT INTO tbl_activitylog(admName,activityAction)
+            // VALUES('$admName','ADDED $filename')";
+			// 	$runActivity = mysqli_query($mysqli, $activity);
 			}
 		} else {
 			$msg = "Failed to upload file.";
 		}
 	} else {
-		if (move_uploaded_file($file, $destination)) {
+		if (move_uploaded_file($file, $destination) && move_uploaded_file($file2, $destination2)) {
 			//Insert to DB
-			$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType,userStatus,regForm,resetCode) 
-			VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user','1','$filename','')";
+			$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType,userStatus,regForm,regSelfie,resetCode) 
+			VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user','1','$filename','$filename2','')";
 			$result = mysqli_query($mysqli, $sql);
 			if ($result) {
 				$mail = new PHPMailer(true);

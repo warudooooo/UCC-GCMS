@@ -79,6 +79,7 @@ include 'sources/src-student.php';
                                         <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                         <th scope="col" style="color: #fff; display:none;">ID</th>
                                         <th scope="col" style="color: #fff; display:none;">regForm</th>
+                                        <th scope="col" style="color: #fff; display:none;">regForm</th>
                                         <th scope="col" style="color: #fff;">Request Date</th>
                                         <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
                                     </tr>
@@ -99,6 +100,7 @@ include 'sources/src-student.php';
                                                  <td style='display:none;'>" . $row["studentVerified"] . "</td>
                                                  <td style='display:none;'>" . $row["ID"] . "</td>
                                                  <td style='display:none;'>" . $row["regForm"] . "</td>
+                                                 <td style='display:none;'>" . $row["regSelfie"] . "</td>
                                                  <td>" . date('m/d/Y h:i A', strtotime($row["studentCreateDate"])) . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary btnApprove unvstudenteditbtn' data-bs-toggle='modal' data-bs-target='#viewstudentModal'>
                                                  APPROVE / DECLINE 

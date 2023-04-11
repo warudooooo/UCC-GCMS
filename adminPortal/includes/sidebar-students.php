@@ -94,8 +94,11 @@ if (mysqli_num_rows($query) > 0) {
                 <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Student Dashboard</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Home</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="student.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Student Dashboard</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="studentLists.php" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Student List</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="studentLists.php" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Registerd Student List</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="student-pending.php" aria-expanded="false"><i class="mdi mdi-account-clock"></i><span class="hide-menu">Pending Student Accounts</span></a></li>
+                <hr class="hr" />
+                <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Maintenance</h4>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="student-registrarLists.php" aria-expanded="false"><i class="mdi mdi-briefcase-edit-outline"></i><span class="hide-menu">Student Lists (Registrar)</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-questions.php" aria-expanded="false"><i class="mdi mdi-newspaper-variant-outline"></i><span class="hide-menu">Admission Test Questions</span></a></li> -->
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="schedule.php" aria-expanded="false"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Appointment Schedule</span></a></li> -->
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-reports.php" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Appointment Reports</span></a></li>
