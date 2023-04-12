@@ -94,7 +94,7 @@ if (mysqli_num_rows($query) > 0) {
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="student.php" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Student Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admissiontest-records.php" aria-expanded="false"><i class="mdi mdi-briefcase-account"></i><span class="hide-menu">Admission Test</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services.php" aria-expanded="false"><i class="mdi mdi-toolbox-outline"></i><span class="hide-menu">Services</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sanctions-and-counseling.php" aria-expanded="false"><i class="mdi mdi-toolbox-outline"></i><span class="hide-menu">Sanctioning / Counseling</span></a></li>
                 <hr class="hr" />
                 <!-- <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Appointments</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment.php" aria-expanded="false"><i class="mdi mdi-calendar-clock"></i><span class="hide-menu">Pending Appointments</span></a></li>

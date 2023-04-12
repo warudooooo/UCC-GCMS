@@ -130,7 +130,7 @@ include 'includes/modals/services-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Student Number</th>
                                                 <th scope="col" style="color: #fff;">Course</th>
                                                 <th scope="col" style="color: #fff; display: none;">Email</th>
-                                                <th scope="col" style="color: #fff; text-align: center; width: 150px;">ACTION</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -144,8 +144,8 @@ include 'includes/modals/services-modal.php'; ?>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='text-transform: uppercase; display: none;'>" . $row["studentEmail"] . "</td>
-                                                 <td style='text-align:center;'><button style='width: 120px;' type='button' class='btn btn-primary btnblue actionbtn' data-bs-toggle='modal' data-bs-target='#actionModal'>
-                                                    ACTION
+                                                 <td style='text-align:center;'><button style='width: 220px;' type='button' class='btn btn-primary btnblue actionbtn' data-bs-toggle='modal' data-bs-target='#actionModal'>
+                                                    Sanction / Counsel this student.
                                                  </button></td>
                                                  </tr>";
                                                 $i++;
@@ -175,10 +175,10 @@ include 'includes/modals/services-modal.php'; ?>
         <!-- ============================================================== -->
 
         <?php include 'includes/footer.php' ?>
+        <script src="src/scripts/modal.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="src/scripts/datatable.js"></script>
-        <script src="src/scripts/modal.js"></script>
 </body>
 
 </html>

@@ -193,10 +193,10 @@ include 'includes/modals/student-registrarLists-modal.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="src/scripts/student-registrar.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="src/scripts/datatable.js"></script>
 </body>
 

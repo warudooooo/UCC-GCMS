@@ -149,9 +149,9 @@ include 'includes/modals/student-modal.php';?>
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
+    <script src="src/scripts/student-datails-modal.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="src/scripts/student-datails-modal.js"></script>
 </body>
 
 </html>
