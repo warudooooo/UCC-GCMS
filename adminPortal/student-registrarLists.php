@@ -128,7 +128,6 @@ include 'includes/modals/student-registrarLists-modal.php';
                                             <th scope=" col" style="color: #fff; display: none;">Phone Number</th>
                                             <th scope=" col" style="color: #fff; text-align: center; width: 100px;">View Details</th>
                                             <th scope=" col" style="color: #fff; text-align: center; width: 100px;">EDIT</th>
-                                            <th scope="col" style="color: #fff; text-align: center; width: 100px;">DELETE</th>
                                             <th scope="col" style="display: none;"></th>
                                         </tr>
                                     </thead>
@@ -161,11 +160,8 @@ include 'includes/modals/student-registrarLists-modal.php';
                                                  <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary btngreen viewdetails' data-bs-toggle='modal' data-bs-target='#viewDetailsModal'>
                                                     View Details
                                                  </button></td>
-                                                 <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary editbtn' data-bs-toggle='modal' data-bs-target='#editStudentModal'>
+                                                 <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary editbtn editstudent' data-bs-toggle='modal' data-bs-target='#editStudentModal'>
                                                     EDIT
-                                                 </button></td>
-                                                 <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary deletebtn' data-bs-toggle='modal' data-bs-target='#deleteScheduleModal'>
-                                                     DELETE
                                                  </button></td>
                                                  <td style='display: none;'>" . $row["studentStatus"] . "</td>
                                                  </tr>";
@@ -197,11 +193,11 @@ include 'includes/modals/student-registrarLists-modal.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
+    <script src="src/scripts/student-registrar.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="src/scripts/datatable.js"></script>
-    <script src="src/scripts/student-registrar.js"></script>
 </body>
 
 </html>
