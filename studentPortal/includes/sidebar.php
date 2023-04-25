@@ -84,7 +84,7 @@ if (mysqli_num_rows($query) > 0) {
                 </li>
                 <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Home</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" style="margin-top:10px;" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sanctions.php" aria-expanded="false"><i class="mdi mdi-account-alert"></i><span class="hide-menu">Sanctions</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sanctions.php" aria-expanded="false"><i class="mdi mdi-account-alert"></i><span class="hide-menu">My Sanctions</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointmentscounselings.php" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Appointments/Counselings</span></a></li> -->
                 <hr class="hr" />
                 <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Appointment</h4>
@@ -94,6 +94,10 @@ if (mysqli_num_rows($query) > 0) {
                 <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">Counseling</h4> -->
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="requestAppointment.php" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Request Appointment</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-history.php" aria-expanded="false"><i class="mdi mdi-account-switch"></i><span class="hide-menu">Appointment History</span></a></li>
+                <hr class="hr" />
+                <h4 class="col-md-12" style="margin-top:10px; margin-left:25px;">About</h4>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="about-offenses-and-penalties.php" aria-expanded="false"><i class="mdi mdi-information"></i><span class="hide-menu"> Offenses and Penalties</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="about-guidance-services.php" aria-expanded="false"><i class="mdi mdi-account-switch"></i><span class="hide-menu"> Services Offered</span></a></li>
             </ul>
 
         </nav>

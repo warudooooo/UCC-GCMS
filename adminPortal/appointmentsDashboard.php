@@ -146,15 +146,15 @@ include 'includes/modals/pendingAppointments-modal.php';
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE counselingStatus='Declined'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<a href="cancelled-appointments.php" class="fill-div">' . $total . '</a>';
+                                echo '<a href="cancelledAppointments.php" class="fill-div">' . $total . '</a>';
                             } else {
-                                echo '<a href="cancelled-appointments.php" class="fill-div">' . $total . '</a>';
+                                echo '<a href="cancelledAppointments.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
                             <span>Cancelled Appointments</span>
                         </div>
                         <div>
-                            <a href="cancelled-appointments.php" class="fill-div">
+                            <a href="cancelledAppointments.php" class="fill-div">
                                 <span class="mdi mdi-calendar-remove" style="font-size: 3rem;"></span>
                             </a>
                         </div>

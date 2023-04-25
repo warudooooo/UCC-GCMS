@@ -95,7 +95,7 @@
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
-                    <div class="col-5">
+                    <div class="col-12">
                         <h4 class="page-title"><i class="mdi mdi-alarm-check"></i> Request Appointment</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
@@ -122,7 +122,7 @@
                 <!-- <div class="row"> -->
                 <!-- Column -->
                 <div class="col-md-4 reqForm" style="float: left;">
-                    <div class="card">
+                    <div class="card" style="border-radius: 20px !important;">
                         <div class="card-body">
                             <form class="form-horizontal form-material mx-2" method="POST">
                                 <div class="form-group" style="margin: auto;">
@@ -189,7 +189,7 @@
                 <!-- </div> -->
             </div>
             <div class="col-md-12 calendaryo">
-                <div class="card">
+                <div class="card" style="border-radius: 20px !important;">
                     <div class="container py-4" id="page-container">
                         <div class="col-md-10" style="margin: auto;">
                             <div id="calendar">

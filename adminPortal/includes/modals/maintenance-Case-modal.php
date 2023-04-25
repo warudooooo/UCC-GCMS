@@ -34,8 +34,8 @@
                     </div>
                 </div>
                 <div class="modal-footer" style="margin: auto;">
-                    <button  style="width: 200px;" type="submit" class="btn btn-primary mdladdbtn" name="addCase">Add Case</button>
-                    <button  style="width: 200px;" type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Cancel</button>
+                    <button style="width: 200px;" type="submit" class="btn btn-primary mdladdbtn" name="addCase">Add Case</button>
+                    <button style="width: 200px;" type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -63,12 +63,12 @@
                                             <textarea id="pID" name="pID" style="display: none;" required></textarea>
                                             <textarea rows="2" class="form-control form-control-line" id="pName" name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
                                         </div>
-                                        <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-md-12">Description</label>
                                         <div class="col-md-12">
                                             <textarea rows="8" class="form-control form-control-line" id="pDesc" name="pDesc" style="background-color: #edf2fb;" required></textarea>
                                         </div>
-                                    </div>
                                     </div>
                                 </form>
                             </div>

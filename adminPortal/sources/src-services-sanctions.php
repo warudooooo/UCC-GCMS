@@ -29,7 +29,10 @@ if (isset($_POST['remove_sanction'])) {
     $delete = "DELETE FROM tbl_sanctions WHERE sanctionID = '$ssID'";
     $result = mysqli_query($mysqli, $delete);
 
-    $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','REMOVED SANCTION [ Details: $sName ]')";
+    $after = "$admName Removed $sName Sanction";
+
+    $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Action Succesful.')";
     $runActivity = mysqli_query($mysqli, $activity);
 }
 
@@ -45,21 +48,16 @@ if (isset($_POST['submit'])) {
     $sMessage = $mysqli->real_escape_string($_POST['sMessage']);
     $degree = $mysqli->real_escape_string($_POST['degree']);
 
-    if ($sType == 'Probation' || $sType == 'Suspension' || $sType == 'Dismissal') {
-        $sSanction = 'Disciplinary Sanction';
-    } else {
-        $sSanction = 'Educational Sanction';
-    }
 
     if ($sType == "") {
         echo '<script>alert("Please fill up all fields")</script>';
     } else {
-        $add = "INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanction,sanctionType,sanctionMessage,degree)
-    VALUES('$sNumber','$sName','$sCourse','$sEmail','$sCase','$sSanction','$sType','$sMessage','$degree')";
+        $add = "INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanctionType,sanctionMessage,degree)
+    VALUES('$sNumber','$sName','$sCourse','$sEmail','$sCase','$sType','$sMessage','$degree')";
         $result = mysqli_query($mysqli, $add);
 
-        $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
-        $runActivity = mysqli_query($mysqli, $activity);
+        // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
+        // $runActivity = mysqli_query($mysqli, $activity);
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -260,6 +258,12 @@ if (isset($_POST['submit'])) {
         } catch (Exception $e) {
             $msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
         }
-        header("Location: services.php");
+
+        $after = "$admName Sanctioned $sName";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Sanctioned $sName.')";
+        $runActivity = mysqli_query($mysqli, $activity);
+        header("Location: services-studentwithsanctions.php");
     }
 }

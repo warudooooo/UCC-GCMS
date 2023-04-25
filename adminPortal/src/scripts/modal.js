@@ -127,6 +127,23 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+	$('.editAdmin').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#eID').val(data[5]);
+                $('#eName').val(data[1]);
+                $('#eUName').val(data[2]);
+                $('#eEmail').val(data[3]);
+                $('#delCourse').val(data[4]);
+	});
+});
+
+$(document).ready(function(){
 	$('.studenteditbtn').on('click', function(){
 		$tr = $(this).closest('tr');
 
@@ -174,12 +191,17 @@ $(document).ready(function(){
 
                 console.log(data);
                 $('#admsName').val(data[1]);
+                $('#oldadmsName').val(data[1]);
                 $('#admsNumber').val(data[2]);
+                $('#oldadmsNumber').val(data[2]);
                 $('#admsCourse').val(data[4]);
+                $('#oldadmsCourse').val(data[4]);
                 if (data[3] == "Email is not available right now."){
                     $('#admsEmail').val("");
+                    $('#oldadmsEmail').val("");
                 } else{
                     $('#admsEmail').val(data[3]);
+                    $('#oldadmsEmail').val(data[3]);
                 }
                 
 	});
@@ -236,10 +258,10 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
-                $('#sName').val(data[1]);
-                $('#sNumber').val(data[2]);
-                $('#sCourse').val(data[3]);
-                $('#stEmail').val(data[4]);
+                $('#sName').val(data[2]);
+                $('#sNumber').val(data[3]);
+                $('#sCourse').val(data[4]);
+                $('#stEmail').val(data[5]);
 	});
 });
 
@@ -252,10 +274,13 @@ $(document).ready(function(){
                 }).get();
 
                 console.log(data);
+                $('#counselType').val(data[1]);
+                $('#counselStudent').val(data[2]);
                 $('#counsName').val(data[11]);
                 $('#counsRemarks').val(data[12]);
                 $('#counselsSched').val(data[6]);
                 $('#counselingDetails').val(data[10]);
+                $('#dateCompleted').val(data[13]);
 	});
 });
 

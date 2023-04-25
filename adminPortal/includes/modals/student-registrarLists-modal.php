@@ -61,7 +61,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Email</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" minlength="8" placeholder="Enter email here..." name="studentEmail" style="background-color: #edf2fb;" required></textarea>
+                                            <input type="email" rows="1" class="form-control form-control-line" minlength="8" placeholder="Enter email here..." name="studentEmail" style="background-color: #edf2fb;" required></input>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -192,7 +192,7 @@
                     <div class="form-group">
                         <label class="col-md-12">Email</label>
                         <div class="col-md-12">
-                            <textarea rows="1" class="form-control form-control-line" id="studentEmail1" name="studentEmail" style="background-color: #ccebff;" required></textarea>
+                            <input type="email" rows="1" class="form-control form-control-line" id="studentEmail1" name="studentEmail" style="background-color: #ccebff;" required></input>
                         </div>
                     </div>
                     <div class="form-group">

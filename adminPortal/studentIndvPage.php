@@ -160,7 +160,7 @@ include 'sources/src-studentLists.php';
                                                     </div>';
                                     }
                                     ?>
-                                <?php echo $msg; ?>
+                                    <?php echo $msg; ?>
                                 </div>
                             </div>
                         </form>
@@ -188,6 +188,19 @@ include 'sources/src-studentLists.php';
                 "><i class="mdi mdi-account-cancel-outline" style="margin-top: 20px; margin-bottom: 20px;"></i> <?php echo $_SESSION['sName']; ?> doesn't have any Sanctions</h4>
                 <div class="col-12">
                     <div class="card">
+                        <form action="export-individual-reports.php" method="POST">
+                            <button type='submit' style="margin-top: 15px; width: 230px; margin-left: 15px; float: left;
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
+                            $exists = mysqli_num_rows($load);
+                            if ($exists) {
+                                echo 'display: auto;';
+                            } else {
+                                echo 'display: none;';
+                            }
+                            ?>
+                            " class='btn btn-primary btnexport' name="exportIndvSanctions"> Export this Data</button>
+                        </form>
                         <div class="table-responsive" style="padding: 20px; 
                         <?php
                         $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
@@ -224,43 +237,28 @@ include 'sources/src-studentLists.php';
                                         echo "<tr>
                                                  <td>" . $i . "</td>
                                                  ";
-                                        if ($row["sanctionType"] == "Probation") {
+                                        if ($row["degree"] == "Mild") {
                                             echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Probation
-                                                   </button></td>";
-                                        } else if ($row["sanctionType"] == "Suspension") {
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
+                                                        Mild
+                                                       </button></td>";
+                                        } else if ($row["degree"] == "Moderate") {
                                             echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f4845f; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Suspension
-                                                   </button></td>";
-                                        } else if ($row["sanctionType"] == "Dismissal") {
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f4845f; color: #fff; border-style:none; border-radius: 20px;'>
+                                                        Moderate
+                                                       </button></td>";
+                                        } else if ($row["degree"] == "Severe") {
                                             echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #cc3300; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
-                                                    Dismissal
-                                                   </button></td>";
-                                        } else if ($row["sanctionType"] == "Seminar") {
-                                            echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Seminar
-                                                   </button></td>";
-                                        } else if ($row["sanctionType"] == "Assessment") {
-                                            echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Assessment
-                                                   </button></td>";
-                                        } else if ($row["sanctionType"] == "Educational/Reflective Assignment") {
-                                            echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
-                                                    Educational/Reflective Assignment
-                                                   </button></td>";
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #cc3300; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
+                                                        Severe
+                                                       </button></td>";
                                         }
                                         echo "
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
                                                  <td style='display: none;'>" . $row["sanctionCase"] . "</td>
-                                                 <td style='display: none;'>" . $row["sanction"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanctionType"] . "</td>
                                                  <td style='display: none;'>" . $row["sanctionMessage"] . "</td>
                                                  <td>" . date('F j, Y h:i A (l)', strtotime($row["dateIssued"])) . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen viewdetails' data-bs-toggle='modal' data-bs-target='#detailsModal' style=''>
@@ -277,11 +275,6 @@ include 'sources/src-studentLists.php';
                         </div>
                     </div>
                 </div>
-
-
-
-
-
                 <h4 class="page-title" style="<?php
                                                 $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber'");
                                                 $exists = mysqli_num_rows($load);
@@ -304,6 +297,19 @@ include 'sources/src-studentLists.php';
                 "><i class="mdi mdi-account-wrench"></i> <?php echo $_SESSION['sName']; ?> doesn't have any appointments. </h4>
                 <div class="col-12">
                     <div class="card">
+                        <form action="export-individual-reports.php" method="POST">
+                            <button type='submit' style="margin-top: 15px; width: 230px; margin-left: 15px; float: left;
+                            <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber'");
+                            $exists = mysqli_num_rows($load);
+                            if ($exists) {
+                                echo 'display: auto;';
+                            } else {
+                                echo 'display: none;';
+                            }
+                            ?>
+                            " class='btn btn-primary btnexport' name="exportIndv"> Export this Data</button>
+                        </form>
                         <div class="table-responsive" style="padding: 20px;
                             <?php
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber'");

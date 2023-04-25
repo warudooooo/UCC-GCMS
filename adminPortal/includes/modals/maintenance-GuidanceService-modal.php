@@ -22,14 +22,20 @@
                                             <textarea rows="3" class="form-control form-control-line" placeholder="Enter here..." name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="8" class="form-control form-control-line" id="pDesc" name="pDesc" style="background-color: #edf2fb;" required></textarea>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer" style="margin: auto;">
-                    <button  style="width: 200px;" type="submit" class="btn btn-primary mdladdbtn" name="addService">Add Service</button>
-                    <button  style="width: 200px;" type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Cancel</button>
+                    <button style="width: 200px;" type="submit" class="btn btn-primary mdladdbtn" name="addService">Add Service</button>
+                    <button style="width: 200px;" type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -50,15 +56,19 @@
                     <div class="col-lg-12 col-xlg-12 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material mx-2">
-                                    <div class="form-group">
-                                        <label class="col-md-12">Service Name</label>
-                                        <div class="col-md-12">
-                                            <textarea id="pID" name="pID" style="display: none;" required></textarea>
-                                            <textarea rows="3" class="form-control form-control-line" id="pName" name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Service Name</label>
+                                    <div class="col-md-12">
+                                        <textarea id="pID" name="pID" style="display: none;" required></textarea>
+                                        <textarea rows="3" class="form-control form-control-line" id="pName" name="pName" style="background-color: #edf2fb;" maxlength="255" required></textarea>
                                     </div>
-                                </form>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Description</label>
+                                    <div class="col-md-12">
+                                        <textarea rows="8" class="form-control form-control-line" id="editDesc" name="pDesc" style="background-color: #edf2fb;" required></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,7 +82,7 @@
     </div>
 </form>
 <!-- ================================================================================================================================================ -->
-<!-- ==================Delete Proctor MODAL========================== -->
+<!-- ==================Delete Service MODAL========================== -->
 <!-- ================================================================================================================================================ -->
 <form method="POST" action="" autocomplete="off">
     <div class="modal fade" id="deleteServiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

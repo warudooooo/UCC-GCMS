@@ -8,7 +8,7 @@ include 'sources/src-student.php';
 <head>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
-    
+
 </head>
 <?php include 'includes/header.php';
 include 'includes/modals/services-modal.php'; ?>
@@ -71,9 +71,9 @@ include 'includes/modals/services-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="color: #fff;">' . $total . '</h1>';
                             } else {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="color: #fff;">' . $total . '</h1>';
                             }
                             ?>
                             <span>Student Lists</span>
@@ -82,65 +82,52 @@ include 'includes/modals/services-modal.php'; ?>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
                         </div>
                     </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Disciplinary Sanction'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
-                            } else {
-                                echo '<h1>' . $total . '</h1>';
-                            }
-                            ?>
-                            <span>Students with Disiplinary Sanctions</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Educational Sanction'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<h1 style="color: white;">' . $total . '</h1>';
-                            } else {
-                                echo '<h1 style="color: white;">' . $total . '</h1>';
-                            }
-                            ?>
-                            <span>Students with Educational Sanctions</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Student Lists</h4>
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="table-responsive" style="padding: 20px;">
-                                    <table id="dataTable" class="table table-bordered table-hover">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Student Name</th>
-                                                <th scope="col" style="color: #fff;">Student Number</th>
-                                                <th scope="col" style="color: #fff;">Course</th>
-                                                <th scope="col" style="color: #fff; display: none;">Email</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Student Account Lists</h4>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">Status</th>
+                                            <th scope="col" style="color: #fff;">Student Name</th>
+                                            <th scope="col" style="color: #fff;">Student Number</th>
+                                            <th scope="col" style="color: #fff;">Course</th>
+                                            <th scope="col" style="color: #fff; display: none;">Email</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType!='admin'");
+                                        $i = 1;
+                                        while ($row = $load->fetch_assoc()) {
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType ='user' order by studentVerified DESC, userStatus DESC");
                                             $i = 1;
                                             while ($row = $load->fetch_assoc()) {
                                                 echo "<tr>
-                                                 <td>" . $i . "</td>
-                                                 <td>" . $row["studentName"] . "</td>
+                                                              <td>" . $i . "</td>
+                                                             ";
+                                                if ($row['userStatus'] == '0') {
+                                                    echo "<td style='text-align:center;'>
+                                                                     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #6a040f; color: #fff; border-style:none; border-radius: 20px;'>
+                                                                        Inactive
+                                                                    </button></td>";
+                                                } else if ($row['studentVerified'] == 'no') {
+                                                    echo "<td style='text-align:center;'>
+                                                             <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px;'>
+                                                                Not Verified
+                                                            </button></td>";
+                                                } else if ($row['studentVerified'] == 'yes') {
+                                                    echo "<td style='text-align:center;'>
+                                                             <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2a9d8f; color: #fff; border-style:none; border-radius: 20px;'>
+                                                                Verified
+                                                            </button></td>";
+                                                }
+                                                echo "<td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='text-transform: uppercase; display: none;'>" . $row["studentEmail"] . "</td>
@@ -150,12 +137,13 @@ include 'includes/modals/services-modal.php'; ?>
                                                  </tr>";
                                                 $i++;
                                             }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                    </div>
                     <!-- ============================================================== -->
                     <!-- End PAge Content -->
                     <!-- ============================================================== -->

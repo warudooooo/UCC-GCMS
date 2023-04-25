@@ -43,12 +43,12 @@ include 'sources/src-studentLists.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Active Student Accounts</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Pending Accounts</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Student Accounts</li>
                                 </ol>
                             </nav>
                         </div>
@@ -62,62 +62,64 @@ include 'sources/src-studentLists.php';
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Active Student Accounts</h4>
-                <div class="col-12">
-                    <div class="card">
-                        <div class="table-responsive" style="padding: 20px;">
-                            <table id="dataTable2" class="table table-bordered table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col" style="color: #fff;">#</th>
-                                        <th scope="col" style="color: #fff; text-align: center;">Status</th>
-                                        <th scope="col" style="color: #fff;">Student Name</th>
-                                        <th scope="col" style="color: #fff;">Student Number</th>
-                                        <th scope="col" style="color: #fff;">Email</th>
-                                        <th scope="col" style="color: #fff; width: 150px !important;">Course / Year / Section</th>
-                                        <th scope="col" style="color: #fff; display:none;">PASS</th>
-                                        <th scope="col" style="color: #fff; display:none;">vkey</th>
-                                        <th scope="col" style="color: #fff; display:none;">studentVerified</th>
-                                        <th scope="col" style="color: #fff; display:none;">ID</th>
-                                        <th scope="col" style="color: #fff; display:none;">regForm</th>
-                                        <th scope="col" style="color: #fff;">Creation Date</th>
-                                        <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType ='user' order by studentVerified DESC, userStatus DESC");
-                                    $i = 1;
-                                    while ($row = $load->fetch_assoc()) {
-                                        echo "<tr>
+                <i>
+                    <h5 class="page-title">This is the lists of all accounts that is currently registered to the system. </a></h5>
+                </i>
+                <div class=" col-12">
+                            <div class="card">
+                                <div class="table-responsive" style="padding: 20px;">
+                                    <table id="dataTable2" class="table table-bordered table-hover">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col" style="color: #fff;">#</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">Status</th>
+                                                <th scope="col" style="color: #fff;">Student Name</th>
+                                                <th scope="col" style="color: #fff;">Student Number</th>
+                                                <th scope="col" style="color: #fff;">Email</th>
+                                                <th scope="col" style="color: #fff; width: 150px !important;">Course / Year / Section</th>
+                                                <th scope="col" style="color: #fff; display:none;">PASS</th>
+                                                <th scope="col" style="color: #fff; display:none;">vkey</th>
+                                                <th scope="col" style="color: #fff; display:none;">studentVerified</th>
+                                                <th scope="col" style="color: #fff; display:none;">ID</th>
+                                                <th scope="col" style="color: #fff; display:none;">regForm</th>
+                                                <th scope="col" style="color: #fff;">Creation Date</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType ='user' order by studentVerified DESC, userStatus DESC");
+                                            $i = 1;
+                                            while ($row = $load->fetch_assoc()) {
+                                                echo "<tr>
                                                  <td>" . $i . "</td>
                                                 ";
-                                        if ($row['userStatus'] == '0') {
-                                            echo "<td style='text-align:center;'>
+                                                if ($row['userStatus'] == '0') {
+                                                    echo "<td style='text-align:center;'>
                                                         <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #6a040f; color: #fff; border-style:none; border-radius: 20px;'>
                                                            Inactive
                                                        </button></td>";
-                                        } else if ($row['studentVerified'] == 'no') {
-                                            echo "<td style='text-align:center;'>
+                                                } else if ($row['studentVerified'] == 'no') {
+                                                    echo "<td style='text-align:center;'>
                                                 <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px;'>
                                                    Not Verified
                                                </button></td>";
-                                        } else if ($row['studentVerified'] == 'yes') {
-                                            echo "<td style='text-align:center;'>
+                                                } else if ($row['studentVerified'] == 'yes') {
+                                                    echo "<td style='text-align:center;'>
                                                 <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2a9d8f; color: #fff; border-style:none; border-radius: 20px;'>
                                                    Verified
                                                </button></td>";
-                                        }
-                                        echo "
+                                                }
+                                                echo "
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentNumber"] . "</td>
                                                  ";
-                                        if ($row["studentEmail"] == "") {
-                                            echo "<td>Email is not available right now.</td>";
-                                        } else {
-                                            echo "<td>" . $row["studentEmail"] . "</td>";
-                                        }
-                                        echo "
+                                                if ($row["studentEmail"] == "") {
+                                                    echo "<td>Email is not available right now.</td>";
+                                                } else {
+                                                    echo "<td>" . $row["studentEmail"] . "</td>";
+                                                }
+                                                echo "
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='display:none;'>" . $row["studentPassword"] . "</td>
                                                  <td style='display:none;'>" . $row["vkey"] . "</td>
@@ -129,23 +131,23 @@ include 'sources/src-studentLists.php';
                                                  View Student Details
                                                  </button></td>
                                                  </tr>";
-                                        $i++;
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                                                $i++;
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Container fluid  -->
+        <!-- End PAge Content -->
         <!-- ============================================================== -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

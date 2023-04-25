@@ -40,7 +40,7 @@ include 'sources/src-register.php';
 							</div>
 							<div class="inputWrap">
 								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="3" name="sCourse" autocomplete="off" required>
-								<label> Course Year and Section(Ex: BSxx 1-A)</label>
+								<label style="font-size: 14px !important;"> Course Year and Section(Ex: BSxx 1-A)</label>
 							</div>
 							<div class="inputWrap">
 								<input type="email" class="txtbxFields" minlength="8" name="sEmail" autocomplete="off" required>

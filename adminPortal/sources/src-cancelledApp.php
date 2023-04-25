@@ -245,9 +245,15 @@ if (isset($_POST['reSchedule'])) {
 		}
 		// $delete = "DELETE FROM tbl_approvedcounsellings WHERE counsellingID='$scdID'";
 		// $del = mysqli_query($mysqli, $delete);
-		// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED SCHEDULED COUNSELING [ Details: $scdName- $scdSchedule ]')";
-		// $runActivity = mysqli_query($mysqli, $activity);
+		$after = "
+Student Name: $scdName
+Schedule: $scdSchedule
+
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Rescheduled $scdName Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
 	}
-	// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','PERMANENTLY DELETE (PENDING COUNSELING)')";
-	// $runActivity = mysqli_query($mysqli, $activity);
+
 }

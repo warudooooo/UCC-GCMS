@@ -69,7 +69,7 @@ include 'sources/src-accountsettings.php'; ?>
                                 <div class="profile-tab-nav border-right">
                                     <div class="p-4">
                                         <div class="img-circle text-center mb-3">
-                                            <img src="../assets/images/users/d3.jpg" alt="Image" class="shadow">
+                                            <img src="../assets/images/users/cry.jpg" alt="Image" class="shadow">
                                         </div>
                                         <h4 class="text-center"><?php echo $sName ?></h4>
                                     </div>
@@ -106,7 +106,7 @@ include 'sources/src-accountsettings.php'; ?>
                                                     <div class="form-group">
                                                         <label>Enter Old Password to Update: </label>
                                                         <input type="hidden" class="form-control" value="<?php echo $admPassword ?>" name="oldPass">
-                                                        <input type="password" class="form-control" name="confPass" required>
+                                                        <input placeholder="Enter old password here..." type="password" class="form-control" name="confPass" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -137,7 +137,7 @@ include 'sources/src-accountsettings.php'; ?>
                                                     <label>Old password</label>
                                                     <input type="hidden" class="form-control" value="<?php echo $sNumber ?>" name="sNumber" required>
                                                     <input type="hidden" class="form-control" value="<?php echo $admPassword ?>" name="oldPass">
-                                                    <input type="password" name="confPass" class="form-control" required>
+                                                    <input placeholder="Enter old password here..." type="password" name="confPass" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -145,13 +145,13 @@ include 'sources/src-accountsettings.php'; ?>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>New password</label>
-                                                    <input type="password" name="newPass" class="form-control" required>
+                                                    <input placeholder="Enter new password here..." type="password" name="newPass" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Confirm new password</label>
-                                                    <input type="password" name="confirmPass" class="form-control" required>
+                                                    <input placeholder="Confirm new password here..." type="password" name="confirmPass" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

@@ -30,7 +30,7 @@
                     <button class="btn btn-secondary btnblue" style="width: 40%;" value="sanction_btn" name="sanction_btn">Create a Sanction</button>
                     <button class="btn btn-primary btngreen" style="width: 40%;" formaction="services-counselling.php" value="counsel_btn" name="counsel_btn">Counsel this student</button>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="margin: auto;">
                     <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>

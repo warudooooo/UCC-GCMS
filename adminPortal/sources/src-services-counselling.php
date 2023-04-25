@@ -33,8 +33,8 @@ if (isset($_POST['submit'])) {
 		$result = mysqli_query($mysqli, $add);
 		if ($result) {
 			$msg = "<div class='suc' style='margin-bottom: 10px:'>Successfuly Submited</div>";
-			$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','COUNSELED STUDENT [ Details: $sName ]')";
-			$runActivity = mysqli_query($mysqli, $activity);
+			// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','COUNSELED STUDENT [ Details: $sName ]')";
+			// $runActivity = mysqli_query($mysqli, $activity);
 			if (empty($stEmail)) {
 			} else {
 				$mail = new PHPMailer(true);
@@ -262,6 +262,12 @@ if (isset($_POST['submit'])) {
 				} catch (Exception $e) {
 					$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
 				}
+				$after = "$admName Scheduled $sName for counseling";
+
+				$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Scheduled $sName for counseling.')";
+				$runActivity = mysqli_query($mysqli, $activity);
+				header("Location: services-studentwithsanctions.php");
 			}
 		}
 	}

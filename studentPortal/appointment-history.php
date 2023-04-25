@@ -39,7 +39,7 @@ include 'includes/modals/appointmentHistory-modal.php';
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
-                    <div class="col-5">
+                    <div class="col-12">
                         <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Appointments History</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">

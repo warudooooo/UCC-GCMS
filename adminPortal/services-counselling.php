@@ -90,26 +90,26 @@ include 'sources/src-services-counselling.php'; ?>
                                     <div class="form-group">
                                         <label class="col-md-12">Full Name</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none;" type="text" name="sName" placeholder="<?php echo $_SESSION['sName']; ?>" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; font-size: 16px;" type="text" name="sName" placeholder="<?php echo $_SESSION['sName']; ?>" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none; text-transform: uppercase;" name="sNumber" type="text" placeholder="<?php echo  $_SESSION['sNumber']; ?>" value="<?php echo  $_SESSION['sNumber']; ?>" class="form-control form-control-line" readonly>
-                                            <input style="pointer-events: none; display: none;" name="stEmail" type="text" placeholder="<?php echo $_SESSION['stEmail']; ?>" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; font-size: 16px; text-transform: uppercase;" name="sNumber" type="text" placeholder="<?php echo  $_SESSION['sNumber']; ?>" value="<?php echo  $_SESSION['sNumber']; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; font-size: 16px; display: none;" name="stEmail" type="text" placeholder="<?php echo $_SESSION['stEmail']; ?>" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Course</label>
                                         <div class="col-md-12">
-                                            <input style="pointer-events: none; text-transform: uppercase;" name="sCourse" type="text" placeholder="<?php echo $_SESSION['sCourse']; ?>" value="<?php echo $_SESSION['sCourse']; ?>" class="form-control form-control-line" readonly>
+                                            <input style="pointer-events: none; font-size: 16px; text-transform: uppercase;" name="sCourse" type="text" placeholder="<?php echo $_SESSION['sCourse']; ?>" value="<?php echo $_SESSION['sCourse']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Details</label>
                                         <div class="col-md-12">
-                                            <textarea style="background-color: #f8f9fa;" rows="8" placeholder="Enter your details here.." class="form-control form-control-line" name="cDetails"></textarea>
+                                            <textarea style="background-color: #f8f9fa; font-size: 16px;" rows="8" placeholder="Enter your details here.." class="form-control form-control-line" name="cDetails"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -126,7 +126,7 @@ include 'sources/src-services-counselling.php'; ?>
                                     </div> -->
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success text-white" name="submit">Submit</button>
+                                            <button style="border-radius: 20px;" class="btn btn-success text-white" name="submit">Submit</button>
                                         </div>
                                     </div>
                                     <?php echo $msg; ?>

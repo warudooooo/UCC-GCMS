@@ -10,8 +10,16 @@ if (isset($_POST['addCase'])) {
         $add = "INSERT INTO tbl_cases(caseName,caseDescription)
         VALUES('$pName','$pDesc')";
         $result = mysqli_query($mysqli, $add);
-        // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED PROCTOR [ Details: $pName ]')";
-        // $runActivity = mysqli_query($mysqli, $activity);
+
+        $after = "
+Case Name: $pName
+Case Description: $pDesc
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Added Case Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
+
     }
 }
 
@@ -23,8 +31,15 @@ if (isset($_POST['editCase'])) {
 
     $edit = "UPDATE `tbl_cases` SET caseName='$pName',caseDescription='$pDesc' WHERE caseID='$pID'";
     $result = mysqli_query($mysqli, $edit);
-    // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED PROCTOR DETAILS [ Details: $pName ]')";
-    // $runActivity = mysqli_query($mysqli, $activity);
+    
+    $after = "
+Case Name: $pName
+Case Description: $pDesc
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Edited Case Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
 
 }
 
@@ -38,6 +53,14 @@ if (isset($_POST['deleteCase'])) {
 
     $pID = $mysqli->real_escape_string($_POST['pID']);
     $pName = $mysqli->real_escape_string($_POST['pName']);
+
+    $after = "
+Case Name: $pName
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Deleted Case Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
 
     $delete = "DELETE FROM tbl_cases WHERE caseID = '$pID'";
     $result = mysqli_query($mysqli, $delete);

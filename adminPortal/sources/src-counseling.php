@@ -244,8 +244,14 @@ if (isset($_POST['delete_counseling'])) {
 		$msg = '<div class="eml" style="color: crimson; text-align: center;"><h3>Incorrect Password.</h3></div>';
 	}
 	// $del = mysqli_query($mysqli, $delete);
-	// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED PENDING COUNSELING [ Details: $counsName- $date ]')";
-	// $runActivity = mysqli_query($mysqli, $activity);
+	$after = "
+Student Name: $counsName
+Reason for Declining: $decReason
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Declined $counsName successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
 }
 
 if (isset($_POST['submit'])) {
@@ -274,8 +280,14 @@ if (isset($_POST['submit'])) {
 	// $delete = "DELETE FROM tbl_pendingcounsellings WHERE ID='$cID'";
 	$result = mysqli_query($mysqli, $update);
 	// $del = mysqli_query($mysqli, $delete);
-	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','APPROVED COUNSELING [ Details: $sName - $cSchedule ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+	$after = "
+Student Name: $sName
+Counseling Type: $cType
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Approved $sName Appointment successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
 	$mail = new PHPMailer(true);
 
 	try {

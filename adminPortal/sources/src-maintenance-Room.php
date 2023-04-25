@@ -9,8 +9,15 @@ if (isset($_POST['addRoom'])) {
         $add = "INSERT INTO tbl_rooms(roomName)
         VALUES('$pName')";
         $result = mysqli_query($mysqli, $add);
-        // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED PROCTOR [ Details: $pName ]')";
-        // $runActivity = mysqli_query($mysqli, $activity);
+
+
+        $after = "
+Room Name: $pName
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Addedd Room Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
     }
 }
 
@@ -21,8 +28,14 @@ if (isset($_POST['editRoom'])) {
 
     $edit = "UPDATE `tbl_rooms` SET roomName='$pName' WHERE RoomID='$pID'";
     $result = mysqli_query($mysqli, $edit);
-    // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED PROCTOR DETAILS [ Details: $pName ]')";
-    // $runActivity = mysqli_query($mysqli, $activity);
+
+    $after = "
+Room Name: $pName
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Edited Room Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
 
 }
 
@@ -37,9 +50,14 @@ if (isset($_POST['deleteRoom'])) {
     $pID = $mysqli->real_escape_string($_POST['pID']);
     $pName = $mysqli->real_escape_string($_POST['pName']);
 
+    $after = "
+Room Name: $pName
+            ";
+    
+            $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                        VALUES('$admName','','$after','Deleted Room Successfully.')";
+            $runActivity = mysqli_query($mysqli, $activity);
+
     $delete = "DELETE FROM tbl_rooms WHERE RoomID = '$pID'";
     $result = mysqli_query($mysqli, $delete);
-
-    // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED PROCTOR [ Details: $pName ]')";
-    // $runActivity = mysqli_query($mysqli, $activity);
 }

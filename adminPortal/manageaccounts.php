@@ -71,8 +71,10 @@ include 'includes/modals/admin-modal.php'; ?>
                                         <form class="form-horizontal form-material mx-2">
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addstudentModal'>Add Account</button>
-                                                <?php echo $msg; ?>
+                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addAdminModal'>Add Account</button>
+                                                </div>
+                                                <div style="width: 100%;">
+                                                    <?php echo $msg; ?>
                                                 </div>
                                             </div>
                                         </form>
@@ -90,7 +92,9 @@ include 'includes/modals/admin-modal.php'; ?>
                                                 <th scope="col" style="color: #fff;">Administrator Name</th>
                                                 <th scope="col" style="color: #fff;">Email</th>
                                                 <th scope="col" style="color: #fff;">Added By:</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">DELETE</th>
+                                                <th scope="col" style="color: #fff; display: none;">#</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
+                                                <th scope="col" style="color: #fff; text-align: center;">DELETE ACCOUNT</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -104,7 +108,11 @@ include 'includes/modals/admin-modal.php'; ?>
                                                  <td style='text-transform: uppercase; display: none;'>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentEmail"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btnred studentdeletepermanentbtn' data-bs-toggle='modal' data-bs-target='#studentdeleteModal'>
+                                                 <td style='display: none;'>" . $row["ID"] . "</td>
+                                                 <td style='text-align:center; width: 250px;'><button style='width: 200px;' type='button' class='btn btn-primary btnblue editAdmin' data-bs-toggle='modal' data-bs-target='#editAdminAccount'>
+                                                     Edit
+                                                 </button></td>
+                                                 <td style='text-align:center; width: 250px;'><button style='width: 200px;' type='button' class='btn btn-primary btnred studentdeletepermanentbtn' data-bs-toggle='modal' data-bs-target='#adminDeleteModal'>
                                                      Delete
                                                  </button></td>
                                                  </tr>";

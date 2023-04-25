@@ -50,6 +50,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                 </ol>
                             </nav>
                         </div>
+                        <i><h5 class="page-title" style="margin-top: 10px;">To download individual student reports <a class="hyperlnk" href="studentLists.php"">Click here</a></h5></i>
                     </div>
                 </div>
             </div>
@@ -71,9 +72,9 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions");
 
                             if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="color: #fff;">' . $total . '</h1>';
                             } else {
-                                echo '<h1>' . $total . '</h1>';
+                                echo '<h1 style="color: #fff;">' . $total . '</h1>';
                             }
                             ?>
                             <span>Total Student with Sanctions</span>
@@ -82,51 +83,22 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
                         </div>
                     </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Disciplinary Sanction'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<h1>' . $total . '</h1>';
-                            } else {
-                                echo '<h1>' . $total . '</h1>';
-                            }
-                            ?>
-                            <span>Students with Disiplinary Sanctions</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
-                    <div class="cards-single">
-                        <div>
-                            <?php
-                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE sanction='Educational Sanction'");
-
-                            if ($total = mysqli_num_rows($load)) {
-                                echo '<h1 style="color: white;">' . $total . '</h1>';
-                            } else {
-                                echo '<h1 style="color: white;">' . $total . '</h1>';
-                            }
-                            ?>
-                            <span>Students with Educational Sanctions</span>
-                        </div>
-                        <div>
-                            <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Students with Sanctions</h4>
                     <div class="col-12">
                         <div class="card">
+                            <form action="export-individual-reports.php" method="POST">
+                                <button type='button' style="margin-top: 15px; width: 230px; margin-left: 15px; float: left;" class='btn btn-primary btnexport' data-bs-toggle='modal' data-bs-target='#exportYearModal'> Export all Data by Year</button>
+                                <button type='button' style="margin-top: 15px; width: 230px; margin-left: 15px; float: left;" class='btn btn-primary btnexport' data-bs-toggle='modal' data-bs-target='#exportMonthModal'> Export all Data by Month</button>
+                                <button type='submit' style="margin-top: 15px; width: 230px; margin-right: 15px;float: right;" class='btn btn-primary btnexport' name="exportAllSanc"> Export all Data</button>
+                            </form>
                             <div class="table-responsive" style="padding: 20px;">
                                 <table id="dataTable" class="table table-bordered table-hover">
                                     <thead class="table-dark">
                                         <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff; width: 20px;">#</th>
-                                            <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction</th>
+                                            <th scope="col" style="color: #fff; width: 0px; text-align: center;">Degree</th>
                                             <th scope="col" style="color: #fff; width: 150px;">Student Name</th>
                                             <th scope="col" style="color: #fff; width: 100px;">Student Number</th>
                                             <th scope="col" style="color: #fff; width: 100px;">Course</th>
@@ -148,35 +120,20 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  ";
-                                            if ($row["sanctionType"] == "Probation") {
+                                            if ($row["degree"] == "Mild") {
                                                 echo "<td style='text-align:center;'>
                                                     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Probation
+                                                    Mild
                                                    </button></td>";
-                                            } else if ($row["sanctionType"] == "Suspension") {
+                                            } else if ($row["degree"] == "Moderate") {
                                                 echo "<td style='text-align:center;'>
                                                     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f4845f; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Suspension
+                                                    Moderate
                                                    </button></td>";
-                                            } else if ($row["sanctionType"] == "Dismissal") {
+                                            } else if ($row["degree"] == "Severe") {
                                                 echo "<td style='text-align:center;'>
                                                     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #cc3300; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
-                                                    Dismissal
-                                                   </button></td>";
-                                            } else if ($row["sanctionType"] == "Seminar") {
-                                                echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Seminar
-                                                   </button></td>";
-                                            } else if ($row["sanctionType"] == "Assessment") {
-                                                echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Assessment
-                                                   </button></td>";
-                                            } else if ($row["sanctionType"] == "Educational/Reflective Assignment") {
-                                                echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
-                                                    Educational/Reflective Assignment
+                                                    Severe
                                                    </button></td>";
                                             }
                                             echo "
@@ -184,7 +141,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
                                                  <td style='display: none;'>" . $row["sanctionCase"] . "</td>
-                                                 <td style='display: none;'>" . $row["sanction"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanctionType"] . "</td>
                                                  <td style='display: none;'>" . $row["sanctionMessage"] . "</td>
                                                  <td>" . date('F j, Y h:i A (l)', strtotime($row["dateIssued"])) . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen seemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style=''>
@@ -224,6 +181,26 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="src/scripts/datatable.js"></script>
+        <script>
+            const optionMenu = document.querySelector(".select-menu"),
+                selectBtn = optionMenu.querySelector(".select-btn"),
+                options = optionMenu.querySelectorAll(".option"),
+                sBtn_text = optionMenu.querySelector(".sBtn-text"),
+                sBtn_text_clone = optionMenu.querySelector(".sBtn-text-clone");
+
+
+            selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    let selectedOption = option.querySelector(".option-text").innerText;
+                    sBtn_text.innerText = selectedOption;
+                    sBtn_text_clone.innerText = selectedOption;
+
+                    optionMenu.classList.remove("active");
+                })
+            })
+        </script>
 </body>
 
 </html>

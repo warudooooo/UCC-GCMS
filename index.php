@@ -50,7 +50,6 @@ include 'sources/src-index.php';
 					<div class="textSlider">
 						<div class="textWrap">
 							<div class="textGroup">
-								<h1><div id='result' class='eml' style="display: inline-block; color: crimson; margin-bottom: 0px; font-size: 20px;"></div></h1>
 								<h2>Biglang Awa St Cor 11th Ave Catleya,</h2>
 								<h2>Caloocan, 1400 Metro Manila, Philippines</h2>
 							</div>

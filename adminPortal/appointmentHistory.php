@@ -1,4 +1,11 @@
-<?php include 'sources/session.php'; ?>
+<?php include 'sources/session.php';
+$msg = "";
+if (isset($_GET['not_found']) && $_GET['not_found'] == true) {
+    $msg = '<div class="eml" style="display: inline-block; color: crimson; text-align: center; width: 100%; margin-bottom: 15px;">
+    <h3>Data not found.</h3>
+  </div>';
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -6,9 +13,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="src/styles/customStyle.css">
 </head>
-<?php 
+<?php
 include 'includes/header.php';
-include 'sources/src-history.php';
 include 'includes/modals/appointmenthistory-modal.php';
 ?>
 
@@ -40,15 +46,16 @@ include 'includes/modals/appointmenthistory-modal.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Appointment History</h4>
+                        <h4 class="page-title"><i class="mdi mdi-calendar-multiple-check"></i> Individual Reports</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Appointment History</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Appointment Reports</li>
                                 </ol>
                             </nav>
                         </div>
+                        <i><h5 class="page-title" style="margin-top: 10px;">To download individual student reports <a class="hyperlnk" href="studentLists.php"">Click here</a></h5></i>
                     </div>
                 </div>
             </div>
@@ -62,12 +69,18 @@ include 'includes/modals/appointmenthistory-modal.php';
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <?php echo $msg; ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+                            <form action="export-individual-reports.php" method="POST">
+                                <button type='button' style="margin-top: 15px; width: 230px; margin-left: 15px; float: left;" class='btn btn-primary btnexport' data-bs-toggle='modal' data-bs-target='#exportYearModal'> Export all Data by Year</button>
+                                <button type='button' style="margin-top: 15px; width: 230px; margin-left: 15px; float: left;" class='btn btn-primary btnexport' data-bs-toggle='modal' data-bs-target='#exportMonthModal'> Export all Data by Month</button>
+                                <button type='submit' style="margin-top: 15px; width: 230px; margin-right: 15px;float: right;" class='btn btn-primary btnexport' name="exportAll"> Export all Data</button>
+                            </form>
                             <div class="table-responsive" style="padding: 20px;">
                                 <table id="dataTable" class="table table-bordered table-hover">
-                                <thead class="table-dark">
+                                    <thead class="table-dark">
                                         <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff;">#</th>
                                             <!-- <th scope="col" style="color: #fff; width: 50px;">Status</th> -->
@@ -79,6 +92,7 @@ include 'includes/modals/appointmenthistory-modal.php';
                                             <th scope="col" style="color: #fff;">Date of Appointment</th>
                                             <th scope="col" style="color: #fff; text-align: center;">Appointment Details</th>
                                             <th scope="col" style="display: none">Approve</th>
+                                            <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="display: none;"></th>
@@ -124,6 +138,7 @@ include 'includes/modals/appointmenthistory-modal.php';
                                                 <td style='display: none;'>" . $row["ID"] . "</td>
                                                 <td style='display: none;'>" . $row["counselor"] . "</td>
                                                 <td style='display: none;'>" . $row["counselorRemarks"] . "</td>
+                                                <td style='display: none;'>" . date('F j, Y h:i A (l)', strtotime($row["dateCompleted"])) . "</td>
                                                  </tr>";
                                             $i++;
                                         }
@@ -158,7 +173,24 @@ include 'includes/modals/appointmenthistory-modal.php';
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="src/scripts/datatable.js"></script>
     <script>
+        const optionMenu = document.querySelector(".select-menu"),
+            selectBtn = optionMenu.querySelector(".select-btn"),
+            options = optionMenu.querySelectorAll(".option"),
+            sBtn_text = optionMenu.querySelector(".sBtn-text"),
+            sBtn_text_clone = optionMenu.querySelector(".sBtn-text-clone");
 
+
+        selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                let selectedOption = option.querySelector(".option-text").innerText;
+                sBtn_text.innerText = selectedOption;
+                sBtn_text_clone.innerText = selectedOption;
+
+                optionMenu.classList.remove("active");
+            })
+        })
     </script>
 </body>
 

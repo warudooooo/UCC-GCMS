@@ -37,12 +37,12 @@ include 'sources/session.php';
          <div class="page-breadcrumb">
             <div class="row align-items-center">
                <div class="col-5">
-                  <h4 class="page-title"><i class="mdi mdi-chart-bar"></i> Overall Number of Successful Appointments</h4>
+                  <h4 class="page-title"><i class="mdi mdi-chart-areaspline"></i> Overall Number of Sanctioned Student</h4>
                   <div class="d-flex align-items-center">
                      <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                            <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                           <li class="breadcrumb-item active" aria-current="page">Reports</li>
+                           <li class="breadcrumb-item active" aria-current="page">Student Sanctions Reports</li>
                         </ol>
                      </nav>
                   </div>
@@ -70,14 +70,14 @@ include 'sources/session.php';
                                     <thead>
                                        <tr>
                                           <th>Month</th>
-                                          <th>Number of Appointments</th>
+                                          <th>Number of Student with Sanctions</th>
                                        </tr>
                                     </thead>
                                     <tbody>
                                        <tr>
                                           <td>January</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 1");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 1");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -85,7 +85,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>February</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 2");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 2");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -93,7 +93,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>March</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 3");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 3");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -101,7 +101,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>April</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 4");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 4");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -109,7 +109,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>May</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 5");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 5");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -117,7 +117,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>June</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 6");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 6");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -125,7 +125,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>July</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 7");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 7");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -133,7 +133,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>August</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 8");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 8");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -141,7 +141,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>September</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 9");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 9");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -149,7 +149,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>October</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 10");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 10");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -157,7 +157,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>November</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 11");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 11");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -165,7 +165,7 @@ include 'sources/session.php';
                                        <tr>
                                           <td>December</td>
                                           <td><?php 
-                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = 12");
+                                          $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = 12");
                                           $total = mysqli_num_rows($load);
                                           echo $total;
                                           ?></td>
@@ -218,7 +218,7 @@ include 'sources/session.php';
                borderWidth: 1,
                data: [<?php
                         for ($x = 1; $x <= 12; $x++) {
-                           $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE MONTH(dateCompleted) = $x");
+                           $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE MONTH(dateIssued) = $x");
                            $total = mysqli_num_rows($load);
                            echo "$total.,";
                         }

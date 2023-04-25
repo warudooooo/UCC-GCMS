@@ -15,6 +15,10 @@ input {
 	font-family: "Montserrat", sans-serif;
 }
 
+.card{
+	border-radius: 20px !important;
+}
+
 .eml {
 	position: relative;
 	height: 37px;
@@ -379,7 +383,9 @@ main.movingForm {
 		transform: translateX(100%);
 	}
 
-
+	.txtForgot{
+		margin-bottom: 50px;
+	}
 
 	main form.signupForm {
 		transform: translateX(0%);
@@ -409,6 +415,10 @@ main.movingForm {
 
 	.innerBox {
 		padding: 1rem;
+	}
+
+	.txtForgot{
+		margin-bottom: 50px;
 	}
 
 	.movingForm {

@@ -270,7 +270,20 @@
                     <h2 class="modal-title" id="exampleModalLabel" style="color: #333;">Registration Form</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <?php
+                if (empty($_SESSION['regForm'])) {
+                    echo '<div class="eml" style="display: inline-block; text-align: center; color: black; margin-top: 20%; margin-bottom: 20%;"><h3>No image available.</h3></div>';
+                } else {
+                }
+                ?>
+                <div class="modal-body" style="<?php
+                                                if (empty($_SESSION['regForm'])) {
+                                                    echo 'display: none;';
+                                                } else {
+                                                    echo 'display: auto;';
+                                                }
+                                                ?>
+                ">
                     <img src="../uploads/<?php echo $_SESSION['regForm']; ?>" style="width: 100%;">
                 </div>
                 <div class="modal-footer center-all">
@@ -290,11 +303,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <?php
-                                                if (empty($_SESSION['regSelfie'])) {
-                                                    echo '<div class="eml" style="display: inline-block; text-align: center; color: black; margin-top: 20%; margin-bottom: 20%;"><h3>No image available.</h3></div>';
-                                                } else {
-                                                }
-                                                ?>
+                if (empty($_SESSION['regSelfie'])) {
+                    echo '<div class="eml" style="display: inline-block; text-align: center; color: black; margin-top: 20%; margin-bottom: 20%;"><h3>No image available.</h3></div>';
+                } else {
+                }
+                ?>
                 <div class="modal-body" style="<?php
                                                 if (empty($_SESSION['regSelfie'])) {
                                                     echo 'display: none;';
@@ -417,18 +430,22 @@
                         <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                         <div class="col-md-12">
                             <input style="background-color: #edf2fb;" type="text" name="sName" id="admsName" class="form-control form-control-line">
+                            <input style="background-color: #edf2fb; display: none;" type="text" name="oldsName" id="oldadmsName" class="form-control form-control-line">
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                         <div class="col-md-12">
                             <input style="background-color: #edf2fb; text-transform: uppercase;" type="text" name="sNumber" id="admsNumber" class="form-control form-control-line">
+                            <input style="background-color: #edf2fb; text-transform: uppercase; display: none;" type="text" name="oldsNumber" id="oldadmsNumber" class="form-control form-control-line">
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                         <div class="col-md-12">
                             <input style="background-color: #edf2fb; text-transform: uppercase;" type="text" id="admsCourse" name="sCourse" class="form-control form-control-line">
+                            <input style="background-color: #edf2fb; text-transform: uppercase; display: none;" type="text" id="oldadmsCourse" name="oldsCourse" class="form-control form-control-line">
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Email</label>
                         <div class="col-md-12">
                             <input style="background-color: #edf2fb;" id="admsEmail" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
+                            <input style="background-color: #edf2fb; display: none;" id="oldadmsEmail" type="email" name="oldsEmail" placeholder="N/A" class="form-control form-control-line">
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">To edit this student details. You need to type again your password</label>
                         <div class="col-md-12">

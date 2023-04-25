@@ -50,12 +50,12 @@ if (isset($_POST['deleteproctor'])) {
     $pID = $mysqli->real_escape_string($_POST['pID']);
     $pName = $mysqli->real_escape_string($_POST['pName']);
 
-    $delete = "DELETE FROM tbl_proctors WHERE proctorID = '$pID'";
-    $result = mysqli_query($mysqli, $delete);
-
     $before =  "$admName Removed " . $pName . " as proctor.";
     $action = "Successfully removed ";
     $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityReason)
                     VALUES('$admName','$before','$action','')";
         $runActivity = mysqli_query($mysqli, $activity);
+
+    $delete = "DELETE FROM tbl_proctors WHERE proctorID = '$pID'";
+    $result = mysqli_query($mysqli, $delete);
 }

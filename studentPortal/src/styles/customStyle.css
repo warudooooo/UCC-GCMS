@@ -27,7 +27,7 @@
     justify-content: space-between;
     background: #fff;
     padding: 2rem;
-    border-radius: 4px;
+    border-radius: 15px;
 }
 
 .cards-single a{
@@ -74,7 +74,7 @@
     color: #fff !important;
     padding: 10px 20px 10px 20px !important;
     border-style:none !important;
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .mdladdbtn,
@@ -87,7 +87,7 @@
     color: #fff !important; 
     padding: 10px 30px 10px 30px !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .mdladdbtn:hover,
@@ -108,7 +108,7 @@
     color: #fff !important; 
     padding: 10px 40px 10px 40px !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .addstudentbtn{
@@ -117,7 +117,7 @@
     margin-top: 10px !important;
     padding: 10px 40px 10px 40px !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .yesbtn:hover{
@@ -129,7 +129,7 @@
     color: #fff !important;
     padding: 10px 10px 10px 10px !important;
     border-style:none !important;
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .deletebtn,
@@ -138,7 +138,7 @@
     color: #fff !important;
     padding: 10px 20px 10px 20px !important;
     border-style:none !important;
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .approvebtn,
@@ -147,7 +147,7 @@
     color: #fff !important;
     padding: 10px 10px 10px 10px !important;
     border-style:none !important;
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .markasdonebtn:hover{
@@ -159,7 +159,7 @@
     background-color: #333 !important; 
     color: #fff !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .mdlapprovebtn{
@@ -167,7 +167,7 @@
     color: #fff !important; 
     padding: 10px 30px 10px 30px !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .mdlapprovebtn:hover{
@@ -175,7 +175,7 @@
     color: #fff !important; 
     padding: 10px 30px 10px 30px !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .mdlclosebtn:hover{
@@ -183,7 +183,7 @@
     color: #fff !important; 
     padding: 10px 40px 10px 40px !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .mdlclosebtn,
@@ -192,26 +192,71 @@
     color: #fff !important; 
     padding: 10px 40px 10px 40px !important; 
     border-style:none !important; 
-    border-radius: 4px !important;
+    border-radius: 20px !important;
 }
 
 .seemore,
 .approve{
     background-color: #fff !important;
     padding: 1rem !important;
-    border-radius: 8px !important;
+    border-radius: 20px !important;
     border-style: none !important;
+}
+
+.line{
+    color: #e65c00 !important;
+    padding: 2px;
+}
+.aboutlbl{
+    color:  #333;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.aboutdesc{
+    background-color: #ffc299;
+    border-radius: 20px;
+    padding: 20px;
+    border-color: #ffc299;
+    font-size: 17px;
+    width: 60%;
+}
+
+.gotopbtn{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: #ffc299;
+    border-radius: 20px;
+    bottom: 40px;
+    right: 50px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 47px;
+    color: #333;
+    font-size: 40px;
+}
+
+.gotopbtn:hover{
+    color: #e65c00;
 }
 
 @media only screen and (max-width: 1170px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
+    .aboutdesc{
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 560px) {
     .cards {
         grid-template-columns: 100%;
+    }
+
+    .aboutdesc{
+        width: 100%;
     }
 
     .main-content h3 {

@@ -43,7 +43,7 @@ include 'sources/src-student.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Pending Student Accounts</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -62,7 +62,6 @@ include 'sources/src-student.php';
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <h4 class="page-title"><i class="mdi mdi-account-multiple-remove" style="margin-top: 20px; margin-bottom: 20px;"></i> Pending Student Accounts</h4>
                 <div class="col-12">
                     <div class="card">
                         <div class="table-responsive" style="padding: 20px;">

@@ -9,8 +9,13 @@ if (isset($_POST['addCounselor'])){
         $add = "INSERT INTO tbl_counselors(CounselorName)
         VALUES('$pName')";
         $result = mysqli_query($mysqli, $add);
-        // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED PROCTOR [ Details: $pName ]')";
-	    // $runActivity = mysqli_query($mysqli, $activity);
+        $after = "
+Counselor Name: $pName
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Added Counselor Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
     }
 }
 
@@ -24,8 +29,13 @@ if (isset($_POST['editCounselor'])){
     }else{
         $edit = "UPDATE `tbl_counselors` SET CounselorName='$pName' WHERE counselorID='$pID'";
         $result = mysqli_query($mysqli, $edit);
-        // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED PROCTOR DETAILS [ Details: $pName ]')";
-	    // $runActivity = mysqli_query($mysqli, $activity);
+        $after = "
+        Counselor Name: $pName
+                ";
+        
+                $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                            VALUES('$admName','','$after','Edited Counselor Successfully.')";
+                $runActivity = mysqli_query($mysqli, $activity);
     }
 }
 
@@ -41,11 +51,16 @@ if (isset($_POST['deleteCounselor'])){
     $pID = $mysqli->real_escape_string($_POST['pID']);
     $pName = $mysqli->real_escape_string($_POST['pName']);
 
+    $after = "
+Counselor Name: $pName
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Deleted Counselor Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
+
 	$delete = "DELETE FROM tbl_counselors WHERE counselorID = '$pID'";
     $result = mysqli_query($mysqli, $delete);
-
-    // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED PROCTOR [ Details: $pName ]')";
-	// $runActivity = mysqli_query($mysqli, $activity);
 }
 
 ?>

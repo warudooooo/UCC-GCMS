@@ -55,10 +55,35 @@ if (isset($_POST['edit_student'])) {
     $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
     $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
 
+
+    $oldsName = $mysqli->real_escape_string($_POST['oldsName']);
+    $oldsNumber = $mysqli->real_escape_string($_POST['oldsNumber']);
+    $oldsCourse = $mysqli->real_escape_string($_POST['oldsCourse']);
+    $oldsEmail = $mysqli->real_escape_string($_POST['oldsEmail']);
+
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE ID='{$dbID}'")) > 0) {
         if ($admPassword == $curPassword) {
             $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail' WHERE ID='$dbID'";
             $result = mysqli_query($mysqli, $sql);
+
+            $before = 
+"Student Number: $oldsNumber
+Student Name: $oldsName
+Course: $oldsCourse
+Email: $oldsEmail";
+
+$after = 
+"Student Number: $sNumber
+Student Name: $sName
+Course: $sCourse
+Email: $sEmail
+";
+
+            $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                VALUES('$admName','$before','$after','Edited Student Account Succesfully.')";
+            $runActivity = mysqli_query($mysqli, $activity);
+
+
             header("location: redirects/studentIndv-edit-success.php");
         } else {
             $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; width: 100%;"><h3 style="margin: auto;">The password you entered is incorrect.</h3></div>';

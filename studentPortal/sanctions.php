@@ -95,48 +95,28 @@ include 'includes/modals/sanction-modal.php' ?>
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  ";
-                                                 if ($row["sanctionType"] == "Probation") {
+                                                 if ($row["degree"] == "Mild") {
                                                     echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Probation
-                                                   </button></td>";
-                                                } else if ($row["sanctionType"] == "Suspension") {
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
+                                                        Mild
+                                                       </button></td>";
+                                                } else if ($row["degree"] == "Moderate") {
                                                     echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f4845f; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Suspension
-                                                   </button></td>";
-                                                } else if ($row["sanctionType"] == "Dismissal") {
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f4845f; color: #fff; border-style:none; border-radius: 20px;'>
+                                                        Moderate
+                                                       </button></td>";
+                                                } else if ($row["degree"] == "Severe") {
                                                     echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #cc3300; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
-                                                    Dismissal
-                                                   </button></td>";
-                                                } else if ($row["sanctionType"] == "Seminar") {
-                                                    echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Seminar
-                                                   </button></td>";
-                                                } else if ($row["sanctionType"] == "Assessment") {
-                                                    echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
-                                                    Assessment
-                                                   </button></td>";
-                                                } else if ($row["sanctionType"] == "Educational/Reflective Assignment") {
-                                                    echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
-                                                    Educational/Reflective Assignment
-                                                   </button></td>";
-                                                } else {
-                                                    echo "<td style='text-align:center;'>
-                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
-                                                    ". $row["sanctionType"] ."
-                                                   </button></td>";
-                                                } 
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #cc3300; color: #fff; border-style:none; border-radius: 20px; data-bs-toggle='modal' data-bs-target='#'>
+                                                        Severe
+                                                       </button></td>";
+                                                }
                                                  echo "
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td>" . $row["studentNumber"] . "</td>
                                                  <td>" . $row["studentCourse"] . "</td>
                                                  <td style='display: none;'>" . $row["sanctionCase"] . "</td>
-                                                 <td style='display: none;'>" . $row["sanction"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanctionType"] . "</td>
                                                  <td style='display: none;'>" . $row["sanctionMessage"] . "</td>
                                                  <td>" . date('F j, Y h:i A (l)', strtotime($row["dateIssued"])) . "</td>
                                                  <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style=''>

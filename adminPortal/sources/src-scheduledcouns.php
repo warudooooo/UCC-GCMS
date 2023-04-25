@@ -258,8 +258,15 @@ if (isset($_POST['reSchedule'])) {
 		}
 		// $delete = "DELETE FROM tbl_approvedcounsellings WHERE counsellingID='$scdID'";
 		// $del = mysqli_query($mysqli, $delete);
-		// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED SCHEDULED COUNSELING [ Details: $scdName- $scdSchedule ]')";
-		// $runActivity = mysqli_query($mysqli, $activity);
+		$after = "
+Student Name: $sName
+Counseling Type: $scdType
+Schedule: $scdSchedule
+        ";
+
+		$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Reschedule $sName Appointment.')";
+		$runActivity = mysqli_query($mysqli, $activity);
 	}
 }
 
@@ -286,7 +293,15 @@ if (isset($_POST['completed'])) {
 		$result = mysqli_query($mysqli, $sql);
 		$delete = "DELETE FROM tbl_counselings WHERE id='$scID'";
 		$del = mysqli_query($mysqli, $delete);
-		// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','MARKED AS DONE (COUNSELING) [ Details: $sName ]')";
-		// $runActivity = mysqli_query($mysqli, $activity);
+		$after = "
+Student Name: $sName
+Counseling Type: $scType
+Counselor: $pInCharge
+Status: Completed
+        ";
+
+		$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Completed $sName Appointment.')";
+		$runActivity = mysqli_query($mysqli, $activity);
 	}
 }

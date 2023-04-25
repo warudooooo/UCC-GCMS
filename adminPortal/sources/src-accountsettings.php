@@ -13,8 +13,10 @@ if (isset($_POST['account_submit'])) {
         $sql = "UPDATE `tbl_students` SET studentName='$sName',studentEmail='$sEmail' WHERE studentNumber='$sNumber'";
         $result = mysqli_query($mysqli, $sql);
         if ($result) {
-            $activity = "INSERT INTO tbl_activitylog(admName,activityAction)
-            VALUES('$admName','UPDATED ACCOUNT DETAILS')";
+            $before = "$sName Changed account information successfully.";
+
+            $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+            VALUES('$admName','$before','','Changes Successfully.')";
             $runActivity = mysqli_query($mysqli, $activity);
             $msg = '<div class="suc" style="display: inline-block; text-align: center; color: #38b000; margin-left: 0px; "><h3>Update Successful.</h3></div>';
         } else {
@@ -37,8 +39,10 @@ if (isset($_POST['password_submit'])) {
             $sql = "UPDATE `tbl_students` SET studentPassword='$newPass' WHERE studentNumber='$sNumber'";
             $result = mysqli_query($mysqli, $sql);
             if ($result) {
-                $activity = "INSERT INTO tbl_activitylog(admName,activityAction)
-                VALUES('$admName','UPDATED ACCOUNT PASSWORD')";
+                $before = "$sName Changed password successfully.";
+
+                $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','$before','','Changes Successfully.')";
                 $runActivity = mysqli_query($mysqli, $activity);
                 $msg = '<div class="suc" style="display: inline-block; text-align: center; color: #38b000; margin-left: 0px; "><h3>Password Update Successful.</h3></div>';
             } else {

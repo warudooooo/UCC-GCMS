@@ -29,11 +29,12 @@ if (mysqli_num_rows($query) > 0) {
         height: auto !important;
     }
 
-    .dropdown-item.active, .dropdown-item:active {
-    color: #fff;
-    text-decoration: none;
-    background-color: #f4845f !important;
-}
+    .dropdown-item.active,
+    .dropdown-item:active {
+        color: #fff;
+        text-decoration: none;
+        background-color: #f4845f !important;
+    }
 
     @media only screen and (max-width: 1169px) {
         .left-sidebar {
@@ -92,13 +93,13 @@ if (mysqli_num_rows($query) > 0) {
                 <!-- User Profile-->
                 <h4 class="col-md-12" style="font-size:15px; margin-top:20px; margin-left:25px;">Sanctions and Counselings</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services-studentwithsanctions.php" aria-expanded="false"><i class="mdi mdi-account-cancel-outline"></i><span class="hide-menu">Students with Sanctions</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sanctions-and-counseling.php" aria-expanded="false"><i class="mdi mdi-toolbox-outline"></i><span class="hide-menu">Sanctioning / Counseling</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services-studentwithsanctions.php" aria-expanded="false"><i class="mdi mdi-account-cancel-outline"></i><span class="hide-menu">Students with Sanctions</span></a></li>
                 <hr class="hr" />
                 <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Maintenance</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="maintenance-Case.php" aria-expanded="false"><i class="mdi mdi-briefcase-edit-outline"></i><span class="hide-menu">Cases</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="maintenance-Sanction.php" aria-expanded="false"><i class="mdi mdi-briefcase-edit-outline"></i><span class="hide-menu">Sanctions</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="maintenance-GuidanceService.php" aria-expanded="false"><i class="mdi mdi-briefcase-edit-outline"></i><span class="hide-menu">Guidance Service</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="maintenance-GuidanceService.php" aria-expanded="false"><i class="mdi mdi-briefcase-edit-outline"></i><span class="hide-menu">Guidance Services</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="maintenance-Counselor.php" aria-expanded="false"><i class="mdi mdi-briefcase-edit-outline"></i><span class="hide-menu">Counselors</span></a></li>
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="schedule.php" aria-expanded="false"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Appointment Schedule</span></a></li> -->
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="appointment-reports.php" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Appointment Reports</span></a></li>

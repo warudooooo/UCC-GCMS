@@ -49,7 +49,7 @@ include 'sources/src-services-sanctions.php';
         }
 
         @media only screen and (max-width: 560px) {
-            .form-selects{
+            .form-selects {
                 width: 100% !important;
             }
         }
@@ -136,7 +136,7 @@ include 'includes/modals/services-modal.php'; ?>
                                     <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sanctEmail']; ?>" value="<?php echo $_SESSION['sanctEmail']; ?>" class="form-control form-control-line" readonly>
                                     <div class="form-group">
                                         <h4 class="col-md-12">Case</h4>
-                                        <select name="sCase" class="form-selects" aria-label="Default select example" required>
+                                        <select style="width: 100% !important;" name="sCase" class="form-selects" aria-label="Default select example" required>
                                             <option class="options" value="" selected>Select case here</option>
                                             <?php
                                             $query = mysqli_query($mysqli, "SELECT * FROM tbl_cases");
@@ -147,34 +147,26 @@ include 'includes/modals/services-modal.php'; ?>
                                         </select>
                                     </div>
                                     <h4 class="col-md-16">Degree</h4>
-                                    <select name="degree" class="form-selects" aria-label="Default select example" required>
-                                            <option class="options" value="" selected>Select degree here</option>
-                                            <option class="options" value="Mild">Mild</option>
-                                            <option class="options" value="Moderate">Moderate</option>
-                                            <option class="options" value="Severe">Severe</option>
-                                        </select>
+                                    <select style="width: 100% !important;" name="degree" class="form-selects" aria-label="Default select example" required>
+                                        <option class="options" value="" selected>Select degree here</option>
+                                        <option class="options" value="Mild">Mild</option>
+                                        <option class="options" value="Moderate">Moderate</option>
+                                        <option class="options" value="Severe">Severe</option>
+                                    </select>
                                     <div class="form-group">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
                                             <h4 class="col-md-12">Select Sanction</h4>
-                                            <div class="select-menu">
-                                                <div class="select-btn">
-                                                    <span class="sBtn-text">Select your options</span>
-                                                    <i class="fas fa-caret-down"></i>
-                                                </div>
-                                                <textarea class="sBtn-text-clone" name="sType"></textarea>
-                                                <ul class="options">
-                                                    <?php
-                                                    $query = mysqli_query($mysqli, "SELECT * FROM tbl_sanctionservices");
-                                                    while ($row = mysqli_fetch_array($query)) {
-                                                    ?>
-                                                        <li class="option">
-                                                            <span class="option-text" value="<?php echo $row['sanctionID']; ?>"><?php echo $row['sanctionName']; ?></span>
-                                                        </li>
-                                                    <?php } ?>
-                                                </ul>
-                                            </div>
+                                            <select style="width: 100% !important;" name="sType" class="form-selects" aria-label="Default select example" required>
+                                                <option class="options" value="" selected>Select case here</option>
+                                                <?php
+                                                $query = mysqli_query($mysqli, "SELECT * FROM tbl_sanctionservices");
+                                                while ($row = mysqli_fetch_array($query)) {
+                                                ?>
+                                                    <option class="options" value="<?php echo $row['sanctionName']; ?>"><?php echo $row['sanctionName']; ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -192,10 +184,11 @@ include 'includes/modals/services-modal.php'; ?>
                                     </div> -->
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <button class="btn btn-success text-white" name="submit">Submit</button>
+                                                <button class="btn btn-success text-white" name="submit" style="border-radius: 20px;">Submit</button>
                                             </div>
                                         </div>
                                         <!-- <?php echo $msg; ?> -->
+                                    </div>
                                 </form>
                             </div>
                         </div>

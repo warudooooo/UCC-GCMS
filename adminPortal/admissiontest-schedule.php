@@ -1,5 +1,10 @@
 <?php
 $msg = "";
+if (isset($_GET['not_found']) && $_GET['not_found'] == true) {
+    $msg = '<div class="eml" style="display: inline-block; color: crimson; text-align: center; width: 100%; margin-bottom: 15px;">
+    <h3>Data not found.</h3>
+  </div>';
+};
 include 'sources/session.php';
 include 'sources/src-admissiontest-schedule.php';
 ?>
@@ -81,6 +86,10 @@ include 'includes/modals/addschedule-modal.php'; ?>
                     <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Admission Test Schedule List</h4>
                     <div class="col-12">
                         <div class="card">
+                            <form action="export-individual-reports.php" method="POST">
+                                <button type='button' style="margin-top: 15px; width: 230px; margin-left: 15px; float: left;" class='btn btn-primary btnexport' data-bs-toggle='modal' data-bs-target='#exportYearModal'> Export all Data by Year</button>
+                                <button type='submit' style="margin-top: 15px; width: 230px; margin-right: 15px;float: right;" class='btn btn-primary btnexport' name="exportAllAdmTest"> Export all Data</button>
+                            </form>
                             <div class="table-responsive" style="padding: 20px;">
                                 <table id="dataTable" class="table table-bordered table-hover">
                                     <thead class="table-dark">
@@ -90,7 +99,7 @@ include 'includes/modals/addschedule-modal.php'; ?>
                                             <th scope="col" style="color: #fff; width: 250px;"">Admission Test Year</th>
                                                 <th scope=" col" style="color: #fff; width: 500px;"">Examination Date</th>
                                                 <th scope=" col" style="color: #fff; width: 500px;"">DAY</th>
-                                                <!-- <th scope=" col" style="color: #fff; text-align: center;">DELETE</th> -->
+                                                <th scope=" col" style="color: #fff; text-align: center;">DELETE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -104,6 +113,9 @@ include 'includes/modals/addschedule-modal.php'; ?>
                                                  <td>" . date('Y', strtotime($row["admDate"])) . "</td>
                                                  <td>" . date('F d, Y', strtotime($row["admDate"])) . "</td>
                                                  <td>" . date('l', strtotime($row["admDate"])) . "</td>
+                                                 <td style='text-align:center;'><button style='width:160px;' type='button' class='btn btn-primary btnred recordsdeletebtn' data-bs-toggle='modal' data-bs-target='#recordsdeleteModal'>
+                                                    Delete
+                                                 </button></td>
                                                  </tr>";
                                             $i++;
                                         }
@@ -139,6 +151,25 @@ include 'includes/modals/addschedule-modal.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="src/scripts/datatable.js"></script>
     <script>
+        const optionMenu = document.querySelector(".select-menu"),
+            selectBtn = optionMenu.querySelector(".select-btn"),
+            options = optionMenu.querySelectorAll(".option"),
+            sBtn_text = optionMenu.querySelector(".sBtn-text"),
+            sBtn_text_clone = optionMenu.querySelector(".sBtn-text-clone");
+
+
+        selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                let selectedOption = option.querySelector(".option-text").innerText;
+                sBtn_text.innerText = selectedOption;
+                sBtn_text_clone.innerText = selectedOption;
+
+                optionMenu.classList.remove("active");
+            })
+        })
+
         flatpickr("input[type=date]", {
             disableMobile: "true",
             minDate: "today",

@@ -44,8 +44,20 @@ if (isset($_POST['addsched'])) {
 			$add = "INSERT INTO tbl_proctorschedule(proctorName,roomAssigned,startTime,endTime,examDate)
     		VALUES('$pName','$roomAssigned','$startTime','$endTime','$date')";
 			$result = mysqli_query($mysqli, $add);
-			$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','ADDED PROCTOR SCHEDULE [ Details: $pName- $date ]')";
+			
+			$after = "
+Proctor Name: $pName
+Room Assigned: $roomAssigned
+Start Time: $startTime
+End Time: $endTime
+Date: $date
+			";
+        
+			$activity = "INSERT INTO tbl_activitylog(admName,activityActionAfter,activityDetails,activityReason)
+			VALUES('$admName','$after','Added Schedule for $pName.','')";
 			$runActivity = mysqli_query($mysqli, $activity);
+
+
 		}
 	} else {
 		$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h1>ONLY UP TO 10 ROOMS PER PROCTOR!</h1></div>';
@@ -62,6 +74,13 @@ if (isset($_POST['editsched'])) {
 	$date = $mysqli->real_escape_string($_POST['date']);
 
 
+	$pName = $mysqli->real_escape_string($_POST['pName']);
+	$roomAssigned = $mysqli->real_escape_string($_POST['roomAssigned']);
+	$startTime = $mysqli->real_escape_string($_POST['startTime']);
+	$endTime = $mysqli->real_escape_string($_POST['endTime']);
+	$date = $mysqli->real_escape_string($_POST['date']);
+
+
 	if ($roomAssigned == "" || $startTime == "" || $endTime == "" || $date == "") {
 		$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h1>Please fill up all fields.</h1></div>';
 	} else if ($startTime >= $endTime) {
@@ -69,8 +88,21 @@ if (isset($_POST['editsched'])) {
 	} else {
 		$edit = "UPDATE `tbl_proctorschedule` SET proctorName='$pName',roomAssigned='$roomAssigned',startTime='$startTime',endTime='$endTime',examDate='$date' WHERE proctorID='$pID'";
 		$result = mysqli_query($mysqli, $edit);
-		$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','EDITED PROCTOR SCHEDULE [ Details: $pName- $date ]')";
-		$runActivity = mysqli_query($mysqli, $activity);
+		
+	$after = "
+Proctor Name: $pName
+Room Assigned: $roomAssigned
+Start Time: $startTime
+End Time: $endTime
+Date: $date
+			";
+
+			$details = "Edited $pName Schedule.";
+			$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+			VALUES('$admName','','$after','$details')";
+			$runActivity = mysqli_query($mysqli, $activity);
+
+
 	}
 }
 
@@ -82,7 +114,11 @@ if (isset($_POST['deletesched'])) {
 	$delete = "DELETE FROM tbl_proctorschedule WHERE proctorID = '$pID'";
 	$result = mysqli_query($mysqli, $delete);
 
-	$activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','DELETED PROCTOR SCHEDULE [ Details: $pName ]')";
-	$runActivity = mysqli_query($mysqli, $activity);
+	$after = "$admName Deleted $pName Schedule";
+	
+				$details = "Deleted $pName Schedule.";
+				$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+				VALUES('$admName','','$after','$details')";
+				$runActivity = mysqli_query($mysqli, $activity);
 }
 

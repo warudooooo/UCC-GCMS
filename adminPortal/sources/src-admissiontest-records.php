@@ -26,15 +26,15 @@ if (isset($_POST['submit'])) { // if save button on the form is clicked
             $sql = "INSERT INTO tbl_admissiontestrecords(admYear, admFile, admSize, admDownloads) VALUES ('$qYear','$filename', $size, 0)";
             mysqli_query($mysqli, $sql);
 
-            $before = 
+            $after = 
 "Year: ".$qYear."
 File: ".$filename."";
 
 $action =
-"$admName Added ".$filename." successfully.";
+"Added ".$filename." successfully.";
 
-            $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityReason)
-            VALUES('$admName','$before','$action','')";
+            $activity = "INSERT INTO tbl_activitylog(admName,activityActionAfter,activityDetails)
+            VALUES('$admName','$after','$action')";
             $runActivity = mysqli_query($mysqli, $activity);
             header('Location: admissiontest-records.php');
         } else {
@@ -67,6 +67,12 @@ if (isset($_GET['file_id'])) {
         $newCount = $file['admDownloads'] + 1;
         $updateQuery = "UPDATE tbl_admissiontestrecords SET admDownloads=$newCount WHERE admID=$id";
         mysqli_query($mysqli, $updateQuery);
+
+        $after = "$admName Downloaded " . $file['admFile'] . " successfully.";
+
+    $activity = "INSERT INTO tbl_activitylog(admName,activityActionAfter,activityDetails)
+    VALUES('$admName','$after','Downloaded " . $file['admFile'] . " successfuly.')";
+    $runActivity = mysqli_query($mysqli, $activity);
         exit;
     }
 }
@@ -84,11 +90,12 @@ if (isset($_POST['adDelete'])) {
 "Year: ".$adYear."
 File: ".$fileName."";
 
+    $details = "Deleted " . $fileName . " successfully.";
 
     if ($adminPassword == $curPassword) {
         $admID = $mysqli->real_escape_string($_POST['admID']);
-        $activity = "INSERT INTO tbl_activitylog(admName,admFile,activityActionBefore,activityActionAfter,activityReason)
-        VALUES('$admName','$fileName','$before','Deleted Successful.','$delReason')";
+        $activity = "INSERT INTO tbl_activitylog(admName,admFile,activityActionBefore,activityDetails,activityReason)
+        VALUES('$admName','$fileName','$before','$details','$delReason')";
         $runActivity = mysqli_query($mysqli, $activity);
         $delete = "DELETE FROM tbl_admissiontestrecords WHERE admID='$admID'";
         $del = mysqli_query($mysqli, $delete);

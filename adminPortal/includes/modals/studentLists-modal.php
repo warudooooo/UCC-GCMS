@@ -127,18 +127,22 @@
                     <label class="col-md-12" style="margin-top:10px;">Student Name</label>
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb;" type="text" name="sName" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line">
+                        <input style="background-color: #edf2fb; display:none;" type="text" name="oldsName" value="<?php echo $_SESSION['sName']; ?>" class="form-control form-control-line">
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; text-transform: uppercase;" value="<?php echo $_SESSION['stNumber']; ?>" type="text" name="sNumber" class="form-control form-control-line">
+                        <input style="background-color: #edf2fb; display:none; text-transform: uppercase;" value="<?php echo $_SESSION['stNumber']; ?>" type="text" name="oldsNumber" class="form-control form-control-line">
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Course</label>
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb; text-transform: uppercase;" value="<?php echo $_SESSION['stCourse']; ?>" type="text" name="sCourse" class="form-control form-control-line">
+                        <input style="background-color: #edf2fb; display:none; text-transform: uppercase;" value="<?php echo $_SESSION['stCourse']; ?>" type="text" name="oldsCourse" class="form-control form-control-line">
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Student Email</label>
                     <div class="col-md-12">
                         <input style="background-color: #edf2fb;" value="<?php echo $_SESSION['stEmail']; ?>" type="email" name="sEmail" placeholder="N/A" class="form-control form-control-line">
+                        <input style="background-color: #edf2fb; display:none;" value="<?php echo $_SESSION['stEmail']; ?>" type="email" name="oldsEmail" placeholder="N/A" class="form-control form-control-line">
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">To edit this student details. You need to type again your password</label>
                     <div class="col-md-12">

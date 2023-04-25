@@ -3,7 +3,7 @@ require '../vendor/autoload.php';
 include 'sources/session.php';
 include 'sources/src-student.php';
 
-if(empty($_SESSION['stNumber'])){
+if (empty($_SESSION['stNumber'])) {
     header("location: student-pending.php");
 }
 ?>
@@ -18,7 +18,7 @@ if(empty($_SESSION['stNumber'])){
     <link rel="stylesheet" type="text/css" href="src/styles/sanctionsStyle.css">
 </head>
 <?php include 'includes/header.php';
-include 'includes/modals/student-modal.php';?>
+include 'includes/modals/student-modal.php'; ?>
 
 <body>
     <!-- ============================================================== -->
@@ -102,10 +102,29 @@ include 'includes/modals/student-modal.php';?>
                                             <input name="sEmail" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['stEmail']; ?>" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
+                                    <hr class="hr" />
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <i><b>
+                                                    <?php
+                                                    $studentNumber = $mysqli->real_escape_string($_SESSION['stNumber']);
+                                                    $check = mysqli_query($mysqli, "SELECT * FROM tbl_studentsregistrar WHERE studentNumber = '" . $studentNumber . "'");
+
+                                                    if (mysqli_num_rows($check) != 0) {
+                                                        echo '<h4 class="col-md-12" style="color: #008000;">Based on the Student Number provided by this student. It was automatically checked by system and verified that it was currently enrolled in the school. Please manually check to confirm.</h4>';
+                                                    }else{
+                                                        echo "<h4 class='col-md-12' style='color: crimson;'>Based on the Student Number provided by this student. The system can't find any record of this student. Please manually check to see if this student was enrolled.</h4>";
+                                                    }
+                                                    ?>
+                                                    
+                                                </b></i>
+                                        </div>
+                                    </div>
+                                    <hr class="hr" />
                                     <div class="form-group">
                                         <h3 class="col-md-12">Registration Form</h3>
                                         <div class="col-md-12">
-                                            <button type='button' class='btn btn-primary unvstudenteditbtn' style="width: 250px;" data-bs-toggle='modal' data-bs-target='#viewRFModal'>
+                                            <button type='button' class='btn btn-primary btngreen' style="width: 250px;" data-bs-toggle='modal' data-bs-target='#viewRFModal'>
                                                 VIEW REGISTRATION FORM
                                             </button>
                                         </div>
@@ -113,17 +132,18 @@ include 'includes/modals/student-modal.php';?>
                                     <div class="form-group">
                                         <h3 class="col-md-12">Selfie With Registration Form</h3>
                                         <div class="col-md-12">
-                                            <button type='button' class='btn btn-primary unvstudenteditbtn' style="width: 250px;" data-bs-toggle='modal' data-bs-target='#viewSelfieModal'>
-                                                VIEW SELFIE
+                                            <button type='button' class='btn btn-primary btnblue' style="width: 250px;" data-bs-toggle='modal' data-bs-target='#viewSelfieModal'>
+                                                VIEW STUDENT SELFIE
                                             </button>
                                         </div>
                                     </div>
+                                    <hr class="hr" />
                                     <div class="form-group">
-                                         <h4 class="col-md-12">APPROVE / DECLINE STUDENT</h4>
-                                        <button type='button' style="width: 200px;" class='btn btn-primary btngreen unvstudenteditbtn' class="approvestudentbtn" data-bs-toggle='modal' data-bs-target='#studentApproveModal'>
+                                        <h4 class="col-md-12">APPROVE / DECLINE STUDENT</h4>
+                                        <button type='button' style="width: 200px;" class='btn btn-primary btnorange' class="approvestudentbtn" data-bs-toggle='modal' data-bs-target='#studentApproveModal'>
                                             APPROVE
                                         </button>
-                                        <button type='button' style="width: 200px;" class='btn btn-primary studentdeletebtn studentdeletepermanentbtn' data-bs-toggle='modal' data-bs-target='#studentDeclineModal'>
+                                        <button type='button' style="width: 200px;" class='btn btn-primary btnred' data-bs-toggle='modal' data-bs-target='#studentDeclineModal'>
                                             DECLINE
                                         </button>
                                     </div>
