@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
             $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
         } else {
         $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified,studentEmail,studentPassword,userType,vkey,userStatus)
-    VALUES('$sName','$sNumber','$sCourse','$sVerified','','','user','','1')";
+    VALUES('$sName','$sNumber','$sCourse','$sVerified','$sEmail','','user','','1')";
         $result = mysqli_query($mysqli, $sql);
 
         $before = "$admName Added $sName successfully.";
