@@ -24,7 +24,6 @@ include 'sources/src-index.php';
 							<img src="src/images/uccLogo.png">
 							<h4>University of Caloocan City Guidance and Counseling</h4>
 						</div>
-						<input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
 						<div class="heading">
 							<h2>Welcome back, UCCian!</h2>
 							<h6>Not registered yet?</h6>
@@ -32,11 +31,11 @@ include 'sources/src-index.php';
 						</div>
 						<div class="actualForm">
 							<div class="inputWrap">
-								<input type="text" id="sNumber" style="text-transform: uppercase;" class="txtbxFields" name="sNumber" autocomplete="off">
+								<input placeholder="" type="text" id="sNumber" style="text-transform: uppercase;" class="txtbxFields" name="sNumber" autocomplete="off">
 								<label> Student Number (Ex: 201xxxxx-M) </label>
 							</div>
 							<div class="inputWrap">
-								<input type="Password" id="sPassword" class="txtbxFields" name="sPassword" autocomplete="off">
+								<input placeholder="" type="Password" id="sPassword" class="txtbxFields" name="sPassword" autocomplete="off">
 								<label> Password </label>
 							</div>
 							<h1><div id='result' class='eml' style="display: inline-block; color: crimson; margin-bottom: 10px; margin-top: -10px; font-size: 15px;"></div></h1>

@@ -356,7 +356,7 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Email</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb; pointer-events: none;" type="email" name="sEmail" placeholder="value=" <?php echo $_SESSION['stEmail']; ?>"" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
+                            <input style="background-color: #edf2fb; pointer-events: none;" type="email" name="stEmail" placeholder="value=" <?php echo $_SESSION['stEmail']; ?>"" value="<?php echo $_SESSION['stEmail']; ?>" class="form-control form-control-line" readonly>
                         </div>
                         <input name="dbID" style="display: none;" placeholder="<?php echo $_SESSION['dbID']; ?>" value="<?php echo  $_SESSION['dbID']; ?>" readonly>
                         <label class="col-md-12" style="margin-top:10px;">To approve this student, please enter your password for confirmation.</label>

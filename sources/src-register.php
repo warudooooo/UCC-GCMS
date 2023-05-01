@@ -38,7 +38,8 @@ if (isset($_POST['submit'])) {
 	$sNumber = filter_input(INPUT_POST, 'sNumber', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 	$sCourse = filter_input(INPUT_POST, 'sCourse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 	$sEmail = filter_input(INPUT_POST, 'sEmail', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-	$sPassword = $mysqli->real_escape_string(md5($_POST['sPassword']));
+	$sPassword = md5(filter_input(INPUT_POST, 'sPassword', FILTER_DEFAULT));
+	$conPassword = md5(filter_input(INPUT_POST, 'conPassword', FILTER_DEFAULT));
 	//Generate Vkey
 	$vkey = md5(time() . $sName);
 
@@ -46,6 +47,8 @@ if (isset($_POST['submit'])) {
     $sNumber = $antiXss->xss_clean($sNumber);
     $sCourse = $antiXss->xss_clean($sCourse);
     $sEmail = $antiXss->xss_clean($sEmail);
+	$sPassword = $antiXss->xss_clean($sPassword);
+	$conPassword = $antiXss->xss_clean($conPassword);
 
 
 	if (!in_array($extension, ['png', 'pdf', 'jpg', 'jpeg'])) {
@@ -54,6 +57,8 @@ if (isset($_POST['submit'])) {
 	    echo "File too large!";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='{$sEmail}'")) > 0) {
 		$msg = "<div class='eml' style='margin-left:20px; margin-bottom: 10px;'>This email adress is already in use. Please use a different one.</div>";
+	}else if ($sPassword != $conPassword) {
+		$msg = "<div class='eml' style='margin-left:20px; margin-bottom: 10px;'>Password and Confirm Password does not match</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='yes'")) > 0) {
 		$msg = "<div class='eml' style='margin-left: 20px; margin-botttom: 5px;'>This student already exist and verified.</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {

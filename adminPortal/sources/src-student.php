@@ -314,7 +314,7 @@ if (isset($_POST['decline_student'])) {
     $decReason = $mysqli->real_escape_string($_POST['decReason']);
 
     if ($adminPassword == $curPassword) {
-        $sName = $mysqli->real_escape_string($_POST['sName']);
+        $stName = $mysqli->real_escape_string($_POST['stName']);
         $dbID = $mysqli->real_escape_string($_POST['dbID']);
 
 

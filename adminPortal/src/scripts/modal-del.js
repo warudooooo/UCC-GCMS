@@ -1,11 +1,4 @@
-var originalHTML = document.documentElement.outerHTML; // store original HTML
-
-document.addEventListener('DOMSubtreeModified', function() {
-  if (document.documentElement.outerHTML !== originalHTML) { // check if HTML was modified
-    alert('Wag ka na mag luto please.'); // display error message
-    location.reload(); // reload the page
-  }
-});
+// =============================================================================================================== app
 
 $(document).ready(function(){
 	$('.seemorebtn').on('click', function(){

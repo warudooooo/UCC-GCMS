@@ -1,11 +1,21 @@
-var originalHTML = document.documentElement.outerHTML; // store original HTML
+// $(document).ready(function(){
+// 	$('.seemorebtn').on('click', function(){
+// 		$tr = $(this).closest('tr');
 
-document.addEventListener('DOMSubtreeModified', function() {
-  if (document.documentElement.outerHTML !== originalHTML) { // check if HTML was modified
-    alert('Wag ka na mag luto please.'); // display error message
-    location.reload(); // reload the page
-  }
-});
+//                 var data = $tr.children("td").map(function () {
+//                     return $(this).text();
+//                 }).get();
+
+//                 console.log(data);
+
+//                 $('#sName').val(data[1]);
+//                 $('#sNumber').val(data[2]);
+//                 $('#sCourse').val(data[3]);
+//                 $('#sCase').val(data[4]);
+//                 $('#sType').val(data[6]);
+//                 $('#sMessage').val(data[7]);
+// 	});
+// });
 
 $(document).ready(function(){
 	$('.seemorebtn').on('click', function(){
