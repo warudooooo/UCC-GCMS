@@ -1,7 +1,13 @@
 <?php
+use voku\helper\AntiXSS;
+
+require_once '../vendor/autoload.php';
+
+$antiXss = new AntiXSS();
 $msg = "";
 if (isset($_POST['addRoom'])) {
-    $pName = $mysqli->real_escape_string($_POST['pName']);
+    $pName = filter_input(INPUT_POST, 'pName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $pName = $antiXss->xss_clean($pName);
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_rooms WHERE roomName='{$pName}'")) > 0) {
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h3>This Room already exists</h3></div>';
@@ -23,8 +29,11 @@ Room Name: $pName
 
 if (isset($_POST['editRoom'])) {
 
-    $pID = $mysqli->real_escape_string($_POST['pID']);
-    $pName = $mysqli->real_escape_string($_POST['pName']);
+    $pID = filter_input(INPUT_POST, 'pID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $pName = filter_input(INPUT_POST, 'pName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $pID = $antiXss->xss_clean($pID);
+    $pName = $antiXss->xss_clean($pName);
 
     $edit = "UPDATE `tbl_rooms` SET roomName='$pName' WHERE RoomID='$pID'";
     $result = mysqli_query($mysqli, $edit);
@@ -39,16 +48,11 @@ Room Name: $pName
 
 }
 
-if (isset($_POST['viewsched'])) {
-
-    $_SESSION['pID'] = $_POST["pID"];
-    $_SESSION['pName'] = $_POST["pName"];
-}
-
 if (isset($_POST['deleteRoom'])) {
 
     $pID = $mysqli->real_escape_string($_POST['pID']);
-    $pName = $mysqli->real_escape_string($_POST['pName']);
+    $pName = filter_input(INPUT_POST, 'pName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $pName = $antiXss->xss_clean($pName);
 
     $after = "
 Room Name: $pName

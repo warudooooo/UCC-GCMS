@@ -68,6 +68,25 @@ include 'sources/session.php';
                     <div class="cards-single">
                         <div>
                             <?php
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_studentsregistrar");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<a href="student-registrarLists.php" class="fill-div">' . $total . '</a>';
+                            } else {
+                                echo '<a href="student-registrarLists.php" class="fill-div">' . $total . '</a>';
+                            }
+                            ?>
+                            <span>Enrolled Students (Registrar)</span>
+                        </div>
+                        <div>
+                            <a href="studentLists.php" class="fill-div">
+                                <span class="mdi mdi-account-multiple" style="font-size: 3rem;"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE userType='user'");
 
                             if ($total = mysqli_num_rows($load)) {
@@ -76,7 +95,7 @@ include 'sources/session.php';
                                 echo '<a href="studentLists.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
-                            <span>Total Students</span>
+                            <span>Total Student Accounts</span>
                         </div>
                         <div>
                             <a href="studentLists.php" class="fill-div">
@@ -95,7 +114,7 @@ include 'sources/session.php';
                                 echo '<a href="studentLists.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
-                            <span>Verified Students</span>
+                            <span>Verified Student Accounts</span>
                         </div>
                         <div>
                             <a href="studentLists.php" class="fill-div">
@@ -114,7 +133,7 @@ include 'sources/session.php';
                                 echo '<a href="studentLists.php" class="fill-div">' . $total . '</a>';
                             }
                             ?>
-                            <span>Not Verified Students</span>
+                            <span>Not Verified Student Accounts</span>
                         </div>
                         <div>
                             <a href="studentLists.php" class="fill-div">

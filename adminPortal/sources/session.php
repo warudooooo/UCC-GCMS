@@ -17,6 +17,7 @@ if (mysqli_num_rows($query) > 0) {
 
     $sName = $row['studentName'];
     $admName = $row['studentName'];
+    $userName = $row['studentNumber'];
     $_SESSION['admPassword'] = $row['studentPassword'];
 }
 ?>

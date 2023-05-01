@@ -1,10 +1,13 @@
 <?php
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';
+use voku\helper\AntiXSS;
+
+$antiXss = new AntiXSS();
 
 if (isset($_POST['reSchedule'])) {
 	$scdID = $_POST['scdID'];
@@ -278,16 +281,21 @@ if (isset($_POST['completed'])) {
 	$sCourse = $mysqli->real_escape_string($_POST['sCourse']);
 	$sEmail = $mysqli->real_escape_string($_POST['sEmail']);
 	$pInCharge = $mysqli->real_escape_string($_POST['pInCharge']);
-	$remarks = $mysqli->real_escape_string($_POST['remarks']);
+	$remarks = filter_input(INPUT_POST, 'remarks', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 	$scType = $mysqli->real_escape_string($_POST['scType']);
 	$Details = $mysqli->real_escape_string($_POST['Details']);
 	$scScheds = $mysqli->real_escape_string($_POST['scScheds']);
+
+	$remarks = $antiXss->xss_clean($remarks);
 
 
 
 	if ($pInCharge == "") {
 		$msg = '<div class="eml" style="text-align: center; color: crimson;"><h3>PLEASE SELECT A PERSON IN CHARGE</h3></div>';
 	} else {
+		if($remarks ==""){
+			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; width: 100%;"><h3>Something went wrong</h3></div>';
+		}else {
 		$sql = "INSERT INTO tbl_counselinghistory(id,studentNumber,requesterName,studentCourse,studentEmail,counselingDetails,counselingType,counselingSchedule,counselingStatus,counselor,counselorRemarks)
             	VALUES('$scID','$sNumber','$sName','$sCourse','$sEmail','$Details','$scType','$scScheds','Completed','$pInCharge','$remarks')";
 		$result = mysqli_query($mysqli, $sql);
@@ -303,5 +311,6 @@ Status: Completed
 		$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
                     VALUES('$admName','','$after','Completed $sName Appointment.')";
 		$runActivity = mysqli_query($mysqli, $activity);
+	}
 	}
 }

@@ -7,7 +7,6 @@ include 'sources/src-student-registrarLists.php';
 
 <head>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
     <style>
         .form-selects {
@@ -83,7 +82,7 @@ include 'includes/modals/student-registrarLists-modal.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Student Lists (Registrar)</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i>Enrolled Student Lists (Registrar)</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -104,7 +103,7 @@ include 'includes/modals/student-registrarLists-modal.php';
             <div class="container-fluid">
                 <div class="row">
                     <?php echo $msg; ?>
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Lists of enrolled students based on the registrar.</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Lists of enrolled students based on the registrar transfered to the system.</h4>
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive" style="padding: 20px;">
@@ -193,7 +192,6 @@ include 'includes/modals/student-registrarLists-modal.php';
     <!-- ============================================================== -->
 
     <?php include 'includes/footer.php' ?>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="src/scripts/student-registrar.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>

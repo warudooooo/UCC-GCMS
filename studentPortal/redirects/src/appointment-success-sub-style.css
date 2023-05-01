@@ -92,14 +92,7 @@ button:hover {
 
 @media (max-width: 850px) {
   .modal-box {
-    max-width: 500px;
-    transition: 300ms;
-  }
-}
-
-@media (max-width: 530px) {
-  .modal-box {
-    max-width: 390px;
+    max-width: 350px !important;
     transition: 300ms;
   }
 }

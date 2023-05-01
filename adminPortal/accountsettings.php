@@ -69,7 +69,7 @@ include 'sources/src-accountsettings.php'; ?>
                                 <div class="profile-tab-nav border-right">
                                     <div class="p-4">
                                         <div class="img-circle text-center mb-3">
-                                            <img src="../assets/images/users/cry.jpg" alt="Image" class="shadow">
+                                            <img src="../assets/images/users/d1.jpg" alt="Image" class="shadow">
                                         </div>
                                         <h4 class="text-center"><?php echo $sName ?></h4>
                                     </div>

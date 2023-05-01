@@ -25,7 +25,7 @@
                 </div>
                 <h5 class="col-md-12" style="margin-top:10px;">Counseling Details</h5>
                 <div class="col-md-12">
-                    <textarea rows="8" class="form-control form-control-line" id="appointmentDetails" name="cDetails" style="background-color: #e8eddf; padding: 20px; pointer-events: none;" readonly></textarea>
+                    <textarea rows="8" class="form-control form-control-line" id="appointmentDetails" name="cDetails" style="background-color: #e8eddf; padding: 20px; pointer-events: auto;" readonly></textarea>
                 </div>
             </div>
             <div class="modal-footer">

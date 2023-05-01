@@ -1,11 +1,12 @@
     var calendar;
     var Calendar = FullCalendar.Calendar;
     var events = [];
+    JSON.parse(JSON.stringify(scheds));
     $(function() {
         if (!!scheds) {
             Object.keys(scheds).map(k => {
                 var row = scheds[k]
-                events.push({ id: row.ID, title: row.counselingStatus, description: row.counselingSchedule , start: row.counselingSchedule, end: row.studentNumber });
+                events.push({ id: row.ID, title: row.counselingStatus, description: row.counselingStatus , start: row.counselingSchedule, end: row.studentNumber });
             })
         }
         var date = new Date()

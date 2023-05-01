@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) {
 													<td bgcolor='#ffffff' align='center' style='padding: 20px 30px 60px 30px;'>
 														<table border='0' cellspacing='0' cellpadding='0'>
 															<tr>
-																<td align='center' style='border-radius: 3px;' bgcolor='#f4845f'><a href='http://192.168.100.105/Guidance/redirects/passwordreset.php?resetcode=" . $vkey . "&studentEmail=". $sEmail ."' target='_blank' style='margin-bottom: -20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #F4845F; display: inline-block;'>Reset Password</a></td>
+																<td align='center' style='border-radius: 3px;' bgcolor='#f4845f'><a href='http://localhost/Guidance/redirects/passwordreset.php?resetcode=" . $vkey . "&studentEmail=". $sEmail ."' target='_blank' style='margin-bottom: -20px; font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #F4845F; display: inline-block;'>Reset Password</a></td>
 															</tr>
 														</table>	
 													</td>
@@ -205,7 +205,7 @@ if (isset($_POST['submit'])) {
 									</tr> <!-- COPY -->
 									<tr>
 										<td bgcolor='#ffffff' align='left' style='padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-											<p style='margin-left: 20px; margin-top: 0px; margin-bottom: 3px;'><a href='http://192.168.100.105/Guidance/redirects/passwordreset.php?resetcode=" . $vkey . "&studentEmail=". $sEmail ."' target='_blank' style='color: #F4845F; pointer-events: none;'>http://192.168.100.105/Guidance/redirects/passwordreset.php?resetcode=" . $vkey . "&studentEmail=". $sEmail ."</a></p>
+											<p style='margin-left: 20px; margin-top: 0px; margin-bottom: 3px;'><a href='http://localhost/Guidance/redirects/passwordreset.php?resetcode=" . $vkey . "&studentEmail=". $sEmail ."' target='_blank' style='color: #F4845F; pointer-events: none;'>http://localhost/Guidance/redirects/passwordreset.php?resetcode=" . $vkey . "&studentEmail=". $sEmail ."</a></p>
 										</td>
 									</tr>
 									<tr>
@@ -248,8 +248,8 @@ if (isset($_POST['submit'])) {
 				</body>
 				
 				</html>";
-				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/passwordreset.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
-				// 				  <p>http://192.168.100.105/Guidance/redirects/passwordreset.php/?verification=' . $vkey . '</p></b>';
+				// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://localhost/Guidance/redirects/passwordreset.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
+				// 				  <p>http://localhost/Guidance/redirects/passwordreset.php/?verification=' . $vkey . '</p></b>';
 
 				$mail->send();
 			} catch (Exception $e) {

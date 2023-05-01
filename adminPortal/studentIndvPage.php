@@ -91,6 +91,66 @@ include 'sources/src-studentLists.php';
                             $studNumber = $_SESSION['stNumber'];
 
                             $sName = $row['studentName'];
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE studentNumber = '$studNumber'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            } else {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            }
+                            ?>
+                            <span>Completed Appointments</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-check" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $studNumber = $_SESSION['stNumber'];
+
+                            $sName = $row['studentName'];
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber' AND counselingStatus = 'Pending'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            } else {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            }
+                            ?>
+                            <span>Pending Appointments</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-clock" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $studNumber = $_SESSION['stNumber'];
+
+                            $sName = $row['studentName'];
+                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
+
+                            if ($total = mysqli_num_rows($load)) {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            } else {
+                                echo '<h1 style="color: #333;">' . $total . '</h1>';
+                            }
+                            ?>
+                            <span>Cancelled Appointments</span></span>
+                        </div>
+                        <div>
+                            <span class="mdi mdi-account-remove" style="font-size: 3rem;"></span>
+                        </div>
+                    </div>
+                    <div class="cards-single">
+                        <div>
+                            <?php
+                            $studNumber = $_SESSION['stNumber'];
+
+                            $sName = $row['studentName'];
                             $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselings WHERE studentNumber = '$studNumber' AND counselingStatus = 'Pending'");
 
                             if ($total = mysqli_num_rows($load)) {
@@ -215,6 +275,7 @@ include 'sources/src-studentLists.php';
                                 <thead class="table-dark">
                                     <tr style="text-align: center;">
                                         <th scope="col" style="color: #fff; width: 0px;">#</th>
+                                        <th scope="col" style="color: #fff; width: 0px; text-align: center;">Status</th>
                                         <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction</th>
                                         <th scope="col" style="color: #fff; width: 150px;">Student Name</th>
                                         <th scope="col" style="color: #fff; width: 100px;">Student Number</th>
@@ -224,6 +285,7 @@ include 'sources/src-studentLists.php';
                                         <th scope="col" style="display: none;"></th>
                                         <th scope="col" style="color: #fff; width: 150px;">Date Issued</th>
                                         <th scope="col" style="color: #fff; width: 150px;">View Details</th>
+                                        <th scope="col" style="display: none;"></th>
                                         <th scope="col" style="display: none;"></th>
                                         <th scope="col" style="display: none;"></th>
                                     </tr>
@@ -237,6 +299,17 @@ include 'sources/src-studentLists.php';
                                         echo "<tr>
                                                  <td>" . $i . "</td>
                                                  ";
+                                        if ($row["sanctionStatus"] == "Pending") {
+                                            echo "<td style='text-align:center;'>
+                                                            <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #E74C3C; color: #fff; border-style:none; border-radius: 20px;'>
+                                                            Active
+                                                           </button></td>";
+                                        } else if ($row["sanctionStatus"] == "Completed") {
+                                            echo "<td style='text-align:center;'>
+                                                            <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2E86C1; color: #fff; border-style:none; border-radius: 20px;'>
+                                                            Completed
+                                                           </button></td>";
+                                        }
                                         if ($row["degree"] == "Mild") {
                                             echo "<td style='text-align:center;'>
                                                         <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
@@ -266,6 +339,7 @@ include 'sources/src-studentLists.php';
                                                  </button></td>
                                                  <td style='display: none;'>" . $row["sanctionID"] . "</td>
                                                  <td style='display: none;'>" . $row["degree"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanctionStatus"] . "</td>
                                                  </tr>";
                                         $i++;
                                     }
@@ -422,11 +496,23 @@ include 'sources/src-studentLists.php';
 
                 console.log(data);
                 $('#studName').val(data[3]);
-                $('#sancType').val(data[6]);
-                $('#sancCase').val(data[5]);
-                $('#guideMessage').val(data[7]);
-                $('#dateIssued').val(data[8]);
-                $('#ssDegree').val(data[11]);
+                $('#sancType').val(data[7]);
+                $('#sancCase').val(data[6]);
+                $('#guideMessage').val(data[8]);
+                $('#dateIssued').val(data[9]);
+                $('#ssDegree').val(data[12]);
+                $('#ssID').val(data[11]);
+
+                var markasdone = data[13].trim();
+                if (markasdone === 'Pending') {
+                    console.log('Pending');
+                    $('button.markasdone').show();
+                } else if (markasdone === 'Completed') {
+                    console.log('Completed');
+                    $('button.markasdone').hide();
+                }
+
+                
             });
         });
 

@@ -1,6 +1,17 @@
 <?php
-if (isset($_POST['submit'])) { // if save button on the form is clicked
-    $qYear = $mysqli->real_escape_string($_POST['qYear']);
+
+use voku\helper\AntiXSS;
+
+require_once '../vendor/autoload.php';
+
+$antiXss = new AntiXSS();
+
+if (isset($_POST['submit'])) {
+
+    $qYear = filter_input(INPUT_POST, 'qYear', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $qYear = $antiXss->xss_clean($qYear);
+
+
     // name of the uploaded file
     $filename = $_FILES['myfile']['name'];
 
@@ -23,6 +34,9 @@ if (isset($_POST['submit'])) { // if save button on the form is clicked
     } else {
         // move the uploaded (temporary) file to the specified destination
         if (move_uploaded_file($file, $destination)) {
+            if($qYear == ""){
+                $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+            }else{
             $sql = "INSERT INTO tbl_admissiontestrecords(admYear, admFile, admSize, admDownloads) VALUES ('$qYear','$filename', $size, 0)";
             mysqli_query($mysqli, $sql);
 
@@ -37,6 +51,7 @@ $action =
             VALUES('$admName','$after','$action')";
             $runActivity = mysqli_query($mysqli, $activity);
             header('Location: admissiontest-records.php');
+            }
         } else {
             echo "Failed to upload file.";
         }
@@ -82,22 +97,32 @@ if (isset($_POST['adDelete'])) {
     $adminPassword = $mysqli->real_escape_string(md5($_POST['adminPassword']));
     $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
     //for act logging
-    $adYear = $mysqli->real_escape_string($_POST['adYear']);
-    $fileName = $mysqli->real_escape_string($_POST['fileName']);
-    $delReason = $mysqli->real_escape_string($_POST['delReason']);
 
-    $before = 
+    $adYear = filter_input(INPUT_POST, 'adYear', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $fileName = filter_input(INPUT_POST, 'fileName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $delReason = filter_input(INPUT_POST, 'delReason', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $adYear = $antiXss->xss_clean($adYear);
+    $fileName = $antiXss->xss_clean($fileName);
+    $delReason = $antiXss->xss_clean($delReason);
+
+    
+
+    if ($adminPassword == $curPassword) {
+        if($adYear == "" || $fileName == "" || $delReason == ""){
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+        }else{
+            $before = 
 "Year: ".$adYear."
 File: ".$fileName."";
 
     $details = "Deleted " . $fileName . " successfully.";
-
-    if ($adminPassword == $curPassword) {
         $admID = $mysqli->real_escape_string($_POST['admID']);
         $activity = "INSERT INTO tbl_activitylog(admName,admFile,activityActionBefore,activityDetails,activityReason)
         VALUES('$admName','$fileName','$before','$details','$delReason')";
         $runActivity = mysqli_query($mysqli, $activity);
         $delete = "DELETE FROM tbl_admissiontestrecords WHERE admID='$admID'";
         $del = mysqli_query($mysqli, $delete);
+        }
     }
 }

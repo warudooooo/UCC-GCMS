@@ -43,12 +43,12 @@ include 'sources/src-student.php';
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Student Accounts</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Students</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Student Accounts</li>
                                 </ol>
                             </nav>
                         </div>
@@ -65,7 +65,7 @@ include 'sources/src-student.php';
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Add Student</h4>
+                <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Add Student Account</h4>
                 <div class="col-lg-12 col-xlg-12 col-md-12">
                     <div class="card">
                         <div class="card-body">
@@ -93,7 +93,7 @@ include 'sources/src-student.php';
                                 echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span style="pointer-events: none;">Total Active Students</span>
+                            <span style="pointer-events: none;">Total Active Student Accounts</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-check" style="font-size: 3rem;"></span>
@@ -127,7 +127,7 @@ include 'sources/src-student.php';
                                 echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span style="pointer-events: none;">Not Verified Students</span>
+                            <span style="pointer-events: none;">Not Verified Student Accounts</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-multiple-remove" style="font-size: 3rem;"></span>
@@ -144,7 +144,7 @@ include 'sources/src-student.php';
                                 echo '<h1 style="pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span style="pointer-events: none;">Admin Created Students</span>
+                            <span style="pointer-events: none;">Admin Created Student Accounts</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
@@ -161,7 +161,7 @@ include 'sources/src-student.php';
                                 echo '<h1 style="color:white; pointer-events: none;">' . $total . '</h1>';
                             }
                             ?>
-                            <span style="pointer-events: none;">Inactive Students</span>
+                            <span style="pointer-events: none;">Inactive Student Accounts</span>
                         </div>
                         <div>
                             <span class="mdi mdi-account-wrench" style="font-size: 3rem;"></span>
@@ -169,7 +169,7 @@ include 'sources/src-student.php';
                     </div>
                 </div>
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> Admin Created Students</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-wrench"></i> Admin Created Student Accounts</h4>
                     <div class="col-12">
                         <div class="card">
                             <div class="table-responsive" style="padding: 20px;">
@@ -185,6 +185,7 @@ include 'sources/src-student.php';
                                             <th scope="col" style="color: #fff; display:none;">vkey</th>
                                             <th scope="col" style="color: #fff; display:none;">studentVerified</th>
                                             <th scope="col" style="color: #fff; text-align: center; width: 150px;">EDIT</th>
+                                            <th scope="col" style="color: #fff; display:none;">ID</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -209,6 +210,7 @@ include 'sources/src-student.php';
                                                  <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary admstudenteditbtn' data-bs-toggle='modal' data-bs-target='#admstudenteditModal'>
                                                     EDIT
                                                  </button></td>
+                                                 <td style='display:none;'>" . $row["ID"] . "</td>
                                                  </tr>";
                                             $i++;
                                         }

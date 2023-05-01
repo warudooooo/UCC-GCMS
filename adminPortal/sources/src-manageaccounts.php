@@ -21,6 +21,18 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified,studentEmail,studentPassword,userType,vkey,userStatus)
     VALUES('$sName','$userName','$admName','yes','$sEmail','$sPassword','admin','','1')";
         $result = mysqli_query($mysqli, $sql);
+
+        $after = "
+Administrator Name: $sName
+User Name: $userName
+Email: $sEmail
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Added Administrator Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
+
+        header("location: manageaccounts.php");
     }
 }
 
@@ -35,9 +47,21 @@ if (isset($_POST['editAdmin'])) {
 
 
     if ($adminPassword == $curPassword) {
+
+        $after = "
+Administrator Name: $sName
+User Name: $userName
+Email: $sEmail
+        ";
+
+        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                    VALUES('$admName','','$after','Edited Administrator Account Successfully.')";
+        $runActivity = mysqli_query($mysqli, $activity);
+
         $sql = "UPDATE tbl_students SET studentNumber='$userName', studentName='$sName', studentEmail='$sEmail' WHERE ID='$ID'";
         $result = mysqli_query($mysqli, $sql);
-        $msg = '<div class="eml" style="width: 100%; display: inline-block; text-align: center; color: #38b000; "><h3>Edit Success.</h3></div>';
+
+        header("location: manageaccounts.php?edit_success=true");
     } else{
         $msg = '<div class="eml" style="width: 100%; display: inline-block; text-align: center; color: crimson;"><h3>Incorrect Password.</h3></div>';
     }
@@ -48,16 +72,29 @@ if (isset($_POST['editAdmin'])) {
 
 
 if (isset($_POST['delete_permanent'])) {
-    $sNumber = $_POST['sNumber'];
+    $userNames = $_POST['userNames'];
     $sName = $_POST['sName'];
 
-    $sNumber = $mysqli->real_escape_string($sNumber);
+    $userNames = $mysqli->real_escape_string($userNames);
     $sName = $mysqli->real_escape_string($sName);
 
     if ($admName == $sName) {
         $msg = '<div class="eml" style="width: 100%; display: inline-block; text-align: center; color: crimson;"><h3>You cannot delete your own account.</h3></div>';
     } else {
-        $delete = "DELETE FROM tbl_students WHERE studentNumber = '$sNumber'";
+
+        $after = "
+Administrator Name: $sName
+User Name: $userNames
+                ";
+        
+                $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+                            VALUES('$admName','','$after','Deleted Administrator Successfully.')";
+                $runActivity = mysqli_query($mysqli, $activity);
+
+
+        $delete = "DELETE FROM tbl_students WHERE studentNumber = '$userNames'";
         $result = mysqli_query($mysqli, $delete);
+
+        header("location: manageaccounts.php?delete_success=true");
     }
 }

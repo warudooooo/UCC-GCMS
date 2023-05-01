@@ -41,12 +41,12 @@
                     </div>
                     <h5 class="col-md-12 reason" style="margin-top:10px;">Reason</h5>
                     <div class="col-md-12">
-                        <textarea rows="7" class="form-control form-control-line" id="activityReason" style="background-color: #e8eddf; padding: 20px; pointer-events: none;" readonly></textarea>
+                        <textarea rows="7" class="form-control form-control-line" id="activityReason" style="background-color: #e8eddf; padding: 20px; pointer-events: auto;" readonly></textarea>
                     </div>
                     <input style="display: none;" id="activityID" name="activityID">
                 </div>
                 <div class="modal-footer" style="margin: auto;">
-                    <button style='width:200px;' type='submit' class='btn btn-primary btngreen download' style='width: 150px;' name="downloadFile">Download File</button>
+                    <button style='width:200px;' type='submit' class='btn btn-primary btngreen download' name="downloadFile">Download File</button>
                     <button style='width:200px;' type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>

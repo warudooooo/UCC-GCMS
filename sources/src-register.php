@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 
 
 	if (!in_array($extension, ['png', 'pdf', 'jpg', 'jpeg'])) {
-	    $msg = '<div class="eml" style="display: inline-block; color: crimson; margin-bottom: -15px; font-size: 20px;"><h3>Your file extension must be .png, .jpg, or .jpeg</h3></div>';
+	    $msg = '<div class="eml" style="display: inline-block; color: crimson; margin-bottom: -15px; font-size: 20px;"><h5>Your file extension must be .png, .jpg, or .jpeg</h5></div>';
 	} else if ($_FILES['myfile']['size'] && $_FILES['myfile2']['size'] > 10000000) { // file shouldn't be larger than 1Megabyte
 	    echo "File too large!";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentEmail='{$sEmail}'")) > 0) {

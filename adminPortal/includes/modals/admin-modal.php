@@ -25,7 +25,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">User Name</label>
                                         <div class="col-md-12">
-                                            <textarea placeholder="Enter user name here..." rows="1" class="form-control form-control-line" name="userName" minlength="8" style="background-color: #edf2fb;" required></textarea placeholder="">
+                                            <textarea placeholder="Enter user name here..." rows="1" class="form-control form-control-line" name="userName" minlength="6" style="background-color: #edf2fb;" required></textarea placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -127,7 +127,7 @@
                 <div class="modal-body">
                     <div class="col-md-12">
                         <h2 class="col-md-12">Are you sure you want to DELETE?</h2>
-                        <input placeholder="" style="pointer-events: none; display:none;" type="text" id="delID" name="ID" class="form-control form-control-line" readonly>
+                        <input placeholder="" style="pointer-events: none; display:none;" type="text" id="delNumber" name="userNames" class="form-control form-control-line" readonly>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">Administrator Name</label>
                     <div class="col-md-12">

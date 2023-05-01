@@ -98,6 +98,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                     <thead class="table-dark">
                                         <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff; width: 20px;">#</th>
+                                            <th scope="col" style="color: #fff; width: 0px; text-align: center;">Status</th>
                                             <th scope="col" style="color: #fff; width: 0px; text-align: center;">Degree</th>
                                             <th scope="col" style="color: #fff; width: 150px;">Student Name</th>
                                             <th scope="col" style="color: #fff; width: 100px;">Student Number</th>
@@ -107,6 +108,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                             <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="color: #fff; width: 150px;">Date Issued</th>
                                             <th scope="col" style="color: #fff; width: 75px;">View Details</th>
+                                            <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="display: none;"></th>
                                             <th scope="col" style="display: none;"></th>
                                         </tr>
@@ -120,6 +122,17 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  ";
+                                            if ($row["sanctionStatus"] == "Pending") {
+                                            echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #E74C3C; color: #fff; border-style:none; border-radius: 20px;'>
+                                                    Active
+                                                   </button></td>";
+                                            } else if ($row["sanctionStatus"] == "Completed") {
+                                                echo "<td style='text-align:center;'>
+                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2E86C1; color: #fff; border-style:none; border-radius: 20px;'>
+                                                    Completed
+                                                   </button></td>";
+                                            }
                                             if ($row["degree"] == "Mild") {
                                                 echo "<td style='text-align:center;'>
                                                     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #f7b267; color: #fff; border-style:none; border-radius: 20px;'>
@@ -149,6 +162,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                                  </button></td>
                                                  <td style='display: none;'>" . $row["sanctionID"] . "</td>
                                                  <td style='display: none;'>" . $row["degree"] . "</td>
+                                                 <td style='display: none;'>" . $row["sanctionStatus"] . "</td>
                                                  </tr>";
                                             $i++;
                                         }

@@ -67,7 +67,7 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Phone number</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" minlength="11" maxlength="13" placeholder="Enter phone number here..." name="studentPhone" maxlength="12" style="background-color: #edf2fb;" required></textarea>
+                                        <input type="number" rows="1" class="form-control form-control-line" minlength="11" maxlength="13" placeholder="Enter phone number here..." name="studentPhone" style="background-color: #edf2fb;" required>
                                         </div>
                                     </div>
                                 </form>
@@ -134,7 +134,7 @@
                     <div class="form-group">
                         <label class="col-md-12">Phone number</label>
                         <div class="col-md-12">
-                            <textarea rows="1" class="form-control form-control-line" id="studentPhone" name="studentPhone" style="background-color: #e8eddf; pointer-events: none;" required></textarea>
+                            <input type="number" rows="1" class="form-control form-control-line" id="studentPhone" name="studentPhone" style="background-color: #e8eddf; pointer-events: none;" required>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                     <div class="form-group">
                         <label class="col-md-12">Phone number</label>
                         <div class="col-md-12">
-                            <textarea rows="1" class="form-control form-control-line" id="studentPhone1" name="studentPhone" style="background-color: #ccebff;" required></textarea>
+                            <input type="number" minlength="11" maxlength="13" rows="1" class="form-control form-control-line" id="studentPhone1" name="studentPhone" style="background-color: #ccebff;" required>
                         </div>
                     </div>
                     <label class="col-md-12" style="margin-top:10px;">To edit this student details. You need to type again your password</label>

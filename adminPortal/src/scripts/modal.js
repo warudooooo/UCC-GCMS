@@ -196,6 +196,7 @@ $(document).ready(function(){
                 $('#oldadmsNumber').val(data[2]);
                 $('#admsCourse').val(data[4]);
                 $('#oldadmsCourse').val(data[4]);
+                $('#admsID').val(data[9]);
                 if (data[3] == "Email is not available right now."){
                     $('#admsEmail').val("");
                     $('#oldadmsEmail').val("");

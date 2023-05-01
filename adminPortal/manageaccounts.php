@@ -1,6 +1,12 @@
 <?php
 include 'sources/session.php';
 include 'sources/src-manageaccounts.php';
+$msg = "";
+if (isset($_GET['edit_success']) && $_GET['edit_success'] == true) {
+    $msg = '<div class="eml" style="width: 100%; display: inline-block; text-align: center; color: #38b000; "><h3>Edit Success.</h3></div>';
+} else if (isset($_GET['delete_success']) && $_GET['delete_success'] == true) {
+    $msg = '<div class="eml" style="width: 100%; display: inline-block; text-align: center; color: crimson; "><h3>Delete Success.</h3></div>';
+};
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -8,7 +14,7 @@ include 'sources/src-manageaccounts.php';
 <head>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
-    
+
 </head>
 <?php include 'includes/header.php';
 include 'includes/modals/admin-modal.php'; ?>
@@ -41,12 +47,12 @@ include 'includes/modals/admin-modal.php'; ?>
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Manage Accounts</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Manage Admin Accounts</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php" style="color: #f4845f;">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Manage Accounts</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Manage Admin Accounts</li>
                                 </ol>
                             </nav>
                         </div>
@@ -64,45 +70,45 @@ include 'includes/modals/admin-modal.php'; ?>
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Add Account</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Add Admin Account</h4>
                     <div class="col-lg-12 col-xlg-12 col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form class="form-horizontal form-material mx-2">
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addAdminModal'>Add Account</button>
-                                                </div>
-                                                <div style="width: 100%;">
-                                                    <?php echo $msg; ?>
-                                                </div>
-                                            </div>
-                                        </form>
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type='button' class='btn btn-primary addstudentbtn' data-bs-toggle='modal' data-bs-target='#addAdminModal'>Add Account</button>
+                                        </div>
+                                        <div style="width: 100%;">
+                                            <?php echo $msg; ?>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Administrator Lists</h4>
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="table-responsive" style="padding: 20px;">
-                                    <table id="dataTable" class="table table-bordered table-hover">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th scope="col" style="color: #fff;">#</th>
-                                                <th scope="col" style="color: #fff;">Administrator Name</th>
-                                                <th scope="col" style="color: #fff;">Email</th>
-                                                <th scope="col" style="color: #fff;">Added By:</th>
-                                                <th scope="col" style="color: #fff; display: none;">#</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
-                                                <th scope="col" style="color: #fff; text-align: center;">DELETE ACCOUNT</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'admin' AND userStatus = '1'");
-                                            $i = 1;
-                                            while ($row = $load->fetch_assoc()) {
-                                                echo "<tr>
+                        </div>
+                    </div>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Administrator Lists</h4>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" style="color: #fff;">#</th>
+                                            <th scope="col" style="color: #fff;">Administrator Name</th>
+                                            <th scope="col" style="color: #fff;">Email</th>
+                                            <th scope="col" style="color: #fff;">Added By:</th>
+                                            <th scope="col" style="color: #fff; display: none;">#</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">EDIT</th>
+                                            <th scope="col" style="color: #fff; text-align: center;">DELETE ACCOUNT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentVerified='yes' AND studentEmail != '' AND userType = 'admin' AND userStatus = '1' AND studentNumber != '$userName' AND studentNumber != 'admin'");
+                                        $i = 1;
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td>" . $row["studentName"] . "</td>
                                                  <td style='text-transform: uppercase; display: none;'>" . $row["studentNumber"] . "</td>
@@ -116,38 +122,38 @@ include 'includes/modals/admin-modal.php'; ?>
                                                      Delete
                                                  </button></td>
                                                  </tr>";
-                                                $i++;
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            $i++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
                 </div>
                 <!-- ============================================================== -->
-                <!-- End Container fluid  -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Page wrapper  -->
+            <!-- End Container fluid  -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Wrapper -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
 
-        <?php include 'includes/footer.php' ?>
-        <script src="src/scripts/modal.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-        <script src="src/scripts/datatable.js"></script>
+    <?php include 'includes/footer.php' ?>
+    <script src="src/scripts/modal.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="src/scripts/datatable.js"></script>
 </body>
 
 </html>

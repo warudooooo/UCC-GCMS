@@ -111,9 +111,9 @@ include 'includes/modals/student-modal.php'; ?>
                                                     $check = mysqli_query($mysqli, "SELECT * FROM tbl_studentsregistrar WHERE studentNumber = '" . $studentNumber . "'");
 
                                                     if (mysqli_num_rows($check) != 0) {
-                                                        echo '<h4 class="col-md-12" style="color: #008000;">Based on the Student Number provided by this student. It was automatically checked by system and verified that it was currently enrolled in the school. Please manually check to confirm.</h4>';
+                                                        echo '<h4 class="col-md-12" style="color: #008000;">Based on the Student Number provided by this student, there was a record in the system that this student was enrolled. Please manually check to confirm.</h4>';
                                                     }else{
-                                                        echo "<h4 class='col-md-12' style='color: crimson;'>Based on the Student Number provided by this student. The system can't find any record of this student. Please manually check to see if this student was enrolled.</h4>";
+                                                        echo "<h4 class='col-md-12' style='color: crimson;'>Based on the Student Number provided by this student, there is no record that this student was enrolled. Please manually check to see if this student was enrolled.</h4>";
                                                     }
                                                     ?>
                                                     

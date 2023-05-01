@@ -195,6 +195,23 @@
     border-radius: 20px !important;
 }
 
+.btnorange:hover{
+    background-color: #333 !important; 
+    color: #fff !important; 
+    padding: 10px 40px 10px 40px !important; 
+    border-style:none !important; 
+    border-radius: 20px !important;
+}
+
+dl dt {
+    font-size: 20px;
+    color: #000;
+}
+dl dd {
+    font-size: 18px;
+    
+}
+
 .seemore,
 .approve{
     background-color: #fff !important;

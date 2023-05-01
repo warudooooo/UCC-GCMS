@@ -14,12 +14,11 @@ include 'sources/src-register.php';
 </head>
 
 <body>
-
 	<main>
 		<div class="mainBox">
 			<div class="innerBox">
 				<div class="logregForm">
-					<form method="POST" action="register.php" enctype="multipart/form-data" autocomplete="off" class="signupForm">
+					<form method="POST" id="signupForm" action="register.php" enctype="multipart/form-data" autocomplete="off" class="signupForm">
 						<div class="uccLogo">
 							<img src="src/images/uccLogo.png">
 							<h4>University of Caloocan City Guidance and Counseling</h4>
@@ -31,38 +30,38 @@ include 'sources/src-register.php';
 						</div>
 						<div class="actualForm">
 							<div class="inputWrap">
-								<input type="text" class="txtbxFields" minlength="4" name="sName" autocomplete="off" required>
+								<input type="text" class="txtbxFields" minlength="4" id="sName" name="sName" autocomplete="off" required>
 								<label> Full Name (Ex: Dela Cruz, Juan M.)</label>
 							</div>
 							<div class="inputWrap">
-								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="4" name="sNumber" autocomplete="off" required>
+								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="4" id="sNumber" name="sNumber" autocomplete="off" required>
 								<label> Student Number (Ex: 20xxxxxx-M) </label>
 							</div>
 							<div class="inputWrap">
-								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="3" name="sCourse" autocomplete="off" required>
+								<input type="text" style="text-transform: uppercase;" class="txtbxFields" minlength="3" id="sCourse" name="sCourse" autocomplete="off" required>
 								<label style="font-size: 14px !important;"> Course Year and Section(Ex: BSxx 1-A)</label>
 							</div>
 							<div class="inputWrap">
-								<input type="email" class="txtbxFields" minlength="8" name="sEmail" autocomplete="off" required>
+								<input type="email" class="txtbxFields" minlength="8" id="sEmail" name="sEmail" autocomplete="off" required>
 								<label> Email </label>
 							</div>
 							<div class="inputWrap">
-								<input type="Password" class="txtbxFields" minlength="8" name="sPassword" autocomplete="off" required>
+								<input type="Password" class="txtbxFields" minlength="8" id="sPassword" name="sPassword" autocomplete="off" required>
 								<label> Password </label>
 							</div>
 							<div class="inputWrap">
 								<div class="mb-3">
-									<label for="formFileSm" class="form-label" style="margin-top: -35px;">Latest Registration Form</label>
-									<input class="form-control form-control-sm" style="margin-top: 40px;" id="formFileSm" name="myfile" type="file" required />
+									<label for="myfile" class="form-label" style="margin-top: -35px;">Latest Registration Form</label>
+									<input class="form-control form-control-sm" style="margin-top: 40px;" id="myfile" name="myfile" type="file" required />
 								</div>
 							</div>
 							<div class="inputWrap">
 								<div class="mb-3">
-									<label for="formFileSm" class="form-label" style="margin-top: -35px;">Selfie with Registration Form</label>
-									<input class="form-control form-control-sm" style="margin-top: 40px;" id="formFileSm" name="myfile2" type="file" required />
+									<label for="myfile2" class="form-label" style="margin-top: -35px;">Selfie with Registration Form</label>
+									<input class="form-control form-control-sm" style="margin-top: 40px;" id="myfile2" name="myfile2" type="file" required />
 								</div>
 							</div>
-							<input type="submit" name="submit" value="Sign Up" class="btnSignin">
+							<input type="submit" id="btnSignin" name="submit" value="Sign Up" class="btnSignin">
 						</div>
 					</form>
 				</div>
@@ -83,6 +82,7 @@ include 'sources/src-register.php';
 			</div>
 		</div>
 	</main>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript" src="src/scripts/loginScript.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

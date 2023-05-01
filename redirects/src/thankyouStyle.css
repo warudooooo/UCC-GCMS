@@ -67,6 +67,7 @@ button:hover {
   font-size: 25px;
   font-weight: 500;
   color: #333;
+  text-align: center;
 }
 .modal-box h3 {
   font-size: 16px;
@@ -92,14 +93,7 @@ button:hover {
 
 @media (max-width: 850px) {
   .modal-box {
-    max-width: 500px;
-    transition: 300ms;
-  }
-}
-
-@media (max-width: 530px) {
-  .modal-box {
-    max-width: 390px;
+    max-width: 360px !important;
     transition: 300ms;
   }
 }

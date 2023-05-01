@@ -27,15 +27,24 @@ $(document).ready(function(){
 
                 console.log(data);
 
-                $('#ssName').val(data[2]);
-                $('#ssNumber').val(data[3]);
-                $('#ssCourse').val(data[4]);
-                $('#ssCase').val(data[5]);
-                $('#ssType').val(data[6]);
-                $('#ssMessage').val(data[7]);
-                $('#ssID').val(data[10]);
-                $('#ssDegree').val(data[11]);
-                $('#ssDate').val(data[8]);
+                $('#ssName').val(data[3]);
+                $('#ssNumber').val(data[4]);
+                $('#ssCourse').val(data[5]);
+                $('#ssCase').val(data[6]);
+                $('#ssType').val(data[7]);
+                $('#ssMessage').val(data[8]);
+                $('#ssID').val(data[11]);
+                $('#ssDegree').val(data[12]);
+                $('#ssDate').val(data[9]);
+
+                var markasdone = data[13].trim();
+                if (markasdone === 'Pending') {
+                    console.log('Pending');
+                    $('button.markasdone').show();
+                } else if (markasdone === 'Completed') {
+                    console.log('Completed');
+                    $('button.markasdone').hide();
+                }
 	});
 });
 

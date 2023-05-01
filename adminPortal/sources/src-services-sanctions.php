@@ -1,10 +1,12 @@
 <?php
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use voku\helper\AntiXSS;
 
-require '../vendor/autoload.php';
+$antiXss = new AntiXSS();
 
 if (isset($_POST['sanction_btn'])) {
 
@@ -16,10 +18,15 @@ if (isset($_POST['sanction_btn'])) {
 
 if (isset($_POST['counsel_btn'])) {
 
-    $sName = $_POST["sName"];
-    $sNumber = $_POST["sNumber"];
-    $sCourse = $_POST["sCourse"];
-    $stEmail = $_POST["stEmail"];
+    $sName = filter_input(INPUT_POST, 'sName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sNumber = filter_input(INPUT_POST, 'sNumber', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sCourse = filter_input(INPUT_POST, 'sCourse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $stEmail = filter_input(INPUT_POST, 'stEmail', FILTER_SANITIZE_EMAIL);
+
+    $sName = $antiXss->xss_clean($sName);
+    $sNumber = $antiXss->xss_clean($sNumber);
+    $sCourse = $antiXss->xss_clean($sCourse);
+    $stEmail = $antiXss->xss_clean($stEmail);
 }
 
 if (isset($_POST['remove_sanction'])) {
@@ -36,22 +43,43 @@ if (isset($_POST['remove_sanction'])) {
     $runActivity = mysqli_query($mysqli, $activity);
 }
 
+if (isset($_POST['sancMarkAsDone'])) {
+    $ssID = $mysqli->real_escape_string($_POST['ssID']);
+
+    $update = "UPDATE tbl_sanctions SET sanctionStatus = 'Completed' WHERE sanctionID = '$ssID'";
+    $result = mysqli_query($mysqli, $update);
+
+}
+
+
 
 if (isset($_POST['submit'])) {
 
-    $sName = $mysqli->real_escape_string($_POST['sName']);
-    $sNumber = $mysqli->real_escape_string($_POST['sNumber']);
-    $sCourse = $mysqli->real_escape_string($_POST['sCourse']);
-    $sEmail = $mysqli->real_escape_string($_POST['sEmail']);
-    $sCase = $mysqli->real_escape_string($_POST['sCase']);
-    $sType = $mysqli->real_escape_string($_POST['sType']);
-    $sMessage = $mysqli->real_escape_string($_POST['sMessage']);
-    $degree = $mysqli->real_escape_string($_POST['degree']);
+    $sName = filter_input(INPUT_POST, 'sName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sNumber = filter_input(INPUT_POST, 'sNumber', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sCourse = filter_input(INPUT_POST, 'sCourse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sEmail = filter_input(INPUT_POST, 'sEmail', FILTER_SANITIZE_EMAIL);
+    $sCase = filter_input(INPUT_POST, 'sCase', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sType = filter_input(INPUT_POST, 'sType', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $sMessage = filter_input(INPUT_POST, 'sMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $degree = filter_input(INPUT_POST, 'degree', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $sName = $antiXss->xss_clean($sName);
+    $sNumber = $antiXss->xss_clean($sNumber);
+    $sCourse = $antiXss->xss_clean($sCourse);
+    $sEmail = $antiXss->xss_clean($sEmail);
+    $sCase = $antiXss->xss_clean($sCase);
+    $sType = $antiXss->xss_clean($sType);
+    $sMessage = $antiXss->xss_clean($sMessage);
+    $degree = $antiXss->xss_clean($degree);
 
 
     if ($sType == "") {
         echo '<script>alert("Please fill up all fields")</script>';
     } else {
+        if ($sName == "" || $sNumber == "" || $sCourse == "" || $sEmail == "" || $sCase == "" || $sType == "" || $sMessage == "" || $degree == "") {
+            $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+        } else {
         $add = "INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanctionType,sanctionMessage,degree)
     VALUES('$sNumber','$sName','$sCourse','$sEmail','$sCase','$sType','$sMessage','$degree')";
         $result = mysqli_query($mysqli, $add);
@@ -264,6 +292,7 @@ if (isset($_POST['submit'])) {
         $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
                     VALUES('$admName','','$after','Sanctioned $sName.')";
         $runActivity = mysqli_query($mysqli, $activity);
-        header("Location: services-studentwithsanctions.php");
+        header("Location: sanctions-and-counseling.php");
+    }
     }
 }

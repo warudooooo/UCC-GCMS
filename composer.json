@@ -2,6 +2,7 @@
     "require": {
         "phpmailer/phpmailer": "^6.6",
         "ext-gd": "*",
-        "phpoffice/phpspreadsheet": "^1.28"
+        "phpoffice/phpspreadsheet": "^1.28",
+        "voku/anti-xss": "^4.1"
     }
 }

@@ -23,13 +23,19 @@
                                     <div class="form-group">
                                         <label class="col-md-12">Student Number</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" placeholder="(Ex: 20xxxxxx-M)" name="sNumber" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
+                                            <input minlength="10" maxlength="10" rows="1" class="form-control form-control-line" placeholder="(Ex: 20xxxxxx-M)" name="sNumber" style="background-color: #edf2fb; text-transform: uppercase;" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12">Course, Year and Section</label>
                                         <div class="col-md-12">
-                                            <textarea rows="1" class="form-control form-control-line" placeholder="(Ex: BSxx 1-A)" name="sCourse" style="background-color: #edf2fb; text-transform: uppercase;" required></textarea>
+                                            <input minlength="7" maxlength="11" rows="1" class="form-control form-control-line" placeholder="(Ex: BSxx 1-A)" name="sCourse" style="background-color: #edf2fb; text-transform: uppercase;" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" rows="1" class="form-control form-control-line" placeholder="Enter email here..." name="sEmail" style="background-color: #edf2fb;">
                                         </div>
                                     </div>
                                 </form>
@@ -196,7 +202,7 @@
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Number</label>
                         <div class="col-md-12">
-                            <input style="background-color: #edf2fb; pointer-events: none; text-transform: uppercase;" type="text" name="sNumber" id="sNumber" class="form-control form-control-line">
+                            <input style="background-color: #edf2fb; pointer-events: none; text-transform: uppercase;" type="text" name="ssNumber" id="sNumber" class="form-control form-control-line">
                         </div>
                         <label class="col-md-12" style="margin-top:10px;">Student Email</label>
                         <div class="col-md-12">
@@ -451,6 +457,7 @@
                         <div class="col-md-12">
                             <input type="password" placeholder="Enter your password here" name="admPassword" class="form-control form-control-line" required>
                         </div>
+                        <input style="pointer-events: none; display:none;" type="text" id="admsID" name="ID" class="form-control form-control-line" readonly>
                         <input style="display:none;" type="text" value="<?php echo $admPassword ?>" name="curPassword" class="form-control form-control-line">
                     </div>
                     <div class="modal-footer" style="margin: 0 auto;">

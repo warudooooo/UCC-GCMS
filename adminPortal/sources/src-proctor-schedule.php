@@ -1,8 +1,15 @@
 <?php
+
+use voku\helper\AntiXSS;
+
+require_once '../vendor/autoload.php';
+
+$antiXss = new AntiXSS();
+
 $msg = "";
 if (isset($_POST['viewsched'])) {
-	$_SESSION['pID'] = $_POST["pID"];
-	$_SESSION['pName'] = $_POST["pName"];
+	$_SESSION['pID'] = filter_input(INPUT_POST, 'pID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$_SESSION['pName'] = filter_input(INPUT_POST, 'pName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 $procName = $_SESSION['pName'];
 
@@ -10,11 +17,17 @@ $load = mysqli_query($mysqli, "SELECT * FROM tbl_proctorschedule WHERE proctorNa
 $total = mysqli_num_rows($load);
 
 if (isset($_POST['addsched'])) {
-	$pName = $mysqli->real_escape_string($_POST['pName']);
-	$roomAssigned = $mysqli->real_escape_string($_POST['roomAssigned']);
-	$startTime = $mysqli->real_escape_string($_POST['startTime']);
-	$endTime = $mysqli->real_escape_string($_POST['endTime']);
-	$date = $mysqli->real_escape_string($_POST['date']);
+	$pName = filter_input(INPUT_POST, 'pName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$roomAssigned = filter_input(INPUT_POST, 'roomAssigned', FILTER_SANITIZE_FULL_SPECIAL_CHARS);;
+	$startTime = filter_input(INPUT_POST, 'startTime', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$endTime = filter_input(INPUT_POST, 'endTime', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+	$pName = $antiXss->xss_clean($pName);
+	$roomAssigned = $antiXss->xss_clean($roomAssigned);
+	$startTime = $antiXss->xss_clean($startTime);
+	$endTime = $antiXss->xss_clean($endTime);
+	$date = $antiXss->xss_clean($date);
 
 	//check for duplicate sched
 	$dupRoomAssigned = "SELECT roomAssigned FROM tbl_proctorschedule WHERE roomAssigned = '$roomAssigned'";
@@ -41,6 +54,9 @@ if (isset($_POST['addsched'])) {
 		} else if ($startTime >= $endTime) {
 			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h1>Invalid Schedule.</h1></div>';
 		} else {
+			if($pName == "" || $roomAssigned == "" || $startTime == "" || $endTime == "" || $date == ""){
+				$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+			}else{
 			$add = "INSERT INTO tbl_proctorschedule(proctorName,roomAssigned,startTime,endTime,examDate)
     		VALUES('$pName','$roomAssigned','$startTime','$endTime','$date')";
 			$result = mysqli_query($mysqli, $add);
@@ -56,7 +72,7 @@ Date: $date
 			$activity = "INSERT INTO tbl_activitylog(admName,activityActionAfter,activityDetails,activityReason)
 			VALUES('$admName','$after','Added Schedule for $pName.','')";
 			$runActivity = mysqli_query($mysqli, $activity);
-
+			}
 
 		}
 	} else {
@@ -66,19 +82,19 @@ Date: $date
 
 if (isset($_POST['editsched'])) {
 
-	$pID = $mysqli->real_escape_string($_POST['pID']);
-	$pName = $mysqli->real_escape_string($_POST['pName']);
-	$roomAssigned = $mysqli->real_escape_string($_POST['roomAssigned']);
-	$startTime = $mysqli->real_escape_string($_POST['startTime']);
-	$endTime = $mysqli->real_escape_string($_POST['endTime']);
-	$date = $mysqli->real_escape_string($_POST['date']);
+	$pID = filter_input(INPUT_POST, 'pID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$pName = filter_input(INPUT_POST, 'pName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$roomAssigned = filter_input(INPUT_POST, 'roomAssigned', FILTER_SANITIZE_FULL_SPECIAL_CHARS);;
+	$startTime = filter_input(INPUT_POST, 'startTime', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$endTime = filter_input(INPUT_POST, 'endTime', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-
-	$pName = $mysqli->real_escape_string($_POST['pName']);
-	$roomAssigned = $mysqli->real_escape_string($_POST['roomAssigned']);
-	$startTime = $mysqli->real_escape_string($_POST['startTime']);
-	$endTime = $mysqli->real_escape_string($_POST['endTime']);
-	$date = $mysqli->real_escape_string($_POST['date']);
+	$pID = $antiXss->xss_clean($pID);
+	$pName = $antiXss->xss_clean($pName);
+	$roomAssigned = $antiXss->xss_clean($roomAssigned);
+	$startTime = $antiXss->xss_clean($startTime);
+	$endTime = $antiXss->xss_clean($endTime);
+	$date = $antiXss->xss_clean($date);
 
 
 	if ($roomAssigned == "" || $startTime == "" || $endTime == "" || $date == "") {
@@ -86,6 +102,9 @@ if (isset($_POST['editsched'])) {
 	} else if ($startTime >= $endTime) {
 		$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h1>Invalid Schedule.</h1></div>';
 	} else {
+		if($pName == "" || $roomAssigned == "" || $startTime == "" || $endTime == "" || $date == ""){
+			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+		}else{
 		$edit = "UPDATE `tbl_proctorschedule` SET proctorName='$pName',roomAssigned='$roomAssigned',startTime='$startTime',endTime='$endTime',examDate='$date' WHERE proctorID='$pID'";
 		$result = mysqli_query($mysqli, $edit);
 		
@@ -102,7 +121,7 @@ Date: $date
 			VALUES('$admName','','$after','$details')";
 			$runActivity = mysqli_query($mysqli, $activity);
 
-
+		}
 	}
 }
 

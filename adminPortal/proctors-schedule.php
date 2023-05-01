@@ -10,7 +10,7 @@ include 'sources/src-proctor-schedule.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
     <style>
-        .form-selects{
+        .form-selects {
             background-color: #555555 !important;
             border: none !important;
             color: #fff !important;
@@ -127,18 +127,21 @@ include 'includes/modals/proctor-schedule-modal.php';
                     <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Proctors Lists</h4>
                     <div class="col-12">
                         <div class="card">
+                            <form action="export-schedule.php" method="POST">
+                                <button type='submit' style="margin-top: 15px; width: 230px; margin-left: 15px;float: left;" class='btn btn-primary btnexport' name="export"> Export all Data</button>
+                            </form>
                             <div class="table-responsive" style="padding: 20px;">
                                 <table id="dataTable" class="table table-bordered table-hover">
                                     <thead class="table-dark">
                                         <tr>
                                             <th scope="col" style="color: #fff; width: 5px;">#</th>
                                             <th scope="col" style="display: none;">Proctor ID</th>
-                                            <th scope="col" style="color: #fff; text-align: center; width: 400px;"">Proctor Name</th>
-                                                <th scope=" col" style="color: #fff; text-align: center; width: 400px;"">Room Assigned</th>
-                                                <th scope=" col" style="color: #fff; text-align: center; width: 400px;"">Start Time</th>
-                                                <th scope=" col" style="color: #fff; text-align: center; width: 400px;"">End Time</th>
-                                                <th scope=" col" style="color: #fff; text-align: center; width: 400px;"">Date</th>
-                                                <th scope=" col" style="color: #fff; text-align: center; width: 100px;">EDIT</th>
+                                            <th scope="col" style="display: none;">Proctor Name</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Room Assigned</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Start Time</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">End Time</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Date</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 100px;">EDIT</th>
                                             <th scope="col" style="color: #fff; text-align: center; width: 100px;">DELETE</th>
                                         </tr>
                                     </thead>
@@ -151,7 +154,7 @@ include 'includes/modals/proctor-schedule-modal.php';
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  <td style='display: none;'>" . $row["proctorID"] . "</td>
-                                                 <td>" . $row["proctorName"] . "</td>
+                                                 <td style='display: none;'>" . $row["proctorName"] . "</td>
                                                  <td style='text-transform: uppercase;'>" . $row["roomAssigned"] . "</td>
                                                  <td>" . date('h:i A', strtotime($row["startTime"])) . "</td>
                                                  <td>" . date('h:i A', strtotime($row["endTime"])) . "</td>
@@ -168,9 +171,6 @@ include 'includes/modals/proctor-schedule-modal.php';
                                         ?>
                                     </tbody>
                                 </table>
-                                <form action="export-schedule.php" method="POST">
-                                    <button type='submit' class='btn btn-primary editbtn' name="export"> Export as Excel file</button>
-                                </form>
                             </div>
                         </div>
                     </div>

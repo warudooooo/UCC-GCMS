@@ -4,14 +4,15 @@
 
 <head>
     <link rel="icon" href="src/images/uccLogo.png">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./src/styles/bootstrap.min.css">
     <link rel="stylesheet" href="./fullcalendar/lib/main.min.css">
     <script src="./src/scripts/jquery-3.6.0.min.js"></script>
     <script src="./src/scripts/bootstrap.min.js"></script>
     <script src="./fullcalendar/lib/main.min.js"></script>
+    <link rel="stylesheet" href="src/styles/customStyle.css">
     <link rel="stylesheet" type="text/css" href="src/styles/new-appointmentStyle.css">
     <style>
         :root {
@@ -61,6 +62,7 @@
             .calendaryo {
                 display: inline-flex !important;
             }
+
             .calendaryo .card {
                 width: 100% !important;
             }
@@ -150,7 +152,7 @@
                                             <span class="sBtn-text">Select your options</span>
                                             <i class="fas fa-caret-down"></i>
                                         </div>
-                                        <textarea class="sBtn-text-clone" name="sOptions"></textarea>
+                                        <textarea class="sBtn-text-clone" name="sOptions" required></textarea>
                                         <ul class="options">
                                             <?php
                                             $query = mysqli_query($mysqli, "SELECT * FROM tbl_counselingservices");
@@ -165,7 +167,7 @@
                                     <div class="form-group" style="margin-top: 10px;">
                                         <label class="col-md-12">Describe your concern</label>
                                         <div class="col-md-12">
-                                            <textarea rows="11" placeholder="Enter your concern here.." class="form-control form-control-line" name="sDetails"></textarea>
+                                            <textarea rows="11" placeholder="Enter your concern here.." class="form-control form-control-line" name="sDetails" required></textarea>
                                         </div>
                                     </div>
 
@@ -212,8 +214,8 @@
                                                 <dd id="status" class=""></dd>
                                             </dl>
                                         </div>
-                                        <div class="modal-footer" style="margin: auto;">
-                                            <button type="button" class="btn btn-secondary mdlclosebtn" data-bs-dismiss="modal">Close</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btnorange" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +254,8 @@
                 </div>
                 <!-- Event Details Modal -->
                 <?php
-                $schedules = $mysqli->query("SELECT * FROM `tbl_counselings` WHERE counselingStatus != 'Declined' AND counselingStatus != 'Cancelled'");
+               
+                $schedules = $mysqli->query("SELECT ID,counselingStatus,counselingSchedule,studentNumber FROM `tbl_counselings` WHERE counselingStatus = 'Declined' OR counselingStatus != 'Cancelled'");
                 $sched_res = [];
                 foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
                     $row['sdate'] = date("F d, Y h:i A", strtotime($row['counselingSchedule']));
@@ -288,7 +291,7 @@
     <script>
         var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
     </script>
-    <script src="./src/scripts/script.js"></script>
+    <script src="src/scripts/script.js"></script>
 </body>
 
 </html>

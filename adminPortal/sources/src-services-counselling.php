@@ -1,62 +1,75 @@
 <?php
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use voku\helper\AntiXSS;
 
-require '../vendor/autoload.php';
+$antiXss = new AntiXSS();
 
 $msg = "";
 if (isset($_POST['counsel_btn'])) {
 
-	$_SESSION['sName'] = $_POST["sName"];
-	$_SESSION['sNumber'] = $_POST["sNumber"];
-	$_SESSION['sCourse'] = $_POST["sCourse"];
-	$_SESSION['stEmail'] = $_POST["stEmail"];
+	$_SESSION['sName'] = filter_input(INPUT_POST, 'sName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$_SESSION['sNumber'] = filter_input(INPUT_POST, 'sNumber', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$_SESSION['sCourse'] = filter_input(INPUT_POST, 'sCourse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$_SESSION['stEmail'] = filter_input(INPUT_POST, 'stEmail', FILTER_SANITIZE_EMAIL);
 }
 
 if (isset($_POST['submit'])) {
 
-	$sName = $mysqli->real_escape_string($_POST['sName']);
-	$sNumber = $mysqli->real_escape_string($_POST['sNumber']);
-	$sCourse = $mysqli->real_escape_string($_POST['sCourse']);
-	$stEmail = $mysqli->real_escape_string($_POST['stEmail']);
-	$cDetails = $mysqli->real_escape_string($_POST['cDetails']);
-	$cType = $mysqli->real_escape_string($_POST['cType']);
-	$cSchedule = $mysqli->real_escape_string($_POST['cSchedule']);
+	$sName = filter_input(INPUT_POST, 'sName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$sNumber = filter_input(INPUT_POST, 'sNumber', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$sCourse = filter_input(INPUT_POST, 'sCourse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$stEmail = filter_input(INPUT_POST, 'stEmail', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$cDetails = filter_input(INPUT_POST, 'cDetails', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$cType = filter_input(INPUT_POST, 'cType', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$cSchedule = filter_input(INPUT_POST, 'cSchedule', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+	$sName = $antiXss->xss_clean($sName);
+	$sNumber = $antiXss->xss_clean($sNumber);
+	$sCourse = $antiXss->xss_clean($sCourse);
+	$stEmail = $antiXss->xss_clean($stEmail);
+	$cDetails = $antiXss->xss_clean($cDetails);
+	$cType = $antiXss->xss_clean($cType);
+	$cSchedule = $antiXss->xss_clean($cSchedule);
 
 	if ($cSchedule == "" || $cType == "") {
 		$msg = "<div class='eml' style='margin-bottom: 10px:'>Please fill up all fields.</div>";
 	} else {
-		$add = "INSERT INTO tbl_counselings(studentNumber,requesterName,studentCourse,studentEmail,counselingSchedule,counselingType,counselingDetails,counselingStatus)
+		if ($sName == "" || $sNumber == "" || $sCourse == "" || $stEmail == "" || $cDetails == "" || $cType == "" || $cSchedule == "") {
+			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+		} else {
+			$add = "INSERT INTO tbl_counselings(studentNumber,requesterName,studentCourse,studentEmail,counselingSchedule,counselingType,counselingDetails,counselingStatus)
         VALUES('$sNumber','$sName','$sCourse','$stEmail','$cSchedule','$cType','$cDetails','Approved')";
-		$result = mysqli_query($mysqli, $add);
-		if ($result) {
-			$msg = "<div class='suc' style='margin-bottom: 10px:'>Successfuly Submited</div>";
-			// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','COUNSELED STUDENT [ Details: $sName ]')";
-			// $runActivity = mysqli_query($mysqli, $activity);
-			if (empty($stEmail)) {
-			} else {
-				$mail = new PHPMailer(true);
-				try {
-					//Server settings
-					//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
-					$mail->isSMTP();                                            //Send using SMTP
-					$mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-					$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-					$mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
-					$mail->Password   = 'ljubpkiypermvnkz';						//SMTP password
-					$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-					$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+			$result = mysqli_query($mysqli, $add);
+			if ($result) {
+				$msg = "<div class='suc' style='margin-bottom: 10px:'>Successfuly Submited</div>";
+				// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','COUNSELED STUDENT [ Details: $sName ]')";
+				// $runActivity = mysqli_query($mysqli, $activity);
+				if (empty($stEmail)) {
+				} else {
+					$mail = new PHPMailer(true);
+					try {
+						//Server settings
+						//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
+						$mail->isSMTP();                                            //Send using SMTP
+						$mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+						$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+						$mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
+						$mail->Password   = 'ljubpkiypermvnkz';						//SMTP password
+						$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+						$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-					//Recipients
-					$mail->setFrom('s@gmail.com');
-					$mail->addAddress($stEmail);
+						//Recipients
+						$mail->setFrom('s@gmail.com');
+						$mail->addAddress($stEmail);
 
-					//Content
-					$mail->isHTML(true);                                  //Set email format to HTML
-					$mail->Subject = 'no reply';
-					$mail->Body = "<!DOCTYPE html>
+						//Content
+						$mail->isHTML(true);                                  //Set email format to HTML
+						$mail->Subject = 'no reply';
+						$mail->Body = "<!DOCTYPE html>
 					<html>
 					
 					<head>
@@ -255,19 +268,20 @@ if (isset($_POST['submit'])) {
 					</body>
 					
 					</html>";
-					// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
-					// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
+						// $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
+						// 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
 
-					$mail->send();
-				} catch (Exception $e) {
-					$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
-				}
-				$after = "$admName Scheduled $sName for counseling";
+						$mail->send();
+					} catch (Exception $e) {
+						$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+					}
+					$after = "$admName Scheduled $sName for counseling";
 
-				$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+					$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
                     VALUES('$admName','','$after','Scheduled $sName for counseling.')";
-				$runActivity = mysqli_query($mysqli, $activity);
-				header("Location: services-studentwithsanctions.php");
+					$runActivity = mysqli_query($mysqli, $activity);
+					header("Location: sanctions-and-counseling.php");
+				}
 			}
 		}
 	}
