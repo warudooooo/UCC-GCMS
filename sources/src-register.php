@@ -1,10 +1,13 @@
 <?php
+require 'vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+use voku\helper\AntiXSS;
 
+$antiXss = new AntiXSS();
 //DB Connect
 include 'config.php';
 $msg = "";
@@ -31,22 +34,18 @@ if (isset($_POST['submit'])) {
 	$size2 = $_FILES['myfile2']['size'];
 
 
-	$sName = $_POST['sName'];
-	$sNumber = $_POST['sNumber'];
-	$sCourse = $_POST['sCourse'];
-	$sEmail = $_POST['sEmail'];
-	$sPassword = md5($_POST['sPassword']);
-
-
-	$sName = $mysqli->real_escape_string($sName);
-	$sNumber = $mysqli->real_escape_string($sNumber);
-	$sCourse = $mysqli->real_escape_string($sCourse);
-	$sEmail = $mysqli->real_escape_string($sEmail);
-	$sPassword = $mysqli->real_escape_string($sPassword);
+	$sName = filter_input(INPUT_POST, 'sName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$sNumber = filter_input(INPUT_POST, 'sNumber', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$sCourse = filter_input(INPUT_POST, 'sCourse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$sEmail = filter_input(INPUT_POST, 'sEmail', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+	$sPassword = $mysqli->real_escape_string(md5($_POST['sPassword']));
 	//Generate Vkey
 	$vkey = md5(time() . $sName);
 
-
+	$sName = $antiXss->xss_clean($sName);
+    $sNumber = $antiXss->xss_clean($sNumber);
+    $sCourse = $antiXss->xss_clean($sCourse);
+    $sEmail = $antiXss->xss_clean($sEmail);
 
 
 	if (!in_array($extension, ['png', 'pdf', 'jpg', 'jpeg'])) {
@@ -59,6 +58,9 @@ if (isset($_POST['submit'])) {
 		$msg = "<div class='eml' style='margin-left: 20px; margin-botttom: 5px;'>This student already exist and verified.</div>";
 	} else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' && studentVerified='no'")) > 0) {
 		if (move_uploaded_file($file, $destination) && move_uploaded_file($file2, $destination2)) {
+			if ($sName == "" || $sNumber == "" || $sCourse == "" || $sEmail == "") {
+                $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+            } else {
 			$sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='$sPassword',
 			vkey='$vkey',studentVerified='no',userType='user',userStatus='1',regForm='$filename',regSelfie='$filename2' WHERE studentNumber='$sNumber'";
 			$result = mysqli_query($mysqli, $sql);
@@ -263,6 +265,7 @@ if (isset($_POST['submit'])) {
 					$msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
 				}
 				header('location:redirects/thankyou.php');
+			}
 			// 	$activity = "INSERT INTO tbl_activitylog(admName,activityAction)
             // VALUES('$admName','ADDED $filename')";
 			// 	$runActivity = mysqli_query($mysqli, $activity);
@@ -272,6 +275,9 @@ if (isset($_POST['submit'])) {
 		}
 	} else {
 		if (move_uploaded_file($file, $destination) && move_uploaded_file($file2, $destination2)) {
+			if ($sName == "" || $sNumber == "" || $sCourse == "" || $sEmail == "") {
+                $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
+            } else {
 			//Insert to DB
 			$sql = "INSERT INTO tbl_students(studentNumber,studentName,studentCourse,studentEmail,studentPassword,vkey,studentVerified,userType,userStatus,regForm,regSelfie,resetCode) 
 			VALUES('$sNumber','$sName','$sCourse','$sEmail','$sPassword','$vkey','no','user','1','$filename','$filename2','')";
@@ -481,6 +487,7 @@ if (isset($_POST['submit'])) {
 			} else {
 				$msg = "<div class='eml'>Something went wrong.</div>";
 			}
+		}
 		} else {
 			echo "Failed to upload file.";
 		}

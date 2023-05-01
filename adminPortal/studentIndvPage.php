@@ -275,7 +275,7 @@ include 'sources/src-studentLists.php';
                                 <thead class="table-dark">
                                     <tr style="text-align: center;">
                                         <th scope="col" style="color: #fff; width: 0px;">#</th>
-                                        <th scope="col" style="color: #fff; width: 0px; text-align: center;">Status</th>
+                                        <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction Status</th>
                                         <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction</th>
                                         <th scope="col" style="color: #fff; width: 150px;">Student Name</th>
                                         <th scope="col" style="color: #fff; width: 100px;">Student Number</th>

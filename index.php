@@ -1,5 +1,6 @@
 <?php
 include 'sources/src-index.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,6 +24,7 @@ include 'sources/src-index.php';
 							<img src="src/images/uccLogo.png">
 							<h4>University of Caloocan City Guidance and Counseling</h4>
 						</div>
+						<input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
 						<div class="heading">
 							<h2>Welcome back, UCCian!</h2>
 							<h6>Not registered yet?</h6>

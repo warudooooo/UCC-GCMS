@@ -98,7 +98,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                     <thead class="table-dark">
                                         <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff; width: 20px;">#</th>
-                                            <th scope="col" style="color: #fff; width: 0px; text-align: center;">Status</th>
+                                            <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction Status</th>
                                             <th scope="col" style="color: #fff; width: 0px; text-align: center;">Degree</th>
                                             <th scope="col" style="color: #fff; width: 150px;">Student Name</th>
                                             <th scope="col" style="color: #fff; width: 100px;">Student Number</th>

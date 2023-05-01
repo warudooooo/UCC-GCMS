@@ -1,4 +1,8 @@
 <?php
+require 'vendor/autoload.php';
+use voku\helper\AntiXSS;
+
+$antiXss = new AntiXSS();
 session_start();
 if (isset($_SESSION['SESSION_EMAIL'])) {
 	header("Location: adminPortal/index.php");
@@ -16,11 +20,8 @@ if (isset($_POST['signup'])) {
 //Login
 if (isset($_POST['submit'])) {
 
-	$sNumber = $_POST['sNumberPHP'];
-	$sPassword = md5($_POST['sPasswordPHP']);
-
-	$sNumber = $mysqli->real_escape_string($sNumber);
-	$sPassword = $mysqli->real_escape_string($sPassword);
+	$sNumber = filter_input(INPUT_POST, 'sNumber', FILTER_DEFAULT);
+	$sPassword = $mysqli->real_escape_string(md5($_POST['sPasswordPHP']));
 
 	$sql = "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' AND studentPassword='{$sPassword}'";
 	$result = mysqli_query($mysqli, $sql);
