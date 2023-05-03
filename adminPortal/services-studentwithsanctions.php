@@ -122,7 +122,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                             echo "<tr>
                                                  <td>" . $i . "</td>
                                                  ";
-                                            if ($row["sanctionStatus"] == "Pending") {
+                                            if ($row["sanctionStatus"] == "Active") {
                                             echo "<td style='text-align:center;'>
                                                     <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #E74C3C; color: #fff; border-style:none; border-radius: 20px;'>
                                                     Active

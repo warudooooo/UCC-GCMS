@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     } else if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}'")) > 0) {
         $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson;"><h3>This Student Number already exists.</h3></div>';
     } else {
-        if ($sNumber == "" || $sName == "" || $sEmail == "" || $sCourse == "") {
+        if ($sNumber == "" || $sName == "" || $sCourse == "") {
             $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
         } else {
         $sql = "INSERT INTO tbl_students(studentName,studentNumber,studentCourse,studentVerified,studentEmail,studentPassword,userType,vkey,userStatus)
@@ -550,7 +550,6 @@ if (isset($_POST['edit_student'])) {
     $oldsEmail = filter_input(INPUT_POST, 'oldsEmail', FILTER_SANITIZE_EMAIL);
 
     $sPassword = $mysqli->real_escape_string($_POST['sPassword']);
-
     $admPassword = $mysqli->real_escape_string(md5($_POST['admPassword']));
     $curPassword = $mysqli->real_escape_string($_POST['curPassword']);
 
@@ -638,7 +637,7 @@ if (isset($_POST['admedit_student'])) {
 
     if (mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM tbl_students WHERE ID='{$ID}'")) > 0) {
         if ($admPassword == $curPassword) {
-            if ($sName == "" || $sNumber == "" || $sCourse == "" || $sEmail == "" || $oldsName == "" || $oldsNumber == "" || $oldsCourse == "" || $oldsEmail == "") {
+            if ($sName == "" || $sNumber == "" || $sCourse == "" || $oldsName == "" || $oldsNumber == "" || $oldsCourse == "") {
                 $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
             } else {
             $sql = "UPDATE `tbl_students` SET studentNumber='$sNumber',studentName='$sName',studentCourse='$sCourse',studentEmail='$sEmail',studentPassword='',vkey='',studentVerified='no',userType='user',userStatus='1' WHERE ID='$ID'";
