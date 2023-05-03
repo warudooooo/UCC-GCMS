@@ -200,7 +200,7 @@ include 'includes/modals/index-modal.php';
                                                  <td style='text-transform: uppercase;'>" . $row["studentCourse"] . "</td>
                                                  <td style='display: none;'>" . $row["studentEmail"] . "</td>
                                                  <td>" . date('F j, Y h:i A (l)', strtotime($row["counselingSchedule"])) . "</td>
-                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style=''>
+                                                 <td style='text-align:center;'><button type='button' class='btn btn-primary btngreen cseemorebtn' data-bs-toggle='modal' data-bs-target='#seemoreModal' style='width: 120px;'>
                                                      View Details
                                                  </button></td>
                                                  <td style='display: none;'></td>
