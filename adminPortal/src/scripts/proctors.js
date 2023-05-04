@@ -59,6 +59,20 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('.markascompleted').on('click', function(){
+		$tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+                $('#row1').val(data[0]);
+                $('#pID1').val(data[1]);
+	});
+});
+
 if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
 }

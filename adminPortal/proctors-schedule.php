@@ -124,7 +124,7 @@ include 'includes/modals/proctor-schedule-modal.php';
                         </div>
                     </div>
                     <?php echo $msg; ?>
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Proctors Lists</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Proctors Schedule Lists</h4>
                     <div class="col-12">
                         <div class="card">
                             <form action="export-schedule.php" method="POST">
@@ -133,7 +133,7 @@ include 'includes/modals/proctor-schedule-modal.php';
                             <div class="table-responsive" style="padding: 20px;">
                                 <table id="dataTable" class="table table-bordered table-hover">
                                     <thead class="table-dark">
-                                        <tr>
+                                        <tr style="text-align: center;">
                                             <th scope="col" style="color: #fff; width: 5px;">#</th>
                                             <th scope="col" style="display: none;">Proctor ID</th>
                                             <th scope="col" style="display: none;">Proctor Name</th>
@@ -141,17 +141,17 @@ include 'includes/modals/proctor-schedule-modal.php';
                                             <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Start Time</th>
                                             <th scope=" col" style="color: #fff; text-align: center; width: 400px;">End Time</th>
                                             <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Date</th>
-                                            <th scope=" col" style="color: #fff; text-align: center; width: 100px;">EDIT</th>
-                                            <th scope="col" style="color: #fff; text-align: center; width: 100px;">DELETE</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 100px;">Mark as Completed</th>
+                                            <th scope="col" style="color: #fff; text-align: center; width: 700px;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $procName = $_SESSION['pName'];
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_proctorschedule WHERE proctorName='$procName' ");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_proctorschedule WHERE proctorName='$procName' AND scheduleStatus='Pending' ");
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {
-                                            echo "<tr>
+                                            echo "<tr style='text-align:center;'>
                                                  <td>" . $i . "</td>
                                                  <td style='display: none;'>" . $row["proctorID"] . "</td>
                                                  <td style='display: none;'>" . $row["proctorName"] . "</td>
@@ -159,12 +159,62 @@ include 'includes/modals/proctor-schedule-modal.php';
                                                  <td>" . date('h:i A', strtotime($row["startTime"])) . "</td>
                                                  <td>" . date('h:i A', strtotime($row["endTime"])) . "</td>
                                                  <td>" . date('F j, Y', strtotime($row["examDate"])) . "</td>
+                                                 <td style='text-align:center;'><button style='width: 200px;' type='button' class='btn btn-primary editbtn markascompleted' data-bs-toggle='modal' data-bs-target='#markAsCompletedModal'>
+                                                 Mark as Completed
+                                              </button></td>
                                                  <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary editbtn editschedbtn' data-bs-toggle='modal' data-bs-target='#editScheduleModal'>
-                                                    EDIT
-                                                 </button></td>
-                                                 <td style='text-align:center;'><button style='width: 150px;' type='button' class='btn btn-primary deletebtn deleteschedbtn' data-bs-toggle='modal' data-bs-target='#deleteScheduleModal'>
+                                                 EDIT
+                                              </button>
+                                              <button style='width: 150px;' type='button' class='btn btn-primary deletebtn deleteschedbtn' data-bs-toggle='modal' data-bs-target='#deleteScheduleModal'>
                                                      DELETE
                                                  </button></td>
+                                                 </tr>";
+                                            $i++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Completed Schedule Lists</h4>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="table-responsive" style="padding: 20px;">
+                                <table id="dataTable2" class="table table-bordered table-hover">
+                                    <thead class="table-dark">
+                                        <tr style="text-align: center;">
+                                            <th scope="col" style="color: #fff; width: 5px;">#</th>
+                                            <th scope="col" style="color: #fff; width: 200px; text-align: center;">Status</th>
+                                            <th scope="col" style="display: none;">Proctor ID</th>
+                                            <th scope="col" style="display: none;">Proctor Name</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Room Assigned</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Start Time</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">End Time</th>
+                                            <th scope=" col" style="color: #fff; text-align: center; width: 400px;">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $procName = $_SESSION['pName'];
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_proctorschedule WHERE proctorName='$procName' AND scheduleStatus='Completed' ");
+                                        $i = 1;
+                                        while ($row = $load->fetch_assoc()) {
+                                            echo "<tr style='text-align: center;'>
+                                                 <td>" . $i . "</td>";
+                                                 if ($row["scheduleStatus"] == "Completed") {
+                                                    echo "<td style='text-align:center;'>
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2E86C1; color: #fff; border-style:none; border-radius: 20px;'>
+                                                        Completed
+                                                       </button></td>";
+                                                }
+                                                echo "
+                                                 <td style='display: none;'>" . $row["proctorID"] . "</td>
+                                                 <td style='display: none;'>" . $row["proctorName"] . "</td>
+                                                 <td style='text-transform: uppercase;'>" . $row["roomAssigned"] . "</td>
+                                                 <td>" . date('h:i A', strtotime($row["startTime"])) . "</td>
+                                                 <td>" . date('h:i A', strtotime($row["endTime"])) . "</td>
+                                                 <td>" . date('F j, Y', strtotime($row["examDate"])) . "</td>
                                                  </tr>";
                                             $i++;
                                         }

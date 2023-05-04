@@ -57,8 +57,8 @@ if (isset($_POST['addsched'])) {
 			if($pName == "" || $roomAssigned == "" || $startTime == "" || $endTime == "" || $date == ""){
 				$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
 			}else{
-			$add = "INSERT INTO tbl_proctorschedule(proctorName,roomAssigned,startTime,endTime,examDate)
-    		VALUES('$pName','$roomAssigned','$startTime','$endTime','$date')";
+			$add = "INSERT INTO tbl_proctorschedule(proctorName,roomAssigned,startTime,endTime,examDate,scheduleStatus)
+    		VALUES('$pName','$roomAssigned','$startTime','$endTime','$date','Pending')";
 			$result = mysqli_query($mysqli, $add);
 			
 			$after = "
@@ -140,4 +140,23 @@ if (isset($_POST['deletesched'])) {
 				VALUES('$admName','','$after','$details')";
 				$runActivity = mysqli_query($mysqli, $activity);
 }
+
+if (isset($_POST['markascompleted'])) {
+
+	$pName = $mysqli->real_escape_string($_POST['pName']);
+
+	$updateCount = mysqli_query($mysqli, "UPDATE tbl_proctors SET completedSchedules = completedSchedules + 1 WHERE proctorName='$pName' ");
+
+
+	$updateStatus = "UPDATE tbl_proctorschedule SET status='Completed' WHERE proctorID='$pID'";
+	mysqli_query($mysqli, $updateStatus);
+
+	$after = "$admName Marked $pName Schedule as Completed";
+	
+				$details = "Deleted $pName Schedule.";
+				$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+				VALUES('$admName','','$after','$details')";
+				$runActivity = mysqli_query($mysqli, $activity);
+}
+
 
