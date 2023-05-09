@@ -119,7 +119,7 @@ include 'includes/modals/index-modal.php';
                 <div class="cards-single">
                     <div>
                         <?php
-                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselingHistory WHERE studentNumber = '$sNumber' AND counselingStatus = 'Completed'");
+                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_counselinghistory WHERE studentNumber = '$sNumber' AND counselingStatus = 'Completed'");
 
                         $total = mysqli_num_rows($load);
                         if ($total) {
