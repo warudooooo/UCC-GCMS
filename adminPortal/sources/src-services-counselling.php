@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
 	$stEmail = $antiXss->xss_clean($stEmail);
 	$cDetails = $antiXss->xss_clean($cDetails);
 	$cType = $antiXss->xss_clean($cType);
+	$status ='Approved';
 	$cSchedule = $antiXss->xss_clean($cSchedule);
 
 	if ($cSchedule == "" || $cType == "") {
@@ -41,10 +42,11 @@ if (isset($_POST['submit'])) {
 		if ($sName == "" || $sNumber == "" || $sCourse == "" || $stEmail == "" || $cDetails == "" || $cType == "" || $cSchedule == "") {
 			$msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
 		} else {
-			$add = "INSERT INTO tbl_counselings(studentNumber,requesterName,studentCourse,studentEmail,counselingSchedule,counselingType,counselingDetails,counselingStatus)
-        VALUES('$sNumber','$sName','$sCourse','$stEmail','$cSchedule','$cType','$cDetails','Approved')";
-			$result = mysqli_query($mysqli, $add);
-			if ($result) {
+
+			$stmt = $mysqli->prepare("INSERT INTO tbl_counselings(studentNumber,requesterName,studentCourse,studentEmail,counselingDetails,counselingType,counselingSchedule,counselingStatus)
+                VALUES(?,?,?,?,?,?,?,?)");
+                $stmt->bind_param("ssssssss",$sNumber,$sName,$sCourse,$stEmail,$cDetails,$cType,$cSchedule,$status);
+			if ($stmt->execute()) {
 				$msg = "<div class='suc' style='margin-bottom: 10px:'>Successfuly Submited</div>";
 				// $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','COUNSELED STUDENT [ Details: $sName ]')";
 				// $runActivity = mysqli_query($mysqli, $activity);
@@ -277,8 +279,10 @@ if (isset($_POST['submit'])) {
 					$activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
                     VALUES('$admName','','$after','Scheduled $sName for counseling.')";
 					$runActivity = mysqli_query($mysqli, $activity);
-					header("Location: student-counseling-success.php");
+					header("Location: redirects/student-counseling-success.php");
 				}
+			} else{
+				$msg = "<div class='suc' style='margin-bottom: 10px; color: crimson; '>Error.</div>";
 			}
 		}
 	}

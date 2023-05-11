@@ -51,8 +51,6 @@ if (isset($_POST['sancMarkAsDone'])) {
 
 }
 
-
-
 if (isset($_POST['submit'])) {
 
     $sName = filter_input(INPUT_POST, 'sName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -72,6 +70,7 @@ if (isset($_POST['submit'])) {
     $sType = $antiXss->xss_clean($sType);
     $sMessage = $antiXss->xss_clean($sMessage);
     $degree = $antiXss->xss_clean($degree);
+    $status ='Active';
 
 
     if ($sType == "") {
@@ -80,9 +79,11 @@ if (isset($_POST['submit'])) {
         if ($sName == "" || $sNumber == "" || $sCourse == "" || $sEmail == "" || $sCase == "" || $sType == "" || $sMessage == "" || $degree == "") {
             $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
         } else {
-        $add = "INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanctionType,sanctionMessage,degree,sanctionStatus)
-    VALUES('$sNumber','$sName','$sCourse','$sEmail','$sCase','$sType','$sMessage','$degree','Active')";
-        $result = mysqli_query($mysqli, $add);
+
+        $stmt = $mysqli->prepare("INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanctionType,sanctionMessage,degree,sanctionStatus)
+        VALUES(?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssssssss",$sNumber,$sName,$sCourse,$sEmail,$sCase,$sType,$sMessage,$degree,$status);
+        $stmt->execute();
 
         // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
         // $runActivity = mysqli_query($mysqli, $activity);
