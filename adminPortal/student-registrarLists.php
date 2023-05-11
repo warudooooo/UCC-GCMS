@@ -143,6 +143,11 @@ include 'includes/modals/student-registrarLists-modal.php';
                                                         <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px;'>
                                                            Irregular
                                                        </button></td>";
+                                            }else if ($row["studentStatus"] == 'Dropped') {
+                                                echo "<td style='text-align:center;'>
+                                                        <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #d00000; color: #fff; border-style:none; border-radius: 20px;'>
+                                                           Dropped
+                                                       </button></td>";
                                             } else if ($row["studentStatus"] == 'Regular') {
                                                 echo "<td style='text-align:center;'>
                                                         <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2a9d8f; color: #fff; border-style:none; border-radius: 20px;'>

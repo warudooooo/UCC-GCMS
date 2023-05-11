@@ -31,6 +31,9 @@
                                                 <li class="option">
                                                     <span class="option-text" value="Irregular">Irregular</span>
                                                 </li>
+                                                <li class="option">
+                                                    <span class="option-text" value="Dropped">Dropped</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
