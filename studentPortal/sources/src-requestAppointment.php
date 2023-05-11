@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         $sDetails = filter_input(INPUT_POST, 'sDetails', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $sOptions = filter_input(INPUT_POST, 'sOptions', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $cSchedule = filter_input(INPUT_POST, 'cSchedule', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
+        $status ='Pending';
         $sDetails =  $antiXss->xss_clean($sDetails);
         $sOptions =  $antiXss->xss_clean($sOptions);
         $cSchedule =  $antiXss->xss_clean($cSchedule);
@@ -48,9 +48,11 @@ if (isset($_POST['submit'])) {
             if ($sDetails == "" || $sOptions == "" || $cSchedule == "") {
                 $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
             } else {
-                $sql = "INSERT INTO tbl_counselings(studentNumber,requesterName,studentCourse,studentEmail,counselingDetails,counselingType,counselingSchedule,counselingStatus)
-            VALUES('$sNumber','$sName','$sCourse','$sEmail','$sDetails','$sOptions','$cSchedule','Pending')";
-                $result = mysqli_query($mysqli, $sql);
+                
+                $stmt = $mysqli->prepare("INSERT INTO tbl_counselings(studentNumber,requesterName,studentCourse,studentEmail,counselingDetails,counselingType,counselingSchedule,counselingStatus)
+                VALUES(?,?,?,?,?,?,?,?)");
+                $stmt->bind_param("ssssssss",$sNumber,$sName,$sCourse,$sEmail,$sDetails,$sOptions,$cSchedule,$status);
+                $stmt->execute();
 
                 header("Location: redirects/request-success-sub.php");
             }

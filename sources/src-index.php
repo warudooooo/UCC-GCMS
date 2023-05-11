@@ -28,22 +28,25 @@ if (isset($_POST['submit'])) {
 	$sNumber = $antiXss->xss_clean($sNumber);
 	$sPassword = $antiXss->xss_clean($sPassword);
 
-	$sql = "SELECT * FROM tbl_students WHERE studentNumber='{$sNumber}' AND studentPassword='{$sPassword}'";
-	$result = mysqli_query($mysqli, $sql);
-	$row = mysqli_fetch_assoc($result);
+	$stmt = $mysqli->prepare("SELECT * FROM tbl_students WHERE studentNumber = ? AND studentPassword = ?");
+	$stmt->bind_param("ss", $sNumber, $sPassword);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$data = $result->fetch_assoc();
+	
 	if($sNumber == "" || $sPassword == ""){
 		exit('Please fill up all the text fields.');
-	} else if (mysqli_num_rows($result) === 1 && $row["userType"] == "user") {
-		if (empty($row['vkey'])) {
+	} else if (mysqli_num_rows($result) === 1 && $data["userType"] == "user") {
+		if (empty($data['vkey'])) {
 			$_SESSION['SESSION_EMAIL'] = $sNumber;
-			$_SESSION['SESSION_ROLE'] = $row["userType"]; 
+			$_SESSION['SESSION_ROLE'] = $data["userType"]; 
 			exit('<font color="green">Student login successful, you will be redirected in the dashboard page.</font>');
 		} else {
 			exit('<style="text-align: center;">Please wait for your account to be verified by the Guidance.</style>');
 		}
-	} else if(mysqli_num_rows($result) === 1 && $row["userType"] == "admin"){
+	} else if(mysqli_num_rows($result) === 1 && $data["userType"] == "admin"){
 		$_SESSION['SESSION_EMAIL'] = $sNumber;
-		$_SESSION['SESSION_ROLE'] = $row["userType"];
+		$_SESSION['SESSION_ROLE'] = $data["userType"];
 		exit('<font color="green">Admin login successful, you will be redirected in the dashboard page.</font>');
 	}else {
 		exit('Student Number or Password does not match.');
