@@ -85,6 +85,9 @@ if (isset($_POST['submit'])) {
         $stmt->bind_param("sssssssss",$sNumber,$sName,$sCourse,$sEmail,$sCase,$sType,$sMessage,$degree,$status);
         $stmt->execute();
 
+        
+        mysqli_query($mysqli, "INSERT INTO tbl_sanctioncounter(studentNumber,caseDetails,count) VALUES('$sNumber','$sCase','1')");
+        
         // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
         // $runActivity = mysqli_query($mysqli, $activity);
         $mail = new PHPMailer(true);

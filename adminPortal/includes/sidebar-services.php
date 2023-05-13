@@ -94,7 +94,7 @@ if (mysqli_num_rows($query) > 0) {
                 <h4 class="col-md-12" style="font-size:15px; margin-top:20px; margin-left:25px;">Sanctions and Counselings</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.php" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Home</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="sanctions-and-counseling.php" aria-expanded="false"><i class="mdi mdi-toolbox-outline"></i><span class="hide-menu">Sanctioning / Counseling</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services-studentwithsanctions.php" aria-expanded="false"><i class="mdi mdi-account-cancel-outline"></i><span class="hide-menu">Students with Sanctions</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="services-studentwithsanctions.php" aria-expanded="false"><i class="mdi mdi-account-cancel-outline"></i><span class="hide-menu">Student w/ Santions Reports</span></a></li>
                 <hr class="hr" />
                 <h4 class="col-md-12" style="margin-top:20px; margin-left:25px;">Maintenance</h4>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="maintenance-Case.php" aria-expanded="false"><i class="mdi mdi-briefcase-edit-outline"></i><span class="hide-menu">Cases</span></a></li>

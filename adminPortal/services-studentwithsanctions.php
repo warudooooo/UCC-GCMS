@@ -41,7 +41,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-5">
-                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students with Sanctions</h4>
+                        <h4 class="page-title"><i class="mdi mdi-account-multiple"></i> Students with Sanctions Reports</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -50,7 +50,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                 </ol>
                             </nav>
                         </div>
-                        <i><h5 class="page-title" style="margin-top: 10px;">To download individual student reports <a class="hyperlnk" href="studentLists.php"">Click here</a></h5></i>
+                        <i><h5 class="page-title" style="margin-top: 10px;">To view or download individual student reports <a class="hyperlnk" href="studentLists.php"">Click here</a></h5></i>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                     </div>
                 </div>
                 <div class="row">
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Students with Sanctions</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-check"></i> Student Sanctions Reports</h4>
                     <div class="col-12">
                         <div class="card">
                             <form action="export-individual-reports.php" method="POST">
@@ -115,7 +115,7 @@ include 'includes/modals/services-studentwithsanctions-modal.php'; ?>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions");
+                                        $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions ORDER BY dateIssued DESC");
 
                                         $i = 1;
                                         while ($row = $load->fetch_assoc()) {

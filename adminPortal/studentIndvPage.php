@@ -276,7 +276,7 @@ include 'sources/src-studentLists.php';
                                     <tr style="text-align: center;">
                                         <th scope="col" style="color: #fff; width: 0px;">#</th>
                                         <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction Status</th>
-                                        <th scope="col" style="color: #fff; width: 0px; text-align: center;">Sanction</th>
+                                        <th scope="col" style="color: #fff; width: 0px; text-align: center;">Degree</th>
                                         <th scope="col" style="color: #fff; width: 150px;">Student Name</th>
                                         <th scope="col" style="color: #fff; width: 100px;">Student Number</th>
                                         <th scope="col" style="color: #fff; width: 100px;">Course</th>
@@ -292,23 +292,22 @@ include 'sources/src-studentLists.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber'");
-
+                                    $load = mysqli_query($mysqli, "SELECT * FROM tbl_sanctions WHERE studentNumber = '$studNumber' ORDER BY dateIssued DESC");
                                     $i = 1;
                                     while ($row = $load->fetch_assoc()) {
                                         echo "<tr>
                                                  <td>" . $i . "</td>
                                                  ";
-                                        if ($row["sanctionStatus"] == "Pending") {
+                                        if ($row["sanctionStatus"] == "Active") {
                                             echo "<td style='text-align:center;'>
-                                                            <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #E74C3C; color: #fff; border-style:none; border-radius: 20px;'>
-                                                            Active
-                                                           </button></td>";
+                                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #E74C3C; color: #fff; border-style:none; border-radius: 20px;'>
+                                                                    Active
+                                                                   </button></td>";
                                         } else if ($row["sanctionStatus"] == "Completed") {
                                             echo "<td style='text-align:center;'>
-                                                            <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2E86C1; color: #fff; border-style:none; border-radius: 20px;'>
-                                                            Completed
-                                                           </button></td>";
+                                                                    <button type='button' class='btn btn-primary' style='pointer-events: none; width: 100px; background: #2E86C1; color: #fff; border-style:none; border-radius: 20px;'>
+                                                                    Completed
+                                                                   </button></td>";
                                         }
                                         if ($row["degree"] == "Mild") {
                                             echo "<td style='text-align:center;'>
@@ -512,7 +511,7 @@ include 'sources/src-studentLists.php';
                     $('button.markasdone').hide();
                 }
 
-                
+
             });
         });
 
