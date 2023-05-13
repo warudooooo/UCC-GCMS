@@ -147,27 +147,25 @@ include 'includes/modals/services-modal.php'; ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                    <h4 class="col-md-16">Degree</h4>
-                                    <select style="width: 100% !important;" name="degree" class="form-selects" aria-label="Default select example" required>
-                                        <option class="options" value="" selected>Select degree here</option>
-                                        <option class="options" value="Mild">Mild</option>
-                                        <option class="options" value="Moderate">Moderate</option>
-                                        <option class="options" value="Severe">Severe</option>
-                                    </select>
+                                        <h4 class="col-md-16">Degree</h4>
+                                        <select style="width: 100% !important;" name="degree" class="form-selects" aria-label="Default select example" required>
+                                            <option class="options" value="" selected>Select degree here</option>
+                                            <option class="options" value="Mild">Mild</option>
+                                            <option class="options" value="Moderate">Moderate</option>
+                                            <option class="options" value="Severe">Severe</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <h4 class="col-md-12">Select Sanction</h4>
-                                            <select style="width: 100% !important;" name="sType" class="form-selects" aria-label="Default select example" required>
-                                                <option class="options" value="" selected>Select case here</option>
-                                                <?php
-                                                $query = mysqli_query($mysqli, "SELECT * FROM tbl_sanctionservices");
-                                                while ($row = mysqli_fetch_array($query)) {
-                                                ?>
-                                                    <option class="options" value="<?php echo $row['sanctionName']; ?>"><?php echo $row['sanctionName']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                        <h4 class="col-md-12">Select Sanction</h4>
+                                        <select style="width: 100% !important;" name="sType" class="form-selects" aria-label="Default select example" required>
+                                            <option class="options" value="" selected>Select case here</option>
+                                            <?php
+                                            $query = mysqli_query($mysqli, "SELECT * FROM tbl_sanctionservices");
+                                            while ($row = mysqli_fetch_array($query)) {
+                                            ?>
+                                                <option class="options" value="<?php echo $row['sanctionName']; ?>"><?php echo $row['sanctionName']; ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
