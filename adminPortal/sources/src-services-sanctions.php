@@ -48,7 +48,6 @@ if (isset($_POST['sancMarkAsDone'])) {
 
     $update = "UPDATE tbl_sanctions SET sanctionStatus = 'Completed' WHERE sanctionID = '$ssID'";
     $result = mysqli_query($mysqli, $update);
-
 }
 
 if (isset($_POST['submit'])) {
@@ -70,7 +69,7 @@ if (isset($_POST['submit'])) {
     $sType = $antiXss->xss_clean($sType);
     $sMessage = $antiXss->xss_clean($sMessage);
     $degree = $antiXss->xss_clean($degree);
-    $status ='Active';
+    $status = 'Active';
 
 
     if ($sType == "") {
@@ -80,36 +79,44 @@ if (isset($_POST['submit'])) {
             $msg = '<div class="eml" style="display: inline-block; text-align: center; color: crimson; margin-left: 0px; "><h3>Something went wrong</h3></div>';
         } else {
 
-        $stmt = $mysqli->prepare("INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanctionType,sanctionMessage,degree,sanctionStatus)
+            $stmt = $mysqli->prepare("INSERT INTO tbl_sanctions(studentNumber,studentName,studentCourse,studentEmail,sanctionCase,sanctionType,sanctionMessage,degree,sanctionStatus)
         VALUES(?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssssssss",$sNumber,$sName,$sCourse,$sEmail,$sCase,$sType,$sMessage,$degree,$status);
-        $stmt->execute();
+            $stmt->bind_param("sssssssss", $sNumber, $sName, $sCourse, $sEmail, $sCase, $sType, $sMessage, $degree, $status);
+            $stmt->execute();
 
-        
-        mysqli_query($mysqli, "INSERT INTO tbl_sanctioncounter(studentNumber,caseDetails,count) VALUES('$sNumber','$sCase','1')");
-        
-        // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
-        // $runActivity = mysqli_query($mysqli, $activity);
-        $mail = new PHPMailer(true);
-        try {
-            //Server settings
-            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
-            $mail->Password   = 'ljubpkiypermvnkz';                        //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $stmt2 = $mysqli->prepare("SELECT * FROM tbl_sanctioncounter WHERE studentNumber = ?");
+            $stmt2->bind_param("s", $sNumber);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
 
-            //Recipients
-            $mail->setFrom('s@gmail.com');
-            $mail->addAddress($sEmail);
+            if ($result2->num_rows > 0) {
+                $update = mysqli_query($mysqli, "UPDATE tbl_sanctioncounter SET count = count + 1 WHERE studentNumber = '$sNumber' AND caseDetails = '$sCase'");;
+            } else {
+                $insert = mysqli_query($mysqli, "INSERT INTO tbl_sanctioncounter(studentNumber,caseDetails,count) VALUES('$sNumber','$sCase','1')");
+            }
 
-            //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'no reply';
-            $mail->Body = "<!DOCTYPE html>
+            // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
+            // $runActivity = mysqli_query($mysqli, $activity);
+            $mail = new PHPMailer(true);
+            try {
+                //Server settings
+                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = 'blindsbord@gmail.com';                 //SMTP username
+                $mail->Password   = 'ljubpkiypermvnkz';                        //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                //Recipients
+                $mail->setFrom('s@gmail.com');
+                $mail->addAddress($sEmail);
+
+                //Content
+                $mail->isHTML(true);                                  //Set email format to HTML
+                $mail->Subject = 'no reply';
+                $mail->Body = "<!DOCTYPE html>
                 <html>           
                                 <head>
                                     <title></title>
@@ -283,20 +290,22 @@ if (isset($_POST['submit'])) {
                                     </table>
                                 </body>
                                 </html>";
-            // $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
-            // 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
+                // $mail->Body    = '<b><h1>Hi, ' . $sName . '</h1><a href="http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '">Click here to verify your account</a><br><p>Or copy it manualy below</p>
+                // 				  <p>http://192.168.100.105/Guidance/redirects/checkifemailverified.php/?verification=' . $vkey . '</p></b>';
 
-            $mail->send();
-        } catch (Exception $e) {
-            $msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
-        }
+                $mail->send();
+            } catch (Exception $e) {
+                $msg = "<div class='eml'>Message could not be sent. Mailer Error: {$mail->ErrorInfo}</div>";
+            }
 
-        $after = "$admName Sanctioned $sName";
+            $after = "$admName Sanctioned $sName";
 
-        $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
+            $activity = "INSERT INTO tbl_activitylog(admName,activityActionBefore,activityActionAfter,activityDetails)
                     VALUES('$admName','','$after','Sanctioned $sName.')";
-        $runActivity = mysqli_query($mysqli, $activity);
-        header("Location: redirects/student-sanction-success.php");
-    }
+            $runActivity = mysqli_query($mysqli, $activity);
+            $stmt->close();
+            $stmt2->close();
+            header("Location: redirects/student-sanction-success.php");
+        }
     }
 }

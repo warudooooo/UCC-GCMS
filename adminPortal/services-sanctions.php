@@ -135,20 +135,31 @@ include 'includes/modals/services-modal.php'; ?>
                                     </div>
                                     <input name="sEmail" style="display: none; pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sanctEmail']; ?>" value="<?php echo $_SESSION['sanctEmail']; ?>" class="form-control form-control-line" readonly>
                                     <div class="form-group">
-                                        <h4 class="col-md-12">Case</h4>
-                                        <select style="width: 100% !important;" name="sCase" class="form-selects" aria-label="Default select example" required>
+                                        <i>
+                                            <h4 id="autoSelector" class="page-title" style="margin-top: 10px; color: #e76f51;">Based on the case you chose, the system will automatically select a degree / sanctions. If you think that it is incorrect, you can manually choose it.</h4>
+                                            <h4 id="offenses" class="page-title" style="margin-top: 10px; color: crimson;"></h4>
+                                        </i>
+                                    </div>
+                                    <div class="form-group">
+                                        <h4 class="col-md-16">Case</h4>
+                                        <select id="case" style="width: 100% !important;" name="sCase" class="form-selects" aria-label="Default select example" required>
                                             <option class="options" value="" selected>Select case here</option>
                                             <?php
                                             $query = mysqli_query($mysqli, "SELECT * FROM tbl_cases");
                                             while ($row = mysqli_fetch_array($query)) {
+                                                $caseName = $row['caseName'];
                                             ?>
-                                                <option class="options" value="<?php echo $row['caseName']; ?>"><?php echo $row['caseName']; ?></option>
+                                                <option class="options" value="<?php echo $caseName; ?>"><?php echo $caseName; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
+                                    <?php
+                                    $selectCount = '';
+                                    ?>
+                                    <label id="count" style="display: none;"><?php echo $selectCount; ?></label>
                                     <div class="form-group">
                                         <h4 class="col-md-16">Degree</h4>
-                                        <select style="width: 100% !important;" name="degree" class="form-selects" aria-label="Default select example" required>
+                                        <select id="degree" style="width: 100% !important;" name="degree" class="form-selects" aria-label="Default select example" required>
                                             <option class="options" value="" selected>Select degree here</option>
                                             <option class="options" value="Mild">Mild</option>
                                             <option class="options" value="Moderate">Moderate</option>
@@ -157,8 +168,8 @@ include 'includes/modals/services-modal.php'; ?>
                                     </div>
                                     <div class="form-group">
                                         <h4 class="col-md-12">Select Sanction</h4>
-                                        <select style="width: 100% !important;" name="sType" class="form-selects" aria-label="Default select example" required>
-                                            <option class="options" value="" selected>Select case here</option>
+                                        <select id="sanction" style="width: 100% !important;" name="sType" class="form-selects" aria-label="Default select example" required>
+                                            <option class="options" value="" selected>Select Sanction here</option>
                                             <?php
                                             $query = mysqli_query($mysqli, "SELECT * FROM tbl_sanctionservices");
                                             while ($row = mysqli_fetch_array($query)) {
