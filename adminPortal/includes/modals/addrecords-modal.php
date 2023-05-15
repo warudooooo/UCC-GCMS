@@ -16,6 +16,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2">
+                                    <h4 style="text-align: center;"><i style="margin-left: 10px;"><b>Reminder: Only Documents and PDF Files only (Maximum size is 50MB)</b></i></h4>
+                                    <hr class="hr" />
                                     <div class="form-group">
                                         <label class="col-md-12">Year</label>
                                         <div class="col-md-12">
