@@ -1,4 +1,6 @@
 <?php
+require_once 'credentials.php';
+
 $server = "localhost";
 $username = "root";
 $password = "";
