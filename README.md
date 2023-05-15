@@ -6,8 +6,7 @@ The UCC-GCMS is a web-based record system that stores student’s violations, pr
 I've simply uploaded this to Github for storing and sharing purposes. I'm unable to list all the sources I used since I can't recall them, but I am giving them credit.
 You can visit this [link](https://waldotestbuild.000webhostapp.com/) to see what is it looks liked.
 
-### Here are some Preview:
-## Login Page:
+## Here are some Previews:
 ### Sign In Page:
 ![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Login%20Page/login.png)
 
