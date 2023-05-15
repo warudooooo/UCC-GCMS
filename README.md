@@ -1,8 +1,9 @@
 # NOTE: This is my university project and I am aware that the code is flawed and not perfect.
 
-### Quick Introduction:
+### Quick Description:
 The UCC-GCMS is a web-based record system that stores student’s violations, problems. This system will also help the University's Guidance Department manage students' problems and records more easily. This system also includes an appointment system that enables efficient scheduling for both Guidance and students.
 
+### Why I posted this here?
 I've simply uploaded this to Github for storing and sharing purposes. I'm unable to list all the sources I used since I can't recall them, but I am giving them credit.
 You can visit this [link](https://waldotestbuild.000webhostapp.com/) to see what is it looks liked.
 
