@@ -268,6 +268,10 @@
                                         </div>
                                     </div>
                                     <hr class="hr" />
+                                    <div class="form-group" style="width: 100%;">
+                                    <i style="text-align: center;"><h5 class="page-title" style="margin-top: 10px;">Or you can download this template by <a class="hyperlnk" href="student-registrarLists.php?export">clicking here</a></h5></i>
+                                    </div>
+                                    <hr class="hr" />
                                 </form>
                             </div>
                         </div>

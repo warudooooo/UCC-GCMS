@@ -203,3 +203,34 @@ Phone: $studentPhone";
         }
     }
 }
+
+
+if (isset($_GET['export'])) {
+
+    $filename = 'tempalte.xlsx';
+
+    $filepath = 'uploads/' . $filename;
+
+    if (file_exists($filepath)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . basename($filepath));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize('uploads/' . $filename));
+        readfile('uploads/' . $filename);
+
+        // Now update downloads count
+        $newCount = $file['admDownloads'] + 1;
+        $updateQuery = "UPDATE tbl_admissiontestrecords SET admDownloads=$newCount WHERE admID=$id";
+        mysqli_query($mysqli, $updateQuery);
+
+        $after = "$admName Downloaded " . $filename . " successfully.";
+
+    $activity = "INSERT INTO tbl_activitylog(admName,activityActionAfter,activityDetails)
+    VALUES('$admName','$after','Downloaded " . $filename . " successfuly.')";
+    $runActivity = mysqli_query($mysqli, $activity);
+        exit;
+    }
+}
