@@ -1,15 +1,18 @@
 
 const caseDropdown = document.getElementById("case");
+const studentNumber = document.getElementById("studNumber");
 const degreeDropdown = document.getElementById("degree");
 const sanctionDropdown = document.getElementById("sanction");
 
 caseDropdown.addEventListener("change", function () {
 
     const selectedCase = caseDropdown.value;
+    const sNumber = studentNumber.value;
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const response = xhr.responseText;
+            count.value = response;
             if (selectedCase === "Flag Ceremony Attendance") {
                 if (response === "No Data was Found.") {
                     document.getElementById("autoSelector").style.display = "none";
@@ -320,7 +323,7 @@ caseDropdown.addEventListener("change", function () {
             }
         }
     };
-    xhr.open("GET", "ajax/get_services_sanctions.php?case=" + selectedCase, true);
+    xhr.open("GET", "ajax/get_services_sanctions.php?case=" + selectedCase + "&sNumber=" + sNumber, true);
     xhr.send();
 });
 

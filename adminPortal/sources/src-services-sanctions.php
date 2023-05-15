@@ -60,6 +60,7 @@ if (isset($_POST['submit'])) {
     $sType = filter_input(INPUT_POST, 'sType', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $sMessage = filter_input(INPUT_POST, 'sMessage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $degree = filter_input(INPUT_POST, 'degree', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $result = $result = filter_input(INPUT_POST, 'result', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $sName = $antiXss->xss_clean($sName);
     $sNumber = $antiXss->xss_clean($sNumber);
@@ -69,6 +70,7 @@ if (isset($_POST['submit'])) {
     $sType = $antiXss->xss_clean($sType);
     $sMessage = $antiXss->xss_clean($sMessage);
     $degree = $antiXss->xss_clean($degree);
+    $result = $antiXss->xss_clean($result);
     $status = 'Active';
 
 
@@ -84,19 +86,11 @@ if (isset($_POST['submit'])) {
             $stmt->bind_param("sssssssss", $sNumber, $sName, $sCourse, $sEmail, $sCase, $sType, $sMessage, $degree, $status);
             $stmt->execute();
 
-            $stmt2 = $mysqli->prepare("SELECT * FROM tbl_sanctioncounter WHERE studentNumber = ?");
-            $stmt2->bind_param("s", $sNumber);
-            $stmt2->execute();
-            $result2 = $stmt2->get_result();
-
-            if ($result2->num_rows > 0) {
-                $update = mysqli_query($mysqli, "UPDATE tbl_sanctioncounter SET count = count + 1 WHERE studentNumber = '$sNumber' AND caseDetails = '$sCase'");;
+            if ($result == "No Data was Found.") {
+                $insert = mysqli_query($mysqli, "INSERT INTO tbl_sanctioncounter(studentNumber,caseDetails,count) VALUES('$sNumber','$sCase','1')");   
             } else {
-                $insert = mysqli_query($mysqli, "INSERT INTO tbl_sanctioncounter(studentNumber,caseDetails,count) VALUES('$sNumber','$sCase','1')");
+                $update = mysqli_query($mysqli, "UPDATE tbl_sanctioncounter SET count = count + 1 WHERE studentNumber = '$sNumber' AND caseDetails = '$sCase'");
             }
-
-            // $activity = "INSERT INTO tbl_activitylog(admName,activityAction) VALUES('$admName','SANCTIONED STUDENT [ Details: $sName ]')";
-            // $runActivity = mysqli_query($mysqli, $activity);
             $mail = new PHPMailer(true);
             try {
                 //Server settings
@@ -304,7 +298,6 @@ if (isset($_POST['submit'])) {
                     VALUES('$admName','','$after','Sanctioned $sName.')";
             $runActivity = mysqli_query($mysqli, $activity);
             $stmt->close();
-            $stmt2->close();
             header("Location: redirects/student-sanction-success.php");
         }
     }

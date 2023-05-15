@@ -124,7 +124,7 @@ include 'includes/modals/services-modal.php'; ?>
                                     <div class="form-group">
                                         <h4 class="col-md-12">Student Number</h4>
                                         <div class="col-md-12">
-                                            <input name="sNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sancNumber']; ?>" value="<?php echo $_SESSION['sancNumber']; ?>" class="form-control form-control-line" readonly>
+                                            <input name="sNumber" id="studNumber" style="pointer-events: none; text-transform: uppercase;" type="text" placeholder="<?php echo $_SESSION['sancNumber']; ?>" value="<?php echo $_SESSION['sancNumber']; ?>" class="form-control form-control-line" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -156,7 +156,7 @@ include 'includes/modals/services-modal.php'; ?>
                                     <?php
                                     $selectCount = '';
                                     ?>
-                                    <label id="count" style="display: none;"><?php echo $selectCount; ?></label>
+                                    <input type="hidden" id="count" name="result" readonly>
                                     <div class="form-group">
                                         <h4 class="col-md-16">Degree</h4>
                                         <select id="degree" style="width: 100% !important;" name="degree" class="form-selects" aria-label="Default select example" required>
