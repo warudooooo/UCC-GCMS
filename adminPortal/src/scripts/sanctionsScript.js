@@ -69,8 +69,8 @@ caseDropdown.addEventListener("change", function () {
                     document.getElementById("autoSelector").style.display = "none";
                     document.getElementById("offenses").textContent = "Based on the case you selected, the system found that this was the student's 3rd offense. The system will automatically select a degree / sanctions. If you think that it is incorrect, you can manually choose it.";
                     document.getElementById("offenses").style.display = "auto";
-                    sanctionDropdown.value = "One (1) day Suspension and 6 hours of community service";
-                    sanctionDropdown.text = "One (1) day Suspension and 6 hours of community service";
+                    sanctionDropdown.value = "One (1) week Suspension and 6 hours of community service";
+                    sanctionDropdown.text = "One (1) week Suspension and 6 hours of community service";
                     degreeDropdown.value = "Mild";
                     degreeDropdown.text = "Mild";
                 } else {
