@@ -44,7 +44,7 @@
         <div class="modal-dialog">
             <div class="modal-content seemore">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Appointment Details</h3>
+                    <h3 class="modal-title" id="exampleModalLabel" style="color: #333;">Sanction Details</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
