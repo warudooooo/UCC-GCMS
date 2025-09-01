@@ -19,23 +19,23 @@ You can visit this [link](https://waldotestbuild.000webhostapp.com/) to see what
 
 ## Student Side:
 ### Student Dashboard Page:
-![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Student%20Side/dashboard.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Student%20Side/dashboard.png)
 
 ### Request Appointment Page:
-![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Student%20Side/request_appointment.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Student%20Side/request_appointment.png)
 
 ## Admin Side:
 ### Admin Dashboard Page:
-![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Side/dashboard.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Admin%20Side/dashboard.png)
 
 ### Appointment Dashboard Page:
-![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Side/appointment_dashboard.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Admin%20Side/appointment_dashboard.png)
 
 ### Appointment Page:
-![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Side/appointment_reschedule.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Admin%20Side/appointment_reschedule.png)
 
 ### Appointment Statistics Page:
-![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Side/appointment_stats.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Admin%20Side/appointment_stats.png)
 
 ### Individual Student Page:
-![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Side/individual_student.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Admin%20Side/individual_student.png)
