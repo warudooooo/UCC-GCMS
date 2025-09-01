@@ -9,7 +9,7 @@ You can visit this [link](https://waldotestbuild.000webhostapp.com/) to see what
 
 ## Here are some Previews:
 ### Sign In Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Login%20Page/login.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Login%20Page/login.png)
 
 ### Register Page:
 ![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Login%20Page/register.png)
