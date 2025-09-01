@@ -12,30 +12,30 @@ You can visit this [link](https://waldotestbuild.000webhostapp.com/) to see what
 ![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Login%20Page/login.png)
 
 ### Register Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Login%20Page/register.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Login%20Page/register.png)
 
 ### Forgot Password Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Login%20Page/forgotr_pass.png)
+![](https://github.com/warudooooo/UCC-GCMS/blob/master/screenshots/Login%20Page/forgotr_pass.png)
 
 ## Student Side:
 ### Student Dashboard Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Student%20Side/dashboard.png)
+![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Student%20Sidedashboard.png)
 
 ### Request Appointment Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Student%20Side/request_appointment.png)
+![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Student%20Siderequest_appointment.png)
 
 ## Admin Side:
 ### Admin Dashboard Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Admin%20Side/dashboard.png)
+![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Sidedashboard.png)
 
 ### Appointment Dashboard Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Admin%20Side/appointment_dashboard.png)
+![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Sideappointment_dashboard.png)
 
 ### Appointment Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Admin%20Side/appointment_reschedule.png)
+![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Sideappointment_reschedule.png)
 
 ### Appointment Statistics Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Admin%20Side/appointment_stats.png)
+![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Sideappointment_stats.png)
 
 ### Individual Student Page:
-![](https://raw.githubusercontent.com/warudooooo/Guidance-and-Counseling-Management-System/master/screenshots/Admin%20Side/individual_student.png)
+![](https://github.com/warudooooo/UCC-GCMS/tree/master/screenshots/Admin%20Sideindividual_student.png)
